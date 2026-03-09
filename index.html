@@ -1477,7 +1477,7 @@
       justify-content: center;
       box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.3);
       transition: transform 0.25s cubic-bezier(.4,0,.2,1), box-shadow 0.25s;
-      animation: wa-pulse 2.5s infinite;
+      animation: wa-pulse 2.5s 3;
       text-decoration: none;
     }
     .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
@@ -1522,6 +1522,7 @@
       .sticky-mobile-bar { display: flex; }
       .wa-float { bottom: 80px; right: 20px; width: 52px; height: 52px; }
       .wa-float { display: none; }
+      body { padding-bottom: 70px; }
     }
 
     /* ─── REVIEWS ─── */
@@ -1726,9 +1727,122 @@
       .menu-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-logo-divider, .nav-logo-sub { display: none; }
     }
+    /* ─── COOKIE CONSENT ─── */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--ink-light);
+      border-top: 1px solid rgba(184, 147, 90, 0.2);
+      padding: 16px 24px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .cookie-banner.show { display: flex; }
+    .cookie-banner p {
+      font-size: 13px;
+      color: var(--sand-muted);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .cookie-banner p a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .cookie-banner p a:hover { color: var(--gold-light); }
+    .cookie-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      padding: 10px 24px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .cookie-btn:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+    .cookie-btn:active { transform: scale(0.97); }
+    .cookie-btn-accept { background: var(--ember); color: var(--sand); }
+    .cookie-btn-accept:hover { background: var(--ember-light); }
+    .cookie-btn-decline { background: transparent; color: var(--sand-muted); border: 1px solid rgba(184,147,90,0.2); }
+    .cookie-btn-decline:hover { border-color: var(--gold); color: var(--sand); }
+
+    /* ─── LEGAL MODALS ─── */
+    .legal-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(8, 6, 4, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .legal-modal-overlay.show { display: flex; }
+    .legal-modal {
+      background: var(--ink-light);
+      border: 1px solid rgba(184, 147, 90, 0.15);
+      max-width: 720px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+    }
+    .legal-modal h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--sand);
+      margin-bottom: 24px;
+    }
+    .legal-modal h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin: 24px 0 8px;
+    }
+    .legal-modal p, .legal-modal li {
+      font-size: 14px;
+      color: var(--sand-muted);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .legal-modal ul { list-style: disc; padding-left: 20px; margin-bottom: 12px; }
+    .legal-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: 1px solid rgba(184, 147, 90, 0.2);
+      color: var(--sand-muted);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .legal-modal-close:hover { color: var(--sand); border-color: var(--gold); }
+    .legal-modal-close:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
   </style>
 </head>
 <body>
+  <!-- SKIP TO CONTENT (accessibility) -->
+  <a href="#booking" class="skip-to-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;background:var(--ember);color:var(--sand);padding:12px 24px;font-family:var(--font-mono);font-size:12px;letter-spacing:2px;text-decoration:none;" onfocus="this.style.cssText='position:fixed;left:16px;top:16px;z-index:9999;background:var(--ember);color:var(--sand);padding:12px 24px;font-family:var(--font-mono);font-size:12px;letter-spacing:2px;text-decoration:none;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">SKIP TO BOOKING</a>
+
   <!-- GTM noscript — Replace GTM-XXXXXXX with your GTM ID -->
   <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
 
@@ -1766,9 +1880,10 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="private-chef-marrakech-tagine.webp">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="private-chef-marrakech-tagine.webp" aria-label="Private chef preparing Moroccan dishes in a Marrakech villa kitchen">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
+    <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Background video: A private chef preparing traditional Moroccan dishes</span>
     <div class="hero-video-overlay"></div>
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
@@ -1861,6 +1976,7 @@
           </div>
           <div class="form-group full">
             <button type="submit" class="btn-primary" data-i18n="book_submit">SEND BOOKING REQUEST VIA WHATSAPP</button>
+            <p style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:10px;text-align:center;" data-i18n="book_note">YOU'LL BE REDIRECTED TO WHATSAPP TO CONFIRM &middot; MINIMUM 2 GUESTS</p>
           </div>
         </form>
       </div>
@@ -1880,11 +1996,11 @@
     <div class="img-carousel reveal" id="carousel-about">
       <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel('carousel-about',-1)" aria-label="Previous">&#8249;</button>
       <div class="img-carousel-track">
-        <img loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Lamb tagine">
-        <img loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Kofta tagine">
-        <img loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine">
-        <img loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Oysters">
-        <img loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon">
+        <img loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Slow-cooked lamb tagine with caramelized onions and raisins served in a traditional clay pot">
+        <img loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Moroccan kofta tagine with poached eggs in spiced tomato sauce">
+        <img loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine with preserved lemons and olives, a Marrakech classic">
+        <img loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Fresh Oualidia oysters with red wine vinegar on a bed of ice">
+        <img loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon on blinis with lemon cream sauce appetizer">
       </div>
       <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-about',1)" aria-label="Next">&#8250;</button>
     </div>
@@ -1899,40 +2015,40 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
-          <img loading="lazy" decoding="async" src="White-Fish-Spinach-Pastilla-560x300.png.webp" alt="Fish pastilla" class="testimonial-card-img" style="object-fit:cover;">
+          <img loading="lazy" decoding="async" src="White-Fish-Spinach-Pastilla-560x300.png.webp" alt="White fish and spinach pastilla — crispy layers with delicate seafood filling" class="testimonial-card-img" style="object-fit:cover;">
           <div class="testimonial-card-body">
             <p class="quote" data-i18n="test_q1">The pastilla on night three. Still thinking about it three months later. Our chef made every evening feel like a private celebration.</p>
             <div class="testimonial-author">
               <svg width="36" height="36" viewBox="0 0 36 36" class="testimonial-avatar"><circle cx="18" cy="18" r="18" fill="#1a1410"/><circle cx="18" cy="18" r="17" fill="none" stroke="#B8935A" stroke-width="1" opacity="0.3"/><text x="18" y="22" text-anchor="middle" fill="#B8935A" font-family="'DM Mono', monospace" font-size="14">S</text></svg>
               <div class="testimonial-author-info">
                 <h4>Sophie &amp; Marc, Lyon</h4>
-                <span data-i18n="test_s1">VILLA STAY &middot; 5 NIGHTS</span>
+                <span data-i18n="test_s1">VILLA STAY &middot; 5 NIGHTS &middot; JAN 2026</span>
               </div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-d1">
-          <img loading="lazy" decoding="async" src="Endive-Salad-with-Roquefort-Cashews-560x300.jpg.webp" alt="Endive salad with roquefort and cashews" class="testimonial-card-img" style="object-fit:cover;">
+          <img loading="lazy" decoding="async" src="Endive-Salad-with-Roquefort-Cashews-560x300.jpg.webp" alt="Endive salad with roquefort cheese and toasted cashews, plated by a private chef" class="testimonial-card-img" style="object-fit:cover;">
           <div class="testimonial-card-body">
             <p class="quote" data-i18n="test_q2">The endive salad with roquefort and cashews to start, then a perfect tagine. Every course was a surprise. Our chef turned our terrace into something out of a magazine. The best anniversary dinner we've ever had.</p>
             <div class="testimonial-author">
               <svg width="36" height="36" viewBox="0 0 36 36" class="testimonial-avatar"><circle cx="18" cy="18" r="18" fill="#1a1410"/><circle cx="18" cy="18" r="17" fill="none" stroke="#B8935A" stroke-width="1" opacity="0.3"/><text x="18" y="22" text-anchor="middle" fill="#B8935A" font-family="'DM Mono', monospace" font-size="14">J</text></svg>
               <div class="testimonial-author-info">
                 <h4>James W., London</h4>
-                <span data-i18n="test_s2">ANNIVERSARY &middot; 2 NIGHTS</span>
+                <span data-i18n="test_s2">ANNIVERSARY &middot; 2 NIGHTS &middot; DEC 2025</span>
               </div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-d2">
-          <img loading="lazy" decoding="async" src="sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous" class="testimonial-card-img" style="object-fit:cover;">
+          <img loading="lazy" decoding="async" src="sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous with seven vegetables and slow-cooked lamb — a traditional Friday feast" class="testimonial-card-img" style="object-fit:cover;">
           <div class="testimonial-card-body">
             <p class="quote" data-i18n="test_q3">The couscous on Friday night was unforgettable. Seven vegetables, slow-cooked lamb, saffron broth — our kids went back for thirds. A real family feast.</p>
             <div class="testimonial-author">
               <svg width="36" height="36" viewBox="0 0 36 36" class="testimonial-avatar"><circle cx="18" cy="18" r="18" fill="#1a1410"/><circle cx="18" cy="18" r="17" fill="none" stroke="#B8935A" stroke-width="1" opacity="0.3"/><text x="18" y="22" text-anchor="middle" fill="#B8935A" font-family="'DM Mono', monospace" font-size="14">A</text></svg>
               <div class="testimonial-author-info">
                 <h4>Anna &amp; Thomas, Berlin</h4>
-                <span data-i18n="test_s3">FAMILY &middot; 7 NIGHTS</span>
+                <span data-i18n="test_s3">FAMILY &middot; 7 NIGHTS &middot; FEB 2026</span>
               </div>
             </div>
           </div>
@@ -1969,7 +2085,7 @@
           </li>
           <li>
             <span class="check"></span>
-            <span data-i18n="feat_4">From &euro;85/day for up to 10 guests. No hidden fees. No surprises on the bill</span>
+            <span data-i18n="feat_4">From &euro;85/day per group (up to 10 guests). No hidden fees. No surprises on the bill</span>
           </li>
         </ul>
       </div>
@@ -1977,11 +2093,11 @@
     <div class="img-carousel reveal" id="carousel-features">
       <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel('carousel-features',-1)" aria-label="Previous">&#8249;</button>
       <div class="img-carousel-track">
-        <img loading="lazy" decoding="async" src="Avocado-Guacamole-Salad-with-Chili-Shrimp-560x300.jpg.webp" alt="Avocado salad">
-        <img loading="lazy" decoding="async" src="morocco-tagine-berber-560x300.jpg.webp" alt="Berber tagine">
-        <img loading="lazy" decoding="async" src="blue-tagine-moroccan-spices.webp" alt="Blue tagine">
-        <img loading="lazy" decoding="async" src="Beef-Tagine-with-Prunes-Almonds-560x300.jpg.webp" alt="Beef tagine">
-        <img loading="lazy" decoding="async" src="sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous">
+        <img loading="lazy" decoding="async" src="Avocado-Guacamole-Salad-with-Chili-Shrimp-560x300.jpg.webp" alt="Avocado guacamole salad topped with chili shrimp — a fresh starter course">
+        <img loading="lazy" decoding="async" src="morocco-tagine-berber-560x300.jpg.webp" alt="Traditional Berber tagine slow-cooked with Moroccan spices">
+        <img loading="lazy" decoding="async" src="blue-tagine-moroccan-spices.webp" alt="Blue ceramic tagine pot surrounded by colorful Moroccan spices">
+        <img loading="lazy" decoding="async" src="Beef-Tagine-with-Prunes-Almonds-560x300.jpg.webp" alt="Beef tagine with caramelized prunes and toasted almonds">
+        <img loading="lazy" decoding="async" src="sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous with seven vegetables — a Moroccan Friday tradition">
       </div>
       <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-features',1)" aria-label="Next">&#8250;</button>
     </div>
@@ -2040,7 +2156,7 @@
   <section class="cta" id="contact">
     <div class="cta-inner">
       <div class="cta-image">
-        <img loading="lazy" decoding="async" src="moroccan-feast-villa-terrace.webp" alt="Moroccan feast table">
+        <img loading="lazy" decoding="async" src="moroccan-feast-villa-terrace.webp" alt="Moroccan feast spread on a candle-lit villa terrace in Marrakech at sunset">
       </div>
       <div class="cta-content">
         <span class="eyebrow reveal" data-i18n="cta_eyebrow">DON'T LEAVE MARRAKECH WITHOUT THIS</span>
@@ -2054,10 +2170,10 @@
   <!-- REVIEWS -->
   <section class="reviews">
     <div class="container">
-      <div class="reviews-badge">
+      <a href="https://www.google.com/search?q=La+Table+Marrakech+reviews" target="_blank" rel="noopener" class="reviews-badge" style="text-decoration:none;cursor:pointer;transition:border-color 0.3s;">
         <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <span data-i18n="reviews_text"><strong>4.9/5</strong> &middot; 200+ reviews on <strong>Google</strong></span>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -2190,6 +2306,10 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 LA TABLE MARRAKECH</p>
+        <p style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="#" onclick="openLegalModal('privacy');return false;" style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--sand)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer_privacy">PRIVACY POLICY</a>
+          <a href="#" onclick="openLegalModal('terms');return false;" style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--sand)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer_terms">TERMS OF SERVICE</a>
+        </p>
         <p data-i18n="footer_tagline">PRIVATE CHEF SERVICE &middot; MARRAKECH, MOROCCO</p>
         <p style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:8px;">LAST UPDATED: MARCH 2026</p>
       </div>
@@ -2207,6 +2327,106 @@
     <a href="https://wa.me/212721354757" target="_blank" class="btn-wa-sm" aria-label="WhatsApp">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
+  </div>
+
+  <!-- COOKIE CONSENT BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p data-i18n="cookie_text">We use cookies to improve your experience. By continuing to use this site, you agree to our <a href="#" onclick="openLegalModal('privacy');return false;">Privacy Policy</a>.</p>
+    <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">ACCEPT</button>
+    <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">DECLINE</button>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div class="legal-modal-overlay" id="privacyModal" onclick="if(event.target===this)closeLegalModals()">
+    <div class="legal-modal">
+      <button class="legal-modal-close" onclick="closeLegalModals()" aria-label="Close">&times;</button>
+      <h2>PRIVACY POLICY</h2>
+      <p><em>Last updated: March 2026</em></p>
+
+      <h3>WHO WE ARE</h3>
+      <p>La Table Marrakech is a private chef service operating in Marrakech, Morocco. Contact: hello@latablemarrakech.com</p>
+
+      <h3>WHAT DATA WE COLLECT</h3>
+      <p>When you submit a booking request, we collect:</p>
+      <ul>
+        <li>Your name and email address</li>
+        <li>Preferred date, time, and number of guests</li>
+        <li>Dietary restrictions or special requests</li>
+      </ul>
+      <p>This information is sent directly to our WhatsApp business number to process your booking. We do not store this data on any server.</p>
+
+      <h3>HOW WE USE YOUR DATA</h3>
+      <p>We use your information solely to:</p>
+      <ul>
+        <li>Confirm and coordinate your private chef booking</li>
+        <li>Communicate about your reservation via WhatsApp or email</li>
+        <li>Accommodate your dietary needs</li>
+      </ul>
+
+      <h3>COOKIES</h3>
+      <p>This website uses minimal cookies:</p>
+      <ul>
+        <li><strong>Language preference</strong> (localStorage) — to remember your selected language (EN/FR/AR)</li>
+        <li><strong>Cookie consent</strong> (localStorage) — to remember your cookie preference</li>
+      </ul>
+      <p>We do not use tracking cookies, advertising pixels, or third-party analytics unless you accept cookies. If enabled in the future, Google Analytics and Meta Pixel may be used to understand site traffic.</p>
+
+      <h3>THIRD PARTIES</h3>
+      <p>Your booking data is transmitted via WhatsApp (operated by Meta). We use Google Fonts for typography. No data is sold to third parties.</p>
+
+      <h3>YOUR RIGHTS</h3>
+      <p>You have the right to access, correct, or delete any personal data we hold. Contact us at hello@latablemarrakech.com for any privacy-related requests.</p>
+
+      <h3>DATA RETENTION</h3>
+      <p>We retain booking communications for up to 12 months for service quality purposes, then delete them.</p>
+    </div>
+  </div>
+
+  <!-- TERMS OF SERVICE MODAL -->
+  <div class="legal-modal-overlay" id="termsModal" onclick="if(event.target===this)closeLegalModals()">
+    <div class="legal-modal">
+      <button class="legal-modal-close" onclick="closeLegalModals()" aria-label="Close">&times;</button>
+      <h2>TERMS OF SERVICE</h2>
+      <p><em>Last updated: March 2026</em></p>
+
+      <h3>SERVICE DESCRIPTION</h3>
+      <p>La Table Marrakech provides private chef services at villas and riads in Marrakech, Morocco. Our service includes menu planning, ingredient sourcing, cooking, table service, and kitchen cleanup.</p>
+
+      <h3>BOOKING & CONFIRMATION</h3>
+      <ul>
+        <li>Bookings are requested via our website form or WhatsApp</li>
+        <li>A booking is confirmed only after our team responds via WhatsApp within 24 hours</li>
+        <li>Minimum 2 guests per booking</li>
+        <li>We recommend booking at least 72 hours in advance</li>
+      </ul>
+
+      <h3>PRICING</h3>
+      <ul>
+        <li>Prices start from &euro;85 per day per group (up to 10 guests)</li>
+        <li>Final pricing depends on group size, menu selection, and special requirements</li>
+        <li>All prices include ingredients, cooking, service, and cleanup</li>
+        <li>Payment details are confirmed upon booking confirmation</li>
+      </ul>
+
+      <h3>CANCELLATION</h3>
+      <ul>
+        <li>Free cancellation up to 48 hours before the scheduled service</li>
+        <li>Cancellations within 48 hours may incur ingredient costs already purchased</li>
+        <li>No-shows are charged the full amount</li>
+      </ul>
+
+      <h3>DIETARY RESTRICTIONS</h3>
+      <p>Please inform us of any allergies or dietary restrictions at the time of booking. While we take every precaution, we cannot guarantee a completely allergen-free environment as we cook in private kitchens.</p>
+
+      <h3>LIABILITY</h3>
+      <p>La Table Marrakech takes reasonable care in food preparation and hygiene. We are not liable for pre-existing kitchen conditions at your accommodation. Guests are responsible for providing a functional kitchen with basic utilities (gas/electric stove, running water, refrigerator).</p>
+
+      <h3>MODIFICATIONS</h3>
+      <p>We reserve the right to update these terms at any time. Continued use of our service constitutes acceptance of updated terms.</p>
+
+      <h3>CONTACT</h3>
+      <p>For questions about these terms, contact us at hello@latablemarrakech.com or +212 721 354 757.</p>
+    </div>
   </div>
 
   <script>
@@ -2249,16 +2469,16 @@
         about_detail: 'No waiting. No strangers. Just you, the people you love, and a meal you\'ll talk about for years.',
         test_eyebrow: '02 \u00B7 WHAT THEY SAY', test_h2: 'WORDS FROM<em>Our guests.</em>',
         test_q1: 'The pastilla on night three. Still thinking about it three months later. Our chef made every evening feel like a private celebration.',
-        test_s1: 'VILLA STAY \u00B7 5 NIGHTS',
+        test_s1: 'VILLA STAY \u00B7 5 NIGHTS \u00B7 JAN 2026',
         test_q2: 'The endive salad with roquefort and cashews to start, then a perfect tagine. Every course was a surprise. Our chef turned our terrace into something out of a magazine. The best anniversary dinner we\'ve ever had.',
-        test_s2: 'ANNIVERSARY \u00B7 2 NIGHTS',
+        test_s2: 'ANNIVERSARY \u00B7 2 NIGHTS \u00B7 DEC 2025',
         test_q3: 'The couscous on Friday night was unforgettable. Seven vegetables, slow-cooked lamb, saffron broth \u2014 our kids went back for thirds. A real family feast.',
-        test_s3: 'FAMILY \u00B7 7 NIGHTS',
+        test_s3: 'FAMILY \u00B7 7 NIGHTS \u00B7 FEB 2026',
         feat_eyebrow: '03 \u00B7 WHY US', feat_h2: 'ONE PRICE. EVERYTHING INCLUDED.<em>You just show up.</em>',
         feat_1: 'Fresh souk ingredients, hand-picked by your chef that morning \u2014 spices, produce, meat, seafood',
         feat_2: 'Tagine, pastilla, couscous, dessert, and mint tea \u2014 a full multi-course feast at your villa',
         feat_3: 'Setup, service, plating, and complete kitchen cleanup \u2014 you don\'t lift a finger',
-        feat_4: 'From \u20AC85/day for up to 10 guests. No hidden fees. No surprises on the bill',
+        feat_4: 'From \u20AC85/day per group (up to 10 guests). No hidden fees. No surprises on the bill',
         how_h2: 'HOW IT WORKS',
         how_subtitle: 'From booking to the last bite \u2014 we handle everything.',
         how_s1_h: 'Choose Your Experience',
@@ -2314,7 +2534,11 @@
         cta_faq: 'Still have questions? We\'re just a message away.',
         cta_faq_btn: 'BOOK YOUR TABLE',
         footer_book_btn: 'BOOK YOUR TABLE',
-        mobile_book: 'BOOK NOW'
+        mobile_book: 'BOOK NOW',
+        book_note: "YOU'LL BE REDIRECTED TO WHATSAPP TO CONFIRM \u00B7 MINIMUM 2 GUESTS",
+        cookie_text: 'We use cookies to improve your experience. By continuing to use this site, you agree to our <a href="#" onclick="openLegalModal(\'privacy\');return false;">Privacy Policy</a>.',
+        footer_privacy: 'PRIVACY POLICY',
+        footer_terms: 'TERMS OF SERVICE'
       },
       fr: {
         nav_experience: "L'EXP\u00C9RIENCE", nav_how: 'COMMENT \u00C7A MARCHE', nav_chefs: 'NOS CHEFS', nav_faq: 'FAQ', nav_book: 'R\u00C9SERVER',
@@ -2329,16 +2553,16 @@
         about_detail: "Pas d'attente. Pas d'inconnus. Juste vous, ceux que vous aimez, et un repas dont vous parlerez pendant des ann\u00E9es.",
         test_eyebrow: '02 \u00B7 T\u00C9MOIGNAGES', test_h2: 'PAROLES<em>De nos h\u00F4tes.</em>',
         test_q1: "La pastilla de la troisi\u00E8me soir\u00E9e. J'y pense encore trois mois plus tard. Notre chef a fait de chaque soir\u00E9e une c\u00E9l\u00E9bration priv\u00E9e.",
-        test_s1: 'S\u00C9JOUR VILLA \u00B7 5 NUITS',
+        test_s1: 'S\u00C9JOUR VILLA \u00B7 5 NUITS \u00B7 JAN 2026',
         test_q2: "La salade d\u2019endives au roquefort et noix de cajou en entr\u00E9e, puis un tagine parfait. Chaque plat \u00E9tait une surprise. Notre chef a transform\u00E9 notre terrasse en d\u00E9cor de magazine. Le meilleur d\u00EEner d\u2019anniversaire de notre vie.",
-        test_s2: 'ANNIVERSAIRE \u00B7 2 NUITS',
+        test_s2: 'ANNIVERSAIRE \u00B7 2 NUITS \u00B7 D\u00C9C 2025',
         test_q3: "Le couscous du vendredi soir \u00E9tait inoubliable. Sept l\u00E9gumes, agneau mijot\u00E9, bouillon au safran \u2014 nos enfants en ont repris trois fois. Un vrai festin familial.",
-        test_s3: 'FAMILLE \u00B7 7 NUITS',
+        test_s3: 'FAMILLE \u00B7 7 NUITS \u00B7 F\u00C9V 2026',
         feat_eyebrow: '03 \u00B7 POURQUOI NOUS', feat_h2: 'UN PRIX. TOUT INCLUS.<em>Vous n\'avez qu\'\u00E0 venir.</em>',
         feat_1: 'Ingr\u00E9dients frais du souk, choisis par votre chef le matin m\u00EAme \u2014 \u00E9pices, l\u00E9gumes, viande, fruits de mer',
         feat_2: 'Tagine, pastilla, couscous, dessert et th\u00E9 \u00E0 la menthe \u2014 un festin complet dans votre villa',
         feat_3: "Installation, service, dressage et nettoyage complet de la cuisine \u2014 vous ne levez pas le petit doigt",
-        feat_4: "\u00C0 partir de 85\u20AC/jour pour 10 convives max. Pas de frais cach\u00E9s. Pas de surprises",
+        feat_4: "\u00C0 partir de 85\u20AC/jour par groupe (10 convives max). Pas de frais cach\u00E9s. Pas de surprises",
         how_h2: 'COMMENT \u00C7A MARCHE',
         how_subtitle: 'De la r\u00E9servation au dernier morceau \u2014 on s\u2019occupe de tout.',
         how_s1_h: 'Choisissez votre exp\u00E9rience',
@@ -2394,7 +2618,11 @@
         cta_faq: 'Encore des questions ? On est \u00E0 un message.',
         cta_faq_btn: 'R\u00C9SERVEZ VOTRE TABLE',
         footer_book_btn: 'R\u00C9SERVEZ VOTRE TABLE',
-        mobile_book: 'R\u00C9SERVER'
+        mobile_book: 'R\u00C9SERVER',
+        book_note: 'VOUS SEREZ REDIRIG\u00C9 VERS WHATSAPP POUR CONFIRMER \u00B7 MINIMUM 2 CONVIVES',
+        cookie_text: 'Nous utilisons des cookies pour am\u00E9liorer votre exp\u00E9rience. En continuant, vous acceptez notre <a href="#" onclick="openLegalModal(\'privacy\');return false;">Politique de confidentialit\u00E9</a>.',
+        footer_privacy: 'CONFIDENTIALIT\u00C9',
+        footer_terms: 'CONDITIONS G\u00C9N\u00C9RALES'
       },
       ar: {
         nav_experience: '\u0627\u0644\u062A\u062C\u0631\u0628\u0629', nav_how: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644', nav_chefs: '\u0637\u0647\u0627\u062A\u0646\u0627', nav_faq: '\u0623\u0633\u0626\u0644\u0629', nav_book: '\u0627\u062D\u062C\u0632 \u0627\u0644\u0622\u0646',
@@ -2409,16 +2637,16 @@
         about_detail: '\u0628\u062F\u0648\u0646 \u0627\u0646\u062A\u0638\u0627\u0631. \u0628\u062F\u0648\u0646 \u063A\u0631\u0628\u0627\u0621. \u0641\u0642\u0637 \u0623\u0646\u062A \u0648\u0645\u0646 \u062A\u062D\u0628 \u0648\u0648\u062C\u0628\u0629 \u0633\u062A\u062A\u062D\u062F\u062B \u0639\u0646\u0647\u0627 \u0644\u0633\u0646\u0648\u0627\u062A.',
         test_eyebrow: '02 \u00B7 \u0645\u0627\u0630\u0627 \u064A\u0642\u0648\u0644\u0648\u0646', test_h2: '\u0643\u0644\u0645\u0627\u062A<em>\u0645\u0646 \u0636\u064A\u0648\u0641\u0646\u0627.</em>',
         test_q1: '\u0628\u0627\u0633\u062A\u064A\u0644\u0627 \u0627\u0644\u0644\u064A\u0644\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629. \u0644\u0627 \u0623\u0632\u0627\u0644 \u0623\u0641\u0643\u0631 \u0641\u064A\u0647\u0627 \u0628\u0639\u062F \u062B\u0644\u0627\u062B\u0629 \u0623\u0634\u0647\u0631. \u0634\u064A\u0641\u0646\u0627 \u062C\u0639\u0644 \u0643\u0644 \u0645\u0633\u0627\u0621 \u064A\u0628\u062F\u0648 \u0643\u0627\u062D\u062A\u0641\u0627\u0644 \u062E\u0627\u0635.',
-        test_s1: '\u0625\u0642\u0627\u0645\u0629 \u0641\u064A\u0644\u0627 \u00B7 5 \u0644\u064A\u0627\u0644\u064D',
+        test_s1: '\u0625\u0642\u0627\u0645\u0629 \u0641\u064A\u0644\u0627 \u00B7 5 \u0644\u064A\u0627\u0644\u064D \u00B7 \u064A\u0646\u0627\u064A\u0631 2026',
         test_q2: '\u0633\u0644\u0637\u0629 \u0627\u0644\u0647\u0646\u062F\u0628\u0627\u0621 \u0628\u0627\u0644\u0631\u0648\u0643\u0641\u0648\u0631 \u0648\u0627\u0644\u0643\u0627\u062C\u0648 \u0643\u0645\u0642\u0628\u0644\u0627\u062A\u060C \u062B\u0645 \u0637\u0627\u062C\u064A\u0646 \u0645\u062B\u0627\u0644\u064A. \u0643\u0644 \u0637\u0628\u0642 \u0643\u0627\u0646 \u0645\u0641\u0627\u062C\u0623\u0629. \u0634\u064A\u0641\u0646\u0627 \u062D\u0648\u0651\u0644 \u062A\u0631\u0627\u0633\u0646\u0627 \u0625\u0644\u0649 \u062F\u064A\u0643\u0648\u0631 \u0645\u062C\u0644\u0629. \u0623\u0641\u0636\u0644 \u0639\u0634\u0627\u0621 \u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C \u0641\u064A \u062D\u064A\u0627\u062A\u0646\u0627.',
-        test_s2: '\u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C \u00B7 \u0644\u064A\u0644\u062A\u0627\u0646',
+        test_s2: '\u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C \u00B7 \u0644\u064A\u0644\u062A\u0627\u0646 \u00B7 \u062F\u064A\u0633\u0645\u0628\u0631 2025',
         test_q3: '\u0643\u0633\u0643\u0633 \u0644\u064A\u0644\u0629 \u0627\u0644\u062C\u0645\u0639\u0629 \u0643\u0627\u0646 \u0644\u0627 \u064A\u064F\u0646\u0633\u0649. \u0633\u0628\u0639 \u062E\u0636\u0631\u0648\u0627\u062A\u060C \u0644\u062D\u0645 \u0636\u0623\u0646 \u0645\u0637\u0628\u0648\u062E \u0628\u0628\u0637\u0621\u060C \u0645\u0631\u0642 \u0628\u0627\u0644\u0632\u0639\u0641\u0631\u0627\u0646 \u2014 \u0623\u0637\u0641\u0627\u0644\u0646\u0627 \u0639\u0627\u062F\u0648\u0627 \u0644\u0644\u0645\u0631\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629. \u0648\u0644\u064A\u0645\u0629 \u0639\u0627\u0626\u0644\u064A\u0629 \u062D\u0642\u064A\u0642\u064A\u0629.',
-        test_s3: '\u0639\u0627\u0626\u0644\u0629 \u00B7 7 \u0644\u064A\u0627\u0644\u064D',
+        test_s3: '\u0639\u0627\u0626\u0644\u0629 \u00B7 7 \u0644\u064A\u0627\u0644\u064D \u00B7 \u0641\u0628\u0631\u0627\u064A\u0631 2026',
         feat_eyebrow: '03 \u00B7 \u0644\u0645\u0627\u0630\u0627 \u0646\u062D\u0646', feat_h2: '\u0633\u0639\u0631 \u0648\u0627\u062D\u062F. \u0643\u0644 \u0634\u064A\u0621 \u0645\u0634\u0645\u0648\u0644.<em>\u0645\u0627 \u0639\u0644\u064A\u0643 \u0633\u0648\u0649 \u0627\u0644\u062D\u0636\u0648\u0631.</em>',
         feat_1: '\u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u064A\u062E\u062A\u0627\u0631\u0647\u0627 \u0634\u064A\u0641\u0643 \u0635\u0628\u0627\u062D\u0627\u064B \u2014 \u062A\u0648\u0627\u0628\u0644\u060C \u062E\u0636\u0631\u0648\u0627\u062A\u060C \u0644\u062D\u0648\u0645\u060C \u0645\u0623\u0643\u0648\u0644\u0627\u062A \u0628\u062D\u0631\u064A\u0629',
         feat_2: '\u0637\u0627\u062C\u064A\u0646\u060C \u0628\u0627\u0633\u062A\u064A\u0644\u0627\u060C \u0643\u0633\u0643\u0633\u060C \u062D\u0644\u0648\u0649 \u0648\u0634\u0627\u064A \u0628\u0627\u0644\u0646\u0639\u0646\u0627\u0639 \u2014 \u0648\u0644\u064A\u0645\u0629 \u0643\u0627\u0645\u0644\u0629 \u0641\u064A \u0641\u064A\u0644\u0627\u062A\u0643',
         feat_3: '\u062A\u062C\u0647\u064A\u0632\u060C \u062E\u062F\u0645\u0629\u060C \u062A\u0642\u062F\u064A\u0645 \u0648\u062A\u0646\u0638\u064A\u0641 \u0643\u0627\u0645\u0644 \u0644\u0644\u0645\u0637\u0628\u062E \u2014 \u0644\u0627 \u062A\u062D\u0631\u0643 \u0625\u0635\u0628\u0639\u0627\u064B',
-        feat_4: '\u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 85\u20AC/\u064A\u0648\u0645 \u0644\u063A\u0627\u064A\u0629 10 \u0636\u064A\u0648\u0641. \u0628\u062F\u0648\u0646 \u0631\u0633\u0648\u0645 \u0645\u062E\u0641\u064A\u0629. \u0628\u062F\u0648\u0646 \u0645\u0641\u0627\u062C\u0622\u062A',
+        feat_4: '\u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 85\u20AC/\u064A\u0648\u0645 \u0644\u0644\u0645\u062C\u0645\u0648\u0639\u0629 (\u0644\u063A\u0627\u064A\u0629 10 \u0636\u064A\u0648\u0641). \u0628\u062F\u0648\u0646 \u0631\u0633\u0648\u0645 \u0645\u062E\u0641\u064A\u0629. \u0628\u062F\u0648\u0646 \u0645\u0641\u0627\u062C\u0622\u062A',
         how_h2: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644',
         how_subtitle: '\u0645\u0646 \u0627\u0644\u062D\u062C\u0632 \u0625\u0644\u0649 \u0622\u062E\u0631 \u0644\u0642\u0645\u0629 \u2014 \u0646\u062D\u0646 \u0646\u062A\u0643\u0641\u0644 \u0628\u0643\u0644 \u0634\u064A\u0621.',
         how_s1_h: '\u0627\u062E\u062A\u0631 \u062A\u062C\u0631\u0628\u062A\u0643',
@@ -2474,7 +2702,11 @@
         cta_faq: '\u0644\u0627 \u0632\u0644\u062A \u0644\u062F\u064A\u0643 \u0623\u0633\u0626\u0644\u0629\u061F \u0646\u062D\u0646 \u0639\u0644\u0649 \u0628\u0639\u062F \u0631\u0633\u0627\u0644\u0629.',
         cta_faq_btn: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643',
         footer_book_btn: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643',
-        mobile_book: '\u0627\u062D\u062C\u0632 \u0627\u0644\u0622\u0646'
+        mobile_book: '\u0627\u062D\u062C\u0632 \u0627\u0644\u0622\u0646',
+        book_note: '\u0633\u064A\u062A\u0645 \u062A\u0648\u062C\u064A\u0647\u0643 \u0625\u0644\u0649 \u0648\u0627\u062A\u0633\u0627\u0628 \u0644\u0644\u062A\u0623\u0643\u064A\u062F \u00B7 \u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 2 \u0636\u064A\u0648\u0641',
+        cookie_text: '\u0646\u0633\u062A\u062E\u062F\u0645 \u0645\u0644\u0641\u0627\u062A \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0627\u0631\u062A\u0628\u0627\u0637 \u0644\u062A\u062D\u0633\u064A\u0646 \u062A\u062C\u0631\u0628\u062A\u0643. \u0628\u0627\u0644\u0645\u062A\u0627\u0628\u0639\u0629\u060C \u0641\u0625\u0646\u0643 \u062A\u0648\u0627\u0641\u0642 \u0639\u0644\u0649 <a href="#" onclick="openLegalModal(\'privacy\');return false;">\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629</a>.',
+        footer_privacy: '\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629',
+        footer_terms: '\u0634\u0631\u0648\u0637 \u0627\u0644\u062E\u062F\u0645\u0629'
       }
     };
 
@@ -2590,6 +2822,42 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'phone_call', phone_number: this.href });
       });
+    });
+
+    /* ─── COOKIE CONSENT ─── */
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        setTimeout(function() {
+          document.getElementById('cookieBanner').classList.add('show');
+        }, 1500);
+      }
+    })();
+
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+    function declineCookies() {
+      localStorage.setItem('cookie_consent', 'declined');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+
+    /* ─── LEGAL MODALS ─── */
+    function openLegalModal(type) {
+      closeLegalModals();
+      var id = type === 'privacy' ? 'privacyModal' : 'termsModal';
+      document.getElementById(id).classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegalModals() {
+      document.querySelectorAll('.legal-modal-overlay').forEach(function(m) {
+        m.classList.remove('show');
+      });
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLegalModals();
     });
   </script>
 
