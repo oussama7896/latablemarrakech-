@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,12 +21,12 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- PRIMARY SEO -->
-  <title>Private Chef Marrakech | La Table Marrakech — From €85/day</title>
-  <meta name="description" content="Book a private chef in Marrakech for your villa from €85/day (up to 10 guests). Fresh souk ingredients, multi-course Moroccan feast (tagine, pastilla, couscous), full service & cleanup included. 4.9/5 from 200+ guests. Book via WhatsApp — confirmed in 24h.">
-  <meta name="keywords" content="private chef Marrakech, chef privé Marrakech, villa chef Morocco, Moroccan cooking experience, tagine at villa, private dining Marrakech, chef à domicile Marrakech, personal chef Morocco, Marrakech food experience, luxury dining Marrakech">
+  <title>طاهٍ خاص مراكش | La Table Marrakech — ابتداءً من 85€/يوم</title>
+  <meta name="description" content="احجز طاهٍ خاص في مراكش لفيلاتك ابتداءً من 85€/يوم (حتى 10 ضيوف). مكونات طازجة من السوق، وليمة مغربية متعددة الأطباق (طاجين، بسطيلا، كسكس)، خدمة كاملة وتنظيف شامل. 4.9/5 من 200+ ضيف. احجز عبر واتساب — تأكيد خلال 24 ساعة.">
+  <meta name="keywords" content="طاهٍ خاص مراكش, شيف خاص مراكش, طباخ خاص مراكش, تجربة طبخ مغربية, طاجين في الفيلا, عشاء خاص مراكش, private chef Marrakech, chef privé Marrakech">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="La Table Marrakech">
-  <link rel="canonical" href="https://latablemarrakech.com/">
+  <link rel="canonical" href="https://latablemarrakech.com/ar/">
   <meta name="geo.region" content="MA-07">
   <meta name="geo.placename" content="Marrakech">
   <meta name="geo.position" content="31.6295;-7.9811">
@@ -34,22 +34,22 @@
 
   <!-- OPEN GRAPH / FACEBOOK -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://latablemarrakech.com/">
-  <meta property="og:title" content="Private Chef Marrakech | La Table Marrakech — From €85/day">
-  <meta property="og:description" content="Your personal chef shops the medina that morning. A multi-course Moroccan feast at your villa — tagine, pastilla, couscous. Full service & cleanup included.">
+  <meta property="og:url" content="https://latablemarrakech.com/ar/">
+  <meta property="og:title" content="طاهٍ خاص مراكش | La Table Marrakech — ابتداءً من 85€/يوم">
+  <meta property="og:description" content="شيفك الخاص يتسوق من المدينة صباحاً. وليمة مغربية متعددة الأطباق في فيلاتك — طاجين، بسطيلا، كسكس. خدمة كاملة وتنظيف شامل.">
   <meta property="og:image" content="https://latablemarrakech.com/la-table-marrakech-og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="ar_MA">
   <meta property="og:locale:alternate" content="fr_FR">
   <meta property="og:locale:alternate" content="ar_MA">
   <meta property="og:site_name" content="La Table Marrakech">
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Private Chef Marrakech | La Table Marrakech">
-  <meta name="twitter:description" content="Book a private chef for your Marrakech villa. Fresh souk ingredients, multi-course feast, full cleanup. From €85/day.">
+  <meta name="twitter:title" content="طاهٍ خاص مراكش | La Table Marrakech">
+  <meta name="twitter:description" content="احجز طاهٍ خاص لفيلاتك في مراكش. مكونات طازجة من السوق، وليمة متعددة الأطباق، تنظيف كامل. ابتداءً من 85€/يوم.">
   <meta name="twitter:image" content="https://latablemarrakech.com/la-table-marrakech-og.png">
 
   <!-- STRUCTURED DATA: LOCAL BUSINESS -->
@@ -2728,20 +2728,8 @@
       localStorage.setItem('lang', lang);
     }
 
-    // Auto-detect language: saved preference > browser language > default English
-    const saved = localStorage.getItem('lang');
-    if (saved && saved !== 'en') {
-      setLang(saved);
-    } else if (!saved) {
-      // First visit — detect from browser language
-      const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-      if (browserLang.startsWith('ar')) {
-        setLang('ar');
-      } else if (browserLang.startsWith('fr')) {
-        setLang('fr');
-      }
-      // else stays English (default)
-    }
+    // Force Arabic on /ar/ page
+    setLang('ar');
 
     /* ─── IMAGE CAROUSEL ─── */
     function slideCarousel(id, dir) {
