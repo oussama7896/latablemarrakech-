@@ -93,7 +93,7 @@
       "price": "85",
       "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
-      "description": "Private chef service starting from €85/day including ingredients, cooking, service and cleanup"
+      "description": "Private chef service starting from €40/person including fresh souk ingredients, multi-course cooking, table service and full cleanup"
     },
     "sameAs": [
       "https://wa.me/212721354757"
@@ -1069,6 +1069,102 @@
       pointer-events: none;
     }
 
+    /* ─── PRICING PREVIEW ─── */
+    .pricing-preview {
+      background: var(--ink-light);
+      border-top: 1px solid rgba(184, 147, 90, 0.06);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.06);
+    }
+    .pricing-preview .section-header { margin-bottom: 40px; }
+    .pricing-tiers-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 32px;
+    }
+    .pricing-tier {
+      background: var(--ink);
+      border: 1px solid rgba(184, 147, 90, 0.1);
+      padding: 28px 16px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pricing-tier:hover { border-color: rgba(184, 147, 90, 0.25); transform: translateY(-2px); }
+    .pricing-tier.popular { border-color: var(--gold); }
+    .pricing-tier.popular::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    .pricing-tier-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+    .pricing-tier-guests {
+      font-size: 12px;
+      color: var(--sand-muted);
+      margin-bottom: 14px;
+    }
+    .pricing-tier-price {
+      font-family: var(--font-display);
+      font-size: 44px;
+      color: var(--sand);
+      line-height: 1;
+    }
+    .pricing-tier-unit {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--sand-muted);
+      letter-spacing: 1px;
+    }
+    .pricing-preview-footer {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .pricing-preview-included {
+      font-size: 13px;
+      color: var(--sand-muted);
+      margin-bottom: 20px;
+    }
+    .pricing-preview-included span { color: var(--gold); }
+    .pricing-link {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ember);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(193, 98, 47, 0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .pricing-link:hover { color: var(--ember-light); border-color: var(--ember-light); }
+    @media (max-width: 900px) {
+      .pricing-tiers-row { grid-template-columns: repeat(2, 1fr); max-width: 480px; }
+    }
+    @media (max-width: 480px) {
+      .pricing-tiers-row { grid-template-columns: repeat(2, 1fr); }
+      .pricing-tier { padding: 20px 12px; }
+      .pricing-tier-price { font-size: 36px; }
+    }
+
     /* ─── APP SECTION ─── */
     .app-section {
       background: var(--ink-light);
@@ -1860,6 +1956,7 @@
       </a>
       <nav class="nav-links">
         <a href="#about" data-i18n="nav_experience">THE EXPERIENCE</a>
+        <a href="#pricing">PRICING</a>
         <a href="#how" data-i18n="nav_how">HOW IT WORKS</a>
         <a href="#faqs" data-i18n="nav_faq">FAQ</a>
         <a href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="nav-whatsapp" title="WhatsApp us">
@@ -1868,22 +1965,22 @@
         </a>
         <a href="#booking" class="nav-cta" data-i18n="nav_book">BOOK NOW</a>
         <div class="lang-switcher">
-          <button class="lang-btn active" onclick="setLang('en')">EN</button>
-          <button class="lang-btn" onclick="setLang('fr')">FR</button>
-          <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+          <a href="/" class="lang-btn active">EN</a>
+          <a href="/fr/" class="lang-btn">FR</a>
+          <a href="/ar/" class="lang-btn">عربي</a>
         </div>
       </nav>
       <div class="lang-switcher-mobile">
-        <button class="lang-btn active" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('fr')">FR</button>
-        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+        <a href="/" class="lang-btn active">EN</a>
+        <a href="/fr/" class="lang-btn">FR</a>
+        <a href="/ar/" class="lang-btn">عربي</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="private-chef-marrakech-tagine.webp" aria-label="Private chef preparing Moroccan dishes in a Marrakech villa kitchen">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="private-chef-marrakech-tagine.webp" fetchpriority="high" aria-label="Private chef preparing Moroccan dishes in a Marrakech villa kitchen">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
     <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Background video: A private chef preparing traditional Moroccan dishes</span>
@@ -2103,6 +2200,46 @@
         <img loading="lazy" decoding="async" src="sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous with seven vegetables — a Moroccan Friday tradition">
       </div>
       <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-features',1)" aria-label="Next">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section class="pricing-preview" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow reveal">03 &middot; YOUR TABLE</span>
+        <h2 class="reveal reveal-d1" style="font-family:var(--font-display);font-size:clamp(32px,4vw,48px);letter-spacing:3px;line-height:1;color:var(--sand);margin-bottom:8px;">YOUR FEAST. YOUR PRICE.<em style="font-family:var(--font-serif);font-style:italic;font-size:0.5em;color:var(--gold-light);display:block;margin-top:4px;letter-spacing:2px;text-transform:none;">Per person, everything included.</em></h2>
+      </div>
+      <div class="pricing-tiers-row">
+        <div class="pricing-tier reveal">
+          <div class="pricing-tier-label">Intimate</div>
+          <div class="pricing-tier-guests">2 guests</div>
+          <div class="pricing-tier-price">&euro;70</div>
+          <div class="pricing-tier-unit">/person</div>
+        </div>
+        <div class="pricing-tier popular reveal reveal-d1">
+          <div class="pricing-tier-label">Gathering</div>
+          <div class="pricing-tier-guests">3&ndash;8 guests</div>
+          <div class="pricing-tier-price">&euro;50</div>
+          <div class="pricing-tier-unit">/person</div>
+        </div>
+        <div class="pricing-tier reveal reveal-d1">
+          <div class="pricing-tier-label">Celebration</div>
+          <div class="pricing-tier-guests">9&ndash;12 guests</div>
+          <div class="pricing-tier-price">&euro;45</div>
+          <div class="pricing-tier-unit">/person</div>
+        </div>
+        <div class="pricing-tier reveal reveal-d2">
+          <div class="pricing-tier-label">Grand Table</div>
+          <div class="pricing-tier-guests">13&ndash;20 guests</div>
+          <div class="pricing-tier-price">&euro;40</div>
+          <div class="pricing-tier-unit">/person</div>
+        </div>
+      </div>
+      <div class="pricing-preview-footer reveal">
+        <p class="pricing-preview-included">Every booking includes: <span>souk-fresh ingredients</span> &middot; <span>multi-course menu</span> &middot; <span>table service</span> &middot; <span>full cleanup</span></p>
+        <a href="/pricing/" class="pricing-link">See full pricing, add-ons &amp; calculator &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -2457,291 +2594,6 @@
       });
     });
 
-    /* ─── TRANSLATIONS ─── */
-    const T = {
-      en: {
-        nav_experience: 'THE EXPERIENCE', nav_how: 'HOW IT WORKS', nav_chefs: 'OUR CHEFS', nav_faq: 'FAQ', nav_book: 'BOOK NOW',
-        hero_eyebrow: 'PRIVATE CHEF SERVICE \u00B7 MARRAKECH',
-        hero_h1: 'Private Chef Marrakech.<em>Your table.</em>',
-        hero_p: "Your chef shops the medina that morning. By evening, a multi-course Moroccan feast is waiting on your terrace.",
-        hero_cta: 'RESERVE YOUR TABLE', hero_ghost: 'THE EXPERIENCE',
-        trusted_h3: 'As Featured In',
-        about_eyebrow: '01 \u00B7 THE TRUTH',
-        about_h2: 'COOKED FOR YOU.<em>Only you.</em>',
-        about_p: "The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything \u2014 the menu is yours, the pace is yours, the terrace is yours.",
-        about_detail: 'No waiting. No strangers. Just you, the people you love, and a meal you\'ll talk about for years.',
-        test_eyebrow: '02 \u00B7 WHAT THEY SAY', test_h2: 'WORDS FROM<em>Our guests.</em>',
-        test_q1: 'The pastilla on night three. Still thinking about it three months later. Our chef made every evening feel like a private celebration.',
-        test_s1: 'VILLA STAY \u00B7 5 NIGHTS \u00B7 JAN 2026',
-        test_q2: 'The endive salad with roquefort and cashews to start, then a perfect tagine. Every course was a surprise. Our chef turned our terrace into something out of a magazine. The best anniversary dinner we\'ve ever had.',
-        test_s2: 'ANNIVERSARY \u00B7 2 NIGHTS \u00B7 DEC 2025',
-        test_q3: 'The couscous on Friday night was unforgettable. Seven vegetables, slow-cooked lamb, saffron broth \u2014 our kids went back for thirds. A real family feast.',
-        test_s3: 'FAMILY \u00B7 7 NIGHTS \u00B7 FEB 2026',
-        feat_eyebrow: '03 \u00B7 WHY US', feat_h2: 'ONE PRICE. EVERYTHING INCLUDED.<em>You just show up.</em>',
-        feat_1: 'Fresh souk ingredients, hand-picked by your chef that morning \u2014 spices, produce, meat, seafood',
-        feat_2: 'Tagine, pastilla, couscous, dessert, and mint tea \u2014 a full multi-course feast at your villa',
-        feat_3: 'Setup, service, plating, and complete kitchen cleanup \u2014 you don\'t lift a finger',
-        feat_4: 'From \u20AC85/day per group (up to 10 guests). No hidden fees. No surprises on the bill',
-        how_h2: 'HOW IT WORKS',
-        how_subtitle: 'From booking to the last bite \u2014 we handle everything.',
-        how_s1_h: 'Choose Your Experience',
-        how_s1_p: 'Pick your date, number of guests, and any dietary needs. Choose from our curated menus. We confirm within 24 hours.',
-        how_s1_detail: 'TAKES 2 MINUTES',
-        how_s2_h: 'Your Chef Arrives',
-        how_s2_p: 'Your chef shops the medina souk that morning and arrives at your villa with everything \u2014 fresh ingredients, cookware, and tableware.',
-        how_s2_detail: 'SAME-DAY FRESH FROM THE SOUK',
-        how_s3_h: 'Sit Down. Enjoy.',
-        how_s3_p: 'Appetizers, mains, dessert, and mint tea \u2014 served course by course on your terrace. After the last bite, we clean everything. You keep only the memory.',
-        how_s3_detail: 'FULL SERVICE + CLEANUP INCLUDED',
-        chef_eyebrow: '04 \u00B7 THE CHEFS', chef_h2: 'CHEF SPOTLIGHT',
-        chef1_role: 'MOROCCAN CUISINE \u00B7 15 YEARS',
-        chef1_p: "Trained in Fes, refined in Paris. Youssef's tagine has made grown men cry. His pastilla is the reason guests extend their stay.",
-        chef2_role: 'TRADITIONAL \u00B7 FAMILY RECIPES',
-        chef2_p: 'Fatima cooks the way her grandmother did \u2014 by feel, by memory. The couscous on Friday is a ritual. The harira at sunset, a meditation.',
-        cta_eyebrow: "DON'T LEAVE MARRAKECH WITHOUT THIS", cta_h2: 'YOUR TABLE IS WAITING',
-        cta_p: "The meal your trip will be remembered for. A private chef, fresh souk ingredients, your villa terrace.", cta_btn: 'BOOK YOUR CHEF',
-        reviews_text: '<strong>4.9/5</strong> \u00B7 200+ reviews on <strong>Google</strong>',
-        faq_eyebrow: '05 \u00B7 QUESTIONS', faq_h2: 'FAQ',
-        faq_q1: 'How far in advance should I book?',
-        faq_a1: "72 hours is ideal. For peak season (October-April) or groups over 10, book 1-2 weeks ahead. Last-minute requests? We'll try \u2014 but the souk waits for no one.",
-        faq_q2: "What's included in the price?",
-        faq_a2: 'Everything. Menu planning, fresh ingredients from the souk, cooking, serving, and full cleanup. You provide the kitchen and the appetite.',
-        faq_q3: 'Can you accommodate dietary restrictions?',
-        faq_a3: 'Absolutely. Vegan, gluten-free, kosher, halal, allergies \u2014 tell us when you book. Moroccan cuisine is naturally flexible. Our chefs adapt beautifully.',
-        faq_q4: 'How many guests can you serve?',
-        faq_a4: 'Intimate dinners for 2 up to celebrations of 30+. Minimum 2 guests per booking. For larger events, we bring additional service staff.',
-        faq_q5: 'Do you only serve Moroccan food?',
-        faq_a5: "Primarily, yes \u2014 you're in Marrakech. But our chefs can incorporate Mediterranean and French influences. The best meals here always start with what's fresh at the souk that morning.",
-        faq_q6: 'How much does a private chef cost in Marrakech?',
-        faq_a6: 'Private chef services start from \u20AC85 per day for up to 10 guests. This includes fresh souk ingredients, menu planning, multi-course cooking, table service, and full kitchen cleanup. No hidden fees.',
-        faq_q7: 'Is a private chef in Marrakech worth it?',
-        faq_a7: "For villa stays, absolutely. From \u20AC85/day for up to 10 guests, it costs less than a mid-range restaurant for the group \u2014 and you get a personalized multi-course Moroccan feast with fresh souk ingredients, served on your own terrace with full cleanup included.",
-        faq_q8: 'What is a typical private chef menu in Marrakech?',
-        faq_a8: 'A typical multi-course meal includes Moroccan salads and appetizers, a main course of tagine (lamb, chicken, or seafood), pastilla, or royal couscous with seven vegetables, followed by traditional desserts and fresh mint tea. Menus are customized based on seasonal souk ingredients and guest preferences.',
-        footer_desc: 'Private chef service in Marrakech. Fresh souk ingredients, a multi-course feast at your villa, and full cleanup. From \u20AC85/day.',
-        footer_explore: 'EXPLORE', footer_exp: 'The Experience', footer_how: 'How It Works', footer_chefs: 'Our Chefs', footer_stories: 'Guest Stories',
-        footer_contact: 'CONTACT', footer_details: 'DETAILS',
-        footer_d1: 'Marrakech, Morocco', footer_d2: 'Villa Service Only', footer_d3: 'Minimum 2 Guests', footer_d4: '72h Advance Booking',
-        footer_tagline: 'PRIVATE CHEF SERVICE \u00B7 MARRAKECH, MOROCCO',
-        book_eyebrow: 'RESERVE YOUR EXPERIENCE',
-        book_h2: 'BOOK YOUR TABLE<em>Pick a date. We handle the rest.</em>',
-        book_p: 'Choose your preferred date, time, and number of guests. Our team will confirm within 24 hours via WhatsApp.',
-        book_name_label: 'YOUR NAME', book_email_label: 'YOUR EMAIL', book_guests_label: 'GUESTS', book_date_label: 'DATE', book_time_label: 'PREFERRED TIME',
-        book_notes_label: 'SPECIAL REQUESTS / ALLERGIES', book_submit: 'SEND BOOKING REQUEST VIA WHATSAPP',
-        cta_about: 'Your private chef is one booking away.',
-        cta_about_btn: 'BOOK YOUR EXPERIENCE',
-        cta_test: '200+ guests. 4.9 stars. One regret \u2014 not booking sooner.',
-        cta_test_btn: 'BOOK YOUR CHEF',
-        cta_how: 'Three steps. Zero stress. One unforgettable evening.',
-        cta_how_btn: 'RESERVE YOUR TABLE',
-        cta_faq: 'Still have questions? We\'re just a message away.',
-        cta_faq_btn: 'BOOK YOUR TABLE',
-        footer_book_btn: 'BOOK YOUR TABLE',
-        mobile_book: 'BOOK NOW',
-        book_note: "YOU'LL BE REDIRECTED TO WHATSAPP TO CONFIRM \u00B7 MINIMUM 2 GUESTS",
-        cookie_text: 'We use cookies to improve your experience. By continuing to use this site, you agree to our <a href="#" onclick="openLegalModal(\'privacy\');return false;">Privacy Policy</a>.',
-        footer_privacy: 'PRIVACY POLICY',
-        footer_terms: 'TERMS OF SERVICE'
-      },
-      fr: {
-        nav_experience: "L'EXP\u00C9RIENCE", nav_how: 'COMMENT \u00C7A MARCHE', nav_chefs: 'NOS CHEFS', nav_faq: 'FAQ', nav_book: 'R\u00C9SERVER',
-        hero_eyebrow: 'CHEF PRIV\u00C9 \u00B7 MARRAKECH',
-        hero_h1: "PAS UN RESTAURANT.<em>Votre table.</em>",
-        hero_p: "Votre chef fait ses courses dans la m\u00E9dina le matin m\u00EAme. Le soir, un festin marocain vous attend sur votre terrasse.",
-        hero_cta: 'R\u00C9SERVEZ VOTRE TABLE', hero_ghost: "L'EXP\u00C9RIENCE",
-        trusted_h3: 'Vu dans',
-        about_eyebrow: '01 \u00B7 LA V\u00C9RIT\u00C9',
-        about_h2: "CUISIN\u00C9 POUR VOUS.<em>Rien que pour vous.</em>",
-        about_p: "La m\u00E9dina compte mille restaurants. Aucun ne conna\u00EEt votre nom, vos allergies, ni que c'est votre anniversaire. Un chef priv\u00E9 change tout \u2014 le menu est le v\u00F4tre, le rythme est le v\u00F4tre, la terrasse est la v\u00F4tre.",
-        about_detail: "Pas d'attente. Pas d'inconnus. Juste vous, ceux que vous aimez, et un repas dont vous parlerez pendant des ann\u00E9es.",
-        test_eyebrow: '02 \u00B7 T\u00C9MOIGNAGES', test_h2: 'PAROLES<em>De nos h\u00F4tes.</em>',
-        test_q1: "La pastilla de la troisi\u00E8me soir\u00E9e. J'y pense encore trois mois plus tard. Notre chef a fait de chaque soir\u00E9e une c\u00E9l\u00E9bration priv\u00E9e.",
-        test_s1: 'S\u00C9JOUR VILLA \u00B7 5 NUITS \u00B7 JAN 2026',
-        test_q2: "La salade d\u2019endives au roquefort et noix de cajou en entr\u00E9e, puis un tagine parfait. Chaque plat \u00E9tait une surprise. Notre chef a transform\u00E9 notre terrasse en d\u00E9cor de magazine. Le meilleur d\u00EEner d\u2019anniversaire de notre vie.",
-        test_s2: 'ANNIVERSAIRE \u00B7 2 NUITS \u00B7 D\u00C9C 2025',
-        test_q3: "Le couscous du vendredi soir \u00E9tait inoubliable. Sept l\u00E9gumes, agneau mijot\u00E9, bouillon au safran \u2014 nos enfants en ont repris trois fois. Un vrai festin familial.",
-        test_s3: 'FAMILLE \u00B7 7 NUITS \u00B7 F\u00C9V 2026',
-        feat_eyebrow: '03 \u00B7 POURQUOI NOUS', feat_h2: 'UN PRIX. TOUT INCLUS.<em>Vous n\'avez qu\'\u00E0 venir.</em>',
-        feat_1: 'Ingr\u00E9dients frais du souk, choisis par votre chef le matin m\u00EAme \u2014 \u00E9pices, l\u00E9gumes, viande, fruits de mer',
-        feat_2: 'Tagine, pastilla, couscous, dessert et th\u00E9 \u00E0 la menthe \u2014 un festin complet dans votre villa',
-        feat_3: "Installation, service, dressage et nettoyage complet de la cuisine \u2014 vous ne levez pas le petit doigt",
-        feat_4: "\u00C0 partir de 85\u20AC/jour par groupe (10 convives max). Pas de frais cach\u00E9s. Pas de surprises",
-        how_h2: 'COMMENT \u00C7A MARCHE',
-        how_subtitle: 'De la r\u00E9servation au dernier morceau \u2014 on s\u2019occupe de tout.',
-        how_s1_h: 'Choisissez votre exp\u00E9rience',
-        how_s1_p: 'Choisissez votre date, le nombre de convives et vos besoins alimentaires. S\u00E9lectionnez parmi nos menus. Confirmation sous 24h.',
-        how_s1_detail: 'EN 2 MINUTES',
-        how_s2_h: 'Votre chef arrive',
-        how_s2_p: 'Votre chef fait ses courses au souk le matin m\u00EAme et arrive \u00E0 votre villa avec tout \u2014 ingr\u00E9dients frais, ustensiles et vaisselle.',
-        how_s2_detail: 'FRAIS DU SOUK LE JOUR M\u00CAME',
-        how_s3_h: 'Asseyez-vous. Savourez.',
-        how_s3_p: "Entr\u00E9es, plats, dessert et th\u00E9 \u00E0 la menthe \u2014 servis plat par plat sur votre terrasse. Apr\u00E8s la derni\u00E8re bouch\u00E9e, on nettoie tout. Vous gardez uniquement le souvenir.",
-        how_s3_detail: 'SERVICE COMPLET + NETTOYAGE INCLUS',
-        chef_eyebrow: '04 \u00B7 LES CHEFS', chef_h2: 'NOS CHEFS',
-        chef1_role: 'CUISINE MAROCAINE \u00B7 15 ANS',
-        chef1_p: "Form\u00E9 \u00E0 F\u00E8s, perfectionn\u00E9 \u00E0 Paris. Le tagine de Youssef a fait pleurer des hommes. Sa pastilla est la raison pour laquelle les h\u00F4tes prolongent leur s\u00E9jour.",
-        chef2_role: 'TRADITIONNEL \u00B7 RECETTES FAMILIALES',
-        chef2_p: "Fatima cuisine comme sa grand-m\u00E8re \u2014 au toucher, de m\u00E9moire. Le couscous du vendredi est un rituel. La harira au coucher du soleil, une m\u00E9ditation.",
-        cta_eyebrow: 'NE QUITTEZ PAS MARRAKECH SANS \u00C7A', cta_h2: 'VOTRE TABLE VOUS ATTEND',
-        cta_p: 'Le repas dont votre voyage se souviendra. Un chef priv\u00E9, des ingr\u00E9dients frais du souk, la terrasse de votre villa.', cta_btn: 'R\u00C9SERVEZ VOTRE CHEF',
-        reviews_text: '<strong>4.9/5</strong> \u00B7 200+ avis sur <strong>Google</strong>',
-        faq_eyebrow: '05 \u00B7 QUESTIONS', faq_h2: 'FAQ',
-        faq_q1: 'Combien de temps \u00E0 l\u2019avance dois-je r\u00E9server ?',
-        faq_a1: "72 heures est id\u00E9al. Pour la haute saison (octobre-avril) ou les groupes de plus de 10, r\u00E9servez 1 \u00E0 2 semaines \u00E0 l\u2019avance. Demandes de derni\u00E8re minute ? On essaiera \u2014 mais le souk n\u2019attend personne.",
-        faq_q2: "Qu'est-ce qui est inclus dans le prix ?",
-        faq_a2: "Tout. Planification du menu, ingr\u00E9dients frais du souk, cuisine, service et nettoyage complet. Vous fournissez la cuisine et l\u2019app\u00E9tit.",
-        faq_q3: 'Pouvez-vous prendre en compte les restrictions alimentaires ?',
-        faq_a3: "Absolument. V\u00E9gan, sans gluten, casher, halal, allergies \u2014 dites-le nous lors de la r\u00E9servation. La cuisine marocaine est naturellement flexible. Nos chefs s\u2019adaptent parfaitement.",
-        faq_q4: 'Combien de convives pouvez-vous servir ?',
-        faq_a4: "D\u00EEners intimes pour 2 jusqu'\u00E0 des c\u00E9l\u00E9brations de 30+. Minimum 2 convives par r\u00E9servation. Pour les grands \u00E9v\u00E9nements, nous ajoutons du personnel de service.",
-        faq_q5: 'Servez-vous uniquement de la cuisine marocaine ?',
-        faq_a5: "Principalement, oui \u2014 vous \u00EAtes \u00E0 Marrakech. Mais nos chefs int\u00E8grent aussi des influences m\u00E9diterran\u00E9ennes et fran\u00E7aises. Les meilleurs repas commencent toujours par ce qui est frais au souk le matin.",
-        faq_q6: 'Combien co\u00FBte un chef priv\u00E9 \u00E0 Marrakech ?',
-        faq_a6: 'Le service de chef priv\u00E9 commence \u00E0 85\u20AC par jour pour 10 convives max. Inclus : ingr\u00E9dients frais du souk, planification du menu, cuisine multi-plats, service \u00E0 table et nettoyage complet. Sans frais cach\u00E9s.',
-        faq_q7: 'Un chef priv\u00E9 \u00E0 Marrakech, \u00E7a vaut le coup ?',
-        faq_a7: "Pour un s\u00E9jour en villa, absolument. \u00C0 85\u20AC/jour pour 10 personnes, c'est moins cher qu'un restaurant pour le groupe \u2014 et vous avez un festin marocain personnalis\u00E9 avec des ingr\u00E9dients frais, servi sur votre terrasse avec nettoyage complet inclus.",
-        faq_q8: 'Quel est un menu typique de chef priv\u00E9 \u00E0 Marrakech ?',
-        faq_a8: "Un repas multi-plats typique comprend des salades et entr\u00E9es marocaines, un plat principal de tagine (agneau, poulet ou fruits de mer), pastilla ou couscous royal aux sept l\u00E9gumes, suivi de desserts traditionnels et de th\u00E9 \u00E0 la menthe. Les menus sont personnalis\u00E9s selon les ingr\u00E9dients de saison et les pr\u00E9f\u00E9rences des convives.",
-        footer_desc: 'Service de chef priv\u00E9 \u00E0 Marrakech. Ingr\u00E9dients frais du souk, festin \u00E0 votre villa, nettoyage complet. \u00C0 partir de 85\u20AC/jour.',
-        footer_explore: 'EXPLORER', footer_exp: "L'Exp\u00E9rience", footer_how: 'Comment \u00E7a marche', footer_chefs: 'Nos Chefs', footer_stories: 'T\u00E9moignages',
-        footer_contact: 'CONTACT', footer_details: 'D\u00C9TAILS',
-        footer_d1: 'Marrakech, Maroc', footer_d2: 'Service en villa uniquement', footer_d3: 'Minimum 2 convives', footer_d4: 'R\u00E9servation 72h \u00E0 l\u2019avance',
-        footer_tagline: 'SERVICE DE CHEF PRIV\u00C9 \u00B7 MARRAKECH, MAROC',
-        book_eyebrow: 'R\u00C9SERVEZ VOTRE EXP\u00C9RIENCE',
-        book_h2: 'R\u00C9SERVEZ VOTRE TABLE<em>Choisissez une date. On s\u2019occupe du reste.</em>',
-        book_p: 'Choisissez votre date, heure et nombre de convives. Notre \u00E9quipe confirmera sous 24h via WhatsApp.',
-        book_name_label: 'VOTRE NOM', book_email_label: 'VOTRE EMAIL', book_guests_label: 'CONVIVES', book_date_label: 'DATE', book_time_label: 'HEURE SOUHAIT\u00C9E',
-        book_notes_label: 'DEMANDES SP\u00C9CIALES / ALLERGIES', book_submit: 'ENVOYER LA DEMANDE VIA WHATSAPP',
-        cta_about: 'Votre chef priv\u00E9 est \u00E0 une r\u00E9servation.',
-        cta_about_btn: 'R\u00C9SERVEZ VOTRE EXP\u00C9RIENCE',
-        cta_test: '200+ h\u00F4tes. 4.9 \u00E9toiles. Un seul regret \u2014 ne pas avoir r\u00E9serv\u00E9 plus t\u00F4t.',
-        cta_test_btn: 'R\u00C9SERVEZ VOTRE CHEF',
-        cta_how: 'Trois \u00E9tapes. Z\u00E9ro stress. Une soir\u00E9e inoubliable.',
-        cta_how_btn: 'R\u00C9SERVEZ VOTRE TABLE',
-        cta_faq: 'Encore des questions ? On est \u00E0 un message.',
-        cta_faq_btn: 'R\u00C9SERVEZ VOTRE TABLE',
-        footer_book_btn: 'R\u00C9SERVEZ VOTRE TABLE',
-        mobile_book: 'R\u00C9SERVER',
-        book_note: 'VOUS SEREZ REDIRIG\u00C9 VERS WHATSAPP POUR CONFIRMER \u00B7 MINIMUM 2 CONVIVES',
-        cookie_text: 'Nous utilisons des cookies pour am\u00E9liorer votre exp\u00E9rience. En continuant, vous acceptez notre <a href="#" onclick="openLegalModal(\'privacy\');return false;">Politique de confidentialit\u00E9</a>.',
-        footer_privacy: 'CONFIDENTIALIT\u00C9',
-        footer_terms: 'CONDITIONS G\u00C9N\u00C9RALES'
-      },
-      ar: {
-        nav_experience: '\u0627\u0644\u062A\u062C\u0631\u0628\u0629', nav_how: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644', nav_chefs: '\u0637\u0647\u0627\u062A\u0646\u0627', nav_faq: '\u0623\u0633\u0626\u0644\u0629', nav_book: '\u0627\u062D\u062C\u0632 \u0627\u0644\u0622\u0646',
-        hero_eyebrow: '\u0634\u064A\u0641 \u062E\u0627\u0635 \u00B7 \u0645\u0631\u0627\u0643\u0634',
-        hero_h1: '\u0644\u064A\u0633 \u0645\u0637\u0639\u0645\u0627\u064B.<em>\u0645\u0627\u0626\u062F\u062A\u0643.</em>',
-        hero_p: '\u0634\u064A\u0641\u0643 \u064A\u062A\u0633\u0648\u0642 \u0645\u0646 \u0627\u0644\u0645\u062F\u064A\u0646\u0629 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0635\u0628\u0627\u062D\u0627\u064B. \u0648\u0641\u064A \u0627\u0644\u0645\u0633\u0627\u0621\u060C \u0648\u0644\u064A\u0645\u0629 \u0645\u063A\u0631\u0628\u064A\u0629 \u0645\u062A\u0639\u062F\u062F\u0629 \u0627\u0644\u0623\u0637\u0628\u0627\u0642 \u062A\u0646\u062A\u0638\u0631\u0643 \u0639\u0644\u0649 \u062A\u0631\u0627\u0633\u0643.',
-        hero_cta: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643', hero_ghost: '\u0627\u0644\u062A\u062C\u0631\u0628\u0629',
-        trusted_h3: '\u0643\u0645\u0627 \u0638\u0647\u0631 \u0641\u064A',
-        about_eyebrow: '01 \u00B7 \u0627\u0644\u062D\u0642\u064A\u0642\u0629',
-        about_h2: '\u0645\u0637\u0628\u0648\u062E \u0644\u0643.<em>\u0644\u0643 \u0648\u062D\u062F\u0643.</em>',
-        about_p: '\u0641\u064A \u0627\u0644\u0645\u062F\u064A\u0646\u0629 \u0627\u0644\u0642\u062F\u064A\u0645\u0629 \u0623\u0644\u0641 \u0645\u0637\u0639\u0645. \u0644\u0627 \u0623\u062D\u062F \u0645\u0646\u0647\u0645 \u064A\u0639\u0631\u0641 \u0627\u0633\u0645\u0643\u060C \u0623\u0648 \u062D\u0633\u0627\u0633\u064A\u0627\u062A\u0643\u060C \u0623\u0648 \u0623\u0646\u0647\u0627 \u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C\u0643. \u0634\u064A\u0641 \u062E\u0627\u0635 \u064A\u063A\u064A\u0631 \u0643\u0644 \u0634\u064A\u0621 \u2014 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 \u0644\u0643\u060C \u0627\u0644\u0625\u064A\u0642\u0627\u0639 \u0644\u0643\u060C \u0627\u0644\u062A\u0631\u0627\u0633 \u0644\u0643.',
-        about_detail: '\u0628\u062F\u0648\u0646 \u0627\u0646\u062A\u0638\u0627\u0631. \u0628\u062F\u0648\u0646 \u063A\u0631\u0628\u0627\u0621. \u0641\u0642\u0637 \u0623\u0646\u062A \u0648\u0645\u0646 \u062A\u062D\u0628 \u0648\u0648\u062C\u0628\u0629 \u0633\u062A\u062A\u062D\u062F\u062B \u0639\u0646\u0647\u0627 \u0644\u0633\u0646\u0648\u0627\u062A.',
-        test_eyebrow: '02 \u00B7 \u0645\u0627\u0630\u0627 \u064A\u0642\u0648\u0644\u0648\u0646', test_h2: '\u0643\u0644\u0645\u0627\u062A<em>\u0645\u0646 \u0636\u064A\u0648\u0641\u0646\u0627.</em>',
-        test_q1: '\u0628\u0627\u0633\u062A\u064A\u0644\u0627 \u0627\u0644\u0644\u064A\u0644\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629. \u0644\u0627 \u0623\u0632\u0627\u0644 \u0623\u0641\u0643\u0631 \u0641\u064A\u0647\u0627 \u0628\u0639\u062F \u062B\u0644\u0627\u062B\u0629 \u0623\u0634\u0647\u0631. \u0634\u064A\u0641\u0646\u0627 \u062C\u0639\u0644 \u0643\u0644 \u0645\u0633\u0627\u0621 \u064A\u0628\u062F\u0648 \u0643\u0627\u062D\u062A\u0641\u0627\u0644 \u062E\u0627\u0635.',
-        test_s1: '\u0625\u0642\u0627\u0645\u0629 \u0641\u064A\u0644\u0627 \u00B7 5 \u0644\u064A\u0627\u0644\u064D \u00B7 \u064A\u0646\u0627\u064A\u0631 2026',
-        test_q2: '\u0633\u0644\u0637\u0629 \u0627\u0644\u0647\u0646\u062F\u0628\u0627\u0621 \u0628\u0627\u0644\u0631\u0648\u0643\u0641\u0648\u0631 \u0648\u0627\u0644\u0643\u0627\u062C\u0648 \u0643\u0645\u0642\u0628\u0644\u0627\u062A\u060C \u062B\u0645 \u0637\u0627\u062C\u064A\u0646 \u0645\u062B\u0627\u0644\u064A. \u0643\u0644 \u0637\u0628\u0642 \u0643\u0627\u0646 \u0645\u0641\u0627\u062C\u0623\u0629. \u0634\u064A\u0641\u0646\u0627 \u062D\u0648\u0651\u0644 \u062A\u0631\u0627\u0633\u0646\u0627 \u0625\u0644\u0649 \u062F\u064A\u0643\u0648\u0631 \u0645\u062C\u0644\u0629. \u0623\u0641\u0636\u0644 \u0639\u0634\u0627\u0621 \u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C \u0641\u064A \u062D\u064A\u0627\u062A\u0646\u0627.',
-        test_s2: '\u0630\u0643\u0631\u0649 \u0632\u0648\u0627\u062C \u00B7 \u0644\u064A\u0644\u062A\u0627\u0646 \u00B7 \u062F\u064A\u0633\u0645\u0628\u0631 2025',
-        test_q3: '\u0643\u0633\u0643\u0633 \u0644\u064A\u0644\u0629 \u0627\u0644\u062C\u0645\u0639\u0629 \u0643\u0627\u0646 \u0644\u0627 \u064A\u064F\u0646\u0633\u0649. \u0633\u0628\u0639 \u062E\u0636\u0631\u0648\u0627\u062A\u060C \u0644\u062D\u0645 \u0636\u0623\u0646 \u0645\u0637\u0628\u0648\u062E \u0628\u0628\u0637\u0621\u060C \u0645\u0631\u0642 \u0628\u0627\u0644\u0632\u0639\u0641\u0631\u0627\u0646 \u2014 \u0623\u0637\u0641\u0627\u0644\u0646\u0627 \u0639\u0627\u062F\u0648\u0627 \u0644\u0644\u0645\u0631\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629. \u0648\u0644\u064A\u0645\u0629 \u0639\u0627\u0626\u0644\u064A\u0629 \u062D\u0642\u064A\u0642\u064A\u0629.',
-        test_s3: '\u0639\u0627\u0626\u0644\u0629 \u00B7 7 \u0644\u064A\u0627\u0644\u064D \u00B7 \u0641\u0628\u0631\u0627\u064A\u0631 2026',
-        feat_eyebrow: '03 \u00B7 \u0644\u0645\u0627\u0630\u0627 \u0646\u062D\u0646', feat_h2: '\u0633\u0639\u0631 \u0648\u0627\u062D\u062F. \u0643\u0644 \u0634\u064A\u0621 \u0645\u0634\u0645\u0648\u0644.<em>\u0645\u0627 \u0639\u0644\u064A\u0643 \u0633\u0648\u0649 \u0627\u0644\u062D\u0636\u0648\u0631.</em>',
-        feat_1: '\u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u064A\u062E\u062A\u0627\u0631\u0647\u0627 \u0634\u064A\u0641\u0643 \u0635\u0628\u0627\u062D\u0627\u064B \u2014 \u062A\u0648\u0627\u0628\u0644\u060C \u062E\u0636\u0631\u0648\u0627\u062A\u060C \u0644\u062D\u0648\u0645\u060C \u0645\u0623\u0643\u0648\u0644\u0627\u062A \u0628\u062D\u0631\u064A\u0629',
-        feat_2: '\u0637\u0627\u062C\u064A\u0646\u060C \u0628\u0627\u0633\u062A\u064A\u0644\u0627\u060C \u0643\u0633\u0643\u0633\u060C \u062D\u0644\u0648\u0649 \u0648\u0634\u0627\u064A \u0628\u0627\u0644\u0646\u0639\u0646\u0627\u0639 \u2014 \u0648\u0644\u064A\u0645\u0629 \u0643\u0627\u0645\u0644\u0629 \u0641\u064A \u0641\u064A\u0644\u0627\u062A\u0643',
-        feat_3: '\u062A\u062C\u0647\u064A\u0632\u060C \u062E\u062F\u0645\u0629\u060C \u062A\u0642\u062F\u064A\u0645 \u0648\u062A\u0646\u0638\u064A\u0641 \u0643\u0627\u0645\u0644 \u0644\u0644\u0645\u0637\u0628\u062E \u2014 \u0644\u0627 \u062A\u062D\u0631\u0643 \u0625\u0635\u0628\u0639\u0627\u064B',
-        feat_4: '\u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 85\u20AC/\u064A\u0648\u0645 \u0644\u0644\u0645\u062C\u0645\u0648\u0639\u0629 (\u0644\u063A\u0627\u064A\u0629 10 \u0636\u064A\u0648\u0641). \u0628\u062F\u0648\u0646 \u0631\u0633\u0648\u0645 \u0645\u062E\u0641\u064A\u0629. \u0628\u062F\u0648\u0646 \u0645\u0641\u0627\u062C\u0622\u062A',
-        how_h2: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644',
-        how_subtitle: '\u0645\u0646 \u0627\u0644\u062D\u062C\u0632 \u0625\u0644\u0649 \u0622\u062E\u0631 \u0644\u0642\u0645\u0629 \u2014 \u0646\u062D\u0646 \u0646\u062A\u0643\u0641\u0644 \u0628\u0643\u0644 \u0634\u064A\u0621.',
-        how_s1_h: '\u0627\u062E\u062A\u0631 \u062A\u062C\u0631\u0628\u062A\u0643',
-        how_s1_p: '\u0627\u062E\u062A\u0631 \u0627\u0644\u062A\u0627\u0631\u064A\u062E \u0648\u0639\u062F\u062F \u0627\u0644\u0636\u064A\u0648\u0641 \u0648\u0627\u062D\u062A\u064A\u0627\u062C\u0627\u062A\u0643 \u0627\u0644\u063A\u0630\u0627\u0626\u064A\u0629. \u0627\u062E\u062A\u0631 \u0645\u0646 \u0642\u0648\u0627\u0626\u0645\u0646\u0627. \u0646\u0624\u0643\u062F \u062E\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629.',
-        how_s1_detail: '\u064A\u0633\u062A\u063A\u0631\u0642 \u062F\u0642\u064A\u0642\u062A\u064A\u0646',
-        how_s2_h: '\u064A\u0635\u0644 \u0634\u064A\u0641\u0643',
-        how_s2_p: '\u064A\u062A\u0633\u0648\u0642 \u0634\u064A\u0641\u0643 \u0645\u0646 \u0633\u0648\u0642 \u0627\u0644\u0645\u062F\u064A\u0646\u0629 \u0635\u0628\u0627\u062D\u0627\u064B \u0648\u064A\u0635\u0644 \u0625\u0644\u0649 \u0641\u064A\u0644\u0627\u062A\u0643 \u0628\u0643\u0644 \u0634\u064A\u0621 \u2014 \u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629\u060C \u0623\u062F\u0648\u0627\u062A \u0637\u0628\u062E \u0648\u0623\u0648\u0627\u0646\u064A.',
-        how_s2_detail: '\u0637\u0627\u0632\u062C \u0645\u0646 \u0627\u0644\u0633\u0648\u0642 \u0641\u064A \u0646\u0641\u0633 \u0627\u0644\u064A\u0648\u0645',
-        how_s3_h: '\u0627\u062C\u0644\u0633. \u0627\u0633\u062A\u0645\u062A\u0639.',
-        how_s3_p: '\u0645\u0642\u0628\u0644\u0627\u062A\u060C \u0623\u0637\u0628\u0627\u0642 \u0631\u0626\u064A\u0633\u064A\u0629\u060C \u062D\u0644\u0648\u0649 \u0648\u0634\u0627\u064A \u0628\u0627\u0644\u0646\u0639\u0646\u0627\u0639 \u2014 \u062A\u064F\u0642\u062F\u0645 \u0637\u0628\u0642\u0627\u064B \u0628\u0637\u0628\u0642 \u0639\u0644\u0649 \u062A\u0631\u0627\u0633\u0643. \u0628\u0639\u062F \u0622\u062E\u0631 \u0644\u0642\u0645\u0629\u060C \u0646\u0646\u0638\u0641 \u0643\u0644 \u0634\u064A\u0621. \u0623\u0646\u062A \u062A\u062D\u062A\u0641\u0638 \u0641\u0642\u0637 \u0628\u0627\u0644\u0630\u0643\u0631\u0649.',
-        how_s3_detail: '\u062E\u062F\u0645\u0629 \u0643\u0627\u0645\u0644\u0629 + \u062A\u0646\u0638\u064A\u0641 \u0634\u0627\u0645\u0644',
-        chef_eyebrow: '04 \u00B7 \u0627\u0644\u0637\u0647\u0627\u0629', chef_h2: '\u0637\u0647\u0627\u062A\u0646\u0627',
-        chef1_role: '\u0627\u0644\u0645\u0637\u0628\u062E \u0627\u0644\u0645\u063A\u0631\u0628\u064A \u00B7 15 \u0633\u0646\u0629',
-        chef1_p: '\u062A\u062F\u0631\u0628 \u0641\u064A \u0641\u0627\u0633\u060C \u0648\u0635\u0642\u0644 \u0645\u0648\u0647\u0628\u062A\u0647 \u0641\u064A \u0628\u0627\u0631\u064A\u0633. \u0637\u0627\u062C\u064A\u0646 \u064A\u0648\u0633\u0641 \u0623\u0628\u0643\u0649 \u0631\u062C\u0627\u0644\u0627\u064B. \u0628\u0627\u0633\u062A\u064A\u0644\u0627\u0647 \u0647\u064A \u0627\u0644\u0633\u0628\u0628 \u0641\u064A \u062A\u0645\u062F\u064A\u062F \u0627\u0644\u0636\u064A\u0648\u0641 \u0644\u0625\u0642\u0627\u0645\u062A\u0647\u0645.',
-        chef2_role: '\u062A\u0642\u0644\u064A\u062F\u064A \u00B7 \u0648\u0635\u0641\u0627\u062A \u0639\u0627\u0626\u0644\u064A\u0629',
-        chef2_p: '\u0641\u0627\u0637\u0645\u0629 \u062A\u0637\u0628\u062E \u0643\u0645\u0627 \u0643\u0627\u0646\u062A \u062C\u062F\u062A\u0647\u0627 \u2014 \u0628\u0627\u0644\u0625\u062D\u0633\u0627\u0633 \u0648\u0627\u0644\u0630\u0627\u0643\u0631\u0629. \u0643\u0633\u0643\u0633 \u0627\u0644\u062C\u0645\u0639\u0629 \u0637\u0642\u0633. \u0627\u0644\u062D\u0631\u064A\u0631\u0629 \u0639\u0646\u062F \u0627\u0644\u063A\u0631\u0648\u0628\u060C \u062A\u0623\u0645\u0644.',
-        cta_eyebrow: '\u0644\u0627 \u062A\u063A\u0627\u062F\u0631 \u0645\u0631\u0627\u0643\u0634 \u0628\u062F\u0648\u0646 \u0647\u0630\u0627', cta_h2: '\u0645\u0627\u0626\u062F\u062A\u0643 \u0628\u0627\u0646\u062A\u0638\u0627\u0631\u0643',
-        cta_p: '\u0627\u0644\u0648\u062C\u0628\u0629 \u0627\u0644\u062A\u064A \u0633\u062A\u064F\u0630\u0643\u0631 \u0628\u0647\u0627 \u0631\u062D\u0644\u062A\u0643. \u0634\u064A\u0641 \u062E\u0627\u0635\u060C \u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u062A\u0631\u0627\u0633 \u0641\u064A\u0644\u0627\u062A\u0643.', cta_btn: '\u0627\u062D\u062C\u0632 \u0634\u064A\u0641\u0643',
-        reviews_text: '<strong>4.9/5</strong> \u00B7 200+ \u062A\u0642\u064A\u064A\u0645 \u0639\u0644\u0649 <strong>Google</strong>',
-        faq_eyebrow: '05 \u00B7 \u0623\u0633\u0626\u0644\u0629', faq_h2: '\u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0627\u0644\u0634\u0627\u0626\u0639\u0629',
-        faq_q1: '\u0643\u0645 \u0645\u0646 \u0627\u0644\u0648\u0642\u062A \u0645\u0633\u0628\u0642\u0627\u064B \u064A\u062C\u0628 \u0623\u0646 \u0623\u062D\u062C\u0632\u061F',
-        faq_a1: '72 \u0633\u0627\u0639\u0629 \u0645\u062B\u0627\u0644\u064A\u0629. \u0644\u0644\u0645\u0648\u0633\u0645 \u0627\u0644\u0645\u0631\u062A\u0641\u0639 (\u0623\u0643\u062A\u0648\u0628\u0631-\u0623\u0628\u0631\u064A\u0644) \u0623\u0648 \u0627\u0644\u0645\u062C\u0645\u0648\u0639\u0627\u062A \u0641\u0648\u0642 10\u060C \u0627\u062D\u062C\u0632 \u0642\u0628\u0644 1-2 \u0623\u0633\u0628\u0648\u0639. \u0637\u0644\u0628\u0627\u062A \u0627\u0644\u0644\u062D\u0638\u0629 \u0627\u0644\u0623\u062E\u064A\u0631\u0629\u061F \u0633\u0646\u062D\u0627\u0648\u0644 \u2014 \u0644\u0643\u0646 \u0627\u0644\u0633\u0648\u0642 \u0644\u0627 \u064A\u0646\u062A\u0638\u0631 \u0623\u062D\u062F\u0627\u064B.',
-        faq_q2: '\u0645\u0627\u0630\u0627 \u064A\u0634\u0645\u0644 \u0627\u0644\u0633\u0639\u0631\u061F',
-        faq_a2: '\u0643\u0644 \u0634\u064A\u0621. \u062A\u062E\u0637\u064A\u0637 \u0627\u0644\u0642\u0627\u0626\u0645\u0629\u060C \u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u0627\u0644\u0637\u0628\u062E\u060C \u0627\u0644\u062A\u0642\u062F\u064A\u0645 \u0648\u0627\u0644\u062A\u0646\u0638\u064A\u0641 \u0627\u0644\u0643\u0627\u0645\u0644. \u0623\u0646\u062A \u062A\u0648\u0641\u0631 \u0627\u0644\u0645\u0637\u0628\u062E \u0648\u0627\u0644\u0634\u0647\u064A\u0629.',
-        faq_q3: '\u0647\u0644 \u064A\u0645\u0643\u0646\u0643\u0645 \u0645\u0631\u0627\u0639\u0627\u0629 \u0627\u0644\u0642\u064A\u0648\u062F \u0627\u0644\u063A\u0630\u0627\u0626\u064A\u0629\u061F',
-        faq_a3: '\u0628\u0627\u0644\u062A\u0623\u0643\u064A\u062F. \u0646\u0628\u0627\u062A\u064A\u060C \u062E\u0627\u0644\u064D \u0645\u0646 \u0627\u0644\u063A\u0644\u0648\u062A\u064A\u0646\u060C \u0643\u0648\u0634\u064A\u0631\u060C \u062D\u0644\u0627\u0644\u060C \u062D\u0633\u0627\u0633\u064A\u0627\u062A \u2014 \u0623\u062E\u0628\u0631\u0646\u0627 \u0639\u0646\u062F \u0627\u0644\u062D\u062C\u0632. \u0627\u0644\u0645\u0637\u0628\u062E \u0627\u0644\u0645\u063A\u0631\u0628\u064A \u0645\u0631\u0646 \u0628\u0637\u0628\u064A\u0639\u062A\u0647. \u0637\u0647\u0627\u062A\u0646\u0627 \u064A\u062A\u0643\u064A\u0641\u0648\u0646 \u0628\u0634\u0643\u0644 \u0631\u0627\u0626\u0639.',
-        faq_q4: '\u0643\u0645 \u0639\u062F\u062F \u0627\u0644\u0636\u064A\u0648\u0641 \u0627\u0644\u0630\u064A\u0646 \u064A\u0645\u0643\u0646\u0643\u0645 \u062E\u062F\u0645\u062A\u0647\u0645\u061F',
-        faq_a4: '\u0639\u0634\u0627\u0621 \u062D\u0645\u064A\u0645 \u0644\u0634\u062E\u0635\u064A\u0646 \u062D\u062A\u0649 \u0627\u062D\u062A\u0641\u0627\u0644\u0627\u062A \u0644\u0623\u0643\u062B\u0631 \u0645\u0646 30. \u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 2 \u0636\u064A\u0648\u0641 \u0644\u0643\u0644 \u062D\u062C\u0632. \u0644\u0644\u0645\u0646\u0627\u0633\u0628\u0627\u062A \u0627\u0644\u0643\u0628\u064A\u0631\u0629\u060C \u0646\u062C\u0644\u0628 \u0637\u0627\u0642\u0645 \u062E\u062F\u0645\u0629 \u0625\u0636\u0627\u0641\u064A.',
-        faq_q5: '\u0647\u0644 \u062A\u0642\u062F\u0645\u0648\u0646 \u0641\u0642\u0637 \u0627\u0644\u0637\u0639\u0627\u0645 \u0627\u0644\u0645\u063A\u0631\u0628\u064A\u061F',
-        faq_a5: '\u0628\u0634\u0643\u0644 \u0631\u0626\u064A\u0633\u064A\u060C \u0646\u0639\u0645 \u2014 \u0623\u0646\u062A \u0641\u064A \u0645\u0631\u0627\u0643\u0634. \u0644\u0643\u0646 \u0637\u0647\u0627\u062A\u0646\u0627 \u064A\u0645\u0643\u0646\u0647\u0645 \u062F\u0645\u062C \u062A\u0623\u062B\u064A\u0631\u0627\u062A \u0645\u062A\u0648\u0633\u0637\u064A\u0629 \u0648\u0641\u0631\u0646\u0633\u064A\u0629. \u0623\u0641\u0636\u0644 \u0627\u0644\u0648\u062C\u0628\u0627\u062A \u062A\u0628\u062F\u0623 \u062F\u0627\u0626\u0645\u0627\u064B \u0628\u0645\u0627 \u0647\u0648 \u0637\u0627\u0632\u062C \u0641\u064A \u0627\u0644\u0633\u0648\u0642 \u0635\u0628\u0627\u062D\u0627\u064B.',
-        faq_q6: '\u0643\u0645 \u062A\u0643\u0644\u0641\u0629 \u0634\u064A\u0641 \u062E\u0627\u0635 \u0641\u064A \u0645\u0631\u0627\u0643\u0634\u061F',
-        faq_a6: '\u062E\u062F\u0645\u0629 \u0627\u0644\u0634\u064A\u0641 \u0627\u0644\u062E\u0627\u0635 \u062A\u0628\u062F\u0623 \u0645\u0646 85\u20AC \u0641\u064A \u0627\u0644\u064A\u0648\u0645 \u0644\u063A\u0627\u064A\u0629 10 \u0636\u064A\u0648\u0641. \u064A\u0634\u0645\u0644 \u0630\u0644\u0643 \u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u062A\u062E\u0637\u064A\u0637 \u0627\u0644\u0642\u0627\u0626\u0645\u0629\u060C \u0637\u0628\u062E \u0645\u062A\u0639\u062F\u062F \u0627\u0644\u0623\u0637\u0628\u0627\u0642\u060C \u062E\u062F\u0645\u0629 \u0627\u0644\u0637\u0627\u0648\u0644\u0629 \u0648\u062A\u0646\u0638\u064A\u0641 \u0643\u0627\u0645\u0644. \u0628\u062F\u0648\u0646 \u0631\u0633\u0648\u0645 \u0645\u062E\u0641\u064A\u0629.',
-        faq_q7: '\u0647\u0644 \u064A\u0633\u062A\u062D\u0642 \u0634\u064A\u0641 \u062E\u0627\u0635 \u0641\u064A \u0645\u0631\u0627\u0643\u0634\u061F',
-        faq_a7: '\u0644\u0644\u0625\u0642\u0627\u0645\u0629 \u0641\u064A \u0641\u064A\u0644\u0627\u060C \u0628\u0627\u0644\u062A\u0623\u0643\u064A\u062F. \u0628\u0640 85\u20AC/\u064A\u0648\u0645 \u0644\u063A\u0627\u064A\u0629 10 \u0636\u064A\u0648\u0641\u060C \u0627\u0644\u062A\u0643\u0644\u0641\u0629 \u0623\u0642\u0644 \u0645\u0646 \u0645\u0637\u0639\u0645 \u0645\u062A\u0648\u0633\u0637 \u0644\u0644\u0645\u062C\u0645\u0648\u0639\u0629 \u2014 \u0648\u062A\u062D\u0635\u0644 \u0639\u0644\u0649 \u0648\u0644\u064A\u0645\u0629 \u0645\u063A\u0631\u0628\u064A\u0629 \u0645\u062E\u0635\u0635\u0629 \u0639\u0644\u0649 \u062A\u0631\u0627\u0633\u0643 \u0645\u0639 \u062A\u0646\u0638\u064A\u0641 \u0643\u0627\u0645\u0644.',
-        faq_q8: '\u0645\u0627 \u0647\u064A \u0642\u0627\u0626\u0645\u0629 \u0637\u0639\u0627\u0645 \u0634\u064A\u0641 \u062E\u0627\u0635 \u0646\u0645\u0648\u0630\u062C\u064A\u0629 \u0641\u064A \u0645\u0631\u0627\u0643\u0634\u061F',
-        faq_a8: '\u0648\u062C\u0628\u0629 \u0645\u062A\u0639\u062F\u062F\u0629 \u0627\u0644\u0623\u0637\u0628\u0627\u0642 \u062A\u0634\u0645\u0644 \u0633\u0644\u0637\u0627\u062A \u0648\u0645\u0642\u0628\u0644\u0627\u062A \u0645\u063A\u0631\u0628\u064A\u0629\u060C \u0637\u0628\u0642 \u0631\u0626\u064A\u0633\u064A \u0645\u0646 \u0637\u0627\u062C\u064A\u0646 (\u0644\u062D\u0645 \u0623\u0648 \u062F\u062C\u0627\u062C \u0623\u0648 \u0645\u0623\u0643\u0648\u0644\u0627\u062A \u0628\u062D\u0631\u064A\u0629)\u060C \u0628\u0627\u0633\u062A\u064A\u0644\u0627 \u0623\u0648 \u0643\u0633\u0643\u0633 \u0645\u0644\u0643\u064A \u0628\u0633\u0628\u0639 \u062E\u0636\u0631\u0648\u0627\u062A\u060C \u062B\u0645 \u062D\u0644\u0648\u064A\u0627\u062A \u062A\u0642\u0644\u064A\u062F\u064A\u0629 \u0648\u0634\u0627\u064A \u0628\u0627\u0644\u0646\u0639\u0646\u0627\u0639. \u0627\u0644\u0642\u0648\u0627\u0626\u0645 \u0645\u062E\u0635\u0635\u0629 \u062D\u0633\u0628 \u0645\u0643\u0648\u0646\u0627\u062A \u0627\u0644\u0645\u0648\u0633\u0645 \u0648\u062A\u0641\u0636\u064A\u0644\u0627\u062A \u0627\u0644\u0636\u064A\u0648\u0641.',
-        footer_desc: '\u062E\u062F\u0645\u0629 \u0634\u064A\u0641 \u062E\u0627\u0635 \u0641\u064A \u0645\u0631\u0627\u0643\u0634. \u0645\u0643\u0648\u0646\u0627\u062A \u0637\u0627\u0632\u062C\u0629 \u0645\u0646 \u0627\u0644\u0633\u0648\u0642\u060C \u0648\u0644\u064A\u0645\u0629 \u0641\u064A \u0641\u064A\u0644\u0627\u062A\u0643\u060C \u0648\u062A\u0646\u0638\u064A\u0641 \u0643\u0627\u0645\u0644. \u0627\u0628\u062A\u062F\u0627\u0621\u064B \u0645\u0646 85\u20AC/\u064A\u0648\u0645.',
-        footer_explore: '\u0627\u0633\u062A\u0643\u0634\u0641', footer_exp: '\u0627\u0644\u062A\u062C\u0631\u0628\u0629', footer_how: '\u0643\u064A\u0641 \u064A\u0639\u0645\u0644', footer_chefs: '\u0637\u0647\u0627\u062A\u0646\u0627', footer_stories: '\u0642\u0635\u0635 \u0627\u0644\u0636\u064A\u0648\u0641',
-        footer_contact: '\u0627\u062A\u0635\u0644 \u0628\u0646\u0627', footer_details: '\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644',
-        footer_d1: '\u0645\u0631\u0627\u0643\u0634\u060C \u0627\u0644\u0645\u063A\u0631\u0628', footer_d2: '\u062E\u062F\u0645\u0629 \u0641\u064A \u0627\u0644\u0641\u064A\u0644\u0627 \u0641\u0642\u0637', footer_d3: '\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 2 \u0636\u064A\u0648\u0641', footer_d4: '\u062D\u062C\u0632 \u0642\u0628\u0644 72 \u0633\u0627\u0639\u0629',
-        footer_tagline: '\u062E\u062F\u0645\u0629 \u0634\u064A\u0641 \u062E\u0627\u0635 \u00B7 \u0645\u0631\u0627\u0643\u0634\u060C \u0627\u0644\u0645\u063A\u0631\u0628',
-        book_eyebrow: '\u0627\u062D\u062C\u0632 \u062A\u062C\u0631\u0628\u062A\u0643',
-        book_h2: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643<em>\u0627\u062E\u062A\u0631 \u0645\u0648\u0639\u062F\u0627\u064B. \u0646\u062D\u0646 \u0646\u062A\u0643\u0641\u0644 \u0628\u0627\u0644\u0628\u0627\u0642\u064A.</em>',
-        book_p: '\u0627\u062E\u062A\u0631 \u0627\u0644\u062A\u0627\u0631\u064A\u062E \u0648\u0627\u0644\u0648\u0642\u062A \u0648\u0639\u062F\u062F \u0627\u0644\u0636\u064A\u0648\u0641. \u0641\u0631\u064A\u0642\u0646\u0627 \u0633\u064A\u0624\u0643\u062F \u062E\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628.',
-        book_name_label: '\u0627\u0633\u0645\u0643', book_email_label: '\u0628\u0631\u064A\u062F\u0643 \u0627\u0644\u0625\u0644\u0643\u062A\u0631\u0648\u0646\u064A', book_guests_label: '\u0627\u0644\u0636\u064A\u0648\u0641', book_date_label: '\u0627\u0644\u062A\u0627\u0631\u064A\u062E', book_time_label: '\u0627\u0644\u0648\u0642\u062A \u0627\u0644\u0645\u0641\u0636\u0644',
-        book_notes_label: '\u0637\u0644\u0628\u0627\u062A \u062E\u0627\u0635\u0629 / \u062D\u0633\u0627\u0633\u064A\u0627\u062A', book_submit: '\u0623\u0631\u0633\u0644 \u0637\u0644\u0628 \u0627\u0644\u062D\u062C\u0632 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628',
-        cta_about: '\u0634\u064A\u0641\u0643 \u0627\u0644\u062E\u0627\u0635 \u0639\u0644\u0649 \u0628\u0639\u062F \u062D\u062C\u0632 \u0648\u0627\u062D\u062F.',
-        cta_about_btn: '\u0627\u062D\u062C\u0632 \u062A\u062C\u0631\u0628\u062A\u0643',
-        cta_test: '200+ \u0636\u064A\u0641. 4.9 \u0646\u062C\u0648\u0645. \u0646\u062F\u0645 \u0648\u0627\u062D\u062F \u2014 \u0623\u0646\u0647\u0645 \u0644\u0645 \u064A\u062D\u062C\u0632\u0648\u0627 \u0623\u0628\u0643\u0631.',
-        cta_test_btn: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643',
-        cta_how: '\u062B\u0644\u0627\u062B \u062E\u0637\u0648\u0627\u062A \u0628\u0633\u064A\u0637\u0629. \u0633\u0647\u0631\u0629 \u0644\u0627 \u062A\u064F\u0646\u0633\u0649.',
-        cta_how_btn: '\u0627\u0628\u062F\u0623 \u0627\u0644\u062D\u062C\u0632 \u0627\u0644\u0622\u0646',
-        cta_faq: '\u0644\u0627 \u0632\u0644\u062A \u0644\u062F\u064A\u0643 \u0623\u0633\u0626\u0644\u0629\u061F \u0646\u062D\u0646 \u0639\u0644\u0649 \u0628\u0639\u062F \u0631\u0633\u0627\u0644\u0629.',
-        cta_faq_btn: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643',
-        footer_book_btn: '\u0627\u062D\u062C\u0632 \u0645\u0627\u0626\u062F\u062A\u0643',
-        mobile_book: '\u0627\u062D\u062C\u0632 \u0627\u0644\u0622\u0646',
-        book_note: '\u0633\u064A\u062A\u0645 \u062A\u0648\u062C\u064A\u0647\u0643 \u0625\u0644\u0649 \u0648\u0627\u062A\u0633\u0627\u0628 \u0644\u0644\u062A\u0623\u0643\u064A\u062F \u00B7 \u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 2 \u0636\u064A\u0648\u0641',
-        cookie_text: '\u0646\u0633\u062A\u062E\u062F\u0645 \u0645\u0644\u0641\u0627\u062A \u062A\u0639\u0631\u064A\u0641 \u0627\u0644\u0627\u0631\u062A\u0628\u0627\u0637 \u0644\u062A\u062D\u0633\u064A\u0646 \u062A\u062C\u0631\u0628\u062A\u0643. \u0628\u0627\u0644\u0645\u062A\u0627\u0628\u0639\u0629\u060C \u0641\u0625\u0646\u0643 \u062A\u0648\u0627\u0641\u0642 \u0639\u0644\u0649 <a href="#" onclick="openLegalModal(\'privacy\');return false;">\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629</a>.',
-        footer_privacy: '\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629',
-        footer_terms: '\u0634\u0631\u0648\u0637 \u0627\u0644\u062E\u062F\u0645\u0629'
-      }
-    };
-
-    function setLang(lang) {
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.lang-btn[onclick*="\''+lang+'\'"]').forEach(b => b.classList.add('active'));
-      const dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.documentElement.setAttribute('dir', dir);
-      document.documentElement.setAttribute('lang', lang);
-      const strings = T[lang];
-      if (!strings) return;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (strings[key] !== undefined) el.innerHTML = strings[key];
-      });
-      localStorage.setItem('lang', lang);
-    }
-
-    // Auto-detect language: saved preference > browser language > default English
-    const saved = localStorage.getItem('lang');
-    if (saved && saved !== 'en') {
-      setLang(saved);
-    } else if (!saved) {
-      // First visit — detect from browser language
-      const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-      if (browserLang.startsWith('ar')) {
-        setLang('ar');
-      } else if (browserLang.startsWith('fr')) {
-        setLang('fr');
-      }
-      // else stays English (default)
-    }
 
     /* ─── IMAGE CAROUSEL ─── */
     function slideCarousel(id, dir) {

@@ -23,7 +23,11 @@ const mimeTypes = {
 };
 
 const server = createServer(async (req, res) => {
-  let filePath = join(__dirname, req.url === '/' ? 'index.html' : req.url);
+  let urlPath = req.url.split('?')[0];
+  if (urlPath === '/') urlPath = '/index.html';
+  else if (urlPath.endsWith('/')) urlPath += 'index.html';
+  else if (!extname(urlPath)) urlPath += '/index.html';
+  let filePath = join(__dirname, urlPath);
   const ext = extname(filePath);
   const contentType = mimeTypes[ext] || 'application/octet-stream';
 

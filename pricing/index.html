@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="public, max-age=3600, stale-while-revalidate=86400">
+
+  <!-- FAVICON & THEME -->
+  <meta name="theme-color" content="#080604">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- SEO -->
+  <title>Pricing — Private Chef Marrakech | La Table Marrakech</title>
+  <meta name="description" content="Transparent pricing for your private chef in Marrakech. From €40/person for groups. Includes fresh souk ingredients, multi-course Moroccan feast, full service & cleanup. Build your evening with our interactive calculator.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://latablemarrakech.com/pricing/">
+
+  <!-- OG -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://latablemarrakech.com/pricing/">
+  <meta property="og:title" content="Pricing — Private Chef Marrakech | La Table Marrakech">
+  <meta property="og:description" content="From €40/person. Fresh souk ingredients, multi-course feast, full service & cleanup included. No hidden fees.">
+  <meta property="og:image" content="https://latablemarrakech.com/la-table-marrakech-og.png">
+  <meta property="og:site_name" content="La Table Marrakech">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2QTMMMYLD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J2QTMMMYLD');
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #080604;
+      --ink-light: #100D08;
+      --ember: #C1622F;
+      --ember-light: #D97040;
+      --gold: #B8935A;
+      --gold-light: #D4AA70;
+      --sand: #F0E6D0;
+      --sand-muted: #B0A48A;
+      --muted: #5C5040;
+      --font-display: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+      --font-serif: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --font-body: 'Karla', 'Helvetica Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--sand);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* Diamond ornament */
+    .diamond-outline {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--ember);
+      transform: rotate(45deg);
+      position: relative;
+    }
+    .diamond-outline::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: var(--ember);
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      background: rgba(8, 6, 4, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav_block {
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      display: flex;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo .diamond-outline { width: 11px; height: 11px; }
+    .nav-logo .diamond-outline::after { inset: 2px; }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 3px;
+      color: var(--sand);
+      line-height: 1;
+    }
+    .nav-logo-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+    .nav-logo-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sand-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--sand); }
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2.5px !important;
+      background: var(--ember);
+      color: var(--sand) !important;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--ember-light); transform: translateY(-1px); }
+    .nav-cta:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 3px; }
+    .nav-cta:active { transform: translateY(0); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 80px 0 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(193, 98, 47, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(184, 147, 90, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 72px);
+      color: var(--sand);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .page-header h1 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.4em;
+      color: var(--gold-light);
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 8px;
+    }
+    .page-header .subtitle {
+      font-size: 16px;
+      color: var(--sand-muted);
+      max-width: 560px;
+      margin: 24px auto 0;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 72px 0;
+    }
+    section + section {
+      border-top: 1px solid rgba(184, 147, 90, 0.08);
+    }
+    .section-header {
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--sand);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+    .section-header h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.45em;
+      color: var(--gold-light);
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 4px;
+    }
+
+    /* ─── VIEW TOGGLE ─── */
+    .view-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+      background: var(--ink-light);
+      border: 1px solid rgba(184, 147, 90, 0.12);
+      border-radius: 2px;
+      padding: 4px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .view-toggle button {
+      flex: 1;
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sand-muted);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .view-toggle button:hover { color: var(--sand); }
+    .view-toggle button:focus-visible { outline: 1px solid var(--ember); outline-offset: -1px; }
+    .view-toggle button.active {
+      background: var(--ember);
+      color: var(--sand);
+    }
+    .view-content { display: none; }
+    .view-content.active { display: block; }
+
+    /* ─── TIER CARDS ─── */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .tier-card {
+      background: var(--ink-light);
+      border: 1px solid rgba(184, 147, 90, 0.1);
+      padding: 36px 24px 28px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .tier-card:hover {
+      border-color: rgba(184, 147, 90, 0.25);
+      transform: translateY(-3px);
+    }
+    .tier-card.popular {
+      border-color: var(--gold);
+    }
+    .tier-card.popular::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      white-space: nowrap;
+    }
+    .tier-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .tier-guests {
+      font-size: 13px;
+      color: var(--sand-muted);
+      margin-bottom: 20px;
+    }
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 56px;
+      color: var(--sand);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .tier-price span {
+      font-size: 20px;
+      color: var(--sand-muted);
+    }
+    .tier-unit {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--sand-muted);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .tier-total {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .tier-cta {
+      display: block;
+      width: 100%;
+      padding: 12px 20px;
+      background: var(--ember);
+      color: var(--sand);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .tier-cta:hover { background: var(--ember-light); transform: translateY(-1px); }
+    .tier-cta:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 3px; }
+    .tier-cta:active { transform: translateY(0); }
+
+    .tiers-custom {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .tiers-custom a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(184, 147, 90, 0.3);
+      transition: border-color 0.3s;
+    }
+    .tiers-custom a:hover { border-color: var(--gold); }
+
+    .tiers-included {
+      text-align: center;
+      font-size: 13px;
+      color: var(--sand-muted);
+      padding: 20px;
+      border: 1px dashed rgba(184, 147, 90, 0.15);
+    }
+    .tiers-included span { color: var(--gold); }
+
+    /* ─── CALCULATOR ─── */
+    .calculator {
+      background: var(--ink-light);
+      border: 1px solid rgba(184, 147, 90, 0.12);
+      padding: 40px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .calc-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--sand);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .calc-group { margin-bottom: 28px; }
+    .calc-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .calc-select {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--ink);
+      border: 1px solid rgba(184, 147, 90, 0.2);
+      color: var(--sand);
+      font-family: var(--font-body);
+      font-size: 14px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8935A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    .calc-select:focus { outline: none; border-color: var(--gold); }
+
+    .calc-radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .calc-radio {
+      display: flex;
+      align-items: center;
+      background: var(--ink);
+      border: 1px solid rgba(184, 147, 90, 0.1);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .calc-radio:hover { border-color: rgba(184, 147, 90, 0.3); }
+    .calc-radio.selected { border-color: var(--gold); background: rgba(184, 147, 90, 0.04); }
+    .calc-radio input[type="radio"] { display: none; }
+    .calc-radio-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--sand-muted);
+      margin-right: 14px;
+      flex-shrink: 0;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .calc-radio.selected .calc-radio-dot { border-color: var(--gold); }
+    .calc-radio.selected .calc-radio-dot::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .calc-radio-text { flex: 1; }
+    .calc-radio-name { font-size: 14px; color: var(--sand); }
+    .calc-radio-desc { font-size: 12px; color: var(--sand-muted); margin-top: 2px; }
+    .calc-radio-price {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--gold);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    .calc-checkboxes { display: flex; flex-direction: column; gap: 8px; }
+    .calc-checkbox {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--ink);
+      border: 1px solid rgba(184, 147, 90, 0.08);
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .calc-checkbox:hover { border-color: rgba(184, 147, 90, 0.3); }
+    .calc-checkbox.checked { border-color: var(--gold); background: rgba(184, 147, 90, 0.04); }
+    .calc-checkbox input[type="checkbox"] { display: none; }
+    .calc-check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--sand-muted);
+      margin-right: 14px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .calc-checkbox.checked .calc-check-box { border-color: var(--gold); background: var(--gold); }
+    .calc-check-box svg { opacity: 0; transition: opacity 0.2s; }
+    .calc-checkbox.checked .calc-check-box svg { opacity: 1; }
+    .calc-check-text { flex: 1; font-size: 14px; color: var(--sand); }
+    .calc-check-price {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--sand-muted);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    .calc-divider { border: none; border-top: 1px solid rgba(184, 147, 90, 0.15); margin: 28px 0; }
+
+    .calc-summary { margin-bottom: 24px; }
+    .calc-summary-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .calc-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 14px;
+      color: var(--sand);
+    }
+    .calc-line.total {
+      border-top: 1px solid rgba(184, 147, 90, 0.2);
+      margin-top: 12px;
+      padding-top: 14px;
+      font-size: 16px;
+      color: var(--sand);
+      font-weight: 500;
+    }
+    .calc-line.per-person {
+      font-size: 13px;
+      color: var(--sand-muted);
+      font-style: italic;
+    }
+
+    .calc-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      background: #25D366;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .calc-cta:hover { background: #1EBE5A; transform: translateY(-1px); }
+    .calc-cta:focus-visible { outline: 2px solid #25D366; outline-offset: 3px; }
+    .calc-cta:active { transform: translateY(0); }
+    .calc-cta svg { width: 18px; height: 18px; }
+    .calc-cancel {
+      text-align: center;
+      font-size: 12px;
+      color: var(--sand-muted);
+      margin-top: 12px;
+    }
+
+    /* ─── ADD-ONS ─── */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .addon-card {
+      background: var(--ink-light);
+      border: 1px solid rgba(184, 147, 90, 0.08);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .addon-card:hover { border-color: rgba(184, 147, 90, 0.25); transform: translateY(-2px); }
+    .addon-card.featured {
+      grid-column: 1 / -1;
+      border-color: var(--gold);
+      text-align: center;
+      padding: 48px 40px;
+      background: rgba(184, 147, 90, 0.03);
+    }
+    .addon-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .addon-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+    .addon-price {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gold);
+    }
+    .addon-desc {
+      font-size: 14px;
+      color: var(--sand-muted);
+      line-height: 1.6;
+    }
+    .addon-featured-price {
+      font-family: var(--font-display);
+      font-size: 52px;
+      color: var(--sand);
+      margin: 16px 0 4px;
+    }
+    .addon-featured-price span {
+      font-size: 20px;
+      color: var(--sand-muted);
+    }
+    .addon-featured-desc {
+      font-size: 15px;
+      color: var(--sand-muted);
+      max-width: 560px;
+      margin: 12px auto 0;
+      line-height: 1.7;
+    }
+    .multi-night {
+      text-align: center;
+      padding: 24px;
+      border: 1px dashed rgba(184, 147, 90, 0.15);
+      font-size: 14px;
+      color: var(--sand-muted);
+    }
+    .multi-night strong { color: var(--gold); font-weight: 400; }
+
+    /* ─── VALUE ANCHOR ─── */
+    .value-section {
+      text-align: center;
+      padding: 80px 24px;
+      background: var(--ink-light);
+      border-top: 1px solid rgba(184, 147, 90, 0.06);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.06);
+    }
+    .value-section .inner { max-width: 640px; margin: 0 auto; }
+    .value-body { font-size: 16px; color: var(--sand-muted); margin-bottom: 16px; line-height: 1.7; }
+    .value-no {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--sand);
+      letter-spacing: 2px;
+      margin: 24px 0;
+    }
+    .value-from {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(184, 147, 90, 0.08); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 24px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      color: var(--sand);
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--gold-light); }
+    .faq-question:focus-visible { outline: 1px solid var(--ember); outline-offset: 4px; }
+    .faq-icon {
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.3s;
+      font-family: var(--font-mono);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 24px; }
+    .faq-answer p { font-size: 14px; color: var(--sand-muted); line-height: 1.7; }
+
+    /* ─── FINAL CTA ─── */
+    .cta-final {
+      text-align: center;
+      padding: 100px 24px;
+      background: var(--ink-light);
+      border-top: 1px solid rgba(184, 147, 90, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(193, 98, 47, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--sand);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .cta-final h2 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.45em;
+      color: var(--gold-light);
+      display: block;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 8px;
+    }
+    .cta-subtext {
+      font-size: 14px;
+      color: var(--sand-muted);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--ember);
+      color: var(--sand);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--ember-light); transform: translateY(-2px); }
+    .btn-primary:focus-visible { outline: 2px solid var(--ember-light); outline-offset: 3px; }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* ─── FOOTER ─── */
+    .footer-simple {
+      padding: 32px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(184, 147, 90, 0.08);
+    }
+    .footer-simple p {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .footer-simple a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .footer-simple a:hover { color: var(--gold-light); }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+      .addons-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 60px 0 48px; }
+      section { padding: 56px 0; }
+      .calculator { padding: 28px 20px; }
+      .nav-back { display: none; }
+    }
+    @media (max-width: 600px) {
+      .tiers-grid { grid-template-columns: 1fr; }
+      .nav-logo-divider, .nav-logo-sub { display: none; }
+      .addon-card.featured { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav_block">
+      <a href="/" class="nav-logo">
+        <div class="diamond-outline"></div>
+        <span class="nav-logo-text">LA TABLE</span>
+        <span class="nav-logo-divider"></span>
+        <span class="nav-logo-sub">Marrakech</span>
+      </a>
+      <div class="nav-right">
+        <a href="/" class="nav-back">&larr; Back to Home</a>
+        <a href="https://wa.me/212721354757" class="nav-cta">BOOK NOW</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="eyebrow reveal">Transparent Pricing</span>
+      <h1 class="reveal reveal-d1">YOUR FEAST. YOUR PRICE.<em>Per person, everything included.</em></h1>
+      <p class="subtitle reveal reveal-d2">Fresh souk ingredients. Multi-course cooking. Table service. Full cleanup. The only thing you bring is an appetite.</p>
+    </div>
+  </div>
+
+  <!-- PRICING SECTION -->
+  <section>
+    <div class="container">
+      <!-- View Toggle -->
+      <div class="view-toggle reveal">
+        <button class="active" onclick="switchView('tiers')">Tiers</button>
+        <button onclick="switchView('calculator')">Calculator</button>
+      </div>
+
+      <!-- TIER CARDS -->
+      <div class="view-content active" id="view-tiers">
+        <div class="tiers-grid reveal">
+          <div class="tier-card">
+            <div class="tier-label">Intimate</div>
+            <div class="tier-guests">2 guests</div>
+            <div class="tier-price">&euro;70</div>
+            <div class="tier-unit">/person</div>
+            <div class="tier-total">&euro;140 total</div>
+            <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20for%202%20guests" target="_blank" rel="noopener noreferrer" class="tier-cta">Reserve Your Table</a>
+          </div>
+          <div class="tier-card popular">
+            <div class="tier-label">Gathering</div>
+            <div class="tier-guests">3&ndash;8 guests</div>
+            <div class="tier-price">&euro;50</div>
+            <div class="tier-unit">/person</div>
+            <div class="tier-total">&euro;150&ndash;400 total</div>
+            <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20for%20a%20group" target="_blank" rel="noopener noreferrer" class="tier-cta">Reserve Your Table</a>
+          </div>
+          <div class="tier-card">
+            <div class="tier-label">Celebration</div>
+            <div class="tier-guests">9&ndash;12 guests</div>
+            <div class="tier-price">&euro;45</div>
+            <div class="tier-unit">/person</div>
+            <div class="tier-total">&euro;405&ndash;540 total</div>
+            <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20for%209-12%20guests" target="_blank" rel="noopener noreferrer" class="tier-cta">Reserve Your Table</a>
+          </div>
+          <div class="tier-card">
+            <div class="tier-label">Grand Table</div>
+            <div class="tier-guests">13&ndash;20 guests</div>
+            <div class="tier-price">&euro;40</div>
+            <div class="tier-unit">/person</div>
+            <div class="tier-total">&euro;520&ndash;800 total</div>
+            <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20for%2013-20%20guests" target="_blank" rel="noopener noreferrer" class="tier-cta">Reserve Your Table</a>
+          </div>
+        </div>
+        <div class="tiers-custom reveal">
+          <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20for%2021%2B%20guests">21+ guests? Let's plan something unforgettable. &rarr;</a>
+        </div>
+        <div class="tiers-included reveal">
+          Every booking includes: <span>souk-fresh ingredients</span> &middot; <span>multi-course menu</span> &middot; <span>table service</span> &middot; <span>full kitchen cleanup</span> &middot; <span>no hidden fees</span>
+        </div>
+      </div>
+
+      <!-- CALCULATOR -->
+      <div class="view-content" id="view-calculator">
+        <div class="calculator reveal">
+          <div class="calc-title">Build Your Evening</div>
+
+          <div class="calc-group">
+            <div class="calc-label">How many guests?</div>
+            <select class="calc-select" id="guestCount" onchange="updateCalc()">
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+              <option value="5">5 guests</option>
+              <option value="6" selected>6 guests</option>
+              <option value="7">7 guests</option>
+              <option value="8">8 guests</option>
+              <option value="9">9 guests</option>
+              <option value="10">10 guests</option>
+              <option value="11">11 guests</option>
+              <option value="12">12 guests</option>
+              <option value="13">13 guests</option>
+              <option value="14">14 guests</option>
+              <option value="15">15 guests</option>
+              <option value="16">16 guests</option>
+              <option value="17">17 guests</option>
+              <option value="18">18 guests</option>
+              <option value="19">19 guests</option>
+              <option value="20">20 guests</option>
+            </select>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label">Your experience</div>
+            <div class="calc-radio-group">
+              <label class="calc-radio selected" onclick="selectRadio(this)">
+                <input type="radio" name="experience" value="classic" checked>
+                <div class="calc-radio-dot"></div>
+                <div class="calc-radio-text">
+                  <div class="calc-radio-name">Classic Dinner</div>
+                  <div class="calc-radio-desc">Multi-course Moroccan feast, souk ingredients, full service</div>
+                </div>
+                <div class="calc-radio-price">Base rate</div>
+              </label>
+              <label class="calc-radio" onclick="selectRadio(this)">
+                <input type="radio" name="experience" value="full">
+                <div class="calc-radio-dot"></div>
+                <div class="calc-radio-text">
+                  <div class="calc-radio-name">The Full Marrakech</div>
+                  <div class="calc-radio-desc">Souk tour + cooking class + 5-course dinner + tea ceremony</div>
+                </div>
+                <div class="calc-radio-price">&euro;95/pp</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label">Add to your evening</div>
+            <div class="calc-checkboxes">
+              <label class="calc-checkbox" onclick="toggleCheck(this)">
+                <input type="checkbox" data-addon="cooking" data-per-person="45">
+                <div class="calc-check-box">
+                  <svg viewBox="0 0 12 10" width="12" height="10"><polyline points="1,5 5,9 11,1" fill="none" stroke="#080604" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="calc-check-text">Cooking Class</span>
+                <span class="calc-check-price">+&euro;45/pp</span>
+              </label>
+              <label class="calc-checkbox" onclick="toggleCheck(this)">
+                <input type="checkbox" data-addon="wine" data-per-person="20">
+                <div class="calc-check-box">
+                  <svg viewBox="0 0 12 10" width="12" height="10"><polyline points="1,5 5,9 11,1" fill="none" stroke="#080604" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="calc-check-text">Wine &amp; Cocktail Pairing</span>
+                <span class="calc-check-price">+&euro;20/pp</span>
+              </label>
+              <label class="calc-checkbox" onclick="toggleCheck(this)">
+                <input type="checkbox" data-addon="souk" data-per-person="35">
+                <div class="calc-check-box">
+                  <svg viewBox="0 0 12 10" width="12" height="10"><polyline points="1,5 5,9 11,1" fill="none" stroke="#080604" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="calc-check-text">Souk Tour with Chef</span>
+                <span class="calc-check-price">+&euro;35/pp</span>
+              </label>
+              <label class="calc-checkbox" onclick="toggleCheck(this)">
+                <input type="checkbox" data-addon="celebration" data-flat="50">
+                <div class="calc-check-box">
+                  <svg viewBox="0 0 12 10" width="12" height="10"><polyline points="1,5 5,9 11,1" fill="none" stroke="#080604" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="calc-check-text">Celebration Setup</span>
+                <span class="calc-check-price">+&euro;50</span>
+              </label>
+              <label class="calc-checkbox" onclick="toggleCheck(this)">
+                <input type="checkbox" data-addon="breakfast" data-per-person="18">
+                <div class="calc-check-box">
+                  <svg viewBox="0 0 12 10" width="12" height="10"><polyline points="1,5 5,9 11,1" fill="none" stroke="#080604" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="calc-check-text">Breakfast Next Morning</span>
+                <span class="calc-check-price">+&euro;18/pp</span>
+              </label>
+            </div>
+          </div>
+
+          <hr class="calc-divider">
+
+          <div class="calc-summary">
+            <div class="calc-summary-title">Your Estimate</div>
+            <div id="calcLines"></div>
+            <div class="calc-line total">
+              <span>Total</span>
+              <span id="calcTotal">&euro;300</span>
+            </div>
+            <div class="calc-line per-person">
+              <span>Per person</span>
+              <span id="calcPerPerson">&euro;50</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="calc-cta" id="calcCta">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.546 4.098 1.508 5.828L0 24l6.335-1.47A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.935 0-3.742-.524-5.3-1.44l-.38-.225-3.948.916.993-3.832-.248-.395A9.786 9.786 0 012.18 12c0-5.423 4.397-9.82 9.82-9.82 5.423 0 9.82 4.397 9.82 9.82 0 5.423-4.397 9.82-9.82 9.82z"/></svg>
+            Reserve via WhatsApp
+          </a>
+          <div class="calc-cancel">Free cancellation up to 48 hours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow reveal">Experiences</span>
+        <h2 class="reveal reveal-d1">MAKE IT YOURS.<em>Add any of these to your evening.</em></h2>
+      </div>
+
+      <div class="addons-grid">
+        <div class="addon-card reveal">
+          <div class="addon-header">
+            <span class="addon-name">Cooking Class</span>
+            <span class="addon-price">+&euro;45/person</span>
+          </div>
+          <p class="addon-desc">Learn three Moroccan dishes alongside your chef &mdash; tagine, couscous, pastry. Hands-on, side by side, with recipe cards to take the flavors home.</p>
+        </div>
+        <div class="addon-card reveal reveal-d1">
+          <div class="addon-header">
+            <span class="addon-name">Souk Tour with Chef</span>
+            <span class="addon-price">+&euro;35/person</span>
+          </div>
+          <p class="addon-desc">Walk the medina with your chef that morning. Pick your spices, taste your olives, watch bread pulled from a wood-fired oven. See where your dinner comes from.</p>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-header">
+            <span class="addon-name">Wine &amp; Cocktail Pairing</span>
+            <span class="addon-price">+&euro;20/person</span>
+          </div>
+          <p class="addon-desc">Three Moroccan wines and a signature cocktail &mdash; chosen to match each course. Morocco's wine country is one of Africa's best-kept secrets.</p>
+        </div>
+        <div class="addon-card reveal reveal-d1">
+          <div class="addon-header">
+            <span class="addon-name">Celebration Setup</span>
+            <span class="addon-price">+&euro;50</span>
+          </div>
+          <p class="addon-desc">Birthday. Anniversary. Proposal. Tell us the occasion &mdash; we'll handle the custom dessert, the flowers, the candles, and a table set for a moment worth remembering.</p>
+        </div>
+        <div class="addon-card reveal">
+          <div class="addon-header">
+            <span class="addon-name">Breakfast Next Morning</span>
+            <span class="addon-price">+&euro;18/person</span>
+          </div>
+          <p class="addon-desc">Wake up to a Moroccan morning. Freshly made msemen, warm baghrir, amlou, squeezed orange juice, and pastries &mdash; delivered to your villa door or cooked on-site.</p>
+        </div>
+        <div class="addon-card featured reveal">
+          <div class="addon-name">The Full Marrakech</div>
+          <div class="addon-featured-price">&euro;95<span>/person</span></div>
+          <p class="addon-featured-desc">The complete experience in one day. Shop the souk with your chef. Learn to cook three dishes. Sit down to a five-course feast on your terrace. Linger over mint tea under the stars. From the medina to your table &mdash; everything, in one price.</p>
+        </div>
+      </div>
+
+      <div class="multi-night reveal">
+        Book <strong>3+ nights</strong> and receive <strong>10% off</strong> your total. A different menu each evening &mdash; no dish repeated twice.
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE ANCHOR -->
+  <div class="value-section">
+    <div class="inner">
+      <span class="eyebrow reveal">The Comparison</span>
+      <h2 class="reveal reveal-d1" style="font-family:var(--font-display);font-size:clamp(32px,5vw,48px);color:var(--sand);text-transform:uppercase;line-height:1.1;letter-spacing:1px;margin-top:8px;">LESS THAN A RESTAURANT.<em style="font-family:var(--font-serif);font-style:italic;font-size:0.45em;color:var(--gold-light);display:block;text-transform:none;letter-spacing:0;margin-top:4px;">Better than one, too.</em></h2>
+      <p class="value-body reveal reveal-d2">A fine dining dinner in Marrakech runs &euro;60&ndash;150 per person. With La Table, a private chef comes to your villa &mdash; shops the souk that morning, cooks a multi-course feast, serves it course by course on your terrace, and cleans everything up.</p>
+      <div class="value-no reveal reveal-d2">NO TAXI. NO RESERVATION. NO WAITING. NO STRANGERS.</div>
+      <div class="value-from reveal reveal-d3">Starting from &euro;40 per person.</div>
+    </div>
+  </div>
+
+  <!-- PRICING FAQ -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow reveal">Questions</span>
+        <h2 class="reveal reveal-d1">QUESTIONS.<em>Answered.</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does pricing work?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Pricing is per person and covers everything &mdash; souk-fresh ingredients, multi-course preparation, table service, and full kitchen cleanup. Larger groups enjoy lower per-person rates. No hidden fees. The price you see is the price you pay.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does this compare to eating out?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Fine dining in Marrakech costs &euro;60&ndash;150 per person. With La Table, you get a private chef at your villa for less &mdash; and you don't share the terrace with strangers. Most guests tell us it's the highlight of their trip.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can we book multiple nights?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes &mdash; and you should. Book three or more dinners and receive 10% off your total. We create a completely different menu each evening so you experience the full depth of Moroccan cuisine.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What's included in the price?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Everything. Your chef sources fresh ingredients from the medina souk that morning, plans and customizes your menu, prepares a multi-course Moroccan feast, serves it course by course, and handles full kitchen cleanup. You just show up.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you accommodate dietary requirements?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Always. Vegan, gluten-free, kosher, halal, allergies &mdash; tell us when you book. Moroccan cuisine is naturally flexible, and your chef will adapt every dish.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What about holidays or special occasions?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We love them. Holiday bookings include a seasonal supplement &mdash; book early, as these dates fill fast. For birthdays, anniversaries, or proposals, add our Celebration Setup and we'll take care of every detail.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How far in advance should I book?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>72 hours is ideal. For peak season (October&ndash;April) or groups over 10, we recommend 1&ndash;2 weeks. For Christmas and New Year's Eve, book as early as you can.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if I need to cancel?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Free cancellation up to 48 hours before your booking. Within 48 hours, ingredient costs may apply. No-shows are charged at the full rate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="cta-final">
+    <h2 class="reveal">YOUR TABLE IS WAITING.<em>From &euro;40 per person.</em></h2>
+    <p class="cta-subtext reveal reveal-d1">200+ guests. 4.9 stars. One regret &mdash; not booking sooner.</p>
+    <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20La%20Table%20Marrakech" target="_blank" rel="noopener noreferrer" class="btn-primary reveal reveal-d2">Reserve Your Table</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-simple">
+    <p>&copy; 2026 <a href="/">La Table Marrakech</a> &middot; Private Chef Service &middot; Marrakech, Morocco</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Price tiers
+    function getRate(guests) {
+      if (guests <= 2) return 70;
+      if (guests <= 8) return 50;
+      if (guests <= 12) return 45;
+      return 40;
+    }
+
+    // View toggle
+    function switchView(view) {
+      document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+      document.getElementById('view-tiers').classList.remove('active');
+      document.getElementById('view-calculator').classList.remove('active');
+      if (view === 'tiers') {
+        document.querySelector('.view-toggle button:first-child').classList.add('active');
+        document.getElementById('view-tiers').classList.add('active');
+      } else {
+        document.querySelector('.view-toggle button:last-child').classList.add('active');
+        document.getElementById('view-calculator').classList.add('active');
+        updateCalc();
+      }
+    }
+
+    // Radio selection
+    function selectRadio(el) {
+      el.closest('.calc-radio-group').querySelectorAll('.calc-radio').forEach(r => r.classList.remove('selected'));
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+      const isFull = el.querySelector('input').value === 'full';
+      document.querySelectorAll('.calc-checkbox').forEach(cb => {
+        const addon = cb.querySelector('input').dataset.addon;
+        if (addon === 'cooking' || addon === 'souk') {
+          cb.style.opacity = isFull ? '0.4' : '1';
+          cb.style.pointerEvents = isFull ? 'none' : 'auto';
+          if (isFull) {
+            cb.classList.remove('checked');
+            cb.querySelector('input').checked = false;
+          }
+        }
+      });
+      updateCalc();
+    }
+
+    // Checkbox toggle
+    function toggleCheck(el) {
+      const input = el.querySelector('input');
+      input.checked = !input.checked;
+      el.classList.toggle('checked', input.checked);
+      updateCalc();
+    }
+
+    // Update calculator
+    function updateCalc() {
+      const guests = parseInt(document.getElementById('guestCount').value);
+      const experience = document.querySelector('input[name="experience"]:checked').value;
+      const rate = experience === 'full' ? 95 : getRate(guests);
+      const lines = [];
+      let total = 0;
+
+      const baseName = experience === 'full' ? 'The Full Marrakech' : 'Classic Dinner';
+      const baseTotal = rate * guests;
+      lines.push({ name: baseName + ' (' + guests + ' \u00D7 \u20AC' + rate + ')', amount: baseTotal });
+      total += baseTotal;
+
+      document.querySelectorAll('.calc-checkbox input:checked').forEach(input => {
+        const name = input.closest('.calc-checkbox').querySelector('.calc-check-text').textContent;
+        const perPerson = parseInt(input.dataset.perPerson || 0);
+        const flat = parseInt(input.dataset.flat || 0);
+        if (perPerson) {
+          const amt = perPerson * guests;
+          lines.push({ name: name, amount: amt });
+          total += amt;
+        } else if (flat) {
+          lines.push({ name: name, amount: flat });
+          total += flat;
+        }
+      });
+
+      const linesContainer = document.getElementById('calcLines');
+      linesContainer.innerHTML = lines.map(function(l) {
+        return '<div class="calc-line"><span>' + l.name + '</span><span>\u20AC' + l.amount + '</span></div>';
+      }).join('');
+
+      document.getElementById('calcTotal').textContent = '\u20AC' + total;
+      document.getElementById('calcPerPerson').textContent = '\u20AC' + Math.round(total / guests);
+
+      const msg = encodeURIComponent(
+        'Hello! I\'d like to book La Table Marrakech:\n\n' +
+        'Guests: ' + guests + '\n' +
+        'Experience: ' + baseName + '\n' +
+        lines.slice(1).map(function(l) { return 'Add-on: ' + l.name; }).join('\n') +
+        '\n\nEstimated total: \u20AC' + total + ' (\u20AC' + Math.round(total / guests) + '/person)\n\n' +
+        'Could you confirm availability?'
+      );
+      document.getElementById('calcCta').href = 'https://wa.me/212721354757?text=' + msg;
+    }
+
+    // FAQ toggle
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // Scroll reveal
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    // Initialize calculator
+    updateCalc();
+  </script>
+</body>
+</html>
