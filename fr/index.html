@@ -1069,6 +1069,118 @@
       pointer-events: none;
     }
 
+    /* ─── PRICING PREVIEW ─── */
+    .pricing-preview {
+      background: var(--ink-light);
+      border-top: 1px solid rgba(184, 147, 90, 0.06);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.06);
+    }
+    .pricing-preview .section-header { margin-bottom: 40px; }
+    .pricing-tiers-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 32px;
+    }
+    .pricing-tier {
+      background: var(--ink);
+      border: 1px solid rgba(184, 147, 90, 0.1);
+      padding: 28px 16px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pricing-tier:hover { border-color: rgba(184, 147, 90, 0.25); transform: translateY(-2px); }
+    .pricing-tier.popular { border-color: var(--gold); }
+    .pricing-tier.popular::before {
+      content: 'PLUS POPULAIRE';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    .pricing-tier-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+    .pricing-tier-guests {
+      font-size: 12px;
+      color: var(--sand-muted);
+      margin-bottom: 14px;
+    }
+    .pricing-tier-price {
+      font-family: var(--font-display);
+      font-size: 44px;
+      color: var(--sand);
+      line-height: 1;
+    }
+    .pricing-tier-unit {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--sand-muted);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .pricing-tier-cta {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      text-decoration: none;
+      padding: 8px 16px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .pricing-tier-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .pricing-tier-cta:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+    .pricing-tier-cta:active { transform: translateY(0); }
+    .pricing-preview-footer {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .pricing-preview-included {
+      font-size: 13px;
+      color: var(--sand-muted);
+      margin-bottom: 20px;
+    }
+    .pricing-preview-included span { color: var(--gold); }
+    .pricing-link {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ember);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(193, 98, 47, 0.3);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .pricing-link:hover { color: var(--ember-light); border-color: var(--ember-light); }
+    @media (max-width: 900px) {
+      .pricing-tiers-row { grid-template-columns: repeat(2, 1fr); max-width: 480px; }
+    }
+    @media (max-width: 480px) {
+      .pricing-tiers-row { grid-template-columns: repeat(2, 1fr); }
+      .pricing-tier { padding: 20px 12px; }
+      .pricing-tier-price { font-size: 36px; }
+    }
+
     /* ─── APP SECTION ─── */
     .app-section {
       background: var(--ink-light);
@@ -2104,6 +2216,50 @@
         <img loading="lazy" decoding="async" src="../sahara-nights-royal-couscous-560x300.jpg.webp" alt="Royal couscous with seven vegetables — a Moroccan Friday tradition">
       </div>
       <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-features',1)" aria-label="Next">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section class="pricing-preview" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow reveal">03 &middot; VOTRE TABLE</span>
+        <h2 class="reveal reveal-d1" style="font-family:var(--font-display);font-size:clamp(32px,4vw,48px);letter-spacing:3px;line-height:1;color:var(--sand);margin-bottom:8px;">VOTRE FESTIN. VOTRE PRIX.<em style="font-family:var(--font-serif);font-style:italic;font-size:0.5em;color:var(--gold-light);display:block;margin-top:4px;letter-spacing:2px;text-transform:none;">Par personne, tout compris.</em></h2>
+      </div>
+      <div class="pricing-tiers-row">
+        <div class="pricing-tier reveal">
+          <div class="pricing-tier-label">Intime</div>
+          <div class="pricing-tier-guests">2 convives</div>
+          <div class="pricing-tier-price">&euro;70</div>
+          <div class="pricing-tier-unit">/personne</div>
+          <a href="https://wa.me/212721354757?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20l'exp%C3%A9rience%20Intime%20pour%202%20convives%20(%E2%82%AC70%2Fpersonne).%20Quelles%20sont%20vos%20disponibilit%C3%A9s%20%3F" target="_blank" rel="noopener noreferrer" class="pricing-tier-cta">Réserver</a>
+        </div>
+        <div class="pricing-tier popular reveal reveal-d1">
+          <div class="pricing-tier-label">Rassemblement</div>
+          <div class="pricing-tier-guests">3&ndash;8 convives</div>
+          <div class="pricing-tier-price">&euro;50</div>
+          <div class="pricing-tier-unit">/personne</div>
+          <a href="https://wa.me/212721354757?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20l'exp%C3%A9rience%20Rassemblement%20pour%203-8%20convives%20(%E2%82%AC50%2Fpersonne).%20Quelles%20sont%20vos%20disponibilit%C3%A9s%20%3F" target="_blank" rel="noopener noreferrer" class="pricing-tier-cta">Réserver</a>
+        </div>
+        <div class="pricing-tier reveal reveal-d1">
+          <div class="pricing-tier-label">Célébration</div>
+          <div class="pricing-tier-guests">9&ndash;12 convives</div>
+          <div class="pricing-tier-price">&euro;45</div>
+          <div class="pricing-tier-unit">/personne</div>
+          <a href="https://wa.me/212721354757?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20l'exp%C3%A9rience%20C%C3%A9l%C3%A9bration%20pour%209-12%20convives%20(%E2%82%AC45%2Fpersonne).%20Quelles%20sont%20vos%20disponibilit%C3%A9s%20%3F" target="_blank" rel="noopener noreferrer" class="pricing-tier-cta">Réserver</a>
+        </div>
+        <div class="pricing-tier reveal reveal-d2">
+          <div class="pricing-tier-label">Grande Table</div>
+          <div class="pricing-tier-guests">13&ndash;20 convives</div>
+          <div class="pricing-tier-price">&euro;40</div>
+          <div class="pricing-tier-unit">/personne</div>
+          <a href="https://wa.me/212721354757?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20la%20Grande%20Table%20pour%2013-20%20convives%20(%E2%82%AC40%2Fpersonne).%20Quelles%20sont%20vos%20disponibilit%C3%A9s%20%3F" target="_blank" rel="noopener noreferrer" class="pricing-tier-cta">Réserver</a>
+        </div>
+      </div>
+      <div class="pricing-preview-footer reveal">
+        <p class="pricing-preview-included">Chaque réservation inclut : <span>ingrédients frais du souk</span> &middot; <span>menu multi-plats</span> &middot; <span>service à table</span> &middot; <span>nettoyage complet</span></p>
+        <a href="/fr/pricing/" class="pricing-link">Voir tous les tarifs, options &amp; calculateur &rarr;</a>
+      </div>
     </div>
   </section>
 
