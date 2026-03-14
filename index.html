@@ -258,13 +258,14 @@
   }
   </script>
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2QTMMMYLD"></script>
+  <!-- Google Analytics (GA4) + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18016239415"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-J2QTMMMYLD');
+    gtag('config', 'AW-18016239415');
   </script>
 
   <!-- META PIXEL — Replace XXXXXXX with your Pixel ID -->
@@ -2627,7 +2628,7 @@
     // Track all WhatsApp clicks as conversions
     document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
       link.addEventListener('click', function() {
-        // gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXX/ZZZZZZ' });
+        gtag('event', 'conversion', { 'send_to': 'AW-18016239415/GcryCOOr1IgcELf-545D' });
         // fbq('track', 'Contact', { content_name: 'WhatsApp Click' });
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'whatsapp_click', link_url: this.href });
