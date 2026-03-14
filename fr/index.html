@@ -258,14 +258,34 @@
   }
   </script>
 
-  <!-- Google Analytics (GA4) + Google Ads -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18016239415"></script>
+  <!-- CONSENT MODE V2 (must load before gtag) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // Restore consent if previously accepted
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
+  </script>
+
+  <!-- Google Analytics (GA4) + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18016239415"></script>
+  <script>
     gtag('js', new Date());
     gtag('config', 'G-J2QTMMMYLD');
-    gtag('config', 'AW-18016239415');
+    gtag('config', 'AW-18016239415', { 'allow_enhanced_conversions': true });
   </script>
 
   <!-- META PIXEL — Replace XXXXXXX with your Pixel ID -->
@@ -2889,10 +2909,23 @@
     /* ─── CONVERSION TRACKING HELPERS ─── */
     // Fires on booking form submit
     document.querySelector('.form-grid').addEventListener('submit', function() {
-      // Google Ads conversion (uncomment when live)
-      // gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXX/YYYYYY', 'value': 85, 'currency': 'EUR' });
-      // Meta Pixel (uncomment when live)
-      // fbq('track', 'Lead', { content_name: 'Booking Request', currency: 'EUR', value: 85 });
+      // Enhanced Conversions: send hashed user data
+      var emailField = this.querySelector('input[type="email"]');
+      var nameField = this.querySelector('input[name="bname"]') || this.querySelector('input[type="text"]');
+      if (emailField && emailField.value) {
+        gtag('set', 'user_data', {
+          'email': emailField.value.trim().toLowerCase(),
+          'first_name': nameField ? nameField.value.trim() : undefined
+        });
+      }
+
+      // Google Ads conversion — booking form submit
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18016239415/GcryCOOr1IgcELf-545D',
+        'value': 85,
+        'currency': 'EUR'
+      });
+
       // DataLayer event for GTM
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'booking_submit', booking_guests: this.bguests.value, booking_date: this.bdate.value });
@@ -2937,10 +2970,22 @@
     function acceptCookies() {
       localStorage.setItem('cookie_consent', 'accepted');
       document.getElementById('cookieBanner').classList.remove('show');
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
     }
     function declineCookies() {
       localStorage.setItem('cookie_consent', 'declined');
       document.getElementById('cookieBanner').classList.remove('show');
+      gtag('consent', 'update', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
     }
 
     /* ─── LEGAL MODALS ─── */
