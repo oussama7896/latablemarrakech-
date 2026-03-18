@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18017405402"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18017405402');
+  </script>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@1,300&family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1080px;height:1080px;overflow:hidden;background:#080604;}
+.wrap{
+  width:1080px;height:1080px;
+  background:radial-gradient(ellipse at center,#1a0f06 0%,#080604 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;gap:0;
+}
+
+/* outer glow */
+.wrap::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(193,98,47,.09),transparent);
+  pointer-events:none;
+}
+
+/* border frame */
+.frame{
+  position:absolute;inset:50px;
+  border:1px solid rgba(184,147,90,.28);
+  pointer-events:none;
+}
+/* corner accents */
+.frame::before,.frame::after{
+  content:'';position:absolute;
+  width:60px;height:60px;
+  border-color:#D4AA70;border-style:solid;opacity:.8;
+}
+.frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px;}
+.frame::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+.corner-tr,.corner-bl{
+  position:absolute;width:60px;height:60px;
+  border-color:#D4AA70;border-style:solid;opacity:.8;
+}
+.corner-tr{top:-1px;right:-1px;border-width:2px 2px 0 0;}
+.corner-bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px;}
+
+/* ── top ornament ── */
+.top-ornament{
+  display:flex;align-items:center;gap:0;
+  width:820px;margin-bottom:38px;
+}
+.orn-line{flex:1;height:1px;background:linear-gradient(to var(--dir,right),transparent,rgba(184,147,90,.55));}
+.orn-line.right{--dir:left;}
+.orn-diamond{
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;
+}
+.orn-diamond svg{width:52px;height:52px;}
+
+/* ── LA ── */
+.la{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:108px;line-height:1;
+  color:#F0E6D0;letter-spacing:.28em;
+  margin-bottom:4px;
+}
+
+/* thin rule */
+.thin-rule{
+  width:700px;height:1px;
+  background:linear-gradient(to right,transparent,rgba(184,147,90,.4),transparent);
+  margin-bottom:4px;
+}
+
+/* ── TABLE ── */
+.table{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:176px;line-height:1;
+  color:#F0E6D0;letter-spacing:.09em;
+  margin-bottom:0;
+}
+
+/* ── mid divider ── */
+.mid-divider{
+  display:flex;align-items:center;gap:0;
+  width:880px;margin:18px 0 20px;
+}
+.mid-line{flex:1;height:1.5px;background:linear-gradient(to var(--dir2,right),transparent,#D4AA70);}
+.mid-line.r{--dir2:left;}
+.mid-center{
+  width:28px;height:28px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.mid-center::before{
+  content:'';position:absolute;
+  width:24px;height:24px;border-radius:50%;
+  border:1.5px solid #C1622F;background:#080604;
+}
+.mid-center::after{
+  content:'';position:absolute;
+  width:11px;height:11px;border-radius:50%;
+  background:#C1622F;
+}
+.mid-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(184,147,90,.4);flex-shrink:0;
+  margin:0 14px;
+}
+
+/* ── MARRAKECH ── */
+.marrakech{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;
+  font-size:80px;line-height:1;
+  color:#D4AA70;letter-spacing:.17em;
+  margin-bottom:22px;
+}
+
+/* ── subtitle ── */
+.sub-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  margin-bottom:22px;
+}
+.sub-rule{
+  width:480px;height:1px;
+  background:linear-gradient(to right,transparent,rgba(184,147,90,.4),transparent);
+}
+.subtitle{
+  font-family:'DM Mono',monospace;
+  font-size:22px;font-weight:300;
+  color:#5C5040;letter-spacing:.45em;
+  text-transform:uppercase;
+}
+
+/* ── website ── */
+.website{
+  font-family:'DM Mono',monospace;
+  font-size:18px;font-weight:300;
+  color:#2e2218;letter-spacing:.22em;
+  margin-bottom:42px;
+}
+
+/* ── bottom ornament ── */
+.bottom-ornament{
+  display:flex;align-items:center;gap:0;
+  width:820px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="frame">
+    <div class="corner-tr"></div>
+    <div class="corner-bl"></div>
+  </div>
+
+  <!-- TOP ORNAMENT -->
+  <div class="top-ornament">
+    <div class="orn-line"></div>
+    <div class="orn-diamond">
+      <svg viewBox="0 0 52 52" fill="none">
+        <polygon points="26,4 48,26 26,48 4,26" fill="none" stroke="#B8935A" stroke-width="1.2" opacity="0.5"/>
+        <polygon points="26,10 42,26 26,42 10,26" fill="none" stroke="#C1622F" stroke-width="1.2" opacity="0.85"/>
+        <polygon points="26,16 36,26 26,36 16,26" fill="#C1622F"/>
+        <circle cx="26" cy="26" r="4" fill="#F0E6D0" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="orn-line right"></div>
+  </div>
+
+  <!-- LA -->
+  <div class="la">LA</div>
+
+  <div class="thin-rule"></div>
+
+  <!-- TABLE -->
+  <div class="table">TABLE</div>
+
+  <!-- MID DIVIDER -->
+  <div class="mid-divider">
+    <div class="mid-line"></div>
+    <div class="mid-dot"></div>
+    <div class="mid-center"></div>
+    <div class="mid-dot"></div>
+    <div class="mid-line r"></div>
+  </div>
+
+  <!-- MARRAKECH -->
+  <div class="marrakech">Marrakech</div>
+
+  <!-- SUBTITLE -->
+  <div class="sub-wrap">
+    <div class="sub-rule"></div>
+    <div class="subtitle">Private Chef Service</div>
+    <div class="sub-rule"></div>
+  </div>
+
+  <!-- WEBSITE -->
+  <div class="website">latablemarrakech.com</div>
+
+  <!-- BOTTOM ORNAMENT -->
+  <div class="bottom-ornament">
+    <div class="orn-line"></div>
+    <div class="orn-diamond">
+      <svg viewBox="0 0 52 52" fill="none">
+        <polygon points="26,8 44,26 26,44 8,26" fill="none" stroke="#B8935A" stroke-width="1.2" opacity="0.4"/>
+        <polygon points="26,15 37,26 26,37 15,26" fill="#C1622F" opacity="0.55"/>
+      </svg>
+    </div>
+    <div class="orn-line right"></div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8935A;stop-opacity:0"/>
+      <stop offset="25%" style="stop-color:#B8935A;stop-opacity:0.8"/>
+      <stop offset="75%" style="stop-color:#B8935A;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#B8935A;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8935A;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#B8935A;stop-opacity:0.35"/>
+      <stop offset="70%" style="stop-color:#B8935A;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#B8935A;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="320" fill="#080604"/>
+
+  <!-- Top rule lines -->
+  <line x1="60" y1="82" x2="252" y2="82" stroke="url(#g1)" stroke-width="0.8"/>
+  <line x1="348" y1="82" x2="540" y2="82" stroke="url(#g1)" stroke-width="0.8"/>
+
+  <!-- Top center diamond -->
+  <polygon points="300,66 314,80 300,94 286,80" fill="none" stroke="#C1622F" stroke-width="1.6"/>
+  <polygon points="300,72 309,80 300,88 291,80" fill="#C1622F"/>
+
+  <!-- Flanking dots top -->
+  <circle cx="268" cy="82" r="2" fill="#B8935A" opacity="0.5"/>
+  <circle cx="332" cy="82" r="2" fill="#B8935A" opacity="0.5"/>
+  <circle cx="258" cy="82" r="1.2" fill="#B8935A" opacity="0.25"/>
+  <circle cx="342" cy="82" r="1.2" fill="#B8935A" opacity="0.25"/>
+
+  <!-- LA TABLE — main wordmark -->
+  <text
+    x="300"
+    y="182"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="88"
+    font-weight="700"
+    fill="#F0E6D0"
+    text-anchor="middle"
+    letter-spacing="12"
+    style="font-variant:small-caps"
+  >LA TABLE</text>
+
+  <!-- Mid ornament line left -->
+  <line x1="40" y1="200" x2="225" y2="200" stroke="url(#g2)" stroke-width="0.7"/>
+  <!-- Mid ornament line right -->
+  <line x1="375" y1="200" x2="560" y2="200" stroke="url(#g2)" stroke-width="0.7"/>
+  <!-- Center ember dot -->
+  <circle cx="300" cy="200" r="5" fill="#C1622F"/>
+  <!-- Inner white dot -->
+  <circle cx="300" cy="200" r="2" fill="#F0E6D0" opacity="0.6"/>
+  <!-- Flanking dots mid -->
+  <circle cx="270" cy="200" r="2" fill="#B8935A" opacity="0.4"/>
+  <circle cx="330" cy="200" r="2" fill="#B8935A" opacity="0.4"/>
+
+  <!-- MARRAKECH — italic serif -->
+  <text
+    x="300"
+    y="244"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-style="italic"
+    font-weight="400"
+    fill="#D4AA70"
+    text-anchor="middle"
+    letter-spacing="9"
+  >Marrakech</text>
+
+  <!-- Subtitle -->
+  <text
+    x="300"
+    y="270"
+    font-family="'Courier New', Courier, monospace"
+    font-size="10"
+    fill="#4A3A2A"
+    text-anchor="middle"
+    letter-spacing="8"
+  >PRIVATE CHEF SERVICE</text>
+
+  <!-- Bottom rule lines -->
+  <line x1="60" y1="288" x2="252" y2="288" stroke="url(#g2)" stroke-width="0.7"/>
+  <line x1="348" y1="288" x2="540" y2="288" stroke="url(#g2)" stroke-width="0.7"/>
+
+  <!-- Bottom diamond -->
+  <polygon points="300,281 307,288 300,295 293,288" fill="none" stroke="#B8935A" stroke-width="0.9" opacity="0.4"/>
+
+</svg>

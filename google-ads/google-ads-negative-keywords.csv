@@ -1,0 +1,86 @@
+Negative keyword list,Keyword,Match type
+Jobs & Careers,chef jobs,Phrase
+Jobs & Careers,chef job,Phrase
+Jobs & Careers,hiring chef,Phrase
+Jobs & Careers,chef salary,Phrase
+Jobs & Careers,chef career,Phrase
+Jobs & Careers,chef employment,Phrase
+Jobs & Careers,chef vacancy,Phrase
+Jobs & Careers,chef resume,Phrase
+Jobs & Careers,chef cv,Phrase
+Jobs & Careers,work as chef,Phrase
+Jobs & Careers,become a chef,Phrase
+Jobs & Careers,chef training,Phrase
+Jobs & Careers,culinary school,Phrase
+Jobs & Careers,chef course,Phrase
+Jobs & Careers,chef apprenticeship,Phrase
+Jobs & Careers,emploi chef,Phrase
+Jobs & Careers,offre emploi,Phrase
+Jobs & Careers,recrutement chef,Phrase
+Jobs & Careers,salaire chef,Phrase
+Jobs & Careers,formation chef,Phrase
+Recipes & DIY,recipe,Phrase
+Recipes & DIY,recipes,Phrase
+Recipes & DIY,how to cook,Phrase
+Recipes & DIY,how to make,Phrase
+Recipes & DIY,ingredients,Phrase
+Recipes & DIY,tutorial,Phrase
+Recipes & DIY,cooking video,Phrase
+Recipes & DIY,step by step,Phrase
+Recipes & DIY,homemade,Phrase
+Recipes & DIY,easy recipe,Phrase
+Recipes & DIY,recette,Phrase
+Recipes & DIY,recettes,Phrase
+Recipes & DIY,comment faire,Phrase
+Recipes & DIY,comment cuisiner,Phrase
+Recipes & DIY,fait maison,Phrase
+Recipes & DIY,ingrédients,Phrase
+Other Cities,casablanca chef,Phrase
+Other Cities,rabat chef,Phrase
+Other Cities,fes chef,Phrase
+Other Cities,tangier chef,Phrase
+Other Cities,agadir chef,Phrase
+Other Cities,essaouira chef,Phrase
+Other Cities,paris chef,Phrase
+Other Cities,london chef,Phrase
+Other Cities,dubai chef,Phrase
+Other Cities,chef casablanca,Phrase
+Other Cities,chef rabat,Phrase
+Other Cities,chef fes,Phrase
+Other Cities,chef tanger,Phrase
+Other Cities,chef agadir,Phrase
+Free & Cheap,free,Exact
+Free & Cheap,cheap,Phrase
+Free & Cheap,budget,Phrase
+Free & Cheap,discount,Phrase
+Free & Cheap,coupon,Phrase
+Free & Cheap,promo code,Phrase
+Free & Cheap,deal,Phrase
+Free & Cheap,gratuit,Phrase
+Free & Cheap,pas cher,Phrase
+Free & Cheap,bon marché,Phrase
+Free & Cheap,réduction,Phrase
+Free & Cheap,promotion,Phrase
+Restaurants & Dining Out,restaurant marrakech,Phrase
+Restaurants & Dining Out,best restaurant,Phrase
+Restaurants & Dining Out,restaurant review,Phrase
+Restaurants & Dining Out,food delivery,Phrase
+Restaurants & Dining Out,takeaway,Phrase
+Restaurants & Dining Out,uber eats,Phrase
+Restaurants & Dining Out,glovo,Phrase
+Restaurants & Dining Out,reservation restaurant,Phrase
+Restaurants & Dining Out,menu restaurant,Phrase
+Restaurants & Dining Out,livraison repas,Phrase
+Restaurants & Dining Out,meilleur restaurant,Phrase
+Irrelevant Services,cleaning service,Phrase
+Irrelevant Services,maid service,Phrase
+Irrelevant Services,hotel chef,Phrase
+Irrelevant Services,chef knife,Phrase
+Irrelevant Services,chef hat,Phrase
+Irrelevant Services,chef uniform,Phrase
+Irrelevant Services,chef coat,Phrase
+Irrelevant Services,kitchen equipment,Phrase
+Irrelevant Services,cooking class,Phrase
+Irrelevant Services,cours de cuisine,Phrase
+Irrelevant Services,atelier cuisine,Phrase
+Irrelevant Services,cooking workshop,Phrase
