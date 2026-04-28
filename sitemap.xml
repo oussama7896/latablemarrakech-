@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ============== HOMEPAGE (multilingual cluster) ============== -->
   <url>
     <loc>https://latablemarrakech.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/"/>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -17,7 +19,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/"/>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,8 +29,192 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/"/>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- ============== CORE PAGES (homepage section split) ============== -->
+  <url>
+    <loc>https://latablemarrakech.com/the-experience/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/how-it-works/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/faq/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/contact/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/about-our-chef/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/pricing/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/menus/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/areas-we-serve/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/privacy/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- ============== HIGH-INTENT MONEY PAGES (top-level, EN) ============== -->
+  <url>
+    <loc>https://latablemarrakech.com/private-chef-cost-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/private-chef-cost-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/chef-prive-prix-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/private-chef-cost-marrakech/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/marrakech-villa-with-private-chef/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/marrakech-villa-with-private-chef/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/villa-marrakech-chef-prive/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/marrakech-villa-with-private-chef/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/cours-de-cuisine-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ============== FR MONEY PAGES (top-level, FR cluster) ============== -->
+  <url>
+    <loc>https://latablemarrakech.com/fr/chef-prive-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/chef-prive-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/fr/chef-prive-prix-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/chef-prive-prix-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/private-chef-cost-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/private-chef-cost-marrakech/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/fr/chef-a-domicile-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/chef-a-domicile-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/fr/villa-marrakech-chef-prive/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/villa-marrakech-chef-prive/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/marrakech-villa-with-private-chef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/marrakech-villa-with-private-chef/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/fr/cours-de-cuisine-marrakech/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/cours-de-cuisine-marrakech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/"/>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ============== SERVICE PAGES (topical authority) ============== -->
+  <url>
+    <loc>https://latablemarrakech.com/services/wedding-dinner-marrakech/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/services/corporate-dining-marrakech/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ============== BLOG ============== -->
+  <url>
+    <loc>https://latablemarrakech.com/blog/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/blog/marrakech-medina-market-guide/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/blog/private-chef-cost-marrakech/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/blog/how-to-hire-a-private-chef-marrakech/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/blog/best-moroccan-dishes-to-try/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://latablemarrakech.com/blog/seasonal-ingredients-market-guide-marrakech/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

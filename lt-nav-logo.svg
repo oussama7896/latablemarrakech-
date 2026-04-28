@@ -1,0 +1,8 @@
+<svg viewBox="0 0 520 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="25,53 33,61 25,69 17,61" fill="none" stroke="#C1622F" stroke-width="1.2"/>
+  <polygon points="25,57 30,61 25,65 20,61" fill="#C1622F"/>
+  <text x="48" y="73" font-family="'Bebas Neue','Arial Black',Impact,sans-serif" font-size="48" fill="#F0E6D0" letter-spacing="4" font-weight="900">LA TABLE</text>
+  <line x1="248" y1="38" x2="248" y2="83" stroke="#B8935A" stroke-width="0.7" opacity="0.55"/>
+  <text x="262" y="55" font-family="'Libre Baskerville',Georgia,serif" font-size="15" font-style="italic" fill="#D4AA70" letter-spacing="2.5">Marrakech</text>
+  <text x="262" y="75" font-family="'DM Mono',Courier,monospace" font-size="7" fill="#B0A48A" letter-spacing="3.5">PRIVATE CHEF SERVICE</text>
+</svg>
