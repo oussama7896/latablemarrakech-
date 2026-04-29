@@ -1,68 +1,38 @@
-# =============================================================================
-# La Table Marrakech — robots.txt
-# Canonical host: https://latablemarrakech.com (apex, HTTPS)
-# Mixed HTTP/HTTPS duplicates are eliminated at the redirect layer (vercel.json
-# / .htaccess). This file just tells crawlers where the canonical sitemap is.
-# =============================================================================
+# robots.txt for La Table Marrakech
+# https://latablemarrakech.com
+# Last updated: 2026-04-29
 
+# Allow all reputable crawlers
 User-agent: *
 Allow: /
-Disallow: /temporary screenshots/
-Disallow: /google-ads/
-Disallow: /*.zip$
-Disallow: /*?utm_*
-Disallow: /*?gclid=*
-Disallow: /*?fbclid=*
 
-# AI search bots — explicitly allowed for citation in AI answers
+# Disallow internal/utility paths
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /*.json$
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+
+# Block AI scrapers that don't drive traffic
 User-agent: GPTBot
-Allow: /
+Disallow: /
 
-User-agent: ChatGPT-User
-Allow: /
+User-agent: CCBot
+Disallow: /
 
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
+# Allow AI crawlers that drive citations
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
 User-agent: Google-Extended
 Allow: /
 
-User-agent: Applebot
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# Block bulk training-only crawlers (not search engines)
-User-agent: CCBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: ImagesiftBot
-Disallow: /
-
-# Canonical sitemap (HTTPS, apex only)
+# Sitemap location
 Sitemap: https://latablemarrakech.com/sitemap.xml

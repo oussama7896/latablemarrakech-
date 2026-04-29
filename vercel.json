@@ -4,61 +4,176 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.latablemarrakech.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.latablemarrakech.com"
+        }
+      ],
       "destination": "https://latablemarrakech.com/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "header", "key": "x-forwarded-proto", "value": "http" }],
+      "has": [
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ],
       "destination": "https://latablemarrakech.com/$1",
       "permanent": true
     },
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/fr/index.html", "destination": "/fr/", "permanent": true },
-    { "source": "/ar/index.html", "destination": "/ar/", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/index.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/index.html",
+      "destination": "/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/private-chef-cost-marrakech/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/private-chef-cost-marrakech/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/private-chef-cost-marrakech/",
+      "destination": "/private-chef-cost-marrakech/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/private-chef-cost-marrakech",
+      "destination": "/private-chef-cost-marrakech/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-moroccan-dishes-to-try/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/best-moroccan-dishes-to-try",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seasonal-ingredients-market-guide-marrakech/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seasonal-ingredients-market-guide-marrakech",
+      "destination": "/blog/",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "interest-cohort=(), camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "interest-cohort=(), camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/(.*).mp4",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*).webp",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*).jpg",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*).png",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*).svg",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*).woff2",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/index.html",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/sitemap.xml",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
     }
   ]
 }
