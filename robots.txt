@@ -2,13 +2,11 @@
 # https://latablemarrakech.com
 # Last updated: 2026-04-29
 
-# Allow all reputable crawlers
 User-agent: *
 Allow: /
 
-# Disallow internal/utility paths
-Disallow: /cgi-bin/
-Disallow: /tmp/
+Disallow: /api/
+Disallow: /_next/
 Disallow: /*.json$
 Disallow: /*?*utm_
 Disallow: /*?*fbclid
@@ -34,5 +32,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Sitemap location
 Sitemap: https://latablemarrakech.com/sitemap.xml

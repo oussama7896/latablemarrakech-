@@ -1,83 +1,30 @@
 {
-  "cleanUrls": true,
   "trailingSlash": true,
+  "cleanUrls": true,
   "redirects": [
     {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.latablemarrakech.com"
-        }
-      ],
-      "destination": "https://latablemarrakech.com/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-forwarded-proto",
-          "value": "http"
-        }
-      ],
-      "destination": "https://latablemarrakech.com/$1",
-      "permanent": true
-    },
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/index.html",
-      "destination": "/fr/",
-      "permanent": true
-    },
-    {
-      "source": "/ar/index.html",
-      "destination": "/ar/",
-      "permanent": true
-    },
-    {
-      "source": "/pricing/",
-      "destination": "/private-chef-cost-marrakech/",
-      "permanent": true
-    },
-    {
       "source": "/pricing",
-      "destination": "/private-chef-cost-marrakech/",
-      "permanent": true
-    },
-    {
-      "source": "/blog/private-chef-cost-marrakech/",
-      "destination": "/private-chef-cost-marrakech/",
+      "destination": "/private-chef-cost-marrakech",
       "permanent": true
     },
     {
       "source": "/blog/private-chef-cost-marrakech",
-      "destination": "/private-chef-cost-marrakech/",
-      "permanent": true
-    },
-    {
-      "source": "/blog/best-moroccan-dishes-to-try/",
-      "destination": "/blog/",
+      "destination": "/private-chef-cost-marrakech",
       "permanent": true
     },
     {
       "source": "/blog/best-moroccan-dishes-to-try",
-      "destination": "/blog/",
+      "destination": "/blog",
       "permanent": true
     },
     {
-      "source": "/blog/seasonal-ingredients-market-guide-marrakech/",
-      "destination": "/blog/",
+      "source": "/blog/villa-dining-vs-restaurant-marrakech",
+      "destination": "/blog",
       "permanent": true
     },
     {
-      "source": "/blog/seasonal-ingredients-market-guide-marrakech",
-      "destination": "/blog/",
+      "source": "/blog/planning-dinner-party-marrakech-villa",
+      "destination": "/blog",
       "permanent": true
     }
   ],
@@ -86,8 +33,8 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=63072000; includeSubDomains; preload"
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-Content-Type-Options",
@@ -99,12 +46,12 @@
         },
         {
           "key": "Permissions-Policy",
-          "value": "interest-cohort=(), camera=(), microphone=(), geolocation=()"
+          "value": "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
         }
       ]
     },
     {
-      "source": "/(.*).mp4",
+      "source": "/(.*)\\.(jpg|jpeg|png|webp|avif|svg|ico|woff|woff2|ttf)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -113,7 +60,7 @@
       ]
     },
     {
-      "source": "/(.*).webp",
+      "source": "/(.*)\\.(css|js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -122,56 +69,11 @@
       ]
     },
     {
-      "source": "/(.*).jpg",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).png",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).svg",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*).woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/index.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
