@@ -9,7 +9,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -50,6 +50,7 @@
   ]
 }
 </script>
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
   <main style="max-width:980px;margin:0 auto">

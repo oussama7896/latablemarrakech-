@@ -5,7 +5,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -192,6 +192,7 @@
       color: var(--sand);
     }
   </style>
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
 

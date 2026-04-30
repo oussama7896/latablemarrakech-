@@ -399,7 +399,7 @@
 
   <!-- CONSENT MODE V2 (must load before gtag) -->
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer | [];
     function gtag(){dataLayer.push(arguments);}
     gtag('consent', 'default', {
       'ad_storage': 'denied',
@@ -422,7 +422,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -1160,6 +1160,7 @@ p, .lead {
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
   <!-- SKIP TO CONTENT (accessibility) -->

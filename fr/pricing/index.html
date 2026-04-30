@@ -12,7 +12,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -39,6 +39,7 @@
   <!-- PERF:GTAG-LAZY END -->
   <style>body{font-family:Karla,Helvetica,Arial,sans-serif;background:#080604;color:#F0E6D0;margin:0;padding:24px}</style>
   <!-- PERF:FOOTER-PRICING-FIXED -->
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
   <main style="max-width:980px;margin:0 auto">

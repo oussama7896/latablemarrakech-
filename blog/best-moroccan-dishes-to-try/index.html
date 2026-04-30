@@ -11,7 +11,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -37,6 +37,7 @@
   </script>
   <!-- PERF:GTAG-LAZY END -->
   <style>body{font-family:Karla,Helvetica,Arial,sans-serif;background:#080604;color:#F0E6D0;margin:0;padding:24px;line-height:1.7}main{max-width:820px;margin:0 auto}h1{font-family:'Bebas Neue',sans-serif;color:#D4AA70}</style>
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
   <main>
@@ -76,7 +77,7 @@
     <h2>Tips for ordering with a private chef</h2>
     <p>Communicate spice preferences, request family-style sharing platters for variety, and ask the chef to design a seasonal menu based on what's best in the market that day.</p>
 
-    <p><a href="/menus/">See Menus</a> • <a href="/#booking">Book a Chef</a></p>
+    <p><a href="/menus/">See Menus</a><a href="/#booking">Book a Chef</a></p>
   </main>
 </body>
 </html>

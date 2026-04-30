@@ -5,7 +5,7 @@
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -197,6 +197,7 @@
   <link rel="canonical" href="https://latablemarrakech.com/privacy/">
   <!-- SEO:CANONICAL-BLOCK END -->
     <!-- PERF:PRIVACY-UPDATED -->
+  <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
 <body>
 

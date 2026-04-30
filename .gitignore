@@ -18,3 +18,4 @@ screenshot-helper.html
 screenshot.py
 images-original-backup/
 *.bak
+_deleted-*/
