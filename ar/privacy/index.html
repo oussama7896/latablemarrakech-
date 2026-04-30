@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-18017405402"></script>
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on user interaction -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
-    gtag('js', new Date());
-
-    gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+    (function() {
+      var loaded = false;
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        var s1 = document.createElement('script');
+        s1.async = true;
+        s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+        document.head.appendChild(s1);
+        s1.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-J2QTMMMYLD');
+          gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+        };
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 3000);
+    })();
   </script>
+  <!-- PERF:GTAG-LAZY END -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

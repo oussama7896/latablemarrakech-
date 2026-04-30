@@ -8,7 +8,7 @@
 
   <!-- PRELOAD CRITICAL ASSETS -->
   <link rel="preload" href="/morocco-tagine-berber-560x300.jpg.webp" as="image" fetchpriority="high">
-  <link rel="preload" href="/private-chef-marrakech-tagine.webp" as="image">
+  <!-- PERF:HERO-PRELOAD --><link rel="preload" as="image" href="/private-chef-marrakech-tagine.webp" fetchpriority="high" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Karla:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -418,13 +418,30 @@
     }
   </script>
 
-  <!-- Google Analytics (GA4) + Google Ads -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-18017405402"></script>
-  <script defer>
-    gtag('js', new Date());
-    gtag('config', 'G-J2QTMMMYLD');
-    gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on user interaction -->
+  <script>
+    (function() {
+      var loaded = false;
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        var s1 = document.createElement('script');
+        s1.async = true;
+        s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+        document.head.appendChild(s1);
+        s1.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-J2QTMMMYLD');
+          gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+        };
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 3000);
+    })();
   </script>
+  <!-- PERF:GTAG-LAZY END -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

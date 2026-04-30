@@ -7,7 +7,7 @@
   <meta http-equiv="Cache-Control" content="public, max-age=31536000">
 
   <!-- PRELOAD CRITICAL ASSETS -->
-  <link rel="preload" href="../private-chef-marrakech-tagine.webp" as="image">
+  <!-- PERF:HERO-PRELOAD --><link rel="preload" as="image" href="/private-chef-marrakech-tagine.webp" fetchpriority="high" type="image/webp">
 
 
   <!-- HREFLANG -->
@@ -275,13 +275,30 @@
     }
   </script>
 
-  <!-- Google Analytics (GA4) + Google Ads (deferred for faster first paint) -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-18017405402"></script>
-  <script defer>
-    gtag('js', new Date());
-    gtag('config', 'G-J2QTMMMYLD');
-    gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on user interaction -->
+  <script>
+    (function() {
+      var loaded = false;
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        var s1 = document.createElement('script');
+        s1.async = true;
+        s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+        document.head.appendChild(s1);
+        s1.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-J2QTMMMYLD');
+          gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+        };
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 3000);
+    })();
   </script>
+  <!-- PERF:GTAG-LAZY END -->
 
   <!-- META PIXEL — Replace XXXXXXX with your Pixel ID -->
   <!-- <script>
@@ -296,8 +313,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Noto+Sans+Arabic:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- PERF:CSS-PRELOAD START — single async stylesheet load -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Noto+Sans+Arabic:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Karla:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Noto+Sans+Arabic:wght@400;700&display=swap"></noscript>
+  <!-- PERF:CSS-PRELOAD END -->
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -2070,10 +2089,14 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="../private-chef-marrakech-tagine.webp" aria-label="Chef preparing Moroccan dishes in a Marrakech villa kitchen">
-      <source src="../hero-video.mp4" type="video/mp4">
-      <track kind="captions" src="../hero-video.vtt" label="Arabic">
-    </video>
+    <!-- PERF:HERO-IMG START — replaces autoplay video on mobile -->
+    <img class="hero-video" id="heroPoster"
+         src="/private-chef-marrakech-tagine.webp"
+         alt="Private chef in Marrakech serving a multi-course Moroccan tagine dinner at a villa terrace"
+         width="736" height="1050"
+         fetchpriority="high"
+         decoding="async">
+    <!-- PERF:HERO-IMG END -->
     <div class="hero-video-overlay"></div>
     <div class="hero-bg"></div>
     <div class="hero-pattern"></div>
@@ -3095,5 +3118,44 @@
     });
   </script>
 
+
+<!-- PERF:VIDEO-LAZY START — desktop-only hero video, loads after page is interactive -->
+<script>
+(function() {
+  if (window.innerWidth < 1024) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (navigator.connection && (navigator.connection.saveData ||
+      ['slow-2g', '2g', '3g'].includes(navigator.connection.effectiveType))) return;
+  function loadHeroVideo() {
+    var poster = document.getElementById('heroPoster');
+    if (!poster) return;
+    var video = document.createElement('video');
+    video.className = 'hero-video';
+    video.autoplay = true; video.muted = true; video.loop = true;
+    video.playsInline = true; video.preload = 'auto';
+    video.setAttribute('aria-label', 'Chef preparing Moroccan dishes in a Marrakech villa kitchen');
+    var source = document.createElement('source');
+    source.src = '/hero-video.mp4'; source.type = 'video/mp4';
+    video.appendChild(source);
+    video.style.opacity = '0';
+    video.style.transition = 'opacity 0.6s';
+    video.addEventListener('canplay', function() {
+      poster.parentNode.insertBefore(video, poster);
+      requestAnimationFrame(function() {
+        video.style.opacity = '1';
+        setTimeout(function() {
+          if (poster.parentNode) poster.parentNode.removeChild(poster);
+        }, 700);
+      });
+    }, { once: true });
+  }
+  if (document.readyState === 'complete') {
+    setTimeout(loadHeroVideo, 1000);
+  } else {
+    window.addEventListener('load', function() { setTimeout(loadHeroVideo, 1000); });
+  }
+})();
+</script>
+<!-- PERF:VIDEO-LAZY END -->
 </body>
 </html>
