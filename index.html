@@ -2050,7 +2050,7 @@
         <a href="#about" data-i18n="nav_experience">THE EXPERIENCE</a>
         <a href="#how" data-i18n="nav_how">HOW IT WORKS</a>
         <a href="#faqs" data-i18n="nav_faq">FAQ</a>
-        <a href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="nav-whatsapp" title="WhatsApp us">
+        <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="nav-whatsapp" title="WhatsApp us">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span>+212 721 354 757</span>
         </a>
@@ -2088,20 +2088,44 @@
     <div class="container hero-inner">
       <div class="hero-text">
         <span class="eyebrow reveal" data-i18n="hero_eyebrow">PRIVATE CHEF SERVICE &middot; MARRAKECH</span>
-        <h1 class="reveal reveal-d1" data-i18n="hero_h1">Private Chef Marrakech.<em>Your table.</em></h1>
-        <p class="reveal reveal-d2" data-i18n="hero_p">Your chef shops the medina that morning. By evening, a multi-course Moroccan feast is waiting on your terrace.</p>
+        <h1 class="reveal reveal-d1" data-i18n="hero_h1">Your villa. Your table. <em>Your chef.</em></h1>
+        <p class="reveal reveal-d2" data-i18n="hero_p">A multi-course Moroccan dinner at your riad or villa &mdash; souk-fresh that morning, cooked in your kitchen, served on your terrace. From &euro;85 per person, all-in. Booked in one WhatsApp message.</p>
         <div class="hero-cta-row reveal reveal-d2">
-          <a href="#booking" class="btn-primary" data-i18n="hero_cta">RESERVE YOUR TABLE</a>
-          <a href="#about" class="btn-ghost" data-i18n="hero_ghost">THE EXPERIENCE</a>
+          <a href="#booking" class="btn-primary" data-i18n="hero_cta">Reserve your table</a>
+          <a href="#how" class="btn-ghost" data-i18n="hero_ghost">See how it works</a>
         </div>
+        <ul class="hero-bullets reveal reveal-d2" style="list-style:none;padding:0;margin:24px 0 0;text-align:left;display:inline-block;">
+          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Souk shopping, multi-course menu, full cleanup &mdash; all included</li>
+          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Riad, villa, terrace, pool, desert &mdash; wherever you're staying</li>
+          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Confirmed in 24 hours via WhatsApp</li>
+        </ul>
       </div>
     </div>
     <div class="scroll-indicator"></div>
   </section>
 
+  <!-- MICRO TRUST STRIP -->
+  <section class="lt-trust-strip" style="padding:24px 20px;background:#0f0a05;border-top:1px solid rgba(184,147,90,0.12);border-bottom:1px solid rgba(184,147,90,0.12);">
+    <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;text-align:center;max-width:1100px;margin:0 auto;">
+      <a href="https://www.google.com/search?q=La+Table+Marrakech+reviews" target="_blank" rel="noopener" class="trust-item" style="text-decoration:none;color:inherit;">
+        <strong style="display:block;color:#d4a574;font-family:var(--font-display);letter-spacing:0.05em;font-size:1rem;">&#9733; 4.9 / 5</strong>
+        <span style="color:#a89882;font-size:13px;letter-spacing:0.01em;">From 200+ villa guests</span>
+      </a>
+      <div class="trust-item">
+        <strong style="display:block;color:#d4a574;font-family:var(--font-display);letter-spacing:0.05em;font-size:1rem;">From &euro;85 / person</strong>
+        <span style="color:#a89882;font-size:13px;letter-spacing:0.01em;">All-in. No hidden fees.</span>
+      </div>
+      <div class="trust-item">
+        <strong style="display:block;color:#d4a574;font-family:var(--font-display);letter-spacing:0.05em;font-size:1rem;">Confirmed in 24h</strong>
+        <span style="color:#a89882;font-size:13px;letter-spacing:0.01em;">One WhatsApp message</span>
+      </div>
+    </div>
+  </section>
+
+
   <!-- AI-EXTRACTABLE DEFINITION (visually hidden, crawlable) -->
   <div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;" aria-hidden="true">
-    <p>La Table Marrakech is a private chef service based in Marrakech, Morocco. A personal chef shops for fresh ingredients at the medina souk each morning and cooks a multi-course Moroccan feast — including tagine, pastilla, couscous, and mint tea — at your villa or riad. The service includes menu planning, ingredient sourcing, cooking, table service, and full kitchen cleanup. Prices start from €85 per day for up to 10 guests. La Table Marrakech has a 4.9/5 rating from over 200 guest reviews. The service accommodates dietary restrictions including vegan, gluten-free, kosher, and halal. Booking requires 72 hours advance notice, with confirmation via WhatsApp within 24 hours.</p>
+    <p>La Table Marrakech is a private chef service based in Marrakech, Morocco. A personal chef shops for fresh ingredients at the medina souk each morning and cooks a multi-course Moroccan feast — including tagine, pastilla, couscous, and mint tea — at your villa or riad. The service includes menu planning, ingredient sourcing, cooking, table service, and full kitchen cleanup. Prices start from €85 per person, minimum 2 guests. La Table Marrakech has a 4.9/5 rating from over 200 guest reviews. The service accommodates dietary restrictions including vegan, gluten-free, kosher, and halal. Booking requires 72 hours advance notice, with confirmation via WhatsApp within 24 hours.</p>
   </div>
 
   <!-- TRUSTED -->
@@ -2126,60 +2150,6 @@
     </div>
   </section>
 
-  <!-- BOOKING -->
-  <section class="booking" id="booking">
-    <div class="container booking-inner">
-      <div class="booking-form reveal reveal-d1">
-        <span class="eyebrow" data-i18n="book_eyebrow" style="margin-bottom:16px;display:block;">RESERVE YOUR EXPERIENCE</span>
-        <h2 data-i18n="book_h2">BOOK YOUR TABLE<em>Pick a date. We handle the rest.</em></h2>
-        <p data-i18n="book_p">Choose your preferred date, time, and number of guests. Our team will confirm within 24 hours via WhatsApp.</p>
-        <form class="form-grid" onsubmit="event.preventDefault(); window.open('https://wa.me/212721354757?text='+encodeURIComponent('Booking Request:\nName: '+this.bname.value+'\nEmail: '+this.bemail.value+'\nDate: '+this.bdate.value+'\nTime: '+this.btime.value+'\nGuests: '+this.bguests.value+'\nNotes: '+this.bnotes.value),'_blank');">
-          <div class="form-group">
-            <label data-i18n="book_name_label">YOUR NAME</label>
-            <input type="text" name="bname" placeholder="Full name" required>
-          </div>
-          <div class="form-group">
-            <label data-i18n="book_email_label">YOUR EMAIL</label>
-            <input type="email" name="bemail" placeholder="email@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="bguests" data-i18n="book_guests_label">GUESTS</label>
-            <select id="bguests" name="bguests">
-              <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
-              <option>9</option><option>10</option><option>12</option><option>15</option><option>20</option><option>25</option><option>30+</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="bdate" data-i18n="book_date_label">DATE</label>
-            <input type="date" id="bdate" name="bdate" required>
-          </div>
-          <div class="form-group">
-            <label for="btime" data-i18n="book_time_label">PREFERRED TIME</label>
-            <select id="btime" name="btime">
-              <option>08:00 - Breakfast</option>
-              <option>09:00 - Breakfast</option>
-              <option>10:00 - Brunch</option>
-              <option>11:00 - Brunch</option>
-              <option>12:00 - Lunch</option>
-              <option>13:00 - Lunch</option>
-              <option>18:00 - Dinner</option>
-              <option>19:00 - Dinner</option>
-              <option selected>20:00 - Dinner</option>
-              <option>21:00 - Dinner</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label data-i18n="book_notes_label">SPECIAL REQUESTS / ALLERGIES</label>
-            <textarea name="bnotes" placeholder="Dietary restrictions, occasion, preferences..."></textarea>
-          </div>
-          <div class="form-group full">
-            <button type="submit" class="btn-primary" data-i18n="book_submit">SEND BOOKING REQUEST VIA WHATSAPP</button>
-            <p style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:10px;text-align:center;" data-i18n="book_note">YOU'LL BE REDIRECTED TO WHATSAPP TO CONFIRM &middot; MINIMUM 2 GUESTS</p>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <!-- ABOUT -->
   <section class="about" id="about">
@@ -2259,7 +2229,7 @@
   <div class="inline-cta">
     <p data-i18n="cta_test">200+ guests. 4.9 stars. One regret — not booking sooner.</p>
     <a href="#booking" class="btn-primary" data-i18n="cta_test_btn">BOOK YOUR CHEF</a>
-    <a href="https://wa.me/212721354757" target="_blank" class="btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WHATSAPP US</a>
+    <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757" target="_blank" class="btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WHATSAPP US</a>
   </div>
 
   <!-- FEATURES -->
@@ -2342,39 +2312,61 @@
       </ol>
     </div>
   </section>
-
-  <!-- CTA AFTER HOW IT WORKS -->
-  <div class="inline-cta">
-    <p data-i18n="cta_how">Three steps. Zero stress. One unforgettable evening.</p>
-    <a href="#booking" class="btn-primary" data-i18n="cta_how_btn">RESERVE YOUR TABLE</a>
-    <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20experience" target="_blank" class="btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>ASK A QUESTION</a>
-  </div>
-
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <div class="cta-inner">
-      <div class="cta-image">
-        <img loading="lazy" decoding="async" src="moroccan-feast-villa-terrace.webp" alt="Moroccan feast spread on a candle-lit villa terrace in Marrakech at sunset">
-      </div>
-      <div class="cta-content">
-        <span class="eyebrow reveal" data-i18n="cta_eyebrow">DON'T LEAVE MARRAKECH WITHOUT THIS</span>
-        <h2 class="reveal reveal-d1" data-i18n="cta_h2">YOUR TABLE IS WAITING</h2>
-        <p class="reveal reveal-d2" data-i18n="cta_p">The meal your trip will be remembered for. A private chef, fresh souk ingredients, your villa terrace.</p>
-        <a href="#booking" class="btn-primary reveal reveal-d2" data-i18n="cta_btn">BOOK YOUR CHEF</a>
+  <!-- BOOKING -->
+  <section class="booking" id="booking">
+    <div class="container booking-inner">
+      <div class="booking-form reveal reveal-d1">
+        <span class="eyebrow" data-i18n="book_eyebrow" style="margin-bottom:16px;display:block;">RESERVE YOUR EXPERIENCE</span>
+        <h2 data-i18n="book_h2">BOOK YOUR TABLE<em>Pick a date. We handle the rest.</em></h2>
+        <p data-i18n="book_p">Choose your preferred date, time, and number of guests. Our team will confirm within 24 hours via WhatsApp.</p>
+        <form class="form-grid" onsubmit="event.preventDefault(); window.open('https://wa.me/212721354757?text='+encodeURIComponent('Booking Request:\nName: '+this.bname.value+'\nEmail: '+this.bemail.value+'\nDate: '+this.bdate.value+'\nTime: '+this.btime.value+'\nGuests: '+this.bguests.value+'\nNotes: '+this.bnotes.value),'_blank');">
+          <div class="form-group">
+            <label data-i18n="book_name_label">Your name</label>
+            <input type="text" name="bname" placeholder="First and last name" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="book_email_label">Email</label>
+            <input type="email" name="bemail" placeholder="email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="bguests" data-i18n="book_guests_label">Number of guests</label>
+            <select id="bguests" name="bguests">
+              <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9</option><option>10</option><option>12</option><option>15</option><option>20</option><option>25</option><option>30+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bdate" data-i18n="book_date_label">Preferred date</label>
+            <input type="date" id="bdate" name="bdate" required>
+            <script>document.getElementById('bdate').min=new Date().toISOString().split('T')[0];</script>
+          </div>
+          <div class="form-group">
+            <label for="btime" data-i18n="book_time_label">Preferred time</label>
+            <select id="btime" name="btime">
+              <option>08:00 - Breakfast</option>
+              <option>09:00 - Breakfast</option>
+              <option>10:00 - Brunch</option>
+              <option>11:00 - Brunch</option>
+              <option>12:00 - Lunch</option>
+              <option>13:00 - Lunch</option>
+              <option>18:00 - Dinner</option>
+              <option>19:00 - Dinner</option>
+              <option selected>20:00 - Dinner</option>
+              <option>21:00 - Dinner</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label data-i18n="book_notes_label">Special requests or allergies</label>
+            <textarea name="bnotes" placeholder="Anniversary, birthday, dietary needs, anything we should know."></textarea>
+          </div>
+          <div class="form-group full">
+            <button type="submit" class="btn-primary" data-i18n="book_submit">Send booking request via WhatsApp</button>
+            <p style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:10px;text-align:center;" data-i18n="book_note">We confirm within 24 hours &middot; Minimum 2 guests &middot; 72h notice</p>
+          </div>
+        </form>
       </div>
     </div>
   </section>
-
-  <!-- REVIEWS -->
-  <section class="reviews">
-    <div class="container">
-      <a href="https://www.google.com/search?q=La+Table+Marrakech+reviews" target="_blank" rel="noopener" class="reviews-badge" style="text-decoration:none;cursor:pointer;transition:border-color 0.3s;">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span data-i18n="reviews_text"><strong>4.9/5</strong> &middot; 200+ reviews on <strong>Google</strong></span>
-      </a>
-    </div>
-  </section>
-
   <!-- FAQs -->
   <section class="faqs" id="faqs">
     <div class="container">
@@ -2458,13 +2450,54 @@
       </div>
     </div>
   </section>
-
   <!-- CTA AFTER FAQ -->
   <div class="inline-cta" style="padding:20px 24px;background:var(--ink);border-top:1px solid rgba(184,147,90,0.12);">
     <p data-i18n="cta_faq">Still have questions? We're just a message away.</p>
-    <a href="https://wa.me/212721354757?text=Hi%2C%20I%20have%20a%20question%20about%20La%20Table%20Marrakech" target="_blank" class="btn-whatsapp" style="margin-bottom:12px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>CHAT WITH US</a>
+    <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757?text=Hi%2C%20I%20have%20a%20question%20about%20La%20Table%20Marrakech" target="_blank" class="btn-whatsapp" style="margin-bottom:12px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>CHAT WITH US</a>
     <a href="#booking" class="btn-primary" data-i18n="cta_faq_btn">BOOK YOUR TABLE</a>
   </div>
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-inner">
+      <div class="cta-image">
+        <img loading="lazy" decoding="async" src="moroccan-feast-villa-terrace.webp" alt="Moroccan feast spread on a candle-lit villa terrace in Marrakech at sunset">
+      </div>
+      <div class="cta-content">
+        <span class="eyebrow reveal" data-i18n="cta_eyebrow">DON'T LEAVE MARRAKECH WITHOUT THIS</span>
+        <h2 class="reveal reveal-d1" data-i18n="cta_h2">YOUR TABLE IS WAITING</h2>
+        <p class="reveal reveal-d2" data-i18n="cta_p">The meal your trip will be remembered for. A private chef, fresh souk ingredients, your villa terrace.</p>
+        <a href="#booking" class="btn-primary reveal reveal-d2" data-i18n="cta_btn">BOOK YOUR CHEF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE FROM LA TABLE MARRAKECH -->
+  <section class="more-links" style="padding:60px 20px;background:#0f0a05;color:#e8d9c0;">
+    <div class="container" style="max-width:900px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin-bottom:30px;">More from La Table Marrakech</h2>
+      <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;text-align:left;">
+        <li><a href="/private-chef-cost-marrakech/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">How much does a private chef cost in Marrakech?</a></li>
+        <li><a href="/marrakech-villa-with-private-chef/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">Choosing a Marrakech villa with a private chef</a></li>
+        <li><a href="/marrakech-cooking-class-vs-private-chef/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">Cooking class vs private chef &mdash; which to choose?</a></li>
+        <li><a href="/blog/marrakech-medina-market-guide/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">A morning at the medina souk with our chef</a></li>
+        <li><a href="/services/wedding-dinner-marrakech/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">Private chef for weddings in Marrakech</a></li>
+        <li><a href="/services/corporate-dining-marrakech/" style="color:#d4a574;text-decoration:none;border-bottom:1px solid #443;padding-bottom:8px;display:block;">Corporate dining in Marrakech</a></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- CTA AFTER HOW IT WORKS -->
+  <div class="inline-cta">
+    <p data-i18n="cta_how">Three steps. Zero stress. One unforgettable evening.</p>
+    <a href="#booking" class="btn-primary" data-i18n="cta_how_btn">RESERVE YOUR TABLE</a>
+    <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20experience" target="_blank" class="btn-whatsapp"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>ASK A QUESTION</a>
+  </div>
+
+
+  <!-- REVIEWS -->
+
+
 
   </main>
 
@@ -2479,42 +2512,24 @@
             <span class="nav-logo-divider"></span>
             <span class="nav-logo-sub">Marrakech</span>
           </a>
-          <p data-i18n="footer_desc">Private chef service in Marrakech. Fresh souk ingredients, a multi-course feast at your villa, and full cleanup. From &euro;85 per person.</p>
+          <p data-i18n="footer_desc" style="font-size:13px;line-height:1.6;color:var(--muted);">La Table Marrakech brings fine-dining-level Moroccan cuisine to your villa or riad &mdash; souk-fresh, cooked at your place, with everything handled from shopping to cleanup.</p>
           <a href="#booking" class="btn-primary" style="margin-top:16px;font-size:10px;padding:10px 20px;" data-i18n="footer_book_btn">BOOK YOUR TABLE</a>
         </div>
         <div class="footer-col">
           <h3 data-i18n="footer_explore">EXPLORE</h3>
-          <a href="/the-experience/" data-i18n="footer_exp">The Experience</a>
-          <a href="/how-it-works/" data-i18n="footer_how">How It Works</a>
-          <a href="/menus/" data-i18n="footer_menus">Menus</a>
-          <a href="/faq/" data-i18n="footer_faq">FAQ</a>
-          <a href="/contact/" data-i18n="footer_contact_link">Contact</a>
-          <a href="/areas-we-serve/" data-i18n="footer_areas">Areas We Serve</a>
-          <a href="#testimonials" data-i18n="footer_stories">Guest Stories</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer_services">SERVICES &amp; GUIDES</h3>
-          <a href="/pricing/" data-i18n="footer_pricing">Pricing</a>
-          <a href="/private-chef-cost-marrakech/" data-i18n="footer_cost">Private Chef Cost</a>
-          <a href="/services/wedding-dinner-marrakech/" data-i18n="footer_wedding">Wedding Dinners</a>
-          <a href="/services/corporate-dining-marrakech/" data-i18n="footer_corp">Corporate Dining</a>
-          <a href="/marrakech-villa-with-private-chef/" data-i18n="footer_villa">Villas with a Private Chef</a>
-          <a href="/marrakech-cooking-class-vs-private-chef/" data-i18n="footer_class">Cooking Class vs Private Chef</a>
-          <a href="/blog/marrakech-medina-market-guide/" data-i18n="footer_blog_market">Medina Market Guide</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer_fr">FRANÇAIS</h3>
-          <a href="/fr/chef-prive-marrakech/" hreflang="fr">Chef privé Marrakech</a>
-          <a href="/fr/chef-prive-prix-marrakech/" hreflang="fr">Tarifs chef privé</a>
-          <a href="/fr/chef-a-domicile-marrakech/" hreflang="fr">Chef à domicile</a>
-          <a href="/fr/villa-marrakech-chef-prive/" hreflang="fr">Villa avec chef privé</a>
-          <a href="/fr/cours-de-cuisine-marrakech/" hreflang="fr">Cours de cuisine</a>
-        </div>
+          <a href="/">Home</a>
+          <a href="/private-chef-cost-marrakech/">Pricing</a>
+          <a href="/marrakech-villa-with-private-chef/">Villa dining</a>
+          <a href="/marrakech-cooking-class-vs-private-chef/">Class vs chef</a>
+          <a href="/services/wedding-dinner-marrakech/">Weddings</a>
+          <a href="/services/corporate-dining-marrakech/">Corporate</a>
+          <a href="/blog/">Journal</a>
+          </div>
         <div class="footer-col">
           <h3 data-i18n="footer_contact">CONTACT</h3>
           <a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a>
           <a href="tel:+212721354757">+212 721 354 757</a>
-          <a href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="/contact/" data-i18n="footer_contact_page">Contact Page</a>
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1.5px;display:block;margin-top:8px;" data-i18n="footer_d1">Marrakech, Morocco</span>
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:1.5px;display:block;" data-i18n="footer_d3">Minimum 2 Guests &middot; 72h Notice</span>
@@ -2524,23 +2539,23 @@
         <p>&copy; 2026 LA TABLE MARRAKECH</p>
         <p style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
           <a href="/privacy/" style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--sand)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer_privacy">PRIVACY POLICY</a>
-          <a href="#" onclick="openLegalModal('terms');return false;" style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--sand)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer_terms">TERMS OF SERVICE</a>
+          
         </p>
         <p data-i18n="footer_tagline">PRIVATE CHEF SERVICE &middot; MARRAKECH, MOROCCO</p>
-        <p style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:8px;">LAST UPDATED: MARCH 2026</p>
+        
       </div>
     </div>
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20experience%20in%20Marrakech" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat on WhatsApp">
+  <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20chef%20experience%20in%20Marrakech" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat on WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <!-- STICKY MOBILE BAR -->
   <div class="sticky-mobile-bar">
     <a href="#booking" class="btn-primary" data-i18n="mobile_book">BOOK NOW</a>
-    <a href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="btn-wa-sm" aria-label="WhatsApp">
+    <a data-event="whatsapp_click" data-location="home" href="https://wa.me/212721354757" target="_blank" rel="noopener noreferrer" class="btn-wa-sm" aria-label="WhatsApp">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
   </div>
@@ -2819,5 +2834,25 @@
 })();
 </script>
 <!-- PERF:VIDEO-LAZY END -->
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>

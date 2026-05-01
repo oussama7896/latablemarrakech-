@@ -176,7 +176,7 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       <a href="/services/corporate-dining-marrakech/">Corporate</a>
       <a href="/blog/">Journal</a>
     </div>
-    <a href="https://wa.me/212721354757" rel="noopener" class="btn">
+    <a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757" rel="noopener" class="btn">
       Reserve <span class="btn__diamond" aria-hidden="true"></span>
     </a>
   </nav>
@@ -196,7 +196,14 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
 
   <section class="article-body">
     <div class="wrap--narrow">
-      <p class="lead">Short answer: a private chef in Marrakech is <strong>&euro;85 per person</strong> at La Table Marrakech &mdash; menu, souk shopping, multi-course cooking, table service and full kitchen cleanup all included. Minimum 2 guests. Below is the long answer: what you&rsquo;re actually paying for, what you&rsquo;re not, and how the price stacks up against a top Marrakech restaurant.</p>
+      <p class="lead">Marrakech&rsquo;s best fine-dining rooms &mdash; Mamounia, Le Jardin, Nomad &mdash; sit in the &euro;60&ndash;120 per-person range. A private chef at <strong>&euro;85 per person</strong> sits squarely in that band. The difference: the room is yours, the menu was sketched around your group at the souk that morning, and the wine is whatever bottle you brought. Souk shopping, cooking, service, and full cleanup are all included. No service charge. No minimum bar spend.</p>
+
+      <figure style="margin:32px 0;">
+        <img src="/moroccan-feast-villa-terrace.webp"
+             alt="Multi-course Moroccan dinner served on a Marrakech villa terrace at sunset"
+             loading="lazy" decoding="async"
+             style="width:100%;height:auto;border-radius:6px;display:block;">
+      </figure>
 
       <div class="ornament-hr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 14 14"><polygon points="7,0 14,7 7,14 0,7"/><polygon class="solid" points="7,3 11,7 7,11 3,7"/></svg></div>
 
@@ -207,21 +214,71 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       <h2>Total cost <span class="serif-italic">by group size</span></h2>
       <p>Most of our guests travel in groups of 2 to 10 &mdash; couples on a long weekend, families, small parties. Here&rsquo;s the maths laid out simply.</p>
 
-      <div class="price-table-wrap">
-        <table class="price-table">
-          <thead>
-            <tr><th>Group size</th><th>Per person</th><th>Total price</th><th>Comparison</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>2 guests</td><td class="highlight">&euro;85 pp</td><td>&euro;170</td><td>Same as one mid-range restaurant dinner for two with drinks</td></tr>
-            <tr><td>4 guests</td><td class="highlight">&euro;85 pp</td><td>&euro;340</td><td>Below one night at Le Jardin or Nomad with starters &amp; wine</td></tr>
-            <tr><td>6 guests</td><td class="highlight">&euro;85 pp</td><td>&euro;510</td><td>Below La Mamounia tasting menu for the same group</td></tr>
-            <tr><td>8 guests</td><td class="highlight">&euro;85 pp</td><td>&euro;680</td><td>Same range as a fine-dining riad restaurant evening</td></tr>
-            <tr><td>10 guests</td><td class="highlight">&euro;85 pp</td><td>&euro;850</td><td>The room and the menu are yours alone</td></tr>
-            <tr><td>12&ndash;19 guests</td><td>&euro;85 pp</td><td>From &euro;1,020</td><td>1 extra service staff included for larger groups</td></tr>
-            <tr><td>20+ guests (event tier)</td><td>From &euro;60 pp</td><td>From &euro;1,200</td><td>Wedding / event package &mdash; full brigade, custom quote</td></tr>
-          </tbody>
-        </table>
+      <div class="tier-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:32px 0;">
+
+        <article class="tier-card" style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;padding:28px;background:rgba(15,10,5,0.4);display:flex;flex-direction:column;">
+          <header style="margin-bottom:16px;">
+            <span class="eyebrow" style="color:#C1622F;font-size:11px;letter-spacing:0.15em;display:block;margin-bottom:8px;">&diams; TIER 1</span>
+            <h3 style="font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.04em;margin:0;">Intimate Dinner</h3>
+            <p style="color:var(--lt-gold-light);margin:6px 0 0;font-size:1.15rem;"><strong>From &euro;85 per person</strong></p>
+            <p style="color:var(--lt-muted);margin:4px 0 0;font-size:14px;">2&ndash;4 guests &middot; One evening</p>
+          </header>
+          <ul style="list-style:none;padding:0;margin:0 0 16px;flex-grow:1;">
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Multi-course menu (5 courses)</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Souk shopping that morning</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Cooking, service, full cleanup</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Mint tea ceremony to finish</li>
+          </ul>
+          <blockquote style="font-style:italic;font-family:var(--font-serif,Georgia);color:var(--lt-sand,#e8d9c0);font-size:14px;line-height:1.55;border-left:2px solid #C1622F;padding:8px 14px;margin:0;">
+            &ldquo;Better than any restaurant we tried in Marrakech. The pacing, the courses, the privacy of our terrace &mdash; exactly what we wanted for our anniversary.&rdquo;
+            <cite style="display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--lt-muted);">&mdash; James W., London</cite>
+          </blockquote>
+          <a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20to%20book%20an%20intimate%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D." target="_blank" rel="noopener" class="btn" style="display:inline-block;margin-top:18px;">Book an intimate dinner &mdash; WhatsApp</a>
+        </article>
+
+        <article class="tier-card" style="border:1px solid rgba(193,98,47,0.5);border-radius:6px;padding:28px;background:rgba(15,10,5,0.55);display:flex;flex-direction:column;position:relative;">
+          <span style="position:absolute;top:-10px;right:18px;background:#C1622F;color:#fff;padding:3px 12px;font-size:10px;letter-spacing:0.18em;font-family:var(--font-mono,monospace);">MOST POPULAR</span>
+          <header style="margin-bottom:16px;">
+            <span class="eyebrow" style="color:#C1622F;font-size:11px;letter-spacing:0.15em;display:block;margin-bottom:8px;">&diams; TIER 2</span>
+            <h3 style="font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.04em;margin:0;">Villa Gathering</h3>
+            <p style="color:var(--lt-gold-light);margin:6px 0 0;font-size:1.15rem;"><strong>From &euro;85 per person</strong></p>
+            <p style="color:var(--lt-muted);margin:4px 0 0;font-size:14px;">5&ndash;12 guests &middot; Villa or riad</p>
+          </header>
+          <ul style="list-style:none;padding:0;margin:0 0 16px;flex-grow:1;">
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Multi-course menu, customised to your group</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Souk shopping that morning</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Cooking, plating, table service</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Wine pairing on request</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Full kitchen cleanup</li>
+          </ul>
+          <blockquote style="font-style:italic;font-family:var(--font-serif,Georgia);color:var(--lt-sand,#e8d9c0);font-size:14px;line-height:1.55;border-left:2px solid #C1622F;padding:8px 14px;margin:0;">
+            &ldquo;We rented a Palmeraie villa for 8 and brought La Table in three nights of seven. Every dinner was different, every one was better than the last.&rdquo;
+            <cite style="display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--lt-muted);">&mdash; Sophie &amp; Marc, Lyon</cite>
+          </blockquote>
+          <a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20villa%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D." target="_blank" rel="noopener" class="btn" style="display:inline-block;margin-top:18px;">Book a villa dinner &mdash; WhatsApp</a>
+        </article>
+
+        <article class="tier-card" style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;padding:28px;background:rgba(15,10,5,0.4);display:flex;flex-direction:column;">
+          <header style="margin-bottom:16px;">
+            <span class="eyebrow" style="color:#C1622F;font-size:11px;letter-spacing:0.15em;display:block;margin-bottom:8px;">&diams; TIER 3</span>
+            <h3 style="font-family:var(--font-display);font-size:1.6rem;letter-spacing:0.04em;margin:0;">Celebration &amp; Event</h3>
+            <p style="color:var(--lt-gold-light);margin:6px 0 0;font-size:1.15rem;"><strong>From &euro;60 per person</strong></p>
+            <p style="color:var(--lt-muted);margin:4px 0 0;font-size:14px;">13&ndash;30+ guests &middot; Weddings, retreats, milestones</p>
+          </header>
+          <ul style="list-style:none;padding:0;margin:0 0 16px;flex-grow:1;">
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Custom menu design with the chef</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Full brigade &mdash; chef + service staff</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Souk shopping + premium produce options</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Setup, service, complete cleanup</li>
+            <li style="margin:8px 0;font-size:14px;line-height:1.5;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Live cooking station available (add-on)</li>
+          </ul>
+          <blockquote style="font-style:italic;font-family:var(--font-serif,Georgia);color:var(--lt-sand,#e8d9c0);font-size:14px;line-height:1.55;border-left:2px solid #C1622F;padding:8px 14px;margin:0;">
+            &ldquo;Twenty-two of us, our wedding rehearsal night, every dietary restriction handled without a hitch. The lamb mechoui was the moment of the trip.&rdquo;
+            <cite style="display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--lt-muted);">&mdash; Rachel &amp; David, Manchester</cite>
+          </blockquote>
+          <a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20to%20plan%20a%20celebration%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Type%20of%20event%3A%20%5B%5D." target="_blank" rel="noopener" class="btn" style="display:inline-block;margin-top:18px;">Plan your celebration &mdash; WhatsApp</a>
+        </article>
+
       </div>
 
       <p style="font-size:14px;color:var(--lt-muted);max-width:680px"><em>Wine, spirits and any premium add-ons (live cooking station, pastry chef, additional service staff beyond the standard) are quoted on top. Minimum 2 guests &mdash; no charge for empty seats.</em></p>
@@ -264,6 +321,13 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       <p>Most bookings happen in 4 messages: date, headcount, dietary needs, address. We confirm in 24 hours, you pay 50% on confirmation, balance on the night. Stripe, wire, Apple Pay, or Visa/Mastercard.</p>
       <p>For larger groups (weddings, retreats, incentive trips), see our <a href="/services/wedding-dinner-marrakech/">wedding chef page</a> or <a href="/services/corporate-dining-marrakech/">corporate dining page</a> &mdash; both quote in EUR or USD with VAT-compliant invoicing.</p>
 
+      <figure style="margin:40px 0;">
+        <img src="/chef-cooking-marrakech-kitchen.webp"
+             alt="Private chef plating tagine in a Marrakech villa kitchen"
+             loading="lazy" decoding="async"
+             style="width:100%;height:auto;border-radius:6px;display:block;">
+      </figure>
+
       <h2>FAQ</h2>
       <h3 class="faq-q">Are taxes and service charges included in the &euro;85 per person?</h3>
       <p>Yes. The &euro;85 per person is the all-in number. No separate service charge, no minimum bar spend, no per-course add-on. Minimum 2 guests.</p>
@@ -272,7 +336,7 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       <p>From &euro;1,200 for 20 guests in our event tier (separate from the &euro;85/pp standard rate), scaling per guest from there. <a href="/services/wedding-dinner-marrakech/">Full wedding pricing here.</a></p>
 
       <h3 class="faq-q">Do you charge extra for last-minute bookings?</h3>
-      <p>No surcharge. Last-minute (under 48 hours) is regularly possible &mdash; <a href="https://wa.me/212721354757" rel="noopener">message us on WhatsApp</a> and we&rsquo;ll let you know if a chef is free.</p>
+      <p>No surcharge. Last-minute (under 48 hours) is regularly possible &mdash; <a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757" rel="noopener">message us on WhatsApp</a> and we&rsquo;ll let you know if a chef is free.</p>
 
       <h3 class="faq-q">What if I want a chef for multiple nights?</h3>
       <p>&euro;85 per person, per night. A 3-night booking for 6 guests is &euro;1,530 total, and we design a different menu for each night &mdash; mezze night, tagine night, royal couscous Friday. Many of our return guests do exactly this.</p>
@@ -286,15 +350,15 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
     <span class="eyebrow eyebrow--ember"><span class="dot" aria-hidden="true"></span> Confirmed in 24 hours</span>
     <h2 class="display display--md" style="color:var(--lt-sand)">Get a custom quote.<br><span class="serif-italic section__italic">It really is one WhatsApp away.</span></h2>
     <p class="lead">Tell us the date, the headcount, the dietaries. We reply with a draft menu and an exact price &mdash; usually inside 24 hours.</p>
-    <a class="btn btn--lg" href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20a%20private%20chef%20quote.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D" rel="noopener">WhatsApp the chef <span class="btn__diamond" aria-hidden="true"></span></a>
+    <a data-event="whatsapp_click" data-location="pricing" class="btn btn--lg" href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20a%20private%20chef%20quote.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D" rel="noopener">WhatsApp the chef <span class="btn__diamond" aria-hidden="true"></span></a>
   </section>
 
   <footer class="site-footer">
     <div class="wrap site-footer__grid">
-      <div><img class="site-footer__brand" src="/lt-brand-mark.svg" alt="La Table Marrakech" width="220" height="168" loading="lazy" decoding="async"></div>
+      <div><img class="site-footer__brand" src="/lt-brand-mark.svg" alt="La Table Marrakech" width="220" height="168" loading="lazy" decoding="async"><p class="site-footer__brand-sentence" style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--lt-muted,#a89882);">La Table Marrakech brings fine-dining-level Moroccan cuisine to your villa or riad &mdash; souk-fresh, cooked at your place, with everything handled from shopping to cleanup.</p></div>
       <div><span class="eyebrow eyebrow--gold">&#9830; Find us</span><p class="site-footer__lines">Derb Jdid 14<br>Medina, Marrakech 40000<br>Morocco</p></div>
-      <div><span class="eyebrow eyebrow--gold">&#9830; Write to us</span><p class="site-footer__lines"><a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a><br><a href="https://wa.me/212721354757" rel="noopener">+212 721 354 757</a><br>WhatsApp &middot; replies in ~30min</p></div>
-      <div><span class="eyebrow eyebrow--gold">&#9830; Explore</span><p class="site-footer__lines"><a href="/">Home</a><br><a href="/marrakech-villa-with-private-chef/">Villa dining</a><br><a href="/marrakech-cooking-class-vs-private-chef/">Class vs chef</a><br><a href="/services/wedding-dinner-marrakech/">Weddings</a></p></div>
+      <div><span class="eyebrow eyebrow--gold">&#9830; Write to us</span><p class="site-footer__lines"><a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a><br><a data-event="whatsapp_click" data-location="pricing" href="https://wa.me/212721354757" rel="noopener">+212 721 354 757</a><br>WhatsApp &middot; replies in ~30min</p></div>
+      <div><span class="eyebrow eyebrow--gold">&#9830; Explore</span><p class="site-footer__lines"><a href="/">Home</a><br><a href="/private-chef-cost-marrakech/">Pricing</a><br><a href="/marrakech-villa-with-private-chef/">Villa dining</a><br><a href="/marrakech-cooking-class-vs-private-chef/">Class vs chef</a><br><a href="/services/wedding-dinner-marrakech/">Weddings</a><br><a href="/services/corporate-dining-marrakech/">Corporate</a><br><a href="/blog/">Journal</a></p></div>
     </div>
     <div class="site-footer__base wrap">
       <span class="eyebrow">&copy; 2026 &middot; LA TABLE MARRAKECH</span>
@@ -303,11 +367,31 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
     </div>
   </footer>
 
-  <a class="lt-stickywa" href="https://wa.me/212721354757" rel="noopener" aria-label="WhatsApp the chef">
+  <a data-event="whatsapp_click" data-location="pricing" class="lt-stickywa" href="https://wa.me/212721354757" rel="noopener" aria-label="WhatsApp the chef">
     <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 5 2 7.7 2C24.6 31.6 31.6 24.6 31.6 16S24.6.4 16 .4zm0 28.4c-2.4 0-4.7-.6-6.8-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.7 3 18.4 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8zm7.5-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.7-.2-.9.2-.3.4-1.1 1.3-1.3 1.6-.2.3-.5.3-.9.1-2.4-1.2-4-2.1-5.5-4.7-.4-.7.4-.6 1.2-2.2.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5s-1.5 1.5-1.5 3.6 1.5 4.2 1.7 4.5c.2.3 3 4.6 7.4 6.4 1 .4 1.8.7 2.4.9.7.2 1.4.2 2 .1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.4-.2-.8-.4z"/></svg>
     <span>WhatsApp the chef</span>
   </a>
 
   <script>(function(){var n=document.getElementById('siteNav');var f=function(){if(window.scrollY>32)n.classList.add('site-nav--scrolled');else n.classList.remove('site-nav--scrolled')};window.addEventListener('scroll',f,{passive:true});f();})();</script>
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>

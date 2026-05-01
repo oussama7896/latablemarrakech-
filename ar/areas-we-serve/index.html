@@ -44,6 +44,26 @@
     <p>نغطي المدينة القديمة، الحي الشتوي، قيلز وبعض المناطق المجاورة. قد تُطبق رسوم سفر للمواقع خارج مركز المدينة؛ يرجى الاستعلام عند الحجز.</p>
     <p><a href="/ar/contact/">اتصل للاستعلام</a></p>
   </main>
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>
 <!DOCTYPE html>

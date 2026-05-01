@@ -47,6 +47,26 @@
     <p>Prices start from €85 per person. Contact us for a customised menu and quote.</p>
     <p><a href="/pricing/">Pricing</a> • <a href="/contact/">Book</a></p>
   </main>
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>
 <!DOCTYPE html>
@@ -87,7 +107,29 @@
       <p><a href="/#booking">Request a custom menu</a></p>
     </section>
 
-    <footer style="max-width:980px;margin:28px auto"> <a href="/">Home</a></footer>
+    <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div>
+      <img class="site-footer__brand" src="/lt-brand-mark.svg" alt="La Table Marrakech" width="220" height="168" loading="lazy" decoding="async">
+      <p class="site-footer__lines" style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--lt-muted, #a89882);">La Table Marrakech brings fine-dining-level Moroccan cuisine to your villa or riad &mdash; souk-fresh, cooked at your place, with everything handled from shopping to cleanup.</p>
+    </div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Find us</span><p class="site-footer__lines">Derb Jdid 14<br>Medina, Marrakech 40000<br>Morocco</p></div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Write to us</span><p class="site-footer__lines"><a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a><br><a data-event="whatsapp_click" data-location="menus" href="https://wa.me/212721354757" rel="noopener">+212 721 354 757</a><br><span style="color:var(--lt-muted, #a89882);">WhatsApp &middot; replies in ~30min</span></p></div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Explore</span><p class="site-footer__lines"><a href="/">Home</a><br><a href="/private-chef-cost-marrakech/">Pricing</a><br><a href="/marrakech-villa-with-private-chef/">Villa dining</a><br><a href="/marrakech-cooking-class-vs-private-chef/">Class vs chef</a><br><a href="/services/wedding-dinner-marrakech/">Weddings</a><br><a href="/services/corporate-dining-marrakech/">Corporate</a><br><a href="/blog/">Journal</a></p></div>
+  </div>
+  <div class="site-footer__base wrap">
+    <span class="eyebrow">&copy; 2026 &middot; LA TABLE MARRAKECH</span>
+    <span class="serif-italic">Not a restaurant. Your table.</span>
+    <span class="eyebrow">
+      <a href="/privacy/" style="color:inherit;border:none">Privacy</a>
+      <!-- TODO: real /terms/ page -->
+      &middot;
+      <a href="#" aria-label="Instagram" data-todo="instagram-url" style="color:inherit;border:none;margin-left:8px;">IG</a>
+      &middot;
+      <a href="#" aria-label="Facebook" data-todo="facebook-url" style="color:inherit;border:none;margin-left:8px;">FB</a>
+    </span>
+  </div>
+</footer>
   </main>
 
   <!-- Menu schema -->

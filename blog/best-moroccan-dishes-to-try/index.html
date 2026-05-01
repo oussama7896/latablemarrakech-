@@ -79,5 +79,25 @@
 
     <p><a href="/menus/">See Menus</a><a href="/#booking">Book a Chef</a></p>
   </main>
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>

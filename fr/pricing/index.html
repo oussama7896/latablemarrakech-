@@ -46,5 +46,47 @@
     <h1>Tarifs</h1>
     <p>À partir de 85€/jour pour jusqu'à 10 convives.</p>
   </main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div>
+      <img class="site-footer__brand" src="/lt-brand-mark.svg" alt="La Table Marrakech" width="220" height="168" loading="lazy" decoding="async">
+      <p class="site-footer__lines" style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--lt-muted, #a89882);">La Table Marrakech apporte une cuisine marocaine de niveau gastronomique chez vous &mdash; &agrave; votre riad ou votre villa &mdash; du march&eacute; jusqu'au nettoyage, tout est pris en charge.</p>
+    </div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Nous trouver</span><p class="site-footer__lines">Derb Jdid 14<br>M&eacute;dina, Marrakech 40000<br>Maroc</p></div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Nous &eacute;crire</span><p class="site-footer__lines"><a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a><br><a data-event="whatsapp_click" data-location="pricing-old_fr" href="https://wa.me/212721354757" rel="noopener">+212 721 354 757</a><br><span style="color:var(--lt-muted, #a89882);">WhatsApp &middot; r&eacute;ponse en ~30min</span></p></div>
+    <div><span class="eyebrow eyebrow--gold">&#9830; Explorer</span><p class="site-footer__lines"><a href="/fr/">Accueil</a><br><a href="/fr/chef-prive-prix-marrakech/">Tarifs</a><br><a href="/fr/chef-a-domicile-marrakech/">Chef &agrave; domicile</a><br><a href="/fr/cours-de-cuisine-marrakech/">Cours vs chef</a><br><a href="/fr/#mariage">Mariages</a><br><a href="/fr/#entreprises">Entreprises</a><br><a href="/blog/">Journal</a></p></div>
+  </div>
+  <div class="site-footer__base wrap">
+    <span class="eyebrow">&copy; 2026 &middot; LA TABLE MARRAKECH</span>
+    <span class="serif-italic">Pas un restaurant. Votre table.</span>
+    <span class="eyebrow">
+      <a href="/fr/privacy/" style="color:inherit;border:none">Politique de confidentialit&eacute;</a>
+      &middot;
+      <a href="#" aria-label="Instagram" data-todo="instagram-url" style="color:inherit;border:none;margin-left:8px;">IG</a>
+      &middot;
+      <a href="#" aria-label="Facebook" data-todo="facebook-url" style="color:inherit;border:none;margin-left:8px;">FB</a>
+    </span>
+  </div>
+</footer>
+
+<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-event="whatsapp_click"]');
+    if(!link) return;
+    var loc = link.getAttribute('data-location') || 'unknown';
+    if(typeof gtag === 'function'){
+      gtag('event', 'whatsapp_click', {
+        'button_location': loc,
+        'link_url': link.href,
+        'page_location': window.location.href
+      });
+    }
+  }, {passive:true});
+})();
+</script>
+<!-- PERF:WA-TRACKER END -->
+
 </body>
 </html>
