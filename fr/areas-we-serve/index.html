@@ -67,24 +67,89 @@
   </div>
 </footer>
 
-<!-- PERF:WA-TRACKER START — fires GA4 whatsapp_click event on every WA link click -->
+<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ tracking -->
 <script>
-(function(){
-  document.addEventListener('click', function(e){
-    var link = e.target.closest('[data-event="whatsapp_click"]');
-    if(!link) return;
-    var loc = link.getAttribute('data-location') || 'unknown';
-    if(typeof gtag === 'function'){
-      gtag('event', 'whatsapp_click', {
-        'button_location': loc,
-        'link_url': link.href,
-        'page_location': window.location.href
+(function () {
+  'use strict';
+  function device() {
+    return window.matchMedia('(max-width: 768px)').matches ? 'mobile' : 'desktop';
+  }
+  function normalizeLabel(el) {
+    var t = (el.getAttribute('aria-label') || el.textContent || '').trim();
+    t = t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+    t = t.replace(/\s+/g, ' ').replace(/[^\w\s\-À-ſ&'.,—]/g, '').trim();
+    return (t || 'unlabeled').substring(0, 80);
+  }
+  function ctaPosition(link) {
+    if (link.closest('.wa-float, .lt-stickywa, .sticky-mobile-bar, [class*="floating"]')) return 'sticky';
+    if (link.closest('header, nav, .nav, [class*="nav-"]')) return 'navbar';
+    if (link.closest('.hero, #hero, .hero-cta-row')) return 'hero';
+    if (link.closest('footer, .site-footer')) return 'footer';
+    if (link.closest('.tier-card, .tier-grid, .price-table')) return 'pricing-tier';
+    if (link.closest('.inline-cta, .cta, #contact')) return 'cta-block';
+    return 'inline';
+  }
+  function fire(name, params) {
+    params.page_path = window.location.pathname;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, params));
+    if (typeof gtag === 'function') gtag('event', name, params);
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-event="whatsapp_click"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+    if (!link) return;
+    fire('whatsapp_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      device: device(),
+      link_url: link.href,
+      button_location: link.getAttribute('data-location') || ctaPosition(link)
+    });
+  }, { passive: true });
+  var SCROLL_PAGES = ['/', '/private-chef-cost-marrakech/', '/marrakech-villa-with-private-chef/',
+    '/marrakech-cooking-class-vs-private-chef/', '/the-experience/'];
+  var path = window.location.pathname;
+  var pathNorm = path.endsWith('/') ? path : path + '/';
+  if (SCROLL_PAGES.indexOf(path) > -1 || SCROLL_PAGES.indexOf(pathNorm) > -1) {
+    var thresholds = [25, 50, 75, 90];
+    var fired = {};
+    var ticking = false;
+    function checkScroll() {
+      var doc = document.documentElement;
+      var max = Math.max(doc.scrollHeight, document.body.scrollHeight) - window.innerHeight;
+      if (max <= 0) return;
+      var pct = (window.scrollY / max) * 100;
+      thresholds.forEach(function (t) {
+        if (pct >= t && !fired[t]) {
+          fired[t] = true;
+          fire('scroll_depth', { depth_percentage: t });
+        }
       });
     }
-  }, {passive:true});
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { checkScroll(); ticking = false; });
+    }, { passive: true });
+  }
+  document.querySelectorAll('details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      var sum = d.querySelector('summary');
+      fire('faq_open', { question_text: normalizeLabel(sum || d).substring(0, 120) });
+    });
+  });
+  var faqClicked = new WeakSet();
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.faq-question, [class*="faq-q"], [data-faq-trigger]');
+    if (!trigger || faqClicked.has(trigger)) return;
+    faqClicked.add(trigger);
+    setTimeout(function () { faqClicked.delete(trigger); }, 300);
+    fire('faq_open', { question_text: normalizeLabel(trigger).substring(0, 120) });
+  }, { passive: true });
 })();
 </script>
-<!-- PERF:WA-TRACKER END -->
+<!-- PERF:ANALYTICS-RICH END -->
 
 </body>
 </html>
