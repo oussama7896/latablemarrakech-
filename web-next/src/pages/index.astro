@@ -2,7 +2,12 @@
 import Layout from '@/layouts/Layout.astro';
 import Nav from '@/components/Nav.astro';
 import Hero from '@/components/Hero.astro';
+import About from '@/components/About.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import Features from '@/components/Features.astro';
+import HowTo from '@/components/HowTo.astro';
 import Faq from '@/components/Faq.astro';
+import MoreLinks from '@/components/MoreLinks.astro';
 import Footer from '@/components/Footer.astro';
 import { BookingForm } from '@/components/BookingForm';
 import homeFaqs from '@/data/home-faqs.json';
@@ -124,14 +129,12 @@ const howToLd = {
       </div>
     </section>
 
+    <About />
+    <Features />
+    <Testimonials />
+    <HowTo />
     <Faq />
-
-    {/* TODO sections still to migrate from the static homepage:
-        - About / experience storytelling block (with image carousels + variants)
-        - Testimonials slider
-        - Features (3-up reasons-to-book)
-        - How-to step cards
-        - "More links" footer band */}
+    <MoreLinks />
   </main>
 
   <Footer />

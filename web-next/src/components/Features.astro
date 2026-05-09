@@ -1,0 +1,49 @@
+---
+import { ChefHat, Sprout, Sparkles } from 'lucide-react';
+
+const features = [
+  {
+    Icon: ChefHat,
+    eyebrow: 'YOUR PRIVATE CHEF',
+    title: 'Personal kitchen, personal chef.',
+    body: 'A trained Marrakchi chef arrives at your villa with knives, spices, cookware — everything. You stay on the terrace.',
+  },
+  {
+    Icon: Sprout,
+    eyebrow: 'SOUK-FRESH',
+    title: 'Shopped this morning.',
+    body: 'Vegetables, fish, herbs, spices — picked up at the medina souk the day of service. Nothing pre-packaged.',
+  },
+  {
+    Icon: Sparkles,
+    eyebrow: 'FULL SERVICE',
+    title: 'We clean. You don’t.',
+    body: 'Plating, table service, dishwashing, kitchen reset. We leave your villa cleaner than we found it.',
+  },
+];
+---
+
+<section id="features" class="bg-ink-light py-24 sm:py-28">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow inline-flex items-center gap-3">
+        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        03 · The all-in
+      </span>
+      <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
+        What you get for <em class="font-serif italic font-normal text-gold-light">€85 a head</em>
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {features.map(({ Icon, eyebrow, title, body }) => (
+        <article class="group flex flex-col gap-5 border border-gold/20 bg-ink p-7 transition hover:border-ember/60">
+          <Icon class="size-8 stroke-[1.5] text-ember transition group-hover:scale-110" aria-hidden="true" />
+          <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">{eyebrow}</span>
+          <h3 class="font-serif text-[22px] leading-snug text-sand">{title}</h3>
+          <p class="text-sm leading-relaxed text-sand-muted">{body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

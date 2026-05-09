@@ -1,0 +1,35 @@
+---
+import quotes from '@/data/home-testimonials.json';
+---
+
+<section id="testimonials" class="bg-ink py-24 sm:py-28">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow inline-flex items-center gap-3">
+        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        02 · The guests
+      </span>
+      <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
+        4.9 / 5 from <em class="font-serif italic font-normal text-gold-light">200+ guests</em>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sand-muted">
+        Real reviews. Real villas. Real Friday-night couscous.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {quotes.map((q: { quote: string; author: string; context: string }) => (
+        <figure class="flex flex-col gap-6 border border-gold/20 bg-ink-light p-7 transition hover:border-gold/40">
+          <span aria-hidden="true" class="font-display text-5xl leading-none text-ember">&ldquo;</span>
+          <blockquote class="font-serif text-[17px] italic leading-relaxed text-sand">
+            {q.quote}
+          </blockquote>
+          <figcaption class="mt-auto border-t border-gold/15 pt-4 font-mono text-[11px] uppercase tracking-[0.18em]">
+            <div class="text-sand">{q.author}</div>
+            <div class="mt-1 text-sand-muted">{q.context}</div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

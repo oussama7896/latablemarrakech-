@@ -1,0 +1,40 @@
+---
+const links = [
+  { href: '/private-chef-cost-marrakech/', title: 'How much does a private chef cost?', body: 'Full price breakdown — what €85 a head actually buys you.' },
+  { href: '/marrakech-villa-with-private-chef/', title: 'Marrakech villas with a private chef', body: 'Where to stay so booking a chef makes sense.' },
+  { href: '/the-experience/', title: 'The experience', body: 'What a service night actually looks like, hour by hour.' },
+  { href: '/marrakech-cooking-class-vs-private-chef/', title: 'Cooking class vs private chef', body: 'Which to pick depending on your trip and group.' },
+  { href: '/services/wedding-dinner-marrakech/', title: 'Wedding dinners', body: 'For 20–80 guests across multiple courses and stations.' },
+  { href: '/services/corporate-dining-marrakech/', title: 'Corporate dining', body: 'Riad-based dinners for retreats, off-sites, and incentive trips.' },
+];
+---
+
+<section class="border-t border-gold/15 bg-ink-light py-20">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow">Keep reading</span>
+      <h2 class="mt-4 font-display text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1] tracking-[0.04em] text-sand">
+        More on a Marrakech <em class="font-serif italic font-normal text-gold-light">private chef</em>
+      </h2>
+    </div>
+
+    <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class="group flex h-full flex-col gap-2 border border-gold/15 p-6 transition hover:border-ember/60 hover:bg-ink"
+          >
+            <span class="font-serif text-[18px] leading-snug text-sand transition group-hover:text-gold-light">
+              {l.title}
+            </span>
+            <span class="text-sm leading-relaxed text-sand-muted">{l.body}</span>
+            <span aria-hidden="true" class="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ember">
+              Read →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

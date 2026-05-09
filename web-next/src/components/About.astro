@@ -1,0 +1,55 @@
+---
+// Storytelling block — text on the left, horizontal image strip on the right.
+// Replaces the static homepage's three Impeccable A/B variants with one
+// canonical version (live data showed no variant materially outperformed
+// the original).
+
+const dishes = [
+  { src: 'https://latablemarrakech.com/Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp', alt: 'Slow-cooked lamb tagine with caramelised onions and raisins served in a traditional clay pot' },
+  { src: 'https://latablemarrakech.com/Kofta-Tagine-with-Eggs-560x300.png.webp', alt: 'Moroccan kofta tagine with poached eggs in spiced tomato sauce' },
+  { src: 'https://latablemarrakech.com/chicken-tagine-marrakech.webp', alt: 'Chicken tagine with preserved lemons and olives, a Marrakech classic' },
+  { src: 'https://latablemarrakech.com/El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp', alt: 'Fresh Oualidia oysters with red wine vinegar on a bed of ice' },
+  { src: 'https://latablemarrakech.com/Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp', alt: 'Smoked salmon on blinis with lemon cream sauce appetizer' },
+];
+---
+
+<section id="about" class="bg-ink-light py-24 sm:py-28">
+  <div class="container grid gap-16 lg:grid-cols-[minmax(0,1fr)_1.2fr] lg:items-start">
+    <div>
+      <span class="eyebrow flex items-center gap-3">
+        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        01 · The truth
+      </span>
+      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.9] tracking-[0.04em] text-sand">
+        Cooked for you.
+        <em class="mt-2 block font-serif text-[0.5em] not-italic font-normal italic tracking-[0.01em] text-gold-light">— only you.</em>
+      </h2>
+      <p class="mt-6 max-w-md text-base leading-relaxed text-sand">
+        The medina has a thousand restaurants. None of them know your name, your allergies, or that
+        it's your anniversary. A private chef changes everything — the menu is yours, the pace is
+        yours, the terrace is yours.
+      </p>
+      <p class="mt-4 max-w-md text-sm leading-relaxed text-sand-muted">
+        No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for
+        years.
+      </p>
+    </div>
+
+    <div class="-mx-6 sm:mx-0">
+      <ul class="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-6 pb-2 sm:px-0 [scrollbar-width:thin]">
+        {dishes.map((d) => (
+          <li class="snap-start shrink-0 first:pl-0">
+            <img
+              src={d.src}
+              alt={d.alt}
+              loading="lazy"
+              decoding="async"
+              width="280" height="180"
+              class="h-[180px] w-[280px] object-cover ring-1 ring-gold/20"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

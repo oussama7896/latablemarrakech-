@@ -1,0 +1,55 @@
+---
+// Three steps — content matches the HowTo JSON-LD shipped from index.astro
+// so the on-page text and the structured data say the same thing.
+const steps = [
+  {
+    n: '01',
+    title: 'Choose your experience',
+    body: "Pick your date, number of guests, and any dietary needs. Choose from curated Moroccan menus — tagine, couscous, pastilla, or a full royal feast. Book via WhatsApp or the form. Confirmed in 24 hours.",
+  },
+  {
+    n: '02',
+    title: 'Your chef arrives',
+    body: 'Your personal chef shops the medina souk that morning for the freshest ingredients, then arrives at your villa with everything needed — spices, produce, cookware, tableware.',
+  },
+  {
+    n: '03',
+    title: 'Sit down and enjoy',
+    body: 'A multi-course Moroccan feast served course by course on your terrace. Appetizers, mains, dessert, and traditional mint tea. Full kitchen, dish, and table cleanup included.',
+  },
+];
+---
+
+<section id="how" class="bg-ink py-24 sm:py-28">
+  <div class="container">
+    <div class="text-center">
+      <span class="eyebrow inline-flex items-center gap-3">
+        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        04 · How it works
+      </span>
+      <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
+        From WhatsApp to <em class="font-serif italic font-normal text-gold-light">first course</em>, in three steps
+      </h2>
+    </div>
+
+    <ol class="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
+      {steps.map((s) => (
+        <li class="relative flex flex-col gap-4 border-l-2 border-ember/60 bg-ink-light p-7 pl-9">
+          <span class="absolute -left-[1px] top-7 -translate-x-1/2 bg-ink-light px-2 font-display text-3xl tracking-[0.05em] text-ember">{s.n}</span>
+          <h3 class="font-serif text-[22px] leading-snug text-sand">{s.title}</h3>
+          <p class="text-sm leading-relaxed text-sand-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-12 text-center">
+      <a
+        href="#booking"
+        class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:bg-ember-light hover:-translate-y-px"
+      >
+        Reserve your table
+        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+      </a>
+    </div>
+  </div>
+</section>
