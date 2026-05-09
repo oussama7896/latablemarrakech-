@@ -1,0 +1,199 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+    { '@type': 'ListItem', position: 2, name: 'The Experience', item: 'https://latablemarrakech.com/the-experience/' },
+  ],
+};
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'The Experience — A Private Chef Dinner in Marrakech',
+  description: 'What a private chef dinner in Marrakech actually feels like, written by the chef team at La Table Marrakech.',
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-04-27T08:00:00+01:00',
+  dateModified: '2026-04-27T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'La Table Marrakech',
+    logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' },
+  },
+  mainEntityOfPage: 'https://latablemarrakech.com/the-experience/',
+};
+
+const movements = [
+  {
+    n: '01',
+    title: 'The souk, at dawn',
+    paras: [
+      "Youssef is at the medina by 6:30am. He chooses tomatoes that still smell of the sun, preserved lemons from the vendor by the spice tower, whichever fish arrived overnight from Essaouira. He buys the bread last, hot, from a wood-fired ferran on the way out.",
+      "This is the part of the meal that doesn't happen at a restaurant. The menu doesn't exist yet when the day starts — it's drawn by what looks best at the souk that morning. By 8am, you're still asleep at your villa. The pastilla you'll eat tonight is already a plan in the chef's head.",
+    ],
+  },
+  {
+    n: '02',
+    title: 'Your kitchen, at five',
+    paras: [
+      "The chef arrives at your villa around 4–5pm with a canvas bag of warqa pastry, charcoal, his own knives. He doesn't ask you for anything. The pool, the rooftop, the nap — keep going. We'll call you when the pastilla comes out.",
+      "The kitchen becomes his for four hours. Charcoal lit by the back door if you have outdoor space. Tagines on slow heat. The seven Moroccan salads dressed and laid out like a still life. By 7:30pm, the house smells of saffron and orange-blossom and something that has to be cinnamon but is more than cinnamon.",
+    ],
+  },
+  {
+    n: '03',
+    title: 'Your table, at eight',
+    paras: [
+      "Five courses, paced. Mezze first — zaalouk, taktouka, briouates still warm. Then the pastilla, dusted with cinnamon and powdered sugar, the way it is in the medina. Then the tagine, lifted by the chef and set in the centre of the table, lid still on, the steam released for you. Then the dessert — orange-flower semolina with candied pistachios. Then the mint tea, poured from height, the local theatre.",
+      "You don't lift a finger. The wine is yours, and the chef pours it. The conversation is yours, and the chef stays out of it. The pace is yours, and the kitchen waits.",
+    ],
+  },
+  {
+    n: '04',
+    title: 'Then he disappears',
+    paras: [
+      "By 11pm the kitchen is spotless. Knives packed, cookware out, dishes washed and put away. The leftover spices and harissa are on your counter for the morning. The chef is gone.",
+      "The next day, when you walk into the kitchen for breakfast, the only thing left is the conversation everyone is still having about the pastilla.",
+    ],
+  },
+];
+
+---
+
+<Layout
+  title="The Experience — A Private Chef Dinner in Marrakech | La Table Marrakech"
+  description="Watch what happens behind the scenes — your private chef shopping the Marrakech medina souk, cooking at your villa, and serving a multi-course Moroccan feast."
+  twitterDescription="What a private chef dinner in Marrakech actually feels like."
+  canonical="https://latablemarrakech.com/the-experience/"
+  ogLocale="en_US"
+  ogLocaleAlternates={["fr_FR", "ar_MA"]}
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/the-experience/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/the-experience/' },
+  ]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+
+  <main>
+    {/* Hero */}
+    <header class="bg-ink-light pb-16 pt-20 sm:pt-24">
+      <div class="container">
+        <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
+          <a href="/" class="transition hover:text-gold-light">Home</a>
+          <span aria-hidden="true" class="text-ember">◆</span>
+          <span class="text-gold-light">The Experience</span>
+        </nav>
+        <span class="eyebrow mt-8 inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          The evening, in three movements
+        </span>
+        <h1 class="mt-6 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          One night,
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">three quiet movements.</em>
+        </h1>
+        <p class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
+          <span>By La Table Marrakech</span>
+          <span>5 min read</span>
+        </p>
+      </div>
+    </header>
+
+    {/* Article body */}
+    <section class="bg-ink py-20">
+      <article class="container max-w-[700px]">
+        <p class="text-lg leading-relaxed text-sand">
+          A private chef dinner in Marrakech is not a service you buy. It's a night you remember.
+          Here's what one actually feels like — from the souk run at dawn to the kitchen left
+          spotless after midnight.
+        </p>
+
+        <div class="my-12 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+
+        {movements.map((m) => (
+          <section class="mt-14 first:mt-0">
+            <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-snug tracking-[0.04em] text-sand">
+              {m.n} ·
+              <em class="font-serif italic font-normal text-gold-light">{m.title}</em>
+            </h2>
+            {m.paras.map((p) => (
+              <p class="mt-4 leading-[1.75] text-sand">{p}</p>
+            ))}
+          </section>
+        ))}
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-snug tracking-[0.04em] text-sand">
+          What this <em class="font-serif italic font-normal text-gold-light">isn't</em>
+        </h2>
+        <ul class="mt-4 grid gap-3 text-sand">
+          <li class="border-l-2 border-ember/40 pl-4">It isn't a buffet. There is no chafing dish, no warming tray.</li>
+          <li class="border-l-2 border-ember/40 pl-4">It isn't a hotel-restaurant menu. There is no &ldquo;chicken or fish&rdquo; line.</li>
+          <li class="border-l-2 border-ember/40 pl-4">
+            It isn't a cooking class. You don't do anything.{' '}
+            <a href="/marrakech-cooking-class-vs-private-chef/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">If you want one, here's the comparison.</a>
+          </li>
+          <li class="border-l-2 border-ember/40 pl-4">It isn't a restaurant night out. The room is yours.</li>
+        </ul>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-snug tracking-[0.04em] text-sand">
+          What it <em class="font-serif italic font-normal text-gold-light">is</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          It's the meal that fixes a hard week. It's the night people remember from the trip. It's
+          the dinner that turns a villa rental into a holiday — from €85 per person.
+        </p>
+        <p class="mt-4 leading-[1.75] text-sand">
+          To see how to bring it to your villa or riad, read{' '}
+          <a href="/how-it-works/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">how it works</a>.
+          To see what it costs, the{' '}
+          <a href="/private-chef-cost-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">pricing page</a>{' '}
+          has the full breakdown.
+        </p>
+      </article>
+    </section>
+
+    {/* CTA band */}
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <span class="eyebrow inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          One quiet evening
+        </span>
+        <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
+          Book the night.
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">We do the rest.</em>
+        </h2>
+        <p class="mt-5 text-sand-muted">
+          From €85 per person, minimum 2 guests. WhatsApp reply usually inside an hour.
+        </p>
+        <a
+          data-event="whatsapp_click"
+          data-location="experience"
+          href="https://wa.me/212721354757"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp the chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
