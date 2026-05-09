@@ -1,97 +1,37 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+#!/usr/bin/env python3
+"""
+inject-analytics-rich.py — replaces the PERF:ANALYTICS-RICH end-of-body
+script block on every production page with the canonical version.
 
-  <!-- CONSENT MODE V2 (must load before gtag) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
-      'wait_for_update': 500
-    });
-    if (localStorage.getItem('cookie_consent') === 'accepted') {
-      gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'analytics_storage': 'granted'
-      });
-    }
-  </script>
+This block listens for:
+  * whatsapp_click  — clicks on [data-event="whatsapp_click"] or any wa.me link
+  * email_click     — clicks on a[href^="mailto:"]
+  * phone_click     — clicks on a[href^="tel:"]
+  * scroll_depth    — 25/50/75/90% scroll on high-intent pages
+  * faq_open        — <details> toggle and .faq-question clicks
+  * booking_enquiry_submit — submit on any <form data-track-form="booking-enquiry">
 
-  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
-  <script>
-    (function() {
-      var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
-      function loadGtag() {
-        if (loaded) return;
-        loaded = true;
-        rIC(function() {
-          var s1 = document.createElement('script');
-          s1.async = true;
-          s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
-          document.head.appendChild(s1);
-          s1.onload = function() {
-            rIC(function() {
-              gtag('js', new Date());
-              gtag('config', 'G-J2QTMMMYLD');
-              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
-            });
-          };
-        });
-      }
-      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
-        window.addEventListener(evt, loadGtag, { passive: true, once: true });
-      });
-      setTimeout(loadGtag, 5000);
-    })();
-  </script>
-  <!-- PERF:GTAG-LAZY END -->
-  <title>Tarifs | La Table Marrakech</title>
-  <link rel="canonical" href="https://latablemarrakech.com/fr/pricing/">
-  <link rel="alternate" hreflang="en" href="/private-chef-cost-marrakech/">
-  <link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/pricing/">
-  <link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/pricing/">
-  <style>body{font-family:Karla,Helvetica,Arial,sans-serif;background:#080604;color:#F0E6D0;margin:0;padding:24px}</style>
-  <!-- PERF:FOOTER-PRICING-FIXED -->
-  <!-- PERF:CHEF-LINKS-SCRUBBED -->
-</head>
-<body>
-  <main style="max-width:980px;margin:0 auto">
-    <h1>Tarifs</h1>
-    <p>À partir de 85€/jour pour jusqu'à 10 convives.</p>
-  </main>
-  <footer class="site-footer">
-  <div class="wrap site-footer__grid">
-    <div>
-      <img class="site-footer__brand" src="/lt-brand-mark.svg" alt="La Table Marrakech" width="220" height="168" loading="lazy" decoding="async">
-      <p class="site-footer__lines" style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--lt-muted, #a89882);">La Table Marrakech apporte une cuisine marocaine de niveau gastronomique chez vous &mdash; &agrave; votre riad ou votre villa &mdash; du march&eacute; jusqu'au nettoyage, tout est pris en charge.</p>
-    </div>
-    <div><span class="eyebrow eyebrow--gold">&#9830; Nous trouver</span><p class="site-footer__lines">Derb Jdid 14<br>M&eacute;dina, Marrakech 40000<br>Maroc</p></div>
-    <div><span class="eyebrow eyebrow--gold">&#9830; Nous &eacute;crire</span><p class="site-footer__lines"><a href="mailto:hello@latablemarrakech.com">hello@latablemarrakech.com</a><br><a data-event="whatsapp_click" data-location="pricing-old_fr" href="https://wa.me/212721354757" rel="noopener">+212 721 354 757</a><br><span style="color:var(--lt-muted, #a89882);">WhatsApp &middot; r&eacute;ponse en ~30min</span></p></div>
-    <div><span class="eyebrow eyebrow--gold">&#9830; Explorer</span><p class="site-footer__lines"><a href="/fr/">Accueil</a><br><a href="/fr/chef-prive-prix-marrakech/">Tarifs</a><br><a href="/fr/chef-a-domicile-marrakech/">Chef &agrave; domicile</a><br><a href="/fr/cours-de-cuisine-marrakech/">Cours vs chef</a><br><a href="/fr/#mariage">Mariages</a><br><a href="/fr/#entreprises">Entreprises</a><br><a href="/blog/">Journal</a></p></div>
-  </div>
-  <div class="site-footer__base wrap">
-    <span class="eyebrow">&copy; 2026 &middot; LA TABLE MARRAKECH</span>
-    <span class="serif-italic">Pas un restaurant. Votre table.</span>
-    <span class="eyebrow">
-      <a href="/fr/privacy/" style="color:inherit;border:none">Politique de confidentialit&eacute;</a>
-      &middot;
-      <a href="#" aria-label="Instagram" data-todo="instagram-url" style="color:inherit;border:none;margin-left:8px;">IG</a>
-      &middot;
-      <a href="#" aria-label="Facebook" data-todo="facebook-url" style="color:inherit;border:none;margin-left:8px;">FB</a>
-    </span>
-  </div>
-</footer>
+It NEVER blocks navigation: every event is fire-and-forget, push to dataLayer
+plus gtag('event', ...) if gtag is loaded. Idempotent — running twice is a no-op.
 
-<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
+Companion to inject-analytics.py (which handles the head-side gtag loader).
+"""
+
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+
+SKIP_PATTERNS = (
+    ".bak", "backup", "_deleted", ".impeccable",
+    "temporary screenshots", "node_modules", ".git/",
+    "screenshot-helper", "social-logo",
+)
+
+CANONICAL_BLOCK = """<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
 <script>
 (function () {
   'use strict';
@@ -100,8 +40,8 @@
   }
   function normalizeLabel(el) {
     var t = (el.getAttribute('aria-label') || el.textContent || '').trim();
-    t = t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
-    t = t.replace(/\s+/g, ' ').replace(/[^\w\s\-À-ſ&'.,—]/g, '').trim();
+    t = t.replace(/[\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}]/gu, '');
+    t = t.replace(/\\s+/g, ' ').replace(/[^\\w\\s\\-À-ſ&'.,—]/g, '').trim();
     return (t || 'unlabeled').substring(0, 80);
   }
   function ctaPosition(link) {
@@ -229,6 +169,46 @@
   }, { passive: true });
 })();
 </script>
-<!-- PERF:ANALYTICS-RICH END -->
-</body>
-</html>
+<!-- PERF:ANALYTICS-RICH END -->"""
+
+BLOCK_RE = re.compile(
+    r"<!--\s*PERF:ANALYTICS-RICH START.*?<!--\s*PERF:ANALYTICS-RICH END\s*-->",
+    re.DOTALL,
+)
+
+
+def should_skip(path: Path) -> bool:
+    s = str(path)
+    return any(p in s for p in SKIP_PATTERNS)
+
+
+def transform(html: str) -> str:
+    if not BLOCK_RE.search(html):
+        # Page lacks the block entirely — don't try to inject; that's beyond
+        # the safe scope of this codemod (no obvious anchor point).
+        return html
+    return BLOCK_RE.sub(lambda _: CANONICAL_BLOCK, html, count=1)
+
+
+def main() -> int:
+    changed = []
+    skipped = []
+    for path in sorted(ROOT.rglob("*.html")):
+        if should_skip(path):
+            skipped.append(path)
+            continue
+        original = path.read_text(encoding="utf-8")
+        new = transform(original)
+        if new != original:
+            path.write_text(new, encoding="utf-8")
+            changed.append(path)
+
+    print(f"Changed: {len(changed)} files")
+    for p in changed:
+        print(f"  ~ {p.relative_to(ROOT)}")
+    print(f"Skipped/unchanged: {len(skipped)} files")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

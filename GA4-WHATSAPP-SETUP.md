@@ -1,10 +1,12 @@
 # GA4 WhatsApp Conversion Tracking — Setup Guide
 
+> **Newer doc:** [`docs/analytics.md`](./docs/analytics.md) is the current source of truth for *all* events (whatsapp, email, phone, form submits, scroll, FAQ). This file is still accurate for the original WhatsApp setup and the GA4-UI walkthrough (Key Events, Explorations, Google Ads import).
+
 **Site:** latablemarrakech.com
 **GA4 property:** `G-J2QTMMMYLD`
 **Google Ads conversion ID:** `AW-18017405402`
 **Implementation:** **gtag-only** (no GTM container — events fire directly from inline JS)
-**Last updated:** 2026-05-01
+**Last updated:** 2026-05-09
 
 ---
 

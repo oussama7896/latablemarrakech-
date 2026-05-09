@@ -19,3 +19,4 @@ screenshot.py
 images-original-backup/
 *.bak
 _deleted-*/
+.impeccable/

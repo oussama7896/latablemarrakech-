@@ -4,6 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+  <!-- CONSENT MODE V2 (must load before gtag) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
+  </script>
+
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
+  <script>
+    (function() {
+      var loaded = false;
+      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        rIC(function() {
+          var s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+          document.head.appendChild(s1);
+          s1.onload = function() {
+            rIC(function() {
+              gtag('js', new Date());
+              gtag('config', 'G-J2QTMMMYLD');
+              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+            });
+          };
+        });
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 5000);
+    })();
+  </script>
+  <!-- PERF:GTAG-LAZY END -->
   <title>Marrakech Villas With a Private Chef: 2026 Guide &amp; Booking Tips | La Table</title>
   <meta name="description" content="Renting a villa or riad in Marrakech and want a chef? Here's where to stay (Palmeraie, Medina, Hivernage), what to ask, and how to book — from a Marrakech-based chef team.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -337,7 +388,7 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
 
   <script>(function(){var n=document.getElementById('siteNav');var f=function(){if(window.scrollY>32)n.classList.add('site-nav--scrolled');else n.classList.remove('site-nav--scrolled')};window.addEventListener('scroll',f,{passive:true});f();})();</script>
 
-<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ tracking -->
+<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
 <script>
 (function () {
   'use strict';
@@ -360,11 +411,17 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
     return 'inline';
   }
   function fire(name, params) {
-    params.page_path = window.location.pathname;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: name }, params));
-    if (typeof gtag === 'function') gtag('event', name, params);
+    try {
+      params = params || {};
+      params.page_path = window.location.pathname;
+      params.page_title = document.title;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params));
+      if (typeof gtag === 'function') gtag('event', name, params);
+    } catch (e) { /* never block UX on tracking */ }
   }
+
+  // ---- WhatsApp clicks ----
   document.addEventListener('click', function (e) {
     var link = e.target.closest('[data-event="whatsapp_click"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     if (!link) return;
@@ -376,6 +433,54 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       button_location: link.getAttribute('data-location') || ctaPosition(link)
     });
   }, { passive: true });
+
+  // ---- mailto: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="mailto:"]');
+    if (!link) return;
+    fire('email_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- tel: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    fire('phone_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- Booking / enquiry form submits ----
+  // Any <form data-track-form="booking-enquiry"> fires booking_enquiry_submit.
+  // We fire after the form's own onsubmit (which usually opens WhatsApp).
+  // Use a WeakSet to guard against double-fire if a form is re-submitted in <300ms.
+  var formFired = new WeakSet();
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-track-form="booking-enquiry"]');
+    if (!form || formFired.has(form)) return;
+    formFired.add(form);
+    setTimeout(function () { formFired.delete(form); }, 1000);
+    var guests = form.querySelector('[name="bguests"]');
+    var date = form.querySelector('[name="bdate"]');
+    var email = form.querySelector('[name="bemail"]');
+    var notes = form.querySelector('[name="bnotes"]');
+    fire('booking_enquiry_submit', {
+      form_id: form.getAttribute('data-form-id') || form.id || 'unknown',
+      form_name: form.getAttribute('data-form-id') || form.id || 'unknown',
+      group_size: guests ? String(guests.value || '').trim() : undefined,
+      has_date: date ? !!date.value : false,
+      has_email: email ? !!email.value : false,
+      has_notes: notes ? !!notes.value : false
+    });
+  }, true); // capture phase so we fire even if a child handler stops propagation
+
+  // ---- Scroll depth (high-intent pages only) ----
   var SCROLL_PAGES = ['/', '/private-chef-cost-marrakech/', '/marrakech-villa-with-private-chef/',
     '/marrakech-cooking-class-vs-private-chef/', '/the-experience/'];
   var path = window.location.pathname;
@@ -402,6 +507,8 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
       requestAnimationFrame(function () { checkScroll(); ticking = false; });
     }, { passive: true });
   }
+
+  // ---- FAQ open ----
   document.querySelectorAll('details').forEach(function (d) {
     d.addEventListener('toggle', function () {
       if (!d.open) return;
@@ -420,6 +527,5 @@ a:hover{color:var(--lt-ember-light);border-color:var(--lt-ember-light)}
 })();
 </script>
 <!-- PERF:ANALYTICS-RICH END -->
-
 </body>
 </html>

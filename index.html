@@ -4,6 +4,57 @@
   <!-- Google tag (gtag.js) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CONSENT MODE V2 (must load before gtag) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
+  </script>
+
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
+  <script>
+    (function() {
+      var loaded = false;
+      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        rIC(function() {
+          var s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+          document.head.appendChild(s1);
+          s1.onload = function() {
+            rIC(function() {
+              gtag('js', new Date());
+              gtag('config', 'G-J2QTMMMYLD');
+              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+            });
+          };
+        });
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 5000);
+    })();
+  </script>
+  <!-- PERF:GTAG-LAZY END -->
   <meta http-equiv="Cache-Control" content="public, max-age=31536000">
 
   <!-- PRELOAD CRITICAL ASSETS -->
@@ -252,58 +303,6 @@
     "lastReviewed": "2026-03-08"
   }
   </script>
-
-  <!-- CONSENT MODE V2 (must load before gtag) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied',
-      'wait_for_update': 500
-    });
-    // Restore consent if previously accepted
-    if (localStorage.getItem('cookie_consent') === 'accepted') {
-      gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'analytics_storage': 'granted'
-      });
-    }
-  </script>
-
-  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
-  <script>
-    (function() {
-      var loaded = false;
-      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
-      function loadGtag() {
-        if (loaded) return;
-        loaded = true;
-        rIC(function() {
-          var s1 = document.createElement('script');
-          s1.async = true;
-          s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
-          document.head.appendChild(s1);
-          s1.onload = function() {
-            rIC(function() {
-              gtag('js', new Date());
-              gtag('config', 'G-J2QTMMMYLD');
-              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
-            });
-          };
-        });
-      }
-      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
-        window.addEventListener(evt, loadGtag, { passive: true, once: true });
-      });
-      setTimeout(loadGtag, 5000);
-    })();
-  </script>
-  <!-- PERF:GTAG-LAZY END -->
 
   <!-- META PIXEL — Replace XXXXXXX with your Pixel ID -->
   <!-- <script>
@@ -588,13 +587,16 @@
         linear-gradient(to bottom, rgba(8,6,4,0.7) 0%, transparent 20%);
       z-index: 1;
     }
+    /* Cinema key light: warm ember pool from top-left, weak brass fill from bottom-right, vignette 0.4. */
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 1;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(193, 98, 47, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(184, 147, 90, 0.05) 0%, transparent 60%);
+        radial-gradient(60% 75% at 0% 20%, rgba(217,112,64,0.30) 0%, rgba(193,98,47,0.05) 35%, rgba(0,0,0,0) 65%),
+        radial-gradient(45% 55% at 95% 90%, rgba(184,147,90,0.10) 0%, rgba(0,0,0,0) 60%),
+        radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 40%, rgba(8,6,4,0.4) 100%);
     }
     .hero-pattern {
       position: absolute;
@@ -2020,6 +2022,30 @@
     }
     .legal-modal-close:hover { color: var(--sand); border-color: var(--gold); }
     .legal-modal-close:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+    /* Hero title-card composition: editorial, dominant Bebas climax line, brass-italic descender. */
+    .hero-text {
+      text-align: left;
+      color: #F0E6D0;
+      font-family: var(--font-body);
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .hero-text .v1-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: #B0A48A; }
+    .hero-text .v1-dot { width: 6px; height: 6px; background: #C1622F; transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+    .hero-text .v1-display { font-family: var(--font-display); font-weight: 400; line-height: 0.86; letter-spacing: 0.02em; text-transform: uppercase; margin: 0; color: #F0E6D0; display: flex; flex-direction: column; }
+    .hero-text .v1-line-1 { font-size: clamp(36px, 5vw, 64px); opacity: 0.45; }
+    .hero-text .v1-line-2 { font-size: clamp(48px, 6.5vw, 88px); opacity: 0.72; }
+    .hero-text .v1-line-3 { font-size: clamp(64px, 10vw, 148px); color: #F0E6D0; line-height: 0.84; }
+    .hero-text .v1-italic { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #D4AA70; font-size: clamp(17px, 1.45vw, 22px); text-transform: none; letter-spacing: 0.01em; margin-top: 10px; }
+    .hero-text .v1-pull { font-family: var(--font-body); font-weight: 300; font-size: clamp(16px, 1.15vw, 18px); line-height: 1.65; color: #F0E6D0; max-width: 58ch; margin: 0; opacity: 0.86; }
+    .hero-text .v1-cta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .hero-text .v1-cta-primary { display: inline-flex; align-items: center; gap: 12px; padding: 18px 32px; background: #C1622F; color: #F0E6D0; font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; border: none; border-radius: 2px; text-decoration: none; transition: background 200ms, box-shadow 200ms; }
+    .hero-text .v1-cta-primary:hover { background: #D97040; box-shadow: 0 0 0 1px rgba(217,112,64,0.4), 0 10px 30px rgba(217,112,64,0.3); }
+    .hero-text .v1-diamond { width: 7px; height: 7px; background: currentColor; transform: rotate(45deg); display: inline-block; }
+    .hero-text .v1-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #B0A48A; }
   </style>
 
   <!-- SEO:CANONICAL-BLOCK START -->
@@ -2087,18 +2113,18 @@
     <div class="hero-pattern"></div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <span class="eyebrow reveal" data-i18n="hero_eyebrow">PRIVATE CHEF SERVICE &middot; MARRAKECH</span>
-        <h1 class="reveal reveal-d1" data-i18n="hero_h1">Your villa. Your table. <em>Your chef.</em></h1>
-        <p class="reveal reveal-d2" data-i18n="hero_p">A multi-course Moroccan dinner at your riad or villa &mdash; souk-fresh that morning, cooked in your kitchen, served on your terrace. From &euro;85 per person, all-in. Booked in one WhatsApp message.</p>
-        <div class="hero-cta-row reveal reveal-d2">
-          <a href="#booking" class="btn-primary" data-i18n="hero_cta">Reserve your table</a>
-          <a href="#how" class="btn-ghost" data-i18n="hero_ghost">See how it works</a>
+        <span class="v1-eyebrow"><span class="v1-dot"></span>Private Chef Service · Marrakech</span>
+        <h1 class="v1-display">
+          <span class="v1-line v1-line-1">Your villa.</span>
+          <span class="v1-line v1-line-2">Your table.</span>
+          <span class="v1-line v1-line-3">Your chef.</span>
+          <em class="v1-italic">— at your riad, tonight.</em>
+        </h1>
+        <p class="v1-pull">A multi-course Moroccan dinner brought to your villa or riad. Souk-fresh that morning, cooked in your kitchen, served on your terrace.</p>
+        <div class="v1-cta-row">
+          <a href="#booking" class="v1-cta-primary">Reserve your table <span class="v1-diamond"></span></a>
+          <span class="v1-meta">From €85 / person · Confirmed in 24h via WhatsApp</span>
         </div>
-        <ul class="hero-bullets reveal reveal-d2" style="list-style:none;padding:0;margin:24px 0 0;text-align:left;display:inline-block;">
-          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Souk shopping, multi-course menu, full cleanup &mdash; all included</li>
-          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Riad, villa, terrace, pool, desert &mdash; wherever you're staying</li>
-          <li style="font-size:14px;color:#e8d9c0;margin:6px 0;letter-spacing:0.02em;"><span style="color:#C1622F;margin-right:8px;">&diams;</span>Confirmed in 24 hours via WhatsApp</li>
-        </ul>
       </div>
     </div>
     <div class="scroll-indicator"></div>
@@ -2152,27 +2178,183 @@
 
 
   <!-- ABOUT -->
+  <!-- impeccable-variants-start 69dec827 -->
+  <div data-impeccable-variants="69dec827" data-impeccable-variant-count="3" style="display: contents">
+    <!-- Original -->
+    <div data-impeccable-variant="original">
+      <section class="about" id="about">
+        <div class="container about-inner">
+          <div class="about-text">
+            <span class="eyebrow reveal" data-i18n="about_eyebrow">01 &middot; THE TRUTH</span>
+            <h2 class="reveal reveal-d1" data-i18n="about_h2">COOKED FOR YOU.<em>Only you.</em></h2>
+            <p class="reveal reveal-d2" data-i18n="about_p">The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything — the menu is yours, the pace is yours, the terrace is yours.</p>
+            <p class="detail reveal reveal-d2" data-i18n="about_detail">No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for years.</p>
+          </div>
+        </div>
+        <div class="img-carousel reveal" id="carousel-about">
+          <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel('carousel-about',-1)" aria-label="Previous">&#8249;</button>
+          <div class="img-carousel-track">
+            <img loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Slow-cooked lamb tagine with caramelized onions and raisins served in a traditional clay pot">
+            <img loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Moroccan kofta tagine with poached eggs in spiced tomato sauce">
+            <img loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine with preserved lemons and olives, a Marrakech classic">
+            <img loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Fresh Oualidia oysters with red wine vinegar on a bed of ice">
+            <img loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon on blinis with lemon cream sauce appetizer">
+          </div>
+          <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-about',1)" aria-label="Next">&#8250;</button>
+        </div>
+      </section>
+    </div>
+    <!-- Variants: insert below this line -->
+<style data-impeccable-css="69dec827">
+@scope ([data-impeccable-variant="1"]) {
+  :scope > .about { --v1-iw: var(--p-image-weight, 0.55); background: #100D08; padding: 100px 0 96px; position: relative; overflow: hidden; }
+  :scope > .about .v1-grid { display: grid; grid-template-columns: calc((1 - var(--v1-iw)) * 100%) calc(var(--v1-iw) * 100%); gap: 64px; max-width: 1280px; margin: 0 auto; padding: 0 40px; align-items: start; }
+  :scope > .about .v1-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: #D4AA70; margin-bottom: 28px; }
+  :scope > .about .v1-eyebrow .v1-num { color: #C1622F; font-size: 13px; }
+  :scope > .about .v1-dot { width: 6px; height: 6px; background: #C1622F; transform: rotate(45deg); display: inline-block; flex-shrink: 0; }
+  :scope > .about .v1-display { font-family: var(--font-display); font-weight: 400; line-height: 0.9; letter-spacing: 0.04em; text-transform: uppercase; color: #F0E6D0; margin: 0 0 28px; font-size: clamp(48px, 6vw, 84px); }
+  :scope > .about .v1-display em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #D4AA70; text-transform: none; letter-spacing: 0.01em; display: block; font-size: 0.62em; margin-top: 8px; }
+  :scope > .about .v1-orn { display: flex; align-items: center; gap: 14px; color: rgba(184,147,90,0.45); margin: 0 0 28px; }
+  :scope > .about .v1-orn::after { content: ""; flex: 1; height: 1px; background: currentColor; }
+  :scope > .about .v1-orn-diamond { width: 8px; height: 8px; background: #C1622F; transform: rotate(45deg); }
+  :scope > .about .v1-body { font-family: var(--font-body); font-weight: 300; font-size: 17px; line-height: 1.75; color: #F0E6D0; max-width: 52ch; margin: 0 0 16px; opacity: 0.92; }
+  :scope > .about .v1-detail { font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.55; color: #D4AA70; margin: 24px 0 0; max-width: 44ch; }
+  :scope > .about .v1-stage { display: flex; flex-direction: column; gap: 20px; }
+  :scope > .about .v1-hero { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.04); }
+  :scope > .about .v1-cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #8B6A3A; padding: 8px 0 0; border-top: 1px solid rgba(184,147,90,0.28); display: flex; gap: 14px; }
+  :scope > .about .v1-cap-key { color: #C1622F; }
+  :scope[data-p-caption="false"] > .about .v1-cap { display: none; }
+  :scope > .about .v1-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 4px; }
+  :scope > .about .v1-strip img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; opacity: 0.78; transition: opacity 200ms; }
+  :scope > .about .v1-strip img:hover { opacity: 1; }
+  @media (max-width: 980px) { :scope > .about .v1-grid { grid-template-columns: 1fr; gap: 48px; } }
+}
+@scope ([data-impeccable-variant="2"]) {
+  :scope > .about { --v2-h: var(--p-strip-height, 360px); background: #100D08; padding: 96px 0 0; position: relative; }
+  :scope > .about .v2-text { max-width: 760px; margin: 0 auto 72px; padding: 0 32px; text-align: center; }
+  :scope > .about .v2-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.36em; text-transform: uppercase; color: #B0A48A; margin-bottom: 32px; justify-content: center; }
+  :scope > .about .v2-num { color: #C1622F; font-size: 13px; }
+  :scope > .about .v2-dot { width: 6px; height: 6px; background: #C1622F; transform: rotate(45deg); display: inline-block; }
+  :scope > .about .v2-orn { display: flex; align-items: center; justify-content: center; gap: 16px; color: rgba(184,147,90,0.45); margin: 0 0 36px; }
+  :scope > .about .v2-orn::before, :scope > .about .v2-orn::after { content: ""; flex: 0 1 120px; height: 1px; background: currentColor; }
+  :scope > .about .v2-orn-diamond { width: 9px; height: 9px; background: #C1622F; transform: rotate(45deg); }
+  :scope > .about .v2-display { font-family: var(--font-display); font-weight: 400; line-height: 0.92; letter-spacing: 0.04em; text-transform: uppercase; color: #F0E6D0; margin: 0 0 32px; font-size: clamp(56px, 7vw, 104px); }
+  :scope > .about .v2-display em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #D4AA70; text-transform: none; letter-spacing: 0.01em; display: block; font-size: 0.6em; margin-top: 8px; }
+  :scope > .about .v2-body { font-family: var(--font-body); font-weight: 300; font-size: 18px; line-height: 1.75; color: #F0E6D0; margin: 0 0 18px; opacity: 0.92; }
+  :scope > .about .v2-detail { font-family: var(--font-serif); font-style: italic; font-size: 20px; line-height: 1.55; color: #D4AA70; margin: 18px 0 0; }
+  :scope > .about .v2-strip-wrap { position: relative; padding: 0 0 96px; }
+  :scope > .about .v2-track { display: flex; gap: 4px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 40px 24px; scrollbar-width: none; }
+  :scope > .about .v2-track::-webkit-scrollbar { display: none; }
+  :scope > .about .v2-track img { height: var(--v2-h); aspect-ratio: 4 / 3; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; filter: saturate(1.05) contrast(1.04); transition: filter 200ms; }
+  :scope > .about .v2-track img:hover { filter: saturate(1.15) contrast(1.08) brightness(1.06); }
+  :scope > .about .v2-controls { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 4px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: #8B6A3A; }
+  :scope > .about .v2-arrow { width: 36px; height: 36px; border: 1px solid rgba(184,147,90,0.55); background: transparent; color: #D4AA70; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: color 200ms, border-color 200ms, background 200ms; padding: 0; font-family: inherit; }
+  :scope > .about .v2-arrow:hover { color: #F0E6D0; border-color: #D4AA70; background: rgba(184,147,90,0.08); }
+  :scope > .about .v2-arrow svg { width: 9px; height: 9px; }
+  :scope[data-p-density="airy"] > .about { padding-top: 140px; }
+  :scope[data-p-density="airy"] > .about .v2-text { margin-bottom: 96px; }
+  :scope[data-p-density="cinematic"] > .about { padding-top: 96px; }
+  :scope[data-p-density="cinematic"] > .about .v2-text { margin-bottom: 72px; }
+  :scope[data-p-density="packed"] > .about { padding-top: 72px; }
+  :scope[data-p-density="packed"] > .about .v2-text { margin-bottom: 48px; }
+}
+@scope ([data-impeccable-variant="3"]) {
+  :scope > .about { --v3-cs: var(--p-chapter-scale, 1); background: #100D08; padding: 110px 0 96px; position: relative; overflow: hidden; }
+  :scope > .about .v3-bigchapter { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: #B8935A; opacity: 0.10; position: absolute; top: 36px; left: -28px; line-height: 0.78; pointer-events: none; user-select: none; font-size: clamp(180px, calc(28vw * var(--v3-cs)), 480px); white-space: nowrap; z-index: 0; }
+  :scope[data-p-accent="ember"] > .about .v3-bigchapter { color: #C1622F; opacity: 0.09; }
+  :scope[data-p-accent="sand"] > .about .v3-bigchapter { color: #F0E6D0; opacity: 0.06; }
+  :scope > .about .v3-grid { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 0.85fr; gap: 80px; align-items: end; }
+  :scope > .about .v3-text { padding-top: 60px; }
+  :scope > .about .v3-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.36em; text-transform: uppercase; color: #D4AA70; margin-bottom: 24px; }
+  :scope > .about .v3-eyebrow-mark { color: #C1622F; }
+  :scope > .about .v3-display { font-family: var(--font-display); font-weight: 400; line-height: 0.88; letter-spacing: 0.04em; text-transform: uppercase; color: #F0E6D0; margin: 0 0 28px; font-size: clamp(52px, 6.5vw, 92px); }
+  :scope > .about .v3-display em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #D4AA70; text-transform: none; letter-spacing: 0.01em; display: block; font-size: 0.62em; margin-top: 6px; }
+  :scope > .about .v3-body { font-family: var(--font-body); font-weight: 300; font-size: 17px; line-height: 1.78; color: #F0E6D0; max-width: 50ch; margin: 0 0 20px; opacity: 0.92; }
+  :scope > .about .v3-detail { font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.55; color: #D4AA70; margin: 24px 0 0; max-width: 44ch; }
+  :scope > .about .v3-rail { position: relative; }
+  :scope > .about .v3-rail-img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; filter: saturate(1.05) contrast(1.04); }
+  :scope > .about .v3-rail-meta { display: flex; justify-content: space-between; align-items: center; padding: 14px 0 0; border-top: 1px solid rgba(184,147,90,0.28); margin-top: 14px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #8B6A3A; }
+  :scope > .about .v3-rail-meta-key { color: #C1622F; }
+  :scope > .about .v3-thumbs { display: flex; gap: 8px; padding: 0 40px; max-width: 1280px; margin: 56px auto 0; }
+  :scope > .about .v3-thumb { flex: 1; aspect-ratio: 16 / 9; object-fit: cover; opacity: 0.55; transition: opacity 200ms; cursor: pointer; }
+  :scope > .about .v3-thumb:hover, :scope > .about .v3-thumb.is-active { opacity: 1; }
+  @media (max-width: 980px) { :scope > .about .v3-grid { grid-template-columns: 1fr; gap: 48px; } :scope > .about .v3-bigchapter { font-size: clamp(140px, 38vw, 260px); } }
+}
+</style>
+<div data-impeccable-variant="1" data-impeccable-params='[{"id":"image-weight","kind":"range","min":0.4,"max":0.65,"step":0.025,"default":0.55,"label":"Image weight"},{"id":"caption","kind":"toggle","default":true,"label":"Image caption"}]'>
   <section class="about" id="about">
-    <div class="container about-inner">
-      <div class="about-text">
-        <span class="eyebrow reveal" data-i18n="about_eyebrow">01 &middot; THE TRUTH</span>
-        <h2 class="reveal reveal-d1" data-i18n="about_h2">COOKED FOR YOU.<em>Only you.</em></h2>
-        <p class="reveal reveal-d2" data-i18n="about_p">The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything — the menu is yours, the pace is yours, the terrace is yours.</p>
-        <p class="detail reveal reveal-d2" data-i18n="about_detail">No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for years.</p>
+    <div class="v1-grid">
+      <div class="v1-text">
+        <span class="v1-eyebrow"><span class="v1-dot"></span><span class="v1-num">01</span>The Truth</span>
+        <h2 class="v1-display">Cooked for you. <em>Only you.</em></h2>
+        <div class="v1-orn"><span class="v1-orn-diamond"></span></div>
+        <p class="v1-body">The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything — the menu is yours, the pace is yours, the terrace is yours.</p>
+        <p class="v1-detail">No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for years.</p>
+      </div>
+      <div class="v1-stage">
+        <img class="v1-hero" loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Slow-cooked lamb tagine with caramelized onions and raisins served in a traditional clay pot">
+        <div class="v1-cap"><span class="v1-cap-key">Plate 01</span><span>Lamb tagine · onions, raisins, almonds</span></div>
+        <div class="v1-strip">
+          <img loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Moroccan kofta tagine with poached eggs in spiced tomato sauce">
+          <img loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine with preserved lemons and olives">
+          <img loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Fresh Oualidia oysters with red wine vinegar">
+          <img loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon on blinis with lemon cream sauce">
+        </div>
       </div>
     </div>
-    <div class="img-carousel reveal" id="carousel-about">
-      <button class="carousel-arrow carousel-arrow-left" onclick="slideCarousel('carousel-about',-1)" aria-label="Previous">&#8249;</button>
-      <div class="img-carousel-track">
+  </section>
+</div>
+<div data-impeccable-variant="2" data-impeccable-params='[{"id":"strip-height","kind":"range","min":260,"max":440,"step":20,"default":360,"label":"Filmstrip height (px)"},{"id":"density","kind":"steps","default":"cinematic","label":"Density","options":[{"value":"airy","label":"Airy"},{"value":"cinematic","label":"Cinematic"},{"value":"packed","label":"Packed"}]}]' style="display: none">
+  <section class="about" id="about">
+    <div class="v2-text">
+      <span class="v2-eyebrow"><span class="v2-dot"></span><span class="v2-num">Chapter 01</span>The Truth</span>
+      <h2 class="v2-display">Cooked for you. <em>Only you.</em></h2>
+      <div class="v2-orn"><span class="v2-orn-diamond"></span></div>
+      <p class="v2-body">The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything — the menu is yours, the pace is yours, the terrace is yours.</p>
+      <p class="v2-detail">No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for years.</p>
+    </div>
+    <div class="v2-strip-wrap">
+      <div class="v2-track">
         <img loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Slow-cooked lamb tagine with caramelized onions and raisins served in a traditional clay pot">
         <img loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Moroccan kofta tagine with poached eggs in spiced tomato sauce">
         <img loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine with preserved lemons and olives, a Marrakech classic">
         <img loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Fresh Oualidia oysters with red wine vinegar on a bed of ice">
         <img loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon on blinis with lemon cream sauce appetizer">
       </div>
-      <button class="carousel-arrow carousel-arrow-right" onclick="slideCarousel('carousel-about',1)" aria-label="Next">&#8250;</button>
+      <div class="v2-controls">
+        <button class="v2-arrow" aria-label="Previous"><svg viewBox="0 0 12 12"><polygon points="8,1 4,6 8,11" fill="currentColor"></polygon></svg></button>
+        <span>5 plates · scroll →</span>
+        <button class="v2-arrow" aria-label="Next"><svg viewBox="0 0 12 12"><polygon points="4,1 8,6 4,11" fill="currentColor"></polygon></svg></button>
+      </div>
     </div>
   </section>
+</div>
+<div data-impeccable-variant="3" data-impeccable-params='[{"id":"chapter-scale","kind":"range","min":0.6,"max":1.4,"step":0.05,"default":1,"label":"Chapter mark size"},{"id":"accent","kind":"steps","default":"brass","label":"Chapter accent","options":[{"value":"brass","label":"Brass"},{"value":"ember","label":"Ember"},{"value":"sand","label":"Sand"}]}]' style="display: none">
+  <section class="about" id="about">
+    <div class="v3-bigchapter" aria-hidden="true">01</div>
+    <div class="v3-grid">
+      <div class="v3-text">
+        <span class="v3-eyebrow"><span class="v3-eyebrow-mark">◆</span>Chapter 01 — The Truth</span>
+        <h2 class="v3-display">Cooked for you. <em>Only you.</em></h2>
+        <p class="v3-body">The medina has a thousand restaurants. None of them know your name, your allergies, or that it's your anniversary. A private chef changes everything — the menu is yours, the pace is yours, the terrace is yours.</p>
+        <p class="v3-detail">No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for years.</p>
+      </div>
+      <div class="v3-rail">
+        <img class="v3-rail-img" loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Slow-cooked lamb tagine with caramelized onions and raisins">
+        <div class="v3-rail-meta"><span><span class="v3-rail-meta-key">Plate · </span>Lamb tagine</span><span>01 / 05</span></div>
+      </div>
+    </div>
+    <div class="v3-thumbs">
+      <img class="v3-thumb is-active" loading="lazy" decoding="async" src="Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp" alt="Lamb tagine">
+      <img class="v3-thumb" loading="lazy" decoding="async" src="Kofta-Tagine-with-Eggs-560x300.png.webp" alt="Kofta tagine">
+      <img class="v3-thumb" loading="lazy" decoding="async" src="chicken-tagine-marrakech.webp" alt="Chicken tagine">
+      <img class="v3-thumb" loading="lazy" decoding="async" src="El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp" alt="Oysters">
+      <img class="v3-thumb" loading="lazy" decoding="async" src="Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp" alt="Smoked salmon">
+    </div>
+  </section>
+</div>
+  </div>
+  <!-- impeccable-variants-end 69dec827 -->
 
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="testimonials">
@@ -2319,7 +2501,7 @@
         <span class="eyebrow" data-i18n="book_eyebrow" style="margin-bottom:16px;display:block;">RESERVE YOUR EXPERIENCE</span>
         <h2 data-i18n="book_h2">BOOK YOUR TABLE<em>Pick a date. We handle the rest.</em></h2>
         <p data-i18n="book_p">Choose your preferred date, time, and number of guests. Our team will confirm within 24 hours via WhatsApp.</p>
-        <form class="form-grid" onsubmit="event.preventDefault(); window.open('https://wa.me/212721354757?text='+encodeURIComponent('Booking Request:\nName: '+this.bname.value+'\nEmail: '+this.bemail.value+'\nDate: '+this.bdate.value+'\nTime: '+this.btime.value+'\nGuests: '+this.bguests.value+'\nNotes: '+this.bnotes.value),'_blank');">
+        <form class="form-grid" id="booking-home" data-track-form="booking-enquiry" data-form-id="booking-home" onsubmit="event.preventDefault(); window.open('https://wa.me/212721354757?text='+encodeURIComponent('Booking Request:\nName: '+this.bname.value+'\nEmail: '+this.bemail.value+'\nDate: '+this.bdate.value+'\nTime: '+this.btime.value+'\nGuests: '+this.bguests.value+'\nNotes: '+this.bnotes.value),'_blank');">
           <div class="form-group">
             <label data-i18n="book_name_label">Your name</label>
             <input type="text" name="bname" placeholder="First and last name" required>
@@ -2835,7 +3017,7 @@
 </script>
 <!-- PERF:VIDEO-LAZY END -->
 
-<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ tracking -->
+<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
 <script>
 (function () {
   'use strict';
@@ -2858,11 +3040,17 @@
     return 'inline';
   }
   function fire(name, params) {
-    params.page_path = window.location.pathname;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: name }, params));
-    if (typeof gtag === 'function') gtag('event', name, params);
+    try {
+      params = params || {};
+      params.page_path = window.location.pathname;
+      params.page_title = document.title;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params));
+      if (typeof gtag === 'function') gtag('event', name, params);
+    } catch (e) { /* never block UX on tracking */ }
   }
+
+  // ---- WhatsApp clicks ----
   document.addEventListener('click', function (e) {
     var link = e.target.closest('[data-event="whatsapp_click"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     if (!link) return;
@@ -2874,6 +3062,54 @@
       button_location: link.getAttribute('data-location') || ctaPosition(link)
     });
   }, { passive: true });
+
+  // ---- mailto: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="mailto:"]');
+    if (!link) return;
+    fire('email_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- tel: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    fire('phone_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- Booking / enquiry form submits ----
+  // Any <form data-track-form="booking-enquiry"> fires booking_enquiry_submit.
+  // We fire after the form's own onsubmit (which usually opens WhatsApp).
+  // Use a WeakSet to guard against double-fire if a form is re-submitted in <300ms.
+  var formFired = new WeakSet();
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-track-form="booking-enquiry"]');
+    if (!form || formFired.has(form)) return;
+    formFired.add(form);
+    setTimeout(function () { formFired.delete(form); }, 1000);
+    var guests = form.querySelector('[name="bguests"]');
+    var date = form.querySelector('[name="bdate"]');
+    var email = form.querySelector('[name="bemail"]');
+    var notes = form.querySelector('[name="bnotes"]');
+    fire('booking_enquiry_submit', {
+      form_id: form.getAttribute('data-form-id') || form.id || 'unknown',
+      form_name: form.getAttribute('data-form-id') || form.id || 'unknown',
+      group_size: guests ? String(guests.value || '').trim() : undefined,
+      has_date: date ? !!date.value : false,
+      has_email: email ? !!email.value : false,
+      has_notes: notes ? !!notes.value : false
+    });
+  }, true); // capture phase so we fire even if a child handler stops propagation
+
+  // ---- Scroll depth (high-intent pages only) ----
   var SCROLL_PAGES = ['/', '/private-chef-cost-marrakech/', '/marrakech-villa-with-private-chef/',
     '/marrakech-cooking-class-vs-private-chef/', '/the-experience/'];
   var path = window.location.pathname;
@@ -2900,6 +3136,8 @@
       requestAnimationFrame(function () { checkScroll(); ticking = false; });
     }, { passive: true });
   }
+
+  // ---- FAQ open ----
   document.querySelectorAll('details').forEach(function (d) {
     d.addEventListener('toggle', function () {
       if (!d.open) return;
@@ -2918,6 +3156,5 @@
 })();
 </script>
 <!-- PERF:ANALYTICS-RICH END -->
-
 </body>
 </html>

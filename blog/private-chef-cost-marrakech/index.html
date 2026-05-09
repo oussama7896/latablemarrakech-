@@ -3,17 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>How Much Does a Private Chef Cost in Marrakech? (2026 Guide) | La Table Marrakech</title>
-  <meta name="description" content="A practical 2026 guide to the cost of hiring a private chef in Marrakech, what affects pricing, and how to budget for villa dining.">
-  <link rel="canonical" href="https://latablemarrakech.com/blog/private-chef-cost-marrakech/">
-  <link rel="alternate" hreflang="en" href="https://latablemarrakech.com/blog/private-chef-cost-marrakech/">
-  <link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/blog/private-chef-cost-marrakech/">
-  <link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/blog/private-chef-cost-marrakech/">
+
+  <!-- CONSENT MODE V2 (must load before gtag) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
+  </script>
+
   <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
   <script>
     (function() {
       var loaded = false;
-      var rIC = window.requestIdleCallback | function(fn) { return setTimeout(fn, 1); };
+      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -38,6 +54,12 @@
     })();
   </script>
   <!-- PERF:GTAG-LAZY END -->
+  <title>How Much Does a Private Chef Cost in Marrakech? (2026 Guide) | La Table Marrakech</title>
+  <meta name="description" content="A practical 2026 guide to the cost of hiring a private chef in Marrakech, what affects pricing, and how to budget for villa dining.">
+  <link rel="canonical" href="https://latablemarrakech.com/blog/private-chef-cost-marrakech/">
+  <link rel="alternate" hreflang="en" href="https://latablemarrakech.com/blog/private-chef-cost-marrakech/">
+  <link rel="alternate" hreflang="fr" href="https://latablemarrakech.com/fr/blog/private-chef-cost-marrakech/">
+  <link rel="alternate" hreflang="ar" href="https://latablemarrakech.com/ar/blog/private-chef-cost-marrakech/">
   <style>body{font-family:Karla,Helvetica,Arial,sans-serif;background:#080604;color:#F0E6D0;margin:0;padding:24px;line-height:1.7}main{max-width:820px;margin:0 auto}h1{font-family:'Bebas Neue',sans-serif;color:#D4AA70}</style>
   <!-- PERF:CHEF-LINKS-SCRUBBED -->
 </head>
@@ -78,7 +100,7 @@
     <p><a href="/menus/">See Menus</a><a href="/#booking">Book a Chef</a></p>
   </main>
 
-<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ tracking -->
+<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
 <script>
 (function () {
   'use strict';
@@ -101,11 +123,17 @@
     return 'inline';
   }
   function fire(name, params) {
-    params.page_path = window.location.pathname;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: name }, params));
-    if (typeof gtag === 'function') gtag('event', name, params);
+    try {
+      params = params || {};
+      params.page_path = window.location.pathname;
+      params.page_title = document.title;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params));
+      if (typeof gtag === 'function') gtag('event', name, params);
+    } catch (e) { /* never block UX on tracking */ }
   }
+
+  // ---- WhatsApp clicks ----
   document.addEventListener('click', function (e) {
     var link = e.target.closest('[data-event="whatsapp_click"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     if (!link) return;
@@ -117,6 +145,54 @@
       button_location: link.getAttribute('data-location') || ctaPosition(link)
     });
   }, { passive: true });
+
+  // ---- mailto: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="mailto:"]');
+    if (!link) return;
+    fire('email_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- tel: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    fire('phone_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- Booking / enquiry form submits ----
+  // Any <form data-track-form="booking-enquiry"> fires booking_enquiry_submit.
+  // We fire after the form's own onsubmit (which usually opens WhatsApp).
+  // Use a WeakSet to guard against double-fire if a form is re-submitted in <300ms.
+  var formFired = new WeakSet();
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-track-form="booking-enquiry"]');
+    if (!form || formFired.has(form)) return;
+    formFired.add(form);
+    setTimeout(function () { formFired.delete(form); }, 1000);
+    var guests = form.querySelector('[name="bguests"]');
+    var date = form.querySelector('[name="bdate"]');
+    var email = form.querySelector('[name="bemail"]');
+    var notes = form.querySelector('[name="bnotes"]');
+    fire('booking_enquiry_submit', {
+      form_id: form.getAttribute('data-form-id') || form.id || 'unknown',
+      form_name: form.getAttribute('data-form-id') || form.id || 'unknown',
+      group_size: guests ? String(guests.value || '').trim() : undefined,
+      has_date: date ? !!date.value : false,
+      has_email: email ? !!email.value : false,
+      has_notes: notes ? !!notes.value : false
+    });
+  }, true); // capture phase so we fire even if a child handler stops propagation
+
+  // ---- Scroll depth (high-intent pages only) ----
   var SCROLL_PAGES = ['/', '/private-chef-cost-marrakech/', '/marrakech-villa-with-private-chef/',
     '/marrakech-cooking-class-vs-private-chef/', '/the-experience/'];
   var path = window.location.pathname;
@@ -143,6 +219,8 @@
       requestAnimationFrame(function () { checkScroll(); ticking = false; });
     }, { passive: true });
   }
+
+  // ---- FAQ open ----
   document.querySelectorAll('details').forEach(function (d) {
     d.addEventListener('toggle', function () {
       if (!d.open) return;
@@ -161,6 +239,5 @@
 })();
 </script>
 <!-- PERF:ANALYTICS-RICH END -->
-
 </body>
 </html>
