@@ -1,0 +1,264 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+    { '@type': 'ListItem', position: 2, name: 'How it works', item: 'https://latablemarrakech.com/how-it-works/' },
+  ],
+};
+
+const howToLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to book a private chef in Marrakech',
+  description: 'Book a private chef for your Marrakech villa or riad in four WhatsApp messages. Confirmation in 24 hours, no platform fees. From €85 per person, minimum 2 guests.',
+  totalTime: 'PT5M',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '85' },
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Send the brief on WhatsApp', text: 'Message the chef with date, headcount, address (or just the neighbourhood), and any dietary needs. Reply usually within an hour.', url: 'https://latablemarrakech.com/how-it-works/#step-1' },
+    { '@type': 'HowToStep', position: 2, name: 'Receive the menu in writing', text: 'Inside 24 hours, you receive a 5-course Moroccan menu adjusted to your group and dietaries. Edit, refine, sign off.', url: 'https://latablemarrakech.com/how-it-works/#step-2' },
+    { '@type': 'HowToStep', position: 3, name: 'Confirm with a 50% deposit', text: 'Stripe, wire, Apple Pay, Visa or Mastercard. The remaining 50% is paid on the night.', url: 'https://latablemarrakech.com/how-it-works/#step-3' },
+    { '@type': 'HowToStep', position: 4, name: 'The night arrives', text: 'Chef walks the souk that morning. Arrives at your villa around 4–5pm. Cooks. Serves. Cleans up. Vanishes by 11pm.', url: 'https://latablemarrakech.com/how-it-works/#step-4' },
+  ],
+};
+
+const provide = [
+  ['A working oven and gas hob', '(4 burners ideal).'],
+  ['A working sink with hot water.', null],
+  ['A fridge with at least one shelf empty.', null],
+  ['Plates, glasses and a serving table', 'for the headcount — most villas have these.'],
+  ['If you want wine, buy your own', '(Carrefour or Atac — Moroccan wine is good).'],
+];
+
+const bring = [
+  'All ingredients, fresh from the souk that morning.',
+  'All cookware — tagines, knives, our own plating if your villa is light-equipped.',
+  'Charcoal and grill setup if you want outdoor cooking.',
+  'The chef and, for groups over 6, additional service staff.',
+];
+---
+
+<Layout
+  title="How It Works — Booking a Private Chef in Marrakech | La Table Marrakech"
+  description="How it works — pick a date, choose a menu, your chef shops the Marrakech souk and cooks at your villa. Full cleanup included. From €85 per person."
+  twitterTitle="How It Works — La Table Marrakech"
+  twitterDescription="Four WhatsApp messages, 24-hour confirmation, one quiet evening."
+  canonical="https://latablemarrakech.com/how-it-works/"
+  ogLocale="en_US"
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/how-it-works/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/how-it-works/' },
+  ]}
+  jsonLd={[breadcrumbLd, howToLd]}
+>
+  <Nav lang="en" />
+
+  <main>
+    {/* Hero */}
+    <header class="bg-ink-light pb-16 pt-20 sm:pt-24">
+      <div class="container">
+        <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
+          <a href="/" class="transition hover:text-gold-light">Home</a>
+          <span aria-hidden="true" class="text-ember">◆</span>
+          <span class="text-gold-light">How It Works</span>
+        </nav>
+        <span class="eyebrow mt-8 inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          Booking flow · 4 WhatsApp messages
+        </span>
+        <h1 class="mt-6 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          How it works.
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">A short instruction manual.</em>
+        </h1>
+        <p class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
+          <span>By La Table Marrakech</span>
+          <span>4 min read</span>
+        </p>
+      </div>
+    </header>
+
+    {/* Article body */}
+    <section class="bg-ink py-20">
+      <article class="container max-w-[760px]">
+        <p class="text-lg leading-relaxed text-sand">
+          Four messages on WhatsApp, one 24-hour confirmation, one quiet evening. That's the whole booking flow.
+          Here it is in detail.
+        </p>
+
+        <div class="my-12 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+
+        <h2 id="step-1" class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Step 1 · <em class="font-serif italic font-normal text-gold-light">Send the brief</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          Message the chef on
+          <a
+            data-event="whatsapp_click"
+            data-location="how-it-works"
+            href="https://wa.me/212721354757"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline"
+          >+212 721 354 757</a>. Tell us:
+        </p>
+        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
+          <li class="border-l-2 border-ember/40 pl-4">The <strong class="text-sand">date</strong> (or a window of two or three).</li>
+          <li class="border-l-2 border-ember/40 pl-4">The <strong class="text-sand">number of guests</strong> — we work from 2 to 30+.</li>
+          <li class="border-l-2 border-ember/40 pl-4">The <strong class="text-sand">address</strong>, or just the neighbourhood (Palmeraie, Hivernage, medina riad, Atlas).</li>
+          <li class="border-l-2 border-ember/40 pl-4">Any <strong class="text-sand">dietary needs</strong> — vegetarian, vegan, gluten-free, halal (default), kosher, allergies.</li>
+          <li class="border-l-2 border-ember/40 pl-4">The <strong class="text-sand">vibe</strong> — intimate dinner, family feast, anniversary, birthday, business.</li>
+        </ul>
+        <p class="mt-6 leading-[1.75] text-sand">
+          That's the whole brief. Reply usually inside an hour during Moroccan working hours; up to 12 hours
+          overnight.
+        </p>
+
+        <h2 id="step-2" class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Step 2 · <em class="font-serif italic font-normal text-gold-light">Receive the menu</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          Within 24 hours, you receive a written menu over WhatsApp. Five courses unless you ask for more or fewer:
+        </p>
+        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
+          <li class="border-l-2 border-ember/40 pl-4">Mezze and Moroccan salads</li>
+          <li class="border-l-2 border-ember/40 pl-4">Pastilla (or another starter, if you prefer)</li>
+          <li class="border-l-2 border-ember/40 pl-4">Tagine, royal couscous, mechoui, or fish — one main, often two for larger groups</li>
+          <li class="border-l-2 border-ember/40 pl-4">Dessert (semolina, almond pastry, fruit)</li>
+          <li class="border-l-2 border-ember/40 pl-4">Mint tea, poured at the table</li>
+        </ul>
+        <p class="mt-6 leading-[1.75] text-sand">
+          You edit, we adjust. Vegetarian and vegan menus run in parallel where needed. The menu is yours to sign
+          off on.
+        </p>
+
+        <h2 id="step-3" class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Step 3 · <em class="font-serif italic font-normal text-gold-light">Confirm with deposit</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          Once the menu is agreed, we send a payment link.
+          <strong class="text-sand">50% deposit</strong> on confirmation, balance on the night. Stripe, wire
+          transfer in EUR or USD, Apple Pay, Visa, Mastercard, or local cash in MAD if you prefer.
+        </p>
+        <p class="mt-4 leading-[1.75] text-sand">
+          For corporate bookings we invoice with VAT-compliant documentation suitable for EU/UK/US accounting;
+          net-30 terms available for repeat clients.
+          <a href="/services/corporate-dining-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">More on the corporate page.</a>
+        </p>
+
+        <h2 id="step-4" class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Step 4 · <em class="font-serif italic font-normal text-gold-light">The night</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          The morning of, the chef walks the medina souk for ingredients. Around 4–5pm, they arrive at your villa
+          with everything — tagines, knives, plating, charcoal, the lot. They cook. They serve. They clean every
+          surface and pack up. By 11pm the kitchen is spotless and they are gone.
+        </p>
+        <p class="mt-4 leading-[1.75] text-sand">
+          What you do: nothing. Sit at the table. Drink your wine. Talk. The job tonight is to be the guest at
+          your own dinner.
+        </p>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          What you <em class="font-serif italic font-normal text-gold-light">need to provide</em>
+        </h2>
+        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
+          {provide.map(([h, body]) => (
+            <li class="border-l-2 border-ember/40 pl-4">
+              <strong class="text-sand">{h}</strong>{body && <> {body}</>}
+            </li>
+          ))}
+        </ul>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          What we <em class="font-serif italic font-normal text-gold-light">bring</em>
+        </h2>
+        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
+          {bring.map((b) => (
+            <li class="border-l-2 border-ember/40 pl-4">{b}</li>
+          ))}
+        </ul>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Last-minute — <em class="font-serif italic font-normal text-gold-light">how late is too late?</em>
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          Standard booking window is 72 hours. Last-minute bookings under 48 hours are regularly possible —
+          <a
+            data-event="whatsapp_click"
+            data-location="how-it-works"
+            href="https://wa.me/212721354757"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline"
+          >message us</a> with the date and we'll let you know if a chef is free that night. No surcharge for
+          last-minute.
+        </p>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Cancellation
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          Cancellation more than 7 days before the dinner: 50% deposit refunded. 2–7 days: deposit non-refundable
+          but credited to a future booking. Under 48 hours: deposit non-refundable. Force majeure (illness, flight
+          cancellation) handled case by case — we're reasonable.
+        </p>
+
+        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
+          Ready?
+        </h2>
+        <p class="mt-4 leading-[1.75] text-sand">
+          The full pricing breakdown is on the
+          <a href="/private-chef-cost-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">pricing page</a>.
+          The villa &amp; riad guide is
+          <a href="/marrakech-villa-with-private-chef/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">here</a>.
+          Wedding and corporate booking is on the
+          <a href="/services/wedding-dinner-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">wedding page</a> and
+          <a href="/services/corporate-dining-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">corporate page</a> respectively.
+          Any other questions, the
+          <a href="/faq/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">FAQ</a> covers most of them.
+        </p>
+      </article>
+    </section>
+
+    {/* CTA band */}
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <span class="eyebrow inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          Step 1, basically
+        </span>
+        <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
+          Send the brief.
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">We'll do the rest.</em>
+        </h2>
+        <p class="mt-5 text-sand-muted">
+          Date, headcount, address, dietaries. Reply inside an hour.
+        </p>
+        <a
+          data-event="whatsapp_click"
+          data-location="how-it-works"
+          href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20private%20chef.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Address%3A%20%5B%5D%2C%20Dietaries%3A%20%5B%5D"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp the chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
