@@ -1,0 +1,44 @@
+[
+  {
+    "section": "Pricing & what's included",
+    "items": [
+      { "q": "How much does a private chef cost in Marrakech?", "a": "From <strong>€85 per person</strong>, all-inclusive. Minimum 2 guests. A couple pays €170, a family of four €340, a group of eight €680.", "linkHref": "/private-chef-cost-marrakech/", "linkText": "Full pricing breakdown by group size." },
+      { "q": "What's included?", "a": "Everything: menu planning, the chef's morning visit to the souk, all ingredients and cookware, cooking, plating and table service, mint-tea ceremony, and full kitchen cleanup." },
+      { "q": "What's NOT included?", "a": "Wine and drinks, premium add-ons (live cooking stations), chef tip (10% local norm, not required), and luxury produce beyond the standard budget — quoted separately." }
+    ]
+  },
+  {
+    "section": "Booking",
+    "items": [
+      { "q": "How far in advance should I book?", "a": "72 hours is ideal. Peak season (October–April) or groups over 10: 1–2 weeks. Last-minute (under 48 hours) regularly possible." },
+      { "q": "How do I pay?", "a": "50% deposit on confirmation, balance on the night. Stripe, wire (EUR/USD), Apple Pay, Visa/Mastercard, or MAD cash.", "linkHref": "/services/corporate-dining-marrakech/", "linkText": "Corporate invoicing available." },
+      { "q": "What's the cancellation policy?", "a": "&gt; 7 days: 50% deposit refunded. 2–7 days: credited to future booking. &lt; 48 hours: non-refundable. Force majeure case by case." }
+    ]
+  },
+  {
+    "section": "The food",
+    "items": [
+      { "q": "What do you cook?", "a": "Traditional Moroccan: tagines, pastilla, royal couscous, the seven salads, mechoui lamb, traditional desserts, mint tea. Mediterranean and French influences possible on request." },
+      { "q": "Is the food halal?", "a": "Halal by default — all meat from certified halal butchers in the medina souk. Kosher, vegetarian, and vegan menus run in parallel on request." },
+      { "q": "Can you accommodate dietary restrictions?", "a": "Yes. Vegetarian, vegan, gluten-free, kosher, allergies, low-carb, dairy-free — no extra charge. Tell us at booking. Menu is shared in writing for you to approve." },
+      { "q": "Can I request a specific menu?", "a": "Yes. We work from what's at the souk that morning, not a fixed list. Want a specific tagine, a non-Moroccan course, a kid-friendly section, a fully bespoke tasting menu — flag it in the brief and we'll cost it." }
+    ]
+  },
+  {
+    "section": "Where we cook",
+    "items": [
+      { "q": "Do I need a kitchen?", "a": "Yes — a working oven, gas hob (4 burners ideal), sink with hot water, and a fridge with at least one shelf empty. We bring all cookware.", "linkHref": "/marrakech-villa-with-private-chef/", "linkText": "More on villa kitchen requirements." },
+      { "q": "Can the chef cook at a medina riad?", "a": "Yes. Riad kitchens are smaller but the souk is 50 metres away. Service moves to the courtyard or rooftop. Maximum 12–14 guests realistically." },
+      { "q": "Can the chef cook in the desert?", "a": "Yes — Agafay desert camps are a regular venue. We bring everything; cooking is over charcoal or wood fire. Flat €60 per person transport add-on for desert dinners." }
+    ]
+  },
+  {
+    "section": "Group size & events",
+    "items": [
+      { "q": "How many guests can the chef serve?", "a": "From 2 to 30+. Minimum 2. €85 per person up to 19 guests; for 20+ we move to the event tier (custom quote, full service brigade). For 50–200+ events, see the wedding page.", "linkHref": "/services/wedding-dinner-marrakech/", "linkText": "Wedding chef page." },
+      { "q": "Can you cater a wedding?", "a": "Yes. Wedding bookings start at <strong>€1,200 for 20 guests</strong>, scaling to 200+. Full brigade, table styling, mint-tea ceremony, cleanup included.", "linkHref": "/services/wedding-dinner-marrakech/", "linkText": "Wedding chef page." },
+      { "q": "Can you cater a corporate dinner or offsite?", "a": "Yes. From <strong>€650 for 10 guests</strong>, full service. Multilingual team (EN/FR/AR default). EUR or USD invoicing, VAT-compliant. NDAs available.", "linkHref": "/services/corporate-dining-marrakech/", "linkText": "Corporate dining page." },
+      { "q": "Do you offer cooking classes?", "a": "Yes — as an add-on to the chef dinner, €200 for up to 6 guests, at your villa or riad.", "linkHref": "/marrakech-cooking-class-vs-private-chef/", "linkText": "Cooking class vs chef comparison." }
+    ]
+  }
+]
