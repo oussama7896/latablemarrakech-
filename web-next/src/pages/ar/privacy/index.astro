@@ -1,0 +1,59 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const sections = [
+  { title: 'من نحن', body: 'لا تابل مراكش هي خدمة شيف خاص في مراكش، المغرب. للتواصل: <a href="mailto:hello@latablemarrakech.com" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">hello@latablemarrakech.com</a>.' },
+  { title: 'البيانات التي نجمعها', body: 'عند طلب الحجز نجمع: الاسم، البريد الإلكتروني، التاريخ، الوقت، عدد الضيوف، أي ملاحظات. تُرسل هذه البيانات مباشرة إلى رقم واتساب الخاص بنا لمعالجة الحجز.' },
+  { title: 'كيف نستخدم بياناتك', body: 'نستخدم معلوماتك فقط للرد على طلبك، تأكيد الحجز، تنسيق ليلة الخدمة، والمتابعة بعدها. لا نبيع أو نشارك بياناتك مع جهات تسويقية.' },
+  { title: 'ملفات تعريف الارتباط', body: 'يستخدم هذا الموقع الحد الأدنى من ملفات تعريف الارتباط. نستخدم Google Analytics 4 و Google Ads فقط بعد قبولك لها عبر شريط الموافقة.' },
+  { title: 'الأطراف الثالثة', body: 'تُنقل بيانات الحجز عبر واتساب (Meta). نستخدم خطوط Google. لا تُباع أي بيانات لأطراف ثالثة.' },
+  { title: 'حقوقك', body: 'لك الحق في الوصول إلى بياناتك أو تصحيحها أو حذفها. تواصل معنا على <a href="mailto:hello@latablemarrakech.com" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">hello@latablemarrakech.com</a>.' },
+  { title: 'الاحتفاظ بالبيانات', body: 'نحتفظ بمراسلات الحجز لمدة أقصاها 12 شهرًا، ثم نحذفها.' },
+];
+---
+
+<Layout
+  title="سياسة الخصوصية | لا تابل مراكش"
+  description="سياسة الخصوصية لـ لا تابل مراكش — كيف نجمع بياناتك الشخصية ونستخدمها ونحميها."
+  canonical="https://latablemarrakech.com/ar/privacy/"
+  htmlLang="ar"
+  htmlDir="rtl"
+  ogLocale="ar_MA"
+  robots="noindex, follow"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/privacy/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/privacy/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/privacy/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/privacy/' },
+  ]}
+>
+  <Nav lang="ar" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[0.04em] text-sand">
+          سياسة <em class="font-serif italic font-normal text-gold-light">الخصوصية</em>
+        </h1>
+        <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
+          آخر تحديث: أبريل 2026
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <article class="container max-w-[760px] space-y-10" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        {sections.map((s) => (
+          <section>
+            <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">{s.title}</h2>
+            <p class="mt-3 leading-[1.85] text-sand-muted" set:html={s.body} />
+          </section>
+        ))}
+      </article>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

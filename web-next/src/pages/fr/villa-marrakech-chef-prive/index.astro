@@ -1,0 +1,119 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://latablemarrakech.com/fr/' },
+    { '@type': 'ListItem', position: 2, name: 'Villa avec chef privé', item: 'https://latablemarrakech.com/fr/villa-marrakech-chef-prive/' },
+  ],
+};
+
+const quartiers = [
+  { name: 'Palmeraie', body: 'Idéal pour groupes, dîners au bord de la piscine, familles. 8–15 min du centre. Cuisines spacieuses et bien équipées.' },
+  { name: 'Hivernage', body: 'Idéal pour séjours courts, vie nocturne. À pied de la médina et de la Mamounia. Cuisines plus petites.' },
+  { name: 'Riads de la Médina', body: "L'atmosphère, les patios, les soirées intimes. Cuisines compactes mais le souk est à 50 m. 12–14 invités max." },
+  { name: 'Ourika / Ouirgane / Atlas', body: "Retraites, calme, vues sur les montagnes. 45 min–90 min de Marrakech. Forfait transport 20–40 €." },
+];
+---
+
+<Layout
+  title="Villa à Marrakech avec chef privé : guide complet 2026 | La Table Marrakech"
+  description="Vous louez une villa ou un riad à Marrakech avec un chef privé ? Quartiers (Palmeraie, Médina, Hivernage), équipement de cuisine, itinéraires types et conseils de réservation — par une équipe de chefs basée à Marrakech."
+  canonical="https://latablemarrakech.com/fr/villa-marrakech-chef-prive/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/marrakech-villa-with-private-chef/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/villa-marrakech-chef-prive/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/marrakech-villa-with-private-chef/' },
+  ]}
+  jsonLd={[breadcrumbLd]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container max-w-[920px]">
+        <span class="eyebrow inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>Le guide villa</span>
+        <h1 class="mt-6 font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Le guide complet de la villa à Marrakech
+          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light">avec chef privé.</em>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand">
+          Si vous louez une villa ou un riad à Marrakech et voulez manger comme à Marrakech, prenez un chef
+          privé — pas un buffet. Voici un guide pratique : où loger, quoi demander à la location, ce dont la
+          cuisine a besoin, des itinéraires types et comment nous faire venir.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[900px] space-y-12">
+        <div>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Pourquoi villa + chef privé est la bonne idée</h2>
+          <p class="mt-4 leading-[1.75] text-sand">
+            La meilleure semaine que nous avons cuisinée l'an dernier : une famille de sept dans une 4-chambres
+            en Palmeraie, qui nous a fait venir trois soirs sur sept. Pas de réservation, pas de taxi du retour,
+            pas de souci pour les enfants. C'est ce que la villa-plus-chef vous achète.
+          </p>
+          <p class="mt-3 leading-[1.75] text-sand">
+            Côté budget : une villa Palmeraie pour 8 invités tourne à 400–1 200 € la nuit. La même villa avec
+            chef inclus monte de +90–150 € par personne. Notre tarif : <strong class="text-sand">85 € par personne</strong>,
+            tout compris.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Quel quartier de Marrakech ?</h2>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            {quartiers.map((q) => (
+              <div class="border border-gold/20 border-t-[3px] border-t-ember bg-ink-light p-6">
+                <h3 class="font-serif text-[20px] italic text-gold-light">{q.name}</h3>
+                <p class="mt-3 text-[15px] leading-relaxed text-sand">{q.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Ce dont la cuisine a besoin</h2>
+          <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Four et plaque gaz</strong> — idéalement 4 feux</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Eau chaude et évier</strong> — sinon le nettoyage est laborieux</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Frigo avec une étagère libre</strong> — on fait le souk le matin</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Assiettes et verres</strong> au nombre d'invités</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Une grande table</strong> à l'extérieur de préférence</li>
+          </ul>
+        </div>
+
+        <p class="text-sand-muted">
+          Pour la version anglaise détaillée avec exemples d'itinéraires sur 3 / 5 / 7 jours :
+          <a href="/marrakech-villa-with-private-chef/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">full villa guide (EN)</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] tracking-[0.04em] text-sand">
+          Réservez le chef.
+          <em class="mt-2 block font-serif italic font-normal text-[0.6em] text-gold-light">Gardez la villa.</em>
+        </h2>
+        <a
+          data-event="whatsapp_click" data-location="villa-guide_fr"
+          href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20villa%20%2B%20chef%20priv%C3%A9"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp le chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

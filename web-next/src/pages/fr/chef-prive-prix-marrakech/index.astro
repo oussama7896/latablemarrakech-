@@ -1,0 +1,116 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://latablemarrakech.com/fr/' },
+    { '@type': 'ListItem', position: 2, name: 'Tarifs', item: 'https://latablemarrakech.com/fr/chef-prive-prix-marrakech/' },
+  ],
+};
+
+const tiers = [
+  { label: 'Dîner intime', price: 'Dès 85 € / pers.', meta: '2–4 invités · Une soirée', body: 'Menu 5 services, achat au souk, cuisine, service, nettoyage, cérémonie du thé à la menthe.' },
+  { label: 'Réception villa', price: 'Dès 85 € / pers.', meta: '5–12 invités · Villa ou riad', body: 'Menu personnalisé, accord mets-vins sur demande, dressage de table, service complet.' },
+  { label: 'Célébration & événement', price: 'Dès 60 € / pers.', meta: '13–30+ invités · Mariages, retraites', body: 'Brigade complète, station de cuisson en direct (option), produits premium possibles, mise en place et nettoyage complets.' },
+];
+---
+
+<Layout
+  title="Chef privé Marrakech : prix & tarifs 2026 | À partir de 85 € par personne | La Table Marrakech"
+  description="Combien coûte un chef privé à Marrakech ? Tarifs transparents 2026 : à partir de 85 € par personne (minimum 2 invités), tout compris. Comparatif par taille de groupe et avec les restaurants."
+  canonical="https://latablemarrakech.com/fr/chef-prive-prix-marrakech/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/private-chef-cost-marrakech/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/chef-prive-prix-marrakech/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/private-chef-cost-marrakech/' },
+  ]}
+  jsonLd={[breadcrumbLd]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container max-w-[920px]">
+        <span class="eyebrow inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>Tarifs · 2026 · Mis à jour avril</span>
+        <h1 class="mt-6 font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Chef privé à Marrakech :
+          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light">combien ça coûte ?</em>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand">
+          Une seule somme, tout compris : <strong class="text-sand">85 € par personne</strong>. Pas de supplément
+          au plat, pas de frais de service caché, pas de minimum bar. Minimum 2 invités.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[1000px]">
+        <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Prix total selon la taille du groupe</h2>
+        <div class="mt-8 grid gap-6 lg:grid-cols-3">
+          {tiers.map((t) => (
+            <article class="flex flex-col gap-4 border border-gold/20 bg-ink-light p-7">
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">◆ {t.label}</span>
+              <span class="font-display text-[1.6rem] tracking-[0.04em] text-gold-light">{t.price}</span>
+              <span class="text-sm text-sand-muted">{t.meta}</span>
+              <p class="text-[15px] leading-relaxed text-sand">{t.body}</p>
+              <a
+                data-event="whatsapp_click" data-location="pricing_fr"
+                href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20j%27aimerais%20un%20devis"
+                target="_blank" rel="noopener noreferrer"
+                class="mt-2 inline-flex items-center justify-center gap-2 bg-ember px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition hover:bg-ember-light"
+              >
+                Réserver — WhatsApp
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-16 max-w-[760px] space-y-4 text-[17px] leading-[1.75] text-sand">
+          <h2 class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Ce qui est inclus</h2>
+          <ul class="grid gap-3">
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Conception du menu</strong> par WhatsApp jusqu'à validation écrite</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Le passage au souk</strong> au lever du jour</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Tous les ingrédients</strong> et le matériel (tagines, couteaux, charbon)</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Cuisson, dressage, service à table</strong></li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Cérémonie du thé à la menthe</strong> et nettoyage complet</li>
+          </ul>
+          <h2 class="mt-10 font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">Ce qui n'est pas inclus</h2>
+          <ul class="grid gap-3">
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Les boissons</strong> (vin, spiritueux) — à acheter au Carrefour ou Atac</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Les produits premium</strong> (truffe, homard) — devis séparé</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Pourboire chef</strong> (10 % usage local, non obligatoire)</li>
+            <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Transport</strong> hors Marrakech (vallée d'Ourika, Agafay : forfait 20–60 €)</li>
+          </ul>
+        </div>
+
+        <p class="mt-10 max-w-[760px] text-sand-muted">
+          Pour la version anglaise détaillée avec comparatifs et témoignages :
+          <a href="/private-chef-cost-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">full pricing page (EN)</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] tracking-[0.04em] text-sand">Devis personnalisé.</h2>
+        <p class="mt-5 text-sand-muted">Date, nombre d'invités, dietaries. Réponse sous 24 h.</p>
+        <a
+          data-event="whatsapp_click" data-location="pricing_fr"
+          href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20j%27aimerais%20un%20devis%20chef%20priv%C3%A9"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp le chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

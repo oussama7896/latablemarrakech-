@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const areas = [
+  { name: 'Palmeraie', body: 'Villas de luxe et domaines bordés de palmiers — menus dégustation et service complet pour événements privés.' },
+  { name: 'Médina', body: 'Menus authentiques aux ingrédients du marché, servis dans les riads et patios privés — parfait pour les réceptions intimes.' },
+  { name: 'Gueliz', body: 'Villas modernes et appartements — menus combinant influences marocaines et méditerranéennes.' },
+  { name: 'Hivernage', body: "Villas hôtelières et espaces événementiels — menus servis à l'assiette et cocktails." },
+  { name: 'Amelkis', body: "Domaines de golf et villas familiales — menus du décontracté à l'élégant pour tous types de groupes." },
+  { name: "Vallée d'Ourika", body: "Excursions et événements privés dans la vallée — nous gérons la logistique et l'expérience marché-à-table." },
+];
+---
+
+<Layout
+  title="Zones desservies — La Table Marrakech"
+  description="La Table Marrakech intervient dans la médina, Hivernage, Gueliz et zones proches — Palmeraie, Amelkis, vallée d'Ourika. Des frais de déplacement peuvent s'appliquer hors centre-ville."
+  canonical="https://latablemarrakech.com/fr/areas-we-serve/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/areas-we-serve/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/areas-we-serve/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/areas-we-serve/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/areas-we-serve/' },
+  ]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Zones <em class="font-serif italic font-normal text-gold-light">desservies.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          Nous intervenons à travers Marrakech et les zones proches. Le déplacement intra-Marrakech est inclus ;
+          la vallée d'Ourika et le désert d'Agafay ont un forfait transport.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[900px]">
+        <div class="grid gap-4 sm:grid-cols-2">
+          {areas.map((a) => (
+            <article class="border border-gold/20 border-t-[3px] border-t-ember bg-ink-light p-6">
+              <h2 class="font-display text-[1.5rem] tracking-[0.04em] text-sand">{a.name}</h2>
+              <p class="mt-3 text-[15px] leading-relaxed text-sand-muted">{a.body}</p>
+            </article>
+          ))}
+        </div>
+        <p class="mt-10 text-center text-sand-muted">
+          Une zone hors liste ? <a
+            data-event="whatsapp_click" data-location="areas_fr"
+            href="https://wa.me/212721354757"
+            target="_blank" rel="noopener noreferrer"
+            class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline"
+          >Demandez-nous</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

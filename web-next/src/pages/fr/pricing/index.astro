@@ -1,0 +1,58 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout
+  title="Tarifs | La Table Marrakech"
+  description="Tarifs chef privé à Marrakech — dès 85 € par personne, tout compris. Minimum 2 invités. Forfaits événements à partir de 1 200 € pour 20 personnes."
+  canonical="https://latablemarrakech.com/fr/pricing/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/pricing/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/pricing/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/pricing/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/pricing/' },
+  ]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Tarifs
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">chef privé à Marrakech.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          Dès 85 € par personne, minimum 2 invités. Tout compris : conception du menu, courses au souk, cuisine,
+          service et nettoyage complet.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[760px] space-y-6 text-[17px] leading-[1.75] text-sand">
+        <p>
+          Pour le détail complet — comparatif par taille de groupe, ce qui n'est pas inclus, comparaison avec la
+          haute gastronomie — voir notre <a href="/fr/chef-prive-prix-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">page tarifs détaillée</a>.
+        </p>
+        <div class="pt-4">
+          <a
+            data-event="whatsapp_click" data-location="pricing_fr"
+            href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20devis%20chef%20priv%C3%A9"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            Devis personnalisé
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

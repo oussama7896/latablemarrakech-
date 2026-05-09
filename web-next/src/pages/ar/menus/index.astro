@@ -1,0 +1,66 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const sections = [
+  { title: 'مغربي تقليدي', body: 'مقبلات: زعلوك، سلطة بزهر البرتقال. الطبق الرئيسي: طاجين الضأن بالبرقوق واللوز، كسكس بالزعفران. الحلوى: حلويات بزهر البرتقال، شاي بالنعناع.' },
+  { title: 'متوسطي', body: 'مقبلات: مزّة بالحمص واللبنة والخضار المخللة. الطبق الرئيسي: سمك القشر المشوي بالليمون المخلل. الحلوى: كعكة الليمون وزيت الزيتون.' },
+  { title: 'قوائم مخصصة', body: 'نصمم قوائم تذوق، قوائم بقيود غذائية، أو قوائم احتفالية. أخبرنا بالمناسبة والميزانية.' },
+];
+---
+
+<Layout
+  title="القوائم — La Table Marrakech"
+  description="نماذج القوائم من La Table Marrakech — قوائم تذوق، وجبات عائلية وخيارات موسمية مخصصة. مغربي تقليدي، متوسطي، وقوائم مخصصة. من 85€ للشخص."
+  canonical="https://latablemarrakech.com/ar/menus/"
+  htmlLang="ar"
+  htmlDir="rtl"
+  ogLocale="ar_MA"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/menus/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/menus/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/menus/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/menus/' },
+  ]}
+>
+  <Nav lang="ar" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[0.04em] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          قوائم الشيف الخاص
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light" style="font-family:'Noto Sans Arabic',serif">في مراكش.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          اختر من قوائمنا، أو اطلب قائمة مخصصة لمجموعتك واحتياجاتك الغذائية. من 85€ للشخص.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[800px] grid gap-6">
+        {sections.map((s) => (
+          <article class="border border-gold/20 border-r-[4px] border-r-ember bg-ink-light p-7" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+            <h2 class="font-display text-[1.75rem] tracking-[0.04em] text-sand">{s.title}</h2>
+            <p class="mt-3 leading-[1.85] text-sand-muted">{s.body}</p>
+          </article>
+        ))}
+        <div class="mt-6 text-center">
+          <a
+            data-event="whatsapp_click" data-location="menus_ar"
+            href="https://wa.me/212721354757"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            اطلب قائمة مخصصة
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

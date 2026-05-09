@@ -1,0 +1,80 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout
+  title="شيف خاص في مراكش — عشاء فاخر بفيلتك من 85€ للشخص ★ 4.9/5 | La Table Marrakech"
+  description="شيف خاص في مراكش يطبخ وليمة مغربية متعددة الأطباق بفيلتك — طاجين، بسطيلا، كسكس ملكي بمكونات طازجة من السوق. ابتداءً من 85€ للشخص (بحد أدنى ضيفان)، تقييم 4.9★ من +200 ضيف. تأكيد الحجز عبر واتساب خلال 24 ساعة. حلال بالكامل."
+  canonical="https://latablemarrakech.com/ar/"
+  htmlLang="ar"
+  htmlDir="rtl"
+  ogLocale="ar_MA"
+  ogLocaleAlternates={["en_US", "fr_FR"]}
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/' },
+  ]}
+>
+  <Nav lang="ar" />
+
+  <main>
+    <header class="bg-ink-light pb-16 pt-24">
+      <div class="container max-w-[920px]">
+        <span class="eyebrow inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>شيف خاص · مراكش · من 85€</span>
+        <h1 class="mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.1] tracking-[0.04em] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          فيلتك. طاولتك.
+          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light" style="font-family:'Noto Sans Arabic',serif">شيفك.</em>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          عشاء مغربي متعدد الأطباق يُحضَّر في فيلتك أو رياضك. مكونات طازجة من السوق صباحاً، طبخ في مطبخك،
+          تقديم على شرفتك. من 85€ للشخص، شامل كل شيء. تأكيد عبر واتساب خلال 24 ساعة. حلال بالكامل.
+        </p>
+        <div class="mt-9">
+          <a
+            data-event="whatsapp_click" data-location="home_ar"
+            href="https://wa.me/212721354757?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%E2%80%94%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B4%D9%8A%D9%81%20%D8%AE%D8%A7%D8%B5"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-9 py-5 font-mono text-[13px] uppercase tracking-[0.28em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            احجز الآن
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[760px] space-y-6 text-[17px] leading-[1.85] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <p>المدينة فيها ألف مطعم. لا أحد يعرف اسمك، حساسياتك، أو أنها ذكرى زواجك. الشيف الخاص يغير كل شيء — القائمة لك، الإيقاع لك، الشرفة لك.</p>
+        <p>الشيف يمر بالسوق عند الفجر، يصل إلى منزلك في منتصف فترة بعد الظهر، يشعل الفحم بالباب الخلفي، ويقدم عشاءً متأنيًا حتى منتصف الليل. لا تلمس صحنًا. ويُترك المطبخ نظيفًا تمامًا.</p>
+      </div>
+    </section>
+
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] tracking-[0.04em] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          ليس مطعمًا.
+          <em class="mt-2 block font-serif italic font-normal text-[0.6em] text-gold-light" style="font-family:'Noto Sans Arabic',serif">طاولتك.</em>
+        </h2>
+        <p class="mt-5 text-sand-muted" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+          أرسل التاريخ، عدد الضيوف، العنوان. الرد في أقل من ساعة.
+        </p>
+        <a
+          data-event="whatsapp_click" data-location="home_ar"
+          href="https://wa.me/212721354757"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          راسل الشيف عبر واتساب
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

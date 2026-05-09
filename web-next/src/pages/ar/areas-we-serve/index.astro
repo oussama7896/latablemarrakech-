@@ -1,0 +1,68 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const areas = [
+  { name: 'النخيل (Palmeraie)', body: 'فيلات فاخرة وإقامات بين النخيل — قوائم تذوق راقية وفريق خدمة كامل للفعاليات الخاصة.' },
+  { name: 'المدينة القديمة', body: 'قوائم أصيلة بمكونات السوق، تُقدَّم في الرياضات والأفنية الخاصة — مثالية للتجمعات الحميمة.' },
+  { name: 'قيلز (Gueliz)', body: 'فيلات وشقق حديثة — قوائم تجمع بين اللمسات المغربية والمتوسطية.' },
+  { name: 'الحي الشتوي (Hivernage)', body: 'فيلات فندقية وقاعات فعاليات — قوائم مقدَّمة بالطبق وحفلات كوكتيل متاحة.' },
+  { name: 'أملكيس (Amelkis)', body: 'منتجعات الجولف والفيلات العائلية — قوائم بسيطة إلى راقية لجميع أحجام المجموعات.' },
+  { name: 'وادي أوريكا', body: 'رحلات يومية وفعاليات خاصة في الوادي — نتولى الترتيبات وتجربة من السوق إلى الطاولة.' },
+];
+---
+
+<Layout
+  title="المناطق التي نخدمها — La Table Marrakech"
+  description="نقدم خدمات الطهي الخاص في النخيل، المدينة القديمة، قيلز، الحي الشتوي، أملكيس، ووادي أوريكا. السفر داخل المدينة مشمول؛ الوادي والصحراء برسم سفر ثابت."
+  canonical="https://latablemarrakech.com/ar/areas-we-serve/"
+  htmlLang="ar"
+  htmlDir="rtl"
+  ogLocale="ar_MA"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/areas-we-serve/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/areas-we-serve/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/areas-we-serve/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/areas-we-serve/' },
+  ]}
+>
+  <Nav lang="ar" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[0.04em] text-sand">
+          المناطق <em class="font-serif italic font-normal text-gold-light">التي نخدمها.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          نعمل في جميع أنحاء مراكش والمناطق المجاورة. السفر داخل المدينة مشمول؛ وادي أوريكا وصحراء أكافاي
+          برسم سفر ثابت.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[900px]" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <div class="grid gap-4 sm:grid-cols-2">
+          {areas.map((a) => (
+            <article class="border border-gold/20 border-t-[3px] border-t-ember bg-ink-light p-6">
+              <h2 class="font-display text-[1.5rem] tracking-[0.04em] text-sand">{a.name}</h2>
+              <p class="mt-3 text-[15px] leading-[1.85] text-sand-muted">{a.body}</p>
+            </article>
+          ))}
+        </div>
+        <p class="mt-10 text-center text-sand-muted">
+          منطقة ليست في القائمة؟ <a
+            data-event="whatsapp_click" data-location="areas_ar"
+            href="https://wa.me/212721354757"
+            target="_blank" rel="noopener noreferrer"
+            class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline"
+          >راسلنا</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const sections = [
+  { title: 'Marocain traditionnel', body: 'Entrée : zaalouk, salade à la fleur d\'oranger. Plat : tagine d\'agneau aux pruneaux et amandes, couscous au safran. Dessert : pâtisseries à la fleur d\'oranger, thé à la menthe.' },
+  { title: 'Méditerranéen', body: 'Entrée : mezze de houmous, labneh, légumes marinés. Plat : daurade grillée au citron confit. Dessert : gâteau citron-huile d\'olive.' },
+  { title: 'Menus sur mesure', body: 'Nous concevons des menus dégustation, restrictions alimentaires, ou menus de célébration. Dites-nous l\'occasion et le budget.' },
+];
+---
+
+<Layout
+  title="Nos menus de chef privé à Marrakech | La Table Marrakech"
+  description="Menus types de La Table Marrakech — menus dégustation, repas familiaux et options saisonnières sur mesure. Marocain traditionnel, méditerranéen, et menus personnalisés. Dès 85 € par personne."
+  canonical="https://latablemarrakech.com/fr/menus/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/menus/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/menus/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/menus/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/menus/' },
+  ]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Nos menus de
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">chef privé à Marrakech.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          Choisissez parmi nos menus, ou demandez un menu personnalisé. Dès 85 € par personne.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[800px] grid gap-6">
+        {sections.map((s) => (
+          <article class="border border-gold/20 border-l-[4px] border-l-ember bg-ink-light p-7">
+            <h2 class="font-display text-[1.75rem] tracking-[0.04em] text-sand">{s.title}</h2>
+            <p class="mt-3 leading-[1.75] text-sand-muted">{s.body}</p>
+          </article>
+        ))}
+        <div class="mt-6 text-center">
+          <a
+            data-event="whatsapp_click" data-location="menus_fr"
+            href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20menu%20chef%20priv%C3%A9"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            Demander un menu sur mesure
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

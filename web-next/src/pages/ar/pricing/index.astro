@@ -1,0 +1,54 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout
+  title="الأسعار | La Table Marrakech"
+  description="أسعار الشيف الخاص في مراكش — من 85€ للشخص، شامل كل شيء. بحد أدنى ضيفان. باقات الفعاليات تبدأ من 1,200€ لـ 20 ضيفًا."
+  canonical="https://latablemarrakech.com/ar/pricing/"
+  htmlLang="ar"
+  htmlDir="rtl"
+  ogLocale="ar_MA"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/pricing/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/pricing/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/pricing/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/pricing/' },
+  ]}
+>
+  <Nav lang="ar" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <h1 class="font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[0.04em] text-sand">
+          أسعار <em class="font-serif italic font-normal text-gold-light">الشيف الخاص.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          من 85€ للشخص، بحد أدنى ضيفان. شامل كل شيء: تصميم القائمة، التسوق من السوق، الطهي، الخدمة والتنظيف.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[760px] space-y-6 text-[17px] leading-[1.85] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
+        <p>للتفصيل الكامل — التسعير حسب حجم المجموعة، ما هو غير مشمول، المقارنة مع المطاعم الفاخرة — راجع <a href="/private-chef-cost-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">صفحة التسعير الكاملة</a>.</p>
+        <div class="pt-4">
+          <a
+            data-event="whatsapp_click" data-location="pricing_ar"
+            href="https://wa.me/212721354757"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            احصل على عرض سعر
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
