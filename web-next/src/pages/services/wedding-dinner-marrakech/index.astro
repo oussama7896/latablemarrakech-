@@ -1,0 +1,401 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://latablemarrakech.com/services/' },
+    { '@type': 'ListItem', position: 3, name: 'Wedding Chef Marrakech', item: 'https://latablemarrakech.com/services/wedding-dinner-marrakech/' },
+  ],
+};
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Wedding Catering — Private Chef',
+  name: 'Wedding Chef Marrakech',
+  description: 'Private chef and full service brigade for weddings in Marrakech. Souk-fresh Moroccan menus, table styling, mint-tea ceremony and cleanup. From €1,200 for 20 guests.',
+  provider: {
+    '@type': 'Organization',
+    name: 'La Table Marrakech',
+    url: 'https://latablemarrakech.com/',
+    telephone: '+212721354757',
+    areaServed: 'Marrakech',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Marrakech' },
+    { '@type': 'Place', name: 'Palmeraie Marrakech' },
+    { '@type': 'Place', name: 'Agafay Desert' },
+    { '@type': 'Place', name: 'Atlas Mountains' },
+  ],
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    price: '1200',
+    priceSpecification: { '@type': 'PriceSpecification', minPrice: '1200', priceCurrency: 'EUR' },
+    availability: 'https://schema.org/InStock',
+    url: 'https://latablemarrakech.com/services/wedding-dinner-marrakech/#book',
+  },
+};
+
+const faqs = [
+  { q: 'How much does a wedding chef cost in Marrakech?', a: 'From €1,200 for 20 guests at La Table Marrakech, scaling per guest beyond that. The price covers menu design, souk sourcing, cooking, service team and full cleanup — no per-course or per-guest add-ons. Beverage packages and live stations are optional.' },
+  { q: 'How far in advance should we book?', a: '4–8 weeks for peak season (October–April). 8–12 weeks for weddings of 80+ guests or for desert-camp setups. Last-minute (under 14 days) is sometimes possible — message us.', tracked: true },
+  { q: 'Can you cook at our riad, villa or desert camp?', a: 'Yes. We work at riads in the medina, villas in the palmeraie, estates in the Ourika and Ouirgane valleys, and Agafay desert camps. We bring our own cookware, charcoal and team.' },
+  { q: 'Can you handle halal, vegetarian, vegan and allergy menus?', a: 'Yes. All meat is halal by default. We design parallel vegetarian and vegan tasting menus where required, and handle gluten-free, nut-free and shellfish-free constraints. The full menu is shared in writing for you to approve.' },
+  { q: 'What’s not included?', a: 'Beverages, table linen and floral styling, and venue rental. Everything food, service and kitchen-related is in the price.' },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { q: 'How much does a wedding chef cost in Marrakech?', a: 'Wedding chef bookings at La Table Marrakech start at €1,200 for 20 guests, including a multi-course Moroccan menu, full service brigade, table styling, mint-tea ceremony and cleanup. Pricing scales per guest above 20, with custom quotes for 50, 100 and 200+. Beverage packages and live cooking stations are optional add-ons.' },
+    { q: 'How far in advance should I book a wedding chef in Marrakech?', a: 'Book 4–8 weeks in advance for peak season (October–April). For weddings of 80 guests or more, 8–12 weeks is recommended so we can secure the right team, rentals and souk suppliers. Last-minute bookings under 14 days are sometimes possible — message us on WhatsApp to check availability.' },
+    { q: 'Can you cater a wedding at a riad, villa or in the desert?', a: 'Yes. We cook at riads inside the medina, villas in the palmeraie, private estates in the Ourika and Ouirgane valleys, and at desert camps in the Agafay. We bring our own cookware, charcoal, plating and service team.' },
+    { q: 'Can you accommodate halal, vegetarian, vegan and allergy menus?', a: 'Yes. All meat is halal by default. We design parallel vegetarian and vegan tasting menus where required, and handle gluten-free, nut-free and shellfish-free constraints.' },
+  ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+
+const packages = [
+  {
+    label: 'Intimate',
+    price: '€1,200',
+    detail: 'Up to 20 guests · 5 courses\nMezze · pastilla · tagine · dessert · mint tea\nChef + 2 service staff',
+    popular: false,
+  },
+  {
+    label: 'Celebration',
+    price: '€3,800',
+    detail: 'Up to 60 guests · 7 courses\nLive couscous station · mechoui carving\nChef brigade + 6 service staff',
+    popular: true,
+  },
+  {
+    label: 'Grand',
+    price: '€9,500',
+    detail: '100+ guests · bespoke menu\nTwo cooking stations · pastry chef\nBrigade + 12 service staff',
+    popular: false,
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    eyebrow: 'Tasting call',
+    title: 'Sketch the menu together',
+    body: 'Within 24 hours of your enquiry, we set a video call to taste the wedding with you. Tell us your story, your venue, your guests, your dietary map. We sketch the menu in front of you.',
+  },
+  {
+    n: '02',
+    eyebrow: 'Souk & setup',
+    title: 'The medina, at dawn',
+    body: 'The morning of, the chef walks the medina souk — tomatoes still warm from the sun, fish in from Essaouira overnight. Charcoal is lit by 2pm. Kitchen is fully ours by 4pm.',
+  },
+  {
+    n: '03',
+    eyebrow: 'Service & vanish',
+    title: 'A spotless morning after',
+    body: 'Cocktail hour, paced courses through the night, a mint-tea ceremony with the speeches. After the last guest leaves, we clean every surface and pack every plate. You wake up to a quiet kitchen.',
+  },
+];
+
+const heroImage = 'https://latablemarrakech.com/moroccan-feast-villa-terrace.webp';
+---
+
+<Layout
+  title="Wedding Chef Marrakech — Private Dinner from €1,200 | La Table Marrakech"
+  description="Private chef for weddings in Marrakech — multi-course Moroccan feasts at your villa or riad with full service and custom menus. From 20 to 200 guests."
+  twitterTitle="Wedding Chef Marrakech — From €1,200 | La Table Marrakech"
+  twitterDescription="Bespoke Moroccan wedding dinners at your riad, villa or desert camp. Souk-sourced, full service, cleanup included."
+  canonical="https://latablemarrakech.com/services/wedding-dinner-marrakech/"
+  ogLocale="en_US"
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/services/wedding-dinner-marrakech/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/services/wedding-dinner-marrakech/' },
+  ]}
+  preloadImages={[
+    { href: heroImage, type: 'image/webp', fetchpriority: 'high' },
+  ]}
+  jsonLd={[breadcrumbLd, serviceLd, faqLd]}
+>
+  <Nav lang="en" />
+
+  <main>
+    {/* Hero */}
+    <section class="relative overflow-hidden bg-ink">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style={`background-image:url(${heroImage})`}
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/70 to-ink"
+        aria-hidden="true"
+      ></div>
+      <div class="container relative z-10 max-w-[920px] py-32 sm:py-40">
+        <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
+          <a href="/" class="transition hover:text-gold-light">Home</a>
+          <span aria-hidden="true" class="text-ember">◆</span>
+          <a href="/#services" class="transition hover:text-gold-light">Services</a>
+          <span aria-hidden="true" class="text-ember">◆</span>
+          <span class="text-gold-light">Wedding Chef Marrakech</span>
+        </nav>
+        <span class="eyebrow mt-8 inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          Wedding Dinner · Marrakech · From €1,200
+        </span>
+        <h1 class="mt-6 font-display text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.92] tracking-[0.04em] text-sand">
+          A wedding cooked at the souk.
+          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light">Served at your table.</em>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand">
+          A private chef and full service brigade for your wedding in Marrakech — at riads, villas, palmeraie
+          estates and desert camps. Souk-fresh Moroccan menus, mint-tea ceremony, table styling and cleanup
+          included. From €1,200 for 20 guests, scaling to celebrations of 200+.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center gap-4">
+          <a
+            data-event="whatsapp_click"
+            data-location="weddings"
+            href="https://wa.me/212721354757?text=I%27d%20like%20a%20wedding%20quote"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-9 py-5 font-mono text-[13px] uppercase tracking-[0.28em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            Reserve your wedding date
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+          <a
+            href="#packages"
+            class="inline-flex items-center gap-3 border border-gold px-9 py-5 font-mono text-[13px] uppercase tracking-[0.28em] text-sand transition hover:border-gold-light hover:bg-gold/10 hover:text-gold-light"
+          >
+            See packages
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* The intention */}
+    <section class="bg-ink py-28">
+      <div class="container">
+        <span class="eyebrow inline-flex items-center gap-3 text-ember-light">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          The intention
+        </span>
+        <h2 class="mt-6 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[0.04em] text-sand">
+          A meal that tastes
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">like Marrakech — not a venue.</em>
+        </h2>
+        <div class="my-10 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+        <div class="grid gap-10 lg:grid-cols-2">
+          <div class="space-y-5 text-[17px] leading-[1.75] text-sand">
+            <p>
+              The most memorable Marrakech weddings we cook are the ones where the food doesn't feel like
+              catering. There is no buffet line. There is no banquet menu. There is a chef who walked the souk
+              that morning, and a table where each course is paced like a private dinner — only with eighty of
+              your favourite people around it.
+            </p>
+            <p>
+              We arrive the day before. We meet your wedding planner, your florist, your venue manager. We taste
+              with you. By the morning of the wedding, the kitchen of your riad or villa is ours — charcoal lit,
+              warqa pastry rolling, lamb on slow heat for seven hours.
+            </p>
+          </div>
+          <div class="space-y-5 text-[17px] leading-[1.75] text-sand">
+            <p>
+              By dusk, the cocktail-hour mezze is on the table: zaalouk, taktouka, briouates still warm. Then the
+              long table is lit. Pastilla, slow-cooked lamb tagine, royal couscous with seven vegetables, a
+              saffron-citrus sea bass for the pescatarians. Mint tea poured from height. Almond-and-orange-flower
+              pastries with the speeches.
+            </p>
+            <p>
+              And then we disappear. Kitchen spotless. Plates packed. Linens folded. The only thing left in the
+              morning is the conversation everyone is still having about the pastilla.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Packages */}
+    <section id="packages" class="bg-ink-light py-28">
+      <div class="container">
+        <span class="eyebrow inline-flex items-center gap-3 text-ember-light">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          Packages
+        </span>
+        <h2 class="mt-6 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[0.04em] text-sand">
+          Three ways to
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">cook your wedding</em>
+        </h2>
+        <div class="my-10 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+        <p class="max-w-2xl text-sand">
+          Every wedding is custom — these are starting points, not menus. We design the final menu with you on a
+          tasting call after booking.
+        </p>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          {packages.map((p) => (
+            <article
+              class={[
+                'relative flex flex-col gap-5 border bg-ink p-8',
+                p.popular ? 'border-ember/60 ring-1 ring-ember/30' : 'border-gold/20',
+              ].join(' ')}
+            >
+              {p.popular && (
+                <span class="absolute -top-3 right-5 bg-ember px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white">
+                  Most popular
+                </span>
+              )}
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">◆ {p.label}</span>
+              <span class="font-display text-[3rem] leading-none tracking-[0.04em] text-gold-light">{p.price}</span>
+              <p class="whitespace-pre-line text-[15px] leading-relaxed text-sand-muted">{p.detail}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-8 max-w-3xl text-sm leading-relaxed text-sand-muted">
+          <strong class="text-sand">Included at every tier:</strong> tasting call, souk sourcing the morning of,
+          full cookware and charcoal, plating and table styling, mint-tea ceremony, complete kitchen cleanup.
+          Beverage packages, late-night street-food stations and pastry trolleys are optional add-ons.
+        </p>
+
+        <div class="mt-10">
+          <a
+            data-event="whatsapp_click"
+            data-location="weddings"
+            href="https://wa.me/212721354757?text=I%27d%20like%20a%20wedding%20quote"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-9 py-5 font-mono text-[13px] uppercase tracking-[0.28em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            Request a custom quote
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* How it works — 3-up */}
+    <section class="bg-ink py-28">
+      <div class="container">
+        <span class="eyebrow inline-flex items-center gap-3 text-ember-light">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          How it works
+        </span>
+        <h2 class="mt-6 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[0.04em] text-sand">
+          From <em class="font-serif italic font-normal text-gold-light">first message</em>
+          <br/>to <em class="font-serif italic font-normal text-gold-light">last toast</em>
+        </h2>
+        <div class="my-10 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          {steps.map((s) => (
+            <article class="relative flex flex-col gap-4 border-l-2 border-ember/60 bg-ink-light p-7 pl-9">
+              <span class="absolute -left-px top-7 -translate-x-1/2 bg-ink-light px-2 font-display text-3xl tracking-[0.05em] text-ember">{s.n}</span>
+              <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember-light">{s.eyebrow}</span>
+              <h3 class="font-serif text-[20px] italic leading-snug text-sand">{s.title}</h3>
+              <p class="text-sm leading-relaxed text-sand-muted">{s.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="bg-ink-light py-28">
+      <div class="container max-w-[760px]">
+        <span class="eyebrow inline-flex items-center gap-3 text-ember-light">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          FAQ
+        </span>
+        <h2 class="mt-6 font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-[0.04em] text-sand">
+          Asked at every
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">first call</em>
+        </h2>
+        <div class="my-10 flex justify-center" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
+            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
+            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
+          </svg>
+        </div>
+
+        <div class="grid gap-0">
+          {faqs.map((f) => (
+            <details class="group border-b border-gold/20 py-5">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-serif text-[18px] text-sand list-none [&::-webkit-details-marker]:hidden">
+                <span>{f.q}</span>
+                <span aria-hidden="true" class="font-display text-2xl text-ember transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-3 leading-[1.75] text-sand-muted">
+                {f.a}
+                {f.tracked && (
+                  <>{' '}
+                    <a
+                      data-event="whatsapp_click"
+                      data-location="weddings"
+                      href="https://wa.me/212721354757"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline"
+                    >message us</a>.
+                  </>
+                )}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA band */}
+    <section class="border-t border-gold/15 bg-ink py-24">
+      <div class="container max-w-[700px] text-center">
+        <span class="eyebrow inline-flex items-center gap-3">
+          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          Ready when you are
+        </span>
+        <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
+          Tell us about
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">the wedding.</em>
+        </h2>
+        <p class="mt-5 text-sand-muted">
+          A reply on WhatsApp inside 24 hours. A draft menu inside 72.
+        </p>
+        <a
+          data-event="whatsapp_click"
+          data-location="weddings"
+          href="https://wa.me/212721354757?text=I%27d%20like%20a%20wedding%20quote"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp the chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
