@@ -1,55 +1,135 @@
 ---
-// Storytelling block — text on the left, horizontal image strip on the right.
-// Replaces the static homepage's three Impeccable A/B variants with one
-// canonical version (live data showed no variant materially outperformed
-// the original).
+// Storytelling block — text on the left, scrollable plate carousel on the right.
+// Carousel height matches text column height (items-stretch + h-full).
+// Customer can swipe / drag / use the ← → arrow buttons.
 
+// Only the high-resolution source files (>= 700px wide). The 560×300 thumbs
+// are excluded — they look soft when scaled up to a full carousel cell.
 const dishes = [
-  { src: 'https://latablemarrakech.com/Lamb-Tagine-with-Onions-Raisins-560x300.jpg.webp', alt: 'Slow-cooked lamb tagine with caramelised onions and raisins served in a traditional clay pot' },
-  { src: 'https://latablemarrakech.com/Kofta-Tagine-with-Eggs-560x300.png.webp', alt: 'Moroccan kofta tagine with poached eggs in spiced tomato sauce' },
-  { src: 'https://latablemarrakech.com/chicken-tagine-marrakech.webp', alt: 'Chicken tagine with preserved lemons and olives, a Marrakech classic' },
-  { src: 'https://latablemarrakech.com/El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp', alt: 'Fresh Oualidia oysters with red wine vinegar on a bed of ice' },
-  { src: 'https://latablemarrakech.com/Smoked-Salmon-on-Blinis-with-Lemon-Cream-Sauce-560x300.jpg.webp', alt: 'Smoked salmon on blinis with lemon cream sauce appetizer' },
+  { src: '/seafood-pastilla-shrimp.webp',         alt: 'Seafood pastilla with shrimp and warqa pastry' },        // 1920×1391
+  { src: '/seven-vegetable-couscous.webp',        alt: 'Seven vegetable couscous with saffron broth' },          // 1480×1063
+  { src: '/lamb-tagine-prunes-almonds.webp',      alt: 'Lamb tagine with prunes and almonds, slow-cooked' },     // 1453×1082
+  { src: '/blue-tagine-moroccan-spices.webp',     alt: 'Blue tagine pot with Moroccan spices' },                  // 700×1049
+  { src: '/private-chef-marrakech-tagine.webp',   alt: 'Private chef serving a multi-course Moroccan tagine dinner' }, // 736×1050
+  { src: '/chicken-tagine-marrakech.webp',        alt: 'Chicken tagine with preserved lemons and olives' },      // 736×920
 ];
 ---
 
 <section id="about" class="bg-ink-light py-24 sm:py-28">
-  <div class="container grid gap-16 lg:grid-cols-[minmax(0,1fr)_1.2fr] lg:items-start">
-    <div>
-      <span class="eyebrow flex items-center gap-3">
-        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+  <div data-reveal class="container mx-auto grid max-w-[1100px] items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
+    {/* Text column */}
+    <div class="flex flex-col justify-center">
+      <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+        <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
         01 · The truth
       </span>
-      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.9] tracking-[0.04em] text-sand">
+      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.9] tracking-[0.02em] text-sand">
         Cooked for you.
-        <em class="mt-2 block font-serif text-[0.5em] not-italic font-normal italic tracking-[0.01em] text-gold-light">— only you.</em>
+        <em class="mt-2 block font-serif text-[0.5em] font-normal italic tracking-[0.01em] text-gold-light">— only you.</em>
       </h2>
-      <p class="mt-6 max-w-md text-base leading-relaxed text-sand">
+      <p class="mt-6 max-w-[480px] text-[16px] leading-[1.7] text-sand">
         The medina has a thousand restaurants. None of them know your name, your allergies, or that
         it's your anniversary. A private chef changes everything — the menu is yours, the pace is
         yours, the terrace is yours.
       </p>
-      <p class="mt-4 max-w-md text-sm leading-relaxed text-sand-muted">
+      <p class="mt-4 max-w-[480px] text-sm leading-[1.7] text-sand-muted">
         No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for
         years.
       </p>
     </div>
 
-    <div class="-mx-6 sm:mx-0">
-      <ul class="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-6 pb-2 sm:px-0 [scrollbar-width:thin]">
+    {/* Carousel column — height matches text via items-stretch + h-full.
+        Native horizontal scroll-snap; arrow buttons scroll programmatically. */}
+    <div class="relative h-full min-h-[420px] lg:min-h-0">
+      {/* Left arrow */}
+      <button
+        type="button"
+        data-carousel-arrow="prev"
+        aria-label="Previous dish"
+        class="absolute left-3 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-ink/80 text-sand backdrop-blur transition hover:bg-ember hover:text-white"
+      >
+        <span aria-hidden="true" class="text-xl leading-none">‹</span>
+      </button>
+
+      {/* Right arrow */}
+      <button
+        type="button"
+        data-carousel-arrow="next"
+        aria-label="Next dish"
+        class="absolute right-3 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-ink/80 text-sand backdrop-blur transition hover:bg-ember hover:text-white"
+      >
+        <span aria-hidden="true" class="text-xl leading-none">›</span>
+      </button>
+
+      {/* Scroll track */}
+      <ul
+        data-carousel-track
+        class="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth rounded-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {dishes.map((d) => (
-          <li class="snap-start shrink-0 first:pl-0">
-            <img
-              src={d.src}
-              alt={d.alt}
-              loading="lazy"
-              decoding="async"
-              width="280" height="180"
-              class="h-[180px] w-[280px] object-cover ring-1 ring-gold/20"
-            />
+          /* Every cell is full-width of the column AND identical aspect ratio
+             (4:5 portrait) — guarantees same visual size for every dish. */
+          <li class="snap-center shrink-0 w-full overflow-hidden rounded-md ring-1 ring-gold/20">
+            <div class="relative aspect-[4/5] w-full">
+              <img
+                src={d.src}
+                alt={d.alt}
+                loading="lazy"
+                decoding="async"
+                fetchpriority="high"
+                class="absolute inset-0 block h-full w-full object-cover"
+              />
+            </div>
           </li>
         ))}
       </ul>
+
+      {/* Dot indicators — active state driven by scroll position via JS below */}
+      <div data-carousel-dots class="pointer-events-none absolute inset-x-0 bottom-3 flex justify-center gap-1.5">
+        {dishes.map((_, i) => (
+          <span aria-hidden="true" data-dot-index={i} class={['size-1.5 rotate-45 transition-colors', i === 0 ? 'bg-ember' : 'bg-sand/40'].join(' ')}></span>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Vanilla JS — no React island needed for this carousel.
+  document.querySelectorAll('section#about').forEach((section) => {
+    const track = section.querySelector('[data-carousel-track]') as HTMLElement | null;
+    if (!track) return;
+    const prev = section.querySelector('[data-carousel-arrow="prev"]') as HTMLButtonElement | null;
+    const next = section.querySelector('[data-carousel-arrow="next"]') as HTMLButtonElement | null;
+    const scrollByOne = (dir: 1 | -1) => {
+      const w = track.clientWidth;
+      track.scrollBy({ left: dir * w, behavior: 'smooth' });
+    };
+    prev?.addEventListener('click', () => scrollByOne(-1));
+    next?.addEventListener('click', () => scrollByOne(1));
+    // Keyboard support when the track is focused
+    track.tabIndex = 0;
+    track.addEventListener('keydown', (e) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === 'ArrowRight') { ke.preventDefault(); scrollByOne(1); }
+      if (ke.key === 'ArrowLeft')  { ke.preventDefault(); scrollByOne(-1); }
+    });
+    // Active-dot tracking — runs on scroll to match the visible cell.
+    const dots = section.querySelectorAll('[data-dot-index]') as NodeListOf<HTMLElement>;
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const w = track.clientWidth;
+        if (w === 0) return;
+        const active = Math.round(track.scrollLeft / w);
+        dots.forEach((d, i) => {
+          const on = i === active;
+          d.classList.toggle('bg-ember', on);
+          d.classList.toggle('bg-sand/40', !on);
+        });
+      });
+    }, { passive: true });
+  });
+</script>

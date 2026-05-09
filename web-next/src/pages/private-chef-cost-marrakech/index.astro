@@ -4,8 +4,7 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 
 const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
     { '@type': 'ListItem', position: 2, name: 'Private Chef Cost Marrakech', item: 'https://latablemarrakech.com/private-chef-cost-marrakech/' },
@@ -13,19 +12,13 @@ const breadcrumbLd = {
 };
 
 const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Private Chef Cost in Marrakech (2026): From €85 per person',
   description: "Transparent 2026 pricing for a private chef in Marrakech: €85 per person, all-inclusive. What you get, what's not included, and how it compares to fine dining.",
   image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
-  datePublished: '2026-04-27T08:00:00+01:00',
-  dateModified: '2026-04-27T08:00:00+01:00',
+  datePublished: '2026-04-27T08:00:00+01:00', dateModified: '2026-04-27T08:00:00+01:00',
   author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
-  publisher: {
-    '@type': 'Organization',
-    name: 'La Table Marrakech',
-    logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' },
-  },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
   mainEntityOfPage: 'https://latablemarrakech.com/private-chef-cost-marrakech/',
 };
 
@@ -33,92 +26,29 @@ const faqs = [
   { q: 'Are taxes and service charges included in the €85 per person?', a: 'Yes. The €85 per person is the all-in number. No separate service charge, no minimum bar spend, no per-course add-on. Minimum 2 guests.' },
   { q: 'How much does a private chef cost for a wedding in Marrakech?', a: 'From €1,200 for 20 guests in our event tier (separate from the €85/pp standard rate), scaling per guest from there.', linkHref: '/services/wedding-dinner-marrakech/', linkText: 'Full wedding pricing here.' },
   { q: 'Do you charge extra for last-minute bookings?', a: 'No surcharge. Last-minute (under 48 hours) is regularly possible — message us on WhatsApp and we’ll let you know if a chef is free.' },
-  { q: 'What if I want a chef for multiple nights?', a: '€85 per person, per night. A 3-night booking for 6 guests is €1,530 total, and we design a different menu for each night — mezze night, tagine night, royal couscous Friday. Many of our return guests do exactly this.' },
+  { q: 'What if I want a chef for multiple nights?', a: '€85 per person, per night. A 3-night booking for 6 guests is €1,530 total, and we design a different menu for each night — mezze night, tagine night, royal couscous Friday.' },
   { q: 'Do you accept credit cards?', a: 'Yes — Stripe, Visa, Mastercard, Apple Pay. Or wire transfer in EUR or USD. Or local cash in MAD on the night, if that’s easier.' },
 ];
 
 const faqLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: [
     { q: 'How much does a private chef cost in Marrakech?', a: 'From €85 per person at La Table Marrakech. The price covers menu planning, fresh souk ingredients, multi-course cooking, table service, mint-tea ceremony and full kitchen cleanup. There are no hidden fees, no minimum spend per booking other than 2 guests, and no service charges. A couple pays €170, a family of four €340, a group of eight €680.' },
     { q: "What's included in the price?", a: "Everything: menu planning over WhatsApp, the chef's morning visit to the medina souk, all ingredients and cookware, the cooking itself, plating and table service, the mint-tea ceremony, and complete kitchen cleanup before they leave. The €85 per person rate is all-inclusive." },
     { q: "What's NOT included?", a: "Wine and drinks, premium add-ons like live cooking stations, chef tip (10% is standard but not required), and any cuts of luxury produce that exceed the standard food budget — fresh truffle, lobster, A5 wagyu — which we'll quote separately if you ask." },
-    { q: 'How does this compare to eating at a Marrakech restaurant?', a: "€85 per person sits in the same range as Marrakech's top restaurants — La Mamounia, Le Jardin, Nomad, Dar Rhizlane — which are €60–€120 per person for a multi-course meal before drinks. The difference: with a private chef the room is yours, the menu was designed around your group that morning at the souk, and the wine is your own bottle from Carrefour. You're paying for fine-dining quality with a custom menu and total privacy, not for a chair in a public room." },
-    { q: 'How much is a private chef for a wedding or large group?', a: 'Wedding event packages start at €1,200 for 20 guests (a custom event tier separate from the per-person rate); corporate dinners start at €650 for 10 with full service. Groups of 50–200 are quoted on a custom brief — see our wedding page for details.' },
+    { q: 'How does this compare to eating at a Marrakech restaurant?', a: "€85 per person sits in the same range as Marrakech's top restaurants — La Mamounia, Le Jardin, Nomad, Dar Rhizlane — which are €60–€120 per person for a multi-course meal before drinks." },
+    { q: 'How much is a private chef for a wedding or large group?', a: 'Wedding event packages start at €1,200 for 20 guests (a custom event tier separate from the per-person rate); corporate dinners start at €650 for 10 with full service.' },
   ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 
 const tiers = [
-  {
-    badge: 'TIER 1',
-    name: 'Intimate Dinner',
-    price: 'From €85 per person',
-    meta: '2–4 guests · One evening',
-    bullets: [
-      'Multi-course menu (5 courses)',
-      'Souk shopping that morning',
-      'Cooking, service, full cleanup',
-      'Mint tea ceremony to finish',
-    ],
-    quote: '“Better than any restaurant we tried in Marrakech. The pacing, the courses, the privacy of our terrace — exactly what we wanted for our anniversary.”',
-    cite: '— James W., London',
-    cta: { text: 'Book an intimate dinner — WhatsApp', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20an%20intimate%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D.' },
-    popular: false,
-  },
-  {
-    badge: 'TIER 2',
-    name: 'Villa Gathering',
-    price: 'From €85 per person',
-    meta: '5–12 guests · Villa or riad',
-    bullets: [
-      'Multi-course menu, customised to your group',
-      'Souk shopping that morning',
-      'Cooking, plating, table service',
-      'Wine pairing on request',
-      'Full kitchen cleanup',
-    ],
-    quote: '“We rented a Palmeraie villa for 8 and brought La Table in three nights of seven. Every dinner was different, every one was better than the last.”',
-    cite: '— Sophie & Marc, Lyon',
-    cta: { text: 'Book a villa dinner — WhatsApp', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20villa%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D.' },
-    popular: true,
-  },
-  {
-    badge: 'TIER 3',
-    name: 'Celebration & Event',
-    price: 'From €60 per person',
-    meta: '13–30+ guests · Weddings, retreats, milestones',
-    bullets: [
-      'Custom menu design with the chef',
-      'Full brigade — chef + service staff',
-      'Souk shopping + premium produce options',
-      'Setup, service, complete cleanup',
-      'Live cooking station available (add-on)',
-    ],
-    quote: '“Twenty-two of us, our wedding rehearsal night, every dietary restriction handled without a hitch. The lamb mechoui was the moment of the trip.”',
-    cite: '— Rachel & David, Manchester',
-    cta: { text: 'Plan your celebration — WhatsApp', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20plan%20a%20celebration%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Type%20of%20event%3A%20%5B%5D.' },
-    popular: false,
-  },
+  { name: 'Intimate Dinner', price: '€85', unit: 'per person', meta: '2–4 guests · one evening', features: ['Multi-course menu (5 courses)', 'Souk shopping that morning', 'Cooking, service, full cleanup', 'Mint tea ceremony to finish'], cta: { label: 'Book intimate', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20an%20intimate%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D.' } },
+  { name: 'Villa Gathering', price: '€85', unit: 'per person', meta: '5–12 guests · villa or riad', features: ['Multi-course menu, customised', 'Souk shopping that morning', 'Cooking, plating, table service', 'Wine pairing on request', 'Full kitchen cleanup'], popular: true, cta: { label: 'Book villa', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20villa%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D.' } },
+  { name: 'Celebration & Event', price: '€60+', unit: 'per person', meta: '13–30+ · weddings, retreats', features: ['Custom menu design with the chef', 'Full brigade — chef + service staff', 'Souk shopping + premium produce', 'Setup, service, complete cleanup', 'Live cooking station (add-on)'], cta: { label: 'Plan celebration', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20plan%20a%20celebration%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Type%20of%20event%3A%20%5B%5D.' } },
 ];
 
-const included = [
-  ['Menu planning', 'back-and-forth on WhatsApp until the menu is exactly what you want, in writing'],
-  ['The souk run', 'the chef walks the medina at dawn for tomatoes, fish, lamb, herbs, preserved lemons'],
-  ['All ingredients', 'spices, charcoal, olive oil, mint tea, the works'],
-  ['All cookware', 'we bring our own tagines, knives, plates if your kitchen is light-equipped'],
-  ['Cooking', 'usually 4–6 hours in your kitchen depending on the menu'],
-  ['Service', 'courses paced and plated for you, mint-tea ceremony at the end'],
-  ['Cleanup', 'kitchen left spotless, dishes washed, packed and put away'],
-];
-
-const notIncluded = [
-  ['Wine and spirits', 'we recommend you buy what you like at Carrefour or Atac (Moroccan wine is good and runs ~80–180 MAD/bottle); we’ll happily pour'],
-  ['Premium produce', 'fresh truffle, lobster, A5 wagyu, oysters — quoted separately if you ask'],
-  ['Live cooking stations at events', '(couscous, mechoui, pastry trolley) — add-on starting at €180'],
-  ['Chef tip', 'not required, but 10% is the local norm for great service'],
-  ['Transport', 'included within Marrakech proper; villas in the Ourika or Ouirgane valleys add a flat €20–40'],
-];
+const included = ['Menu planning', 'The souk run', 'All ingredients', 'All cookware', 'Cooking', 'Service', 'Cleanup'];
+const notIncluded = ['Wine and spirits', 'Premium produce', 'Live cooking stations at events', 'Chef tip', 'Transport (Atlas / Agafay)'];
 ---
 
 <Layout
@@ -139,201 +69,145 @@ const notIncluded = [
 >
   <Nav lang="en" />
 
-  <main>
-    {/* Hero */}
-    <header class="bg-ink-light pb-16 pt-20 sm:pt-24">
-      <div class="container">
+  <main class="bg-ink">
+    {/* Hero — centered, narrow, restrained */}
+    <header class="pt-24 pb-16 sm:pt-32 sm:pb-20">
+      <div class="container flex flex-col items-center gap-8 text-center">
         <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
-          <a href="/" class="transition hover:text-gold-light">Home</a>
+          <a href="/" class="hover:text-gold-light">Home</a>
           <span aria-hidden="true" class="text-ember">◆</span>
           <span class="text-gold-light">Pricing</span>
         </nav>
-        <span class="eyebrow mt-8 inline-flex items-center gap-3">
-          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
           Pricing · 2026 · Updated April
         </span>
-        <h1 class="mt-6 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+        <h1 class="max-w-[820px] font-display text-[clamp(2.75rem,7vw,5.5rem)] font-normal leading-[0.92] tracking-[0.02em] text-sand">
           How much does a private chef
-          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">cost in Marrakech?</em>
+          <em class="mt-3 block font-serif italic font-normal text-[0.45em] text-gold-light">cost in Marrakech?</em>
         </h1>
-        <p class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
-          <span>By La Table Marrakech</span>
-          <span>8 min read</span>
-          <span>Last updated 2026-04</span>
+        <p class="max-w-[640px] text-[17px] leading-[1.7] text-sand">
+          One number, all-inclusive. €85 per person covers a multi-course Moroccan dinner cooked at your villa or
+          riad — souk shopping, cooking, service, mint tea, complete cleanup. Minimum 2 guests.
         </p>
       </div>
     </header>
 
-    {/* Article body */}
-    <section class="bg-ink py-20">
-      <article class="container max-w-[760px]">
-        <p class="text-lg leading-relaxed text-sand">
-          Marrakech's best fine-dining rooms — Mamounia, Le Jardin, Nomad — sit in the €60–120 per-person range. A
-          private chef at <strong class="text-sand">€85 per person</strong> sits squarely in that band. The
-          difference: the room is yours, the menu was sketched around your group at the souk that morning, and the
-          wine is whatever bottle you brought. Souk shopping, cooking, service, and full cleanup are all included.
-          No service charge. No minimum bar spend.
-        </p>
-
-        <div class="my-12 flex justify-center" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
-            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
-            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
-          </svg>
-        </div>
-
-        <h2 class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          The headline price — <em class="font-serif italic font-normal text-gold-light">€85 per person, all in</em>
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          One clean number. <strong class="text-sand">€85 per person covers a multi-course Moroccan dinner cooked
-          at your villa or riad.</strong> No per-course charge, no service add-on, no minimum bar spend. Minimum 2
-          guests; no upper limit until you reach event-scale (20+, see below).
-        </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          That puts us in the same price range as Marrakech's best fine-dining rooms — La Mamounia, Le Jardin,
-          Nomad, Dar Rhizlane — and below most international agency-booked private chefs. The difference:
-          <em class="font-serif italic text-gold-light">the room is yours, the menu was sketched around your group that morning at the souk, and the wine is whatever bottle you brought.</em>
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Total cost <em class="font-serif italic font-normal text-gold-light">by group size</em>
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          Most of our guests travel in groups of 2 to 10 — couples on a long weekend, families, small parties.
-          Here's the maths laid out simply.
-        </p>
-
-        {/* Pricing tiers */}
-        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+    {/* Pricing tiers — Hyperagent-style: white-on-dark cards, big number,
+        feature list, single ghost CTA per card. No ribbons, no border colors. */}
+    <section class="pb-24">
+      <div class="container">
+        <div class="mx-auto grid max-w-[1100px] gap-px overflow-hidden rounded-md bg-gold/15 sm:grid-cols-3">
           {tiers.map((t) => (
-            <article
-              class={[
-                'relative flex flex-col rounded-md border bg-ink-light p-7',
-                t.popular ? 'border-ember/60 ring-1 ring-ember/30' : 'border-gold/20',
-              ].join(' ')}
-            >
+            <article class={['relative flex flex-col gap-6 bg-ink-light p-8', t.popular ? 'ring-1 ring-ember/40' : ''].join(' ')}>
               {t.popular && (
-                <span class="absolute -top-3 right-5 bg-ember px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white">
-                  Most popular
-                </span>
+                <span class="absolute -top-px left-0 right-0 bg-ember py-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-white">Most popular</span>
               )}
-              <header>
-                <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">◆ {t.badge}</span>
-                <h3 class="mt-2 font-display text-[1.6rem] tracking-[0.04em] text-sand">{t.name}</h3>
-                <p class="mt-2 text-[1.05rem] text-gold-light"><strong>{t.price}</strong></p>
-                <p class="mt-1 text-sm text-sand-muted">{t.meta}</p>
-              </header>
-              <ul class="mt-5 grid gap-2 text-sm leading-relaxed text-sand">
-                {t.bullets.map((b) => (
-                  <li class="flex gap-2"><span aria-hidden="true" class="mt-2 inline-block size-1.5 shrink-0 rotate-45 bg-ember" />{b}</li>
+              <div class={t.popular ? 'pt-4' : ''}>
+                <h2 class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">{t.name}</h2>
+                <p class="mt-3 flex items-baseline gap-2 font-display tracking-[0.04em] text-sand">
+                  <span class="text-[3.5rem] leading-none">{t.price}</span>
+                  <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">{t.unit}</span>
+                </p>
+                <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light">{t.meta}</p>
+              </div>
+              <ul class="flex flex-1 flex-col gap-2.5 text-[14px] leading-relaxed text-sand">
+                {t.features.map((f) => (
+                  <li class="flex items-start gap-2.5">
+                    <span aria-hidden="true" class="mt-1.5 inline-block size-1.5 shrink-0 rotate-45 bg-ember"></span>
+                    <span>{f}</span>
+                  </li>
                 ))}
               </ul>
-              <blockquote class="mt-5 border-l-2 border-ember pl-4 font-serif text-[14px] italic leading-[1.55] text-sand">
-                {t.quote}
-                <cite class="mt-2 block not-italic font-mono text-[12px] uppercase tracking-[0.18em] text-sand-muted">{t.cite}</cite>
-              </blockquote>
               <a
-                data-event="whatsapp_click"
-                data-location="pricing"
+                data-event="whatsapp_click" data-location="pricing"
                 href={`https://wa.me/212721354757?text=${t.cta.wa}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-6 inline-flex items-center justify-center gap-2 bg-ember px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+                target="_blank" rel="noopener noreferrer"
+                class={[
+                  'mt-2 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] transition',
+                  t.popular ? 'bg-ember text-white hover:bg-ember-light' : 'border border-gold/40 text-sand hover:border-gold-light hover:bg-gold/10',
+                ].join(' ')}
               >
-                {t.cta.text}
+                {t.cta.label}
               </a>
             </article>
           ))}
         </div>
-
-        <p class="mt-6 text-sm leading-relaxed text-sand-muted">
-          <em>Wine, spirits and any premium add-ons (live cooking station, pastry chef, additional service staff
-          beyond the standard) are quoted on top. Minimum 2 guests — no charge for empty seats.</em>
+        <p class="mx-auto mt-6 max-w-[820px] text-center font-mono text-[11px] tracking-[0.04em] text-sand-muted">
+          Wine and any premium add-ons quoted separately. Minimum 2 guests — no charge for empty seats.
         </p>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          What's <em class="font-serif italic font-normal text-gold-light">included in €85 per person</em>
-        </h2>
-        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
-          {included.map(([h, body]) => (
-            <li class="border-l-2 border-ember/40 pl-4">
-              <strong class="text-sand">{h}</strong> — {body}
-            </li>
-          ))}
-        </ul>
-        <p class="mt-6 leading-[1.75] text-sand">
-          Halal is the default. Vegetarian, vegan, gluten-free, kosher, allergy-aware menus — tell us at booking,
-          no extra charge.
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          What's <em class="font-serif italic font-normal text-gold-light">not included</em>
-        </h2>
-        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
-          {notIncluded.map(([h, body]) => (
-            <li class="border-l-2 border-ember/40 pl-4">
-              <strong class="text-sand">{h}</strong> — {body}
-            </li>
-          ))}
-        </ul>
-
-        <div class="mt-10 border border-gold/20 border-l-[4px] border-l-ember bg-ink-light p-7">
-          <strong class="block font-mono text-[11px] uppercase tracking-[0.3em] text-gold">◆ The honest math</strong>
-          <p class="mt-3 leading-[1.75] text-sand">
-            For a group of 6 staying in a Palmeraie villa for 3 nights, one private chef dinner is €510 — same
-            range as one night at a top Marrakech riad restaurant for the same group, before drinks. Eat with us
-            once or twice across the trip and cook for yourselves the rest.
-          </p>
-          <p class="mt-2 leading-[1.75] text-sand">
-            What you're paying for is exclusivity, not discount. The room is yours. The menu is yours. The chef is
-            yours.
-          </p>
+    {/* Included / Not included — two-column quiet list, no card chrome */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto grid max-w-[1000px] gap-16 md:grid-cols-2">
+        <div>
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">What's included</h2>
+          <ul class="mt-6 grid gap-3">
+            {included.map((i) => (
+              <li class="flex items-start gap-3 text-[16px] leading-[1.7] text-sand">
+                <span aria-hidden="true" class="mt-2.5 inline-block size-1.5 shrink-0 rotate-45 bg-ember"></span>
+                <span>{i}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+        <div>
+          <h2 class="font-mono text-[11px] uppercase tracking-[0.32em] text-sand-muted">What's not included</h2>
+          <ul class="mt-6 grid gap-3">
+            {notIncluded.map((i) => (
+              <li class="flex items-start gap-3 text-[16px] leading-[1.7] text-sand-muted">
+                <span aria-hidden="true" class="mt-2.5 inline-block size-1.5 shrink-0 rotate-45 bg-sand-muted/40"></span>
+                <span>{i}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          How does this <em class="font-serif italic font-normal text-gold-light">compare to fine dining</em> in Marrakech?
+    {/* Honest math — quote-style, no border-l flourish */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px] text-center">
+        <p class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">The honest math</p>
+        <p class="mt-6 font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] italic leading-[1.55] text-sand">
+          “For a group of 6 in a Palmeraie villa for 3 nights, one chef dinner is €510 — same range as one
+          night at a top Marrakech riad restaurant for the same group, before drinks. Eat with us once or
+          twice across the trip and cook for yourselves the rest.”
+        </p>
+        <p class="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">
+          What you're paying for is exclusivity, not discount.
+        </p>
+      </div>
+    </section>
+
+    {/* Compare line — single sentence, centered */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">
+          Same range as <em class="font-serif italic font-normal text-gold-light">fine dining</em>
         </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          Marrakech's top restaurants — La Mamounia, Le Jardin, Nomad, Dar Rhizlane — sit in the €60–120 per-person
-          range for a multi-course meal, before drinks. They're excellent. The trade-off is you're in their room,
-          on their schedule, with twenty other tables.
+        <p class="mx-auto mt-6 max-w-[640px] text-center text-[17px] leading-[1.7] text-sand">
+          Marrakech's top restaurants — Mamounia, Le Jardin, Nomad, Dar Rhizlane — sit at €60–120 per person
+          for a multi-course meal before drinks. €85 sits in the middle of that band. The difference: the room
+          is yours, the menu was sketched around your group at the souk, and the wine is whatever bottle you
+          brought.
         </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          A private chef at <strong class="text-sand">€85 per person</strong> sits squarely in the middle of that
-          fine-dining band. What you get for the same spend: the room is yours, the pace is yours, the menu was
-          designed around your group that morning, and you can wear what you want and bring what you like to
-          drink. It's a different product at a comparable price — not a cheaper one.
+        <p class="mt-6 text-center text-sand-muted">
+          A cooking class typically runs $45–90 per person.
+          <a href="/marrakech-cooking-class-vs-private-chef/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">Class vs chef — full comparison</a>.
         </p>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          How does this <em class="font-serif italic font-normal text-gold-light">compare to a cooking class</em>?
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          A Marrakech cooking class typically runs <strong class="text-sand">$45–90 per person</strong> for a
-          half-day, including a souk visit and lunch you cook together. Different product entirely. We wrote a
-          longer comparison:
-          <a href="/marrakech-cooking-class-vs-private-chef/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">Marrakech cooking class vs private chef — which should you book?</a>
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          How to book — <em class="font-serif italic font-normal text-gold-light">it really is one WhatsApp away</em>
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          Most bookings happen in 4 messages: date, headcount, dietary needs, address. We confirm in 24 hours, you
-          pay 50% on confirmation, balance on the night. Stripe, wire, Apple Pay, or Visa/Mastercard.
-        </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          For larger groups (weddings, retreats, incentive trips), see our
-          <a href="/services/wedding-dinner-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">wedding chef page</a> or
-          <a href="/services/corporate-dining-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">corporate dining page</a>
-          — both quote in EUR or USD with VAT-compliant invoicing.
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">FAQ</h2>
-        <div class="mt-6 grid gap-0">
+    {/* FAQ — clean accordion, no boxes */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">FAQ</h2>
+        <div class="mt-10 grid gap-0">
           {faqs.map((f) => (
-            <details class="group border-b border-gold/20 py-5">
+            <details class="group border-b border-gold/15 py-5">
               <summary class="flex cursor-pointer items-center justify-between gap-4 font-serif text-[18px] text-sand list-none [&::-webkit-details-marker]:hidden">
                 <span>{f.q}</span>
                 <span aria-hidden="true" class="font-display text-2xl text-ember transition group-open:rotate-45">+</span>
@@ -341,20 +215,20 @@ const notIncluded = [
               <p class="mt-3 leading-[1.75] text-sand-muted">
                 {f.a}
                 {f.linkHref && (
-                  <>{' '}<a href={f.linkHref} class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">{f.linkText}</a></>
+                  <>{' '}<a href={f.linkHref} class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">{f.linkText}</a></>
                 )}
               </p>
             </details>
           ))}
         </div>
-      </article>
+      </div>
     </section>
 
     {/* CTA band */}
-    <section class="border-t border-gold/15 bg-ink-light py-20">
-      <div class="container max-w-[700px] text-center">
-        <span class="eyebrow inline-flex items-center gap-3">
-          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[700px] text-center">
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
           Confirmed in 24 hours
         </span>
         <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
@@ -362,16 +236,13 @@ const notIncluded = [
           <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">It really is one WhatsApp away.</em>
         </h2>
         <p class="mt-5 text-sand-muted">
-          Tell us the date, the headcount, the dietaries. We reply with a draft menu and an exact price — usually
-          inside 24 hours.
+          Tell us the date, the headcount, the dietaries. We reply with a draft menu and an exact price.
         </p>
         <a
-          data-event="whatsapp_click"
-          data-location="pricing"
-          href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20a%20private%20chef%20quote.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          data-event="whatsapp_click" data-location="pricing"
+          href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20a%20private%20chef%20quote"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 rounded-full bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
         >
           WhatsApp the chef
           <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>

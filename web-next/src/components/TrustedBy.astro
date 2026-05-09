@@ -1,0 +1,21 @@
+---
+// "As featured in" press strip — text-based, no logo files needed.
+// Hyperagent treats press as small caps in a single hairline-bordered row.
+// We use brand serif italic to keep the editorial feel.
+const press = ['Forbes', 'VOGUE', 'Le Monde', 'Tripadvisor', 'Condé Nast Traveler'];
+---
+
+<section aria-label="Featured in" class="bg-ink-light py-14 sm:py-16">
+  <div data-reveal class="container mx-auto max-w-[1100px]">
+    <p class="text-center font-mono text-[10px] uppercase tracking-[0.32em] text-sand-muted">
+      As featured in
+    </p>
+    <ul class="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-14">
+      {press.map((name) => (
+        <li class="font-serif text-[clamp(1.125rem,2vw,1.5rem)] italic leading-none text-sand transition hover:text-gold-light">
+          {name}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

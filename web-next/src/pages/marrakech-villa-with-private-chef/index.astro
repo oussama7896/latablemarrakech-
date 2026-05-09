@@ -4,8 +4,7 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 
 const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
     { '@type': 'ListItem', position: 2, name: 'Marrakech Villa with Private Chef', item: 'https://latablemarrakech.com/marrakech-villa-with-private-chef/' },
@@ -13,105 +12,42 @@ const breadcrumbLd = {
 };
 
 const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Marrakech Villas With a Private Chef: 2026 Guide & Booking Tips',
   description: 'A complete guide to renting a Marrakech villa or riad with a private chef. Neighbourhoods, kitchen requirements, sample itineraries, and how to book.',
   image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
-  datePublished: '2026-04-27T08:00:00+01:00',
-  dateModified: '2026-04-27T08:00:00+01:00',
+  datePublished: '2026-04-27T08:00:00+01:00', dateModified: '2026-04-27T08:00:00+01:00',
   author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
-  publisher: {
-    '@type': 'Organization',
-    name: 'La Table Marrakech',
-    logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' },
-  },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
   mainEntityOfPage: 'https://latablemarrakech.com/marrakech-villa-with-private-chef/',
 };
 
 const faqs = [
-  {
-    q: 'Can I rent a villa in Marrakech with a private chef included?',
-    a: 'Yes — most luxury villa rentals in the Palmeraie and the Hivernage offer a chef as a paid add-on, typically €60–€150 per person per day. Or you can rent the villa standalone (cheaper) and bring your own chef from La Table Marrakech at €85 per person, all-inclusive. The maths usually favours the standalone-villa-plus-own-chef approach for groups under 10.',
-  },
-  {
-    q: 'Will the chef shop the souk?',
-    a: 'Yes, every morning. The souk run is what makes the food taste different from a hotel buffet.',
-  },
-  {
-    q: 'Do we need a kitchen for the chef?',
-    a: 'Yes — oven, gas hob, sink, fridge. We bring everything else.',
-  },
-  {
-    q: 'Can the chef cook outside / by the pool / in the desert?',
-    a: 'Yes, with notice. Outdoor cooking with charcoal or a wood fire is one of the things we do best. For desert-camp setups (Agafay) we charge a flat transport add-on.',
-  },
+  { q: 'Can I rent a villa in Marrakech with a private chef included?', a: 'Yes — most luxury villa rentals in the Palmeraie and the Hivernage offer a chef as a paid add-on, typically €60–€150 per person per day. Or you can rent the villa standalone (cheaper) and bring your own chef from La Table Marrakech at €85 per person, all-inclusive.' },
+  { q: 'Will the chef shop the souk?', a: 'Yes, every morning. The souk run is what makes the food taste different from a hotel buffet.' },
+  { q: 'Do we need a kitchen for the chef?', a: 'Yes — oven, gas hob, sink, fridge. We bring everything else.' },
+  { q: 'Can the chef cook outside / by the pool / in the desert?', a: 'Yes, with notice. Outdoor cooking with charcoal or a wood fire is one of the things we do best.' },
 ];
 
 const faqLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 
 const neighbourhoods = [
-  {
-    name: 'Palmeraie',
-    body: '<strong>Best for: groups, pool dinners, families.</strong> 8–15 minutes from the medina by taxi. Big modern villas with full kitchens, gardens, often pools. The kitchens are usually well-equipped — chef-friendly. This is where most of our villa bookings happen.',
-    meta: 'Vibe: resort · Kitchen: spacious · Souk: 15 min',
-  },
-  {
-    name: 'Hivernage',
-    body: '<strong>Best for: shorter trips, nightlife crossover.</strong> Walking distance to the medina and Mamounia. Mostly hotels and condo-villas; kitchens are smaller. Great if you want a chef night and a Jemaa el-Fnaa night in the same trip.',
-    meta: 'Vibe: chic urban · Kitchen: medium · Souk: 10 min walk',
-  },
-  {
-    name: 'Medina riads',
-    body: '<strong>Best for: atmosphere, intimate dinners, couples.</strong> The most beautiful courtyards in Marrakech. Kitchens are tiny — we cook in them all the time, but service has to be on the rooftop or courtyard. Maximum 12–14 guests realistically.',
-    meta: 'Vibe: traditional · Kitchen: compact · Souk: at the door',
-  },
-  {
-    name: 'Ourika / Ouirgane / Atlas',
-    body: '<strong>Best for: retreats, quiet, mountain views.</strong> 45 min–90 min from Marrakech. Bigger estates, often with their own land. We add a flat €20–40 transport charge for these but it’s the most beautiful place to eat in Morocco.',
-    meta: 'Vibe: countryside · Kitchen: variable · Souk: we bring it',
-  },
+  { name: 'Palmeraie', best: 'Groups, pool dinners, families', meta: 'Resort · spacious kitchen · 15 min souk' },
+  { name: 'Hivernage', best: 'Shorter trips, nightlife crossover', meta: 'Chic urban · medium kitchen · 10 min walk' },
+  { name: 'Medina riads', best: 'Atmosphere, intimate dinners, couples', meta: 'Traditional · compact kitchen · souk at the door' },
+  { name: 'Ourika / Atlas', best: 'Retreats, quiet, mountain views', meta: 'Countryside · variable kitchen · 45–90 min' },
 ];
 
-const itineraries = [
-  {
-    title: '3-night villa stay (long weekend, group of 4–6)',
-    nights: [
-      '<strong>Night 1.</strong> Arrival — we cook a welcome dinner at the villa. 5 courses, paced. Mint tea on the terrace. €85 per person.',
-      "<strong>Night 2.</strong> Out at Le Jardin or Nomad in the medina — you booked it months ago, of course you're going.",
-      '<strong>Night 3.</strong> We’re back — this time a casual lamb mechoui by the pool with mezze. €85 per person + a €180 mechoui add-on for the whole group.',
-    ],
-  },
-  {
-    title: '5-night villa stay (group of 6–10)',
-    nights: [
-      '<strong>Night 1.</strong> Welcome dinner — the seven Moroccan salads, pastilla, lamb tagine.',
-      '<strong>Night 2.</strong> Cooking class with us in your kitchen — everyone makes their own pastilla. We eat it together. Total: €200 (class) + the standard chef rate.',
-      '<strong>Night 3.</strong> Free night — we leave you a list of three restaurants we actually like.',
-      '<strong>Night 4.</strong> Sunset Agafay desert dinner — we drive out, cook over fire, candles, the works. Add-on, €60 pp transport.',
-      '<strong>Night 5.</strong> Last-night feast — royal couscous Friday, mint tea, almond pastries. Champagne if you bring it.',
-    ],
-  },
-  {
-    title: '7-night family stay (group of 8–14)',
-    nights: [
-      '<strong>Nights 1, 3, 5, 7</strong> — chef nights with rotating menus (mezze night, tagine night, fish night, royal couscous Friday).',
-      '<strong>Nights 2, 4, 6</strong> — eat out / cook your own / leftovers from us.',
-      'For a group of 14, four chef nights at €85/pp = €4,760 across the week (€340 per person, around €85 a head per dinner). Same range as a fine-dining riad night for the same group, every night, in your own house.',
-    ],
-  },
-];
+const kitchenNeeds = ['Working oven and gas hob (4 burners ideal)', 'Hot water and a working sink', 'Refrigerator with at least one shelf empty', 'Plates and glasses for the headcount', 'A dining surface — long table outside is best'];
 
-const partners = [
-  { name: 'Plum Guide', body: 'Their Marrakech curation is tight, kitchens are usually fine. Best for couples and small groups.' },
-  { name: 'Airbnb Luxe / Airbnb Plus', body: 'The Plus tier is the screen to set; Luxe goes very high-end with concierge.' },
-  { name: 'Boutique Souk', body: 'Marrakech specialist, good local team on the ground.' },
-  { name: 'Villanovo / Le Collectionist', body: 'French luxury rental platforms, strong Palmeraie villa portfolio.' },
-  { name: 'Marrakech Riads', body: 'Medina specialist if you want a riad with a real soul.' },
+const steps = [
+  { n: '01', title: 'Message us on WhatsApp', body: 'Date, headcount, address (or just the neighbourhood). Reply usually inside an hour.' },
+  { n: '02', title: 'We send a draft menu', body: 'In writing, usually 5 courses, customised to your dietaries. You edit, we adjust.' },
+  { n: '03', title: 'You confirm', body: '50% deposit via Stripe / wire. Final menu locked.' },
+  { n: '04', title: 'The night', body: 'Chef arrives 4 hours before service with everything. You don’t lift a finger.' },
 ];
 ---
 
@@ -133,184 +69,138 @@ const partners = [
 >
   <Nav lang="en" />
 
-  <main>
+  <main class="bg-ink">
     {/* Hero */}
-    <header class="bg-ink-light pb-16 pt-20 sm:pt-24">
-      <div class="container">
+    <header class="pt-24 pb-16 sm:pt-32 sm:pb-20">
+      <div class="container flex flex-col items-center gap-8 text-center">
         <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
-          <a href="/" class="transition hover:text-gold-light">Home</a>
+          <a href="/" class="hover:text-gold-light">Home</a>
           <span aria-hidden="true" class="text-ember">◆</span>
           <span class="text-gold-light">Villa Dining Guide</span>
         </nav>
-        <span class="eyebrow mt-8 inline-flex items-center gap-3">
-          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
-          The villa playbook
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          The villa playbook · Updated 2026-04
         </span>
-        <h1 class="mt-6 font-display text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] tracking-[0.04em] text-sand">
-          The complete guide to a Marrakech
-          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">villa with a private chef.</em>
+        <h1 class="max-w-[860px] font-display text-[clamp(2.75rem,7vw,5.5rem)] font-normal leading-[0.92] tracking-[0.02em] text-sand">
+          A Marrakech villa
+          <em class="mt-3 block font-serif italic font-normal text-[0.45em] text-gold-light">with a private chef.</em>
         </h1>
-        <p class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
-          <span>By La Table Marrakech</span>
-          <span>14 min read</span>
-          <span>Updated 2026-04</span>
+        <p class="max-w-[640px] text-[17px] leading-[1.7] text-sand">
+          Where to stay, what to ask the rental, what your kitchen needs, sample 3 / 5 / 7-day itineraries —
+          and how to bring us in. Written by a Marrakech-based chef team.
         </p>
       </div>
     </header>
 
-    {/* Article body */}
-    <section class="bg-ink py-20">
-      <article class="container max-w-[760px]">
-        <p class="text-lg leading-relaxed text-sand">
-          If you're renting a villa or riad in Marrakech and want to eat like you're in Marrakech,
-          hire a chef — don't hire a buffet. This is a working guide written by a Marrakech-based
-          chef team. Where to stay, what to ask the rental, what your kitchen actually needs, sample
-          3 / 5 / 7-day itineraries, and how to bring us in if you decide to.
-        </p>
-
-        <div class="my-12 flex justify-center" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 14 14" class="text-ember">
-            <polygon points="7,0 14,7 7,14 0,7" fill="currentColor" opacity="0.3" />
-            <polygon points="7,3 11,7 7,11 3,7" fill="currentColor" />
-          </svg>
-        </div>
-
-        <h2 class="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Why <em class="font-serif italic font-normal text-gold-light">villa + private chef</em> is the move
+    {/* Why villa + chef */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">
+          Why villa + private chef
+          <em class="block font-serif italic font-normal text-gold-light">is the move</em>
         </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          The best week we cooked last year was a family of seven who rented a four-bedroom in the
-          Palmeraie and brought us in three of their seven nights. They woke up to bread on the
-          table, swam between meals, and ate dinner outside next to the pool. They never had to
-          think about a reservation, a taxi back from the medina, or whether the kids would eat the
-          menu. That's what villa-plus-chef buys you.
+        <p class="mx-auto mt-8 max-w-[640px] text-[17px] leading-[1.75] text-sand">
+          The best week we cooked last year was a family of seven who rented a four-bedroom in the Palmeraie
+          and brought us in three of their seven nights. They woke up to bread on the table, swam between
+          meals, and ate dinner outside next to the pool. They never had to think about a reservation, a taxi
+          back from the medina, or whether the kids would eat the menu.
         </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          The maths also tend to work out. <strong class="text-sand">A Palmeraie villa for 8 guests rents for €400–1,200 per night.</strong>
-          The same villa with a chef-included package usually sits at +€90–150 per person per day. Bringing
-          your own chef, like us, is €85 per person all-inclusive — same fine-dining quality, often with
-          menus that are more bespoke because we're booked direct.
+        <p class="mx-auto mt-4 max-w-[640px] text-[17px] leading-[1.75] text-sand">
+          The maths usually works. A Palmeraie villa for 8 guests rents for €400–1,200 per night. A
+          chef-included package adds €90–150 per person per day. Bringing your own chef like us is
+          <strong class="text-sand">€85 per person, all-inclusive</strong> — same fine-dining quality, more bespoke menus.
         </p>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Which Marrakech <em class="font-serif italic font-normal text-gold-light">neighbourhood</em> is best?
+    {/* Neighbourhoods — Hyperagent uses simple data rows; we follow */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[920px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">
+          Where you'll be cooking
+          <em class="block font-serif italic font-normal text-gold-light">— pick your neighbourhood</em>
         </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          Four parts of Marrakech work well for villa stays with a private chef. They're very
-          different vibes — pick by what you actually want to do.
-        </p>
-
-        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        <ul class="mt-12 grid gap-px overflow-hidden rounded-md bg-gold/15">
           {neighbourhoods.map((n) => (
-            <div class="border border-gold/20 border-t-[3px] border-t-ember bg-ink-light p-6">
-              <h3 class="font-serif text-[20px] italic text-gold-light">{n.name}</h3>
-              <p class="mt-3 text-[15px] leading-relaxed text-sand" set:html={n.body} />
-              <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-gold">{n.meta}</p>
-            </div>
-          ))}
-        </div>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          What your <em class="font-serif italic font-normal text-gold-light">kitchen needs</em> for a private chef
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          We bring our own knives, our own tagine pots, our own charcoal if you don't have a grill.
-          But there are a few things the villa has to provide:
-        </p>
-        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Working oven and gas hob</strong> — ideally 4 burners. Induction is fine but slows tagines.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Hot water and a working sink.</strong> Cleanup is a real time sink without it.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Refrigerator with at least one shelf empty</strong> — we shop fresh that morning.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">Plates and glasses</strong> for your headcount, plus a serving bowl or two. Most villas have these; medina riads sometimes don't.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">A dining surface</strong> for the headcount — a long table outside is best. We can plate at a coffee table if we have to.</li>
-        </ul>
-
-        <p class="mt-6 leading-[1.75] text-sand">
-          When you're screening a villa, message the host:
-          <em class="font-serif italic text-gold-light">
-            “We're bringing a private chef one or more nights. Is the kitchen full-service (oven, gas
-            hob, basic cookware), and is there outdoor or indoor dining for [headcount]?”
-          </em>
-          If the answer hesitates, pick a different villa.
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Sample <em class="font-serif italic font-normal text-gold-light">3 / 5 / 7-day itineraries</em>
-        </h2>
-
-        {itineraries.map((it) => (
-          <div class="mt-8 border border-gold/20 border-l-[4px] border-l-gold bg-ink-light p-6">
-            <h3 class="font-serif text-[20px] italic text-gold-light">{it.title}</h3>
-            <ol class="mt-4 grid gap-2 pl-5 text-[15px] leading-relaxed text-sand [list-style:decimal]">
-              {it.nights.map((line) => (<li set:html={line} />))}
-            </ol>
-          </div>
-        ))}
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          How to <em class="font-serif italic font-normal text-gold-light">bring a chef in</em> — the four-step booking
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">If you already have the villa, this part is fast.</p>
-        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">1. Message us on WhatsApp</strong> with the dates, the headcount, the address (or even just the neighbourhood). Reply usually inside an hour.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">2. We send a draft menu</strong> in writing — usually 5 courses, customised to your dietaries. You edit, we adjust.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">3. You confirm.</strong> 50% deposit via Stripe / wire. Final menu locked.</li>
-          <li class="border-l-2 border-ember/40 pl-4"><strong class="text-sand">4. The night.</strong> Chef arrives 4 hours before service with everything. You don't lift a finger.</li>
-        </ul>
-        <p class="mt-6 leading-[1.75] text-sand">
-          For pricing details, see our
-          <a href="/private-chef-cost-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">full pricing breakdown</a>.
-          For weddings, <a href="/services/wedding-dinner-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">our wedding chef page has the brief</a>.
-          For corporate offsites and retreats, <a href="/services/corporate-dining-marrakech/" class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline">we have a separate corporate page</a>.
-        </p>
-
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Villa rental partners <em class="font-serif italic font-normal text-gold-light">we know and like</em>
-        </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          We don't take commission, we don't have an exclusive deal. These are the rental platforms
-          our guests come back from happy:
-        </p>
-        <ul class="mt-4 grid gap-3 leading-relaxed text-sand">
-          {partners.map((p) => (
-            <li class="border-l-2 border-ember/40 pl-4">
-              <strong class="text-sand">{p.name}</strong> — {p.body}
+            <li class="grid gap-2 bg-ink p-7 sm:grid-cols-[200px_1fr_minmax(0,auto)] sm:items-baseline sm:gap-8">
+              <h3 class="font-display text-[1.5rem] tracking-[0.04em] text-sand">{n.name}</h3>
+              <p class="text-[15px] leading-[1.65] text-sand">Best for: <strong class="text-sand">{n.best}</strong>.</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light">{n.meta}</p>
             </li>
           ))}
         </ul>
-        <p class="mt-6 leading-[1.75] text-sand">
-          If you want a recommendation for your dates and headcount,
-          <a
-            data-event="whatsapp_click"
-            data-location="villa-guide"
-            href="https://wa.me/212721354757"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-ember-light underline-offset-4 hover:text-gold-light hover:underline"
-          >just ask</a>. We'll point you at three villas we've cooked at recently.
-        </p>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">
-          Riad <em class="font-serif italic font-normal text-gold-light">vs villa</em> for chef dinners
+    {/* Kitchen needs — quiet bullet list */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">
+          What the kitchen
+          <em class="block font-serif italic font-normal text-gold-light">needs to provide</em>
         </h2>
-        <p class="mt-4 leading-[1.75] text-sand">
-          <strong class="text-sand">Riads</strong> win on atmosphere — tile work, courtyards, the call to prayer at sunset.
-          They lose on kitchen size and group capacity. Above 14 guests, riads get tight.
+        <ul class="mx-auto mt-10 grid max-w-[600px] gap-4">
+          {kitchenNeeds.map((k) => (
+            <li class="flex items-start gap-3 text-[16px] leading-[1.7] text-sand">
+              <span aria-hidden="true" class="mt-2.5 inline-block size-1.5 shrink-0 rotate-45 bg-ember"></span>
+              <span>{k}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mx-auto mt-8 max-w-[600px] text-center font-serif text-[16px] italic leading-[1.65] text-gold-light">
+          When you're screening a villa, message the host: “We're bringing a private chef. Is the kitchen
+          full-service, and is there outdoor or indoor dining for [headcount]?” If the answer hesitates, pick
+          a different villa.
         </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          <strong class="text-sand">Villas</strong> win on group size, pool, kitchen, garden. They lose on atmosphere — you don't
-          feel like you're in Marrakech as much as you feel like you're in a nice modern house.
-        </p>
-        <p class="mt-4 leading-[1.75] text-sand">
-          Most repeat guests do both. Riad in the medina the first 2 nights, then move to a Palmeraie
-          villa for the back end of the trip.
-        </p>
+      </div>
+    </section>
 
-        <h2 class="mt-16 font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-snug tracking-[0.04em] text-sand">FAQ</h2>
-        <div class="mt-6 grid gap-0">
+    {/* Booking — 4 numbered steps, narrow column, no card chrome */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">
+          From WhatsApp
+          <em class="block font-serif italic font-normal text-gold-light">to first course — 4 steps</em>
+        </h2>
+        <ol class="mt-12 grid gap-8">
+          {steps.map((s) => (
+            <li class="grid gap-4 sm:grid-cols-[80px_1fr] sm:gap-8">
+              <span class="font-display text-[2.5rem] leading-none tracking-[0.04em] text-ember">{s.n}</span>
+              <div>
+                <h3 class="font-display text-[1.5rem] tracking-[0.04em] text-sand">{s.title}</h3>
+                <p class="mt-2 text-[16px] leading-[1.7] text-sand-muted">{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="mt-12 text-center text-sand-muted">
+          For pricing details, see our
+          <a href="/private-chef-cost-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">full pricing breakdown</a>.
+          Wedding briefs go on the
+          <a href="/services/wedding-dinner-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">wedding chef page</a>.
+        </p>
+      </div>
+    </section>
+
+    {/* Riad vs villa — single sentence comparison, centered */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px] text-center">
+        <p class="font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">Riad vs villa</p>
+        <p class="mt-6 font-serif text-[clamp(1.25rem,2.5vw,1.75rem)] italic leading-[1.55] text-sand">
+          “Riads win on atmosphere — tile work, courtyards, the call to prayer at sunset. Villas win on group
+          size, pool, kitchen, garden. Most repeat guests do both.”
+        </p>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[760px]">
+        <h2 class="text-center font-display text-[clamp(1.75rem,3.5vw,2.75rem)] tracking-[0.04em] text-sand">FAQ</h2>
+        <div class="mt-10 grid gap-0">
           {faqs.map((f) => (
-            /* <details>/<summary> picks up the global faq_open listener */
-            <details class="group border-b border-gold/20 py-5">
+            <details class="group border-b border-gold/15 py-5">
               <summary class="flex cursor-pointer items-center justify-between gap-4 font-serif text-[18px] text-sand list-none [&::-webkit-details-marker]:hidden">
                 <span>{f.q}</span>
                 <span aria-hidden="true" class="font-display text-2xl text-ember transition group-open:rotate-45">+</span>
@@ -319,31 +209,26 @@ const partners = [
             </details>
           ))}
         </div>
-      </article>
+      </div>
     </section>
 
-    {/* CTA band */}
-    <section class="border-t border-gold/15 bg-ink-light py-20">
-      <div class="container max-w-[700px] text-center">
-        <span class="eyebrow inline-flex items-center gap-3">
-          <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
+    {/* CTA */}
+    <section class="border-t border-gold/15 py-24">
+      <div class="container mx-auto max-w-[700px] text-center">
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
           Bring us to your villa
         </span>
         <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
           Book the chef.
           <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">Keep the villa.</em>
         </h2>
-        <p class="mt-5 text-sand-muted">
-          Tell us the dates and the address — we'll send a draft menu inside 24 hours. Most villas
-          in Marrakech can host us with no setup needed.
-        </p>
+        <p class="mt-5 text-sand-muted">Tell us the dates and the address — we'll send a draft menu inside 24 hours.</p>
         <a
-          data-event="whatsapp_click"
-          data-location="villa-guide"
+          data-event="whatsapp_click" data-location="villa-guide"
           href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20we%27ve%20rented%20a%20villa%20in%20Marrakech%20and%20would%20like%20a%20private%20chef.%20Address%3A%20%5B%5D%2C%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 rounded-full bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
         >
           WhatsApp the chef
           <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>

@@ -1,54 +1,59 @@
 ---
-const heroImage = Astro.props.heroImage ?? 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp';
+// Hero — Hyperagent layout DNA, content-first, no images.
+// Centered display headline, narrow measure, single CTA, generous padding.
+// Three quiet trust facts replace the photo as the supporting evidence.
 ---
 
-<section class="hero" id="hero">
-  <img
-    class="hero-img"
-    src={heroImage}
-    alt="Private chef in Marrakech serving a multi-course Moroccan tagine dinner at a villa terrace"
-    width="736"
-    height="1050"
-    fetchpriority="high"
-    decoding="async"
-  />
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="container hero-inner">
-    <span class="v1-eyebrow"><span class="v1-dot" aria-hidden="true"></span>Private Chef Service · Marrakech</span>
-    <h1 class="v1-display">
-      <span>Your villa.</span>
-      <span>Your table.</span>
-      <span>Your chef.</span>
-      <em>— at your riad, tonight.</em>
+<section id="hero" class="bg-ink pb-20 pt-28 sm:pt-36 sm:pb-28">
+  <div class="lt-hero-enter container flex flex-col items-center gap-10 text-center">
+    <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+      <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+      Private Chef Service · Marrakech
+    </span>
+
+    <h1 class="max-w-[860px] font-display text-[clamp(3rem,9vw,7rem)] font-normal leading-[0.9] tracking-[0.02em] text-sand">
+      Your villa. Your table.
+      <em class="mt-3 block font-serif italic font-normal text-[0.45em] tracking-[0.01em] text-gold-light">
+        — your chef, at your riad tonight.
+      </em>
     </h1>
-    <p class="v1-pull">
+
+    <p class="max-w-[640px] text-[17px] leading-[1.7] text-sand">
       A multi-course Moroccan dinner brought to your villa or riad. Souk-fresh that morning,
       cooked in your kitchen, served on your terrace.
     </p>
-    <div class="v1-cta-row">
-      <a href="#booking" class="v1-cta-primary">
+
+    <div class="flex flex-col items-center gap-4 pt-2">
+      <a
+        href="#booking"
+        class="group inline-flex items-center gap-3 rounded-full bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+      >
         Reserve your table
-        <span class="v1-diamond" aria-hidden="true"></span>
+        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white transition group-hover:translate-x-0.5"></span>
       </a>
-      <span class="v1-meta">From €85 / person · Confirmed in 24h via WhatsApp</span>
+      <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
+        From €85 / person · Confirmed in 24h via WhatsApp
+      </span>
     </div>
+
+    {/* Three quiet trust facts — replace the photo as proof. Tightly typeset,
+        evenly spaced, no card chrome. Pure data restraint. */}
+    <dl class="mt-12 grid w-full max-w-[820px] grid-cols-3 gap-4 border-t border-gold/15 pt-10 sm:gap-8">
+      <div class="flex flex-col items-center gap-1.5">
+        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">Rating</dt>
+        <dd class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">★ 4.9 / 5</dd>
+        <dd class="font-mono text-[10px] tracking-[0.18em] text-gold-light">200+ villa guests</dd>
+      </div>
+      <div class="flex flex-col items-center gap-1.5 border-x border-gold/15 px-4">
+        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">All-in</dt>
+        <dd class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">€85 / pp</dd>
+        <dd class="font-mono text-[10px] tracking-[0.18em] text-gold-light">No hidden fees</dd>
+      </div>
+      <div class="flex flex-col items-center gap-1.5">
+        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">Reply</dt>
+        <dd class="font-display text-[clamp(1.5rem,3vw,2.25rem)] tracking-[0.04em] text-sand">~ 1 hour</dd>
+        <dd class="font-mono text-[10px] tracking-[0.18em] text-gold-light">WhatsApp confirms 24h</dd>
+      </div>
+    </dl>
   </div>
 </section>
-
-<style>
-  .hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; background: var(--ink); }
-  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,6,4,0.55) 0%, rgba(8,6,4,0.85) 100%); z-index: 1; }
-  .hero-inner { position: relative; z-index: 2; padding-top: 80px; padding-bottom: 80px; }
-  .v1-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 28px; }
-  .v1-dot { width: 6px; height: 6px; background: var(--ember); transform: rotate(45deg); }
-  .v1-display { font-family: var(--font-display); font-weight: 400; line-height: 0.9; letter-spacing: 0.04em; text-transform: uppercase; color: var(--sand); margin: 0 0 28px; font-size: clamp(48px, 7vw, 96px); }
-  .v1-display span { display: block; }
-  .v1-display em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--gold-light); text-transform: none; letter-spacing: 0.01em; display: block; font-size: 0.5em; margin-top: 12px; }
-  .v1-pull { max-width: 560px; font-size: 17px; line-height: 1.6; color: var(--sand); margin: 0 0 32px; }
-  .v1-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .v1-cta-primary { display: inline-flex; align-items: center; gap: 12px; padding: 18px 32px; background: var(--ember); color: #fff; text-decoration: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; transition: background .3s, transform .2s; }
-  .v1-cta-primary:hover { background: var(--ember-light); transform: translateY(-1px); }
-  .v1-diamond { width: 8px; height: 8px; background: #fff; transform: rotate(45deg); }
-  .v1-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--sand-muted); text-transform: uppercase; }
-</style>

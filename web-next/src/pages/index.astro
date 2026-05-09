@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Nav from '@/components/Nav.astro';
 import Hero from '@/components/Hero.astro';
+import TrustedBy from '@/components/TrustedBy.astro';
 import About from '@/components/About.astro';
 import Testimonials from '@/components/Testimonials.astro';
 import Features from '@/components/Features.astro';
@@ -99,6 +100,7 @@ const howToLd = {
 
   <main>
     <Hero />
+    <TrustedBy />
 
     <section class="lt-trust-strip">
       <div class="container trust-grid">
@@ -117,13 +119,23 @@ const howToLd = {
       </div>
     </section>
 
-    {/* Booking — React island. data-track-form preserved exactly. */}
-    <section class="booking" id="booking">
-      <div class="container">
-        <div class="booking-form">
-          <span class="eyebrow">RESERVE YOUR EXPERIENCE</span>
-          <h2>Book your table <em>— pick a date, we handle the rest.</em></h2>
-          <p>Choose your preferred date, time, and number of guests. We confirm within 24 hours via WhatsApp.</p>
+    {/* Booking — Hyperagent restraint: centered, narrow, no chunky card */}
+    <section id="booking" class="border-t border-gold/15 bg-ink py-24 sm:py-28">
+      <div data-reveal class="container mx-auto max-w-[640px]">
+        <div class="text-center">
+          <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+            <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+            Reserve your experience
+          </span>
+          <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] tracking-[0.04em] text-sand">
+            Book your table.
+            <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">Pick a date, we handle the rest.</em>
+          </h2>
+          <p class="mx-auto mt-5 max-w-[480px] text-sand-muted">
+            Date, time, headcount. We confirm within 24 hours via WhatsApp.
+          </p>
+        </div>
+        <div class="mt-10">
           <BookingForm client:load />
         </div>
       </div>
@@ -141,15 +153,10 @@ const howToLd = {
 </Layout>
 
 <style>
+  /* Trust strip kept minimal — same hairline-bordered band as before */
   .lt-trust-strip { padding: 24px 20px; background: #0f0a05; border-top: 1px solid rgba(184,147,90,0.12); border-bottom: 1px solid rgba(184,147,90,0.12); }
   .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; text-align: center; max-width: 1100px; margin: 0 auto; }
   .trust-item strong { display: block; color: #d4a574; font-family: var(--font-display); letter-spacing: 0.05em; font-size: 1rem; }
   .trust-item span { color: #a89882; font-size: 13px; }
   .trust-item, .trust-item:link { text-decoration: none; color: inherit; }
-
-  .booking { padding: 96px 0; background: var(--ink); }
-  .booking-form { max-width: 720px; margin: 0 auto; padding: 48px; background: rgba(184,147,90,0.05); border: 1px solid rgba(184,147,90,0.18); border-left: 4px solid var(--ember); }
-  .booking-form h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 56px); letter-spacing: 0.04em; color: var(--sand); margin: 12px 0; }
-  .booking-form h2 em { font-family: var(--font-serif); font-style: italic; color: var(--gold-light); display: block; font-size: 0.5em; text-transform: none; margin-top: 6px; }
-  .booking-form p { color: var(--sand-muted); margin: 0 0 24px; }
 </style>
