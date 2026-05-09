@@ -1,0 +1,86 @@
+---
+// Cookie consent banner — flips Consent Mode v2 to granted when accepted.
+// Reads/writes localStorage.cookie_consent. Same contract as the live site so
+// existing accepted users won't see it again on cutover.
+---
+
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <p>
+    We use cookies to measure how this site is used and improve the booking experience. See our
+    <a href="/privacy/">privacy notes</a>.
+  </p>
+  <div class="cookie-actions">
+    <button type="button" data-cookie="accept">Accept</button>
+    <button type="button" data-cookie="decline">Decline</button>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    inset: auto 16px 16px 16px;
+    z-index: 200;
+    padding: 16px 20px;
+    background: rgba(8, 6, 4, 0.96);
+    color: var(--sand);
+    font-family: var(--font-body);
+    font-size: 13px;
+    border: 1px solid rgba(184, 147, 90, 0.4);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    backdrop-filter: blur(8px);
+  }
+  .cookie-banner[hidden] {
+    display: none;
+  }
+  .cookie-banner p { margin: 0; max-width: 60ch; line-height: 1.5; }
+  .cookie-banner a { color: var(--gold-light); }
+  .cookie-actions { display: flex; gap: 8px; }
+  .cookie-actions button {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(184, 147, 90, 0.5);
+    background: transparent;
+    color: var(--sand);
+    cursor: pointer;
+  }
+  .cookie-actions button[data-cookie="accept"] {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: #fff;
+  }
+</style>
+
+<script>
+  (function () {
+    const KEY = 'cookie_consent';
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    const stored = (() => { try { return localStorage.getItem(KEY); } catch { return null; } })();
+    if (!stored) banner.hidden = false;
+
+    function set(state: 'accepted' | 'declined') {
+      try { localStorage.setItem(KEY, state); } catch {}
+      const granted = state === 'accepted' ? 'granted' : 'denied';
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      if (typeof w.gtag === 'function') {
+        w.gtag('consent', 'update', {
+          ad_storage: granted,
+          ad_user_data: granted,
+          ad_personalization: granted,
+          analytics_storage: granted,
+        });
+      }
+      banner!.hidden = true;
+    }
+
+    banner.querySelector('[data-cookie="accept"]')?.addEventListener('click', () => set('accepted'));
+    banner.querySelector('[data-cookie="decline"]')?.addEventListener('click', () => set('declined'));
+  })();
+</script>

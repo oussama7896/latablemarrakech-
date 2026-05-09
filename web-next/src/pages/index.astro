@@ -1,17 +1,152 @@
 ---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Hero from '@/components/Hero.astro';
+import Faq from '@/components/Faq.astro';
+import Footer from '@/components/Footer.astro';
+import { BookingForm } from '@/components/BookingForm';
+import homeFaqs from '@/data/home-faqs.json';
 
+// JSON-LD blocks — sourced 1:1 from the live homepage so Google sees parity.
+const localBusinessLd = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'FoodService'],
+  name: 'La Table Marrakech',
+  description: 'Private chef service in Marrakech. Personal chef cooks a multi-course Moroccan feast at your villa with fresh souk ingredients. Full service and cleanup included.',
+  url: 'https://latablemarrakech.com',
+  telephone: '+212721354757',
+  email: 'hello@latablemarrakech.com',
+  priceRange: '€€',
+  currenciesAccepted: 'EUR, MAD, USD',
+  paymentAccepted: 'Apple Pay, Stripe, PayPal, Visa, Mastercard',
+  address: { '@type': 'PostalAddress', addressLocality: 'Marrakech', addressCountry: 'MA' },
+  geo: { '@type': 'GeoCoordinates', latitude: 31.6295, longitude: -7.9811 },
+  areaServed: { '@type': 'City', name: 'Marrakech' },
+  logo: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  image: 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '200', bestRating: '5' },
+  offers: {
+    '@type': 'Offer', priceCurrency: 'EUR', price: '85', priceValidUntil: '2026-12-31',
+    availability: 'https://schema.org/InStock',
+    description: 'Private chef service from €85 per person including fresh souk ingredients, multi-course cooking, table service and full cleanup. Minimum 2 guests.',
+  },
+  sameAs: ['https://wa.me/212721354757'],
+  review: [
+    { '@type': 'Review', author: { '@type': 'Person', name: 'Sophie & Marc' }, reviewBody: 'The pastilla on night three. Still thinking about it three months later. Our chef made every evening feel like a private celebration.', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', author: { '@type': 'Person', name: 'James W.' }, reviewBody: "The endive salad with roquefort and cashews to start, then a perfect tagine. Every course was a surprise. The best anniversary dinner we've ever had.", reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', author: { '@type': 'Person', name: 'Anna & Thomas' }, reviewBody: 'The couscous on Friday night was unforgettable. Seven vegetables, slow-cooked lamb, saffron broth — our kids went back for thirds. A real family feast.', reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+  ],
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((f: { q: string; a: string }) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Book a Private Chef', item: 'https://latablemarrakech.com/#booking' },
+  ],
+};
+
+const howToLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Book a Private Chef in Marrakech',
+  description: 'Book a private chef for your Marrakech villa in three simple steps. Fresh souk ingredients, multi-course Moroccan feast, full service and cleanup included. From €85 per person.',
+  totalTime: 'PT2M',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'EUR', value: '85' },
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Choose Your Experience', text: 'Pick your date, number of guests, and any dietary needs. Choose from curated Moroccan menus including tagine, couscous, pastilla, or a full royal feast. Book via WhatsApp or the online form. Confirmation within 24 hours.', url: 'https://latablemarrakech.com/#booking' },
+    { '@type': 'HowToStep', position: 2, name: 'Your Chef Arrives', text: 'Your personal chef shops the medina souk that morning for the freshest ingredients. They arrive at your villa with everything needed — spices, produce, cookware, and tableware.' },
+    { '@type': 'HowToStep', position: 3, name: 'Sit Down and Enjoy', text: 'A multi-course Moroccan feast served course by course on your terrace. Appetizers, mains, dessert, and traditional mint tea. After the meal, full cleanup of kitchen, dishes, and table is included.' },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Private Chef Marrakech | Villa & Riad Dining from €85 per person | La Table Marrakech"
+  description="Private chef Marrakech — at your villa or riad. Souk-fresh tagine, pastilla and royal couscous from €85 per person (minimum 2 guests). 4.9★ from 200+ guests, featured in Forbes & Vogue. Book via WhatsApp — confirmed in 24h."
+  canonical="https://latablemarrakech.com/"
+  ogLocale="en_US"
+  ogLocaleAlternates={["fr_FR", "ar_MA"]}
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/' },
+  ]}
+  jsonLd={[localBusinessLd, faqLd, breadcrumbLd, howToLd]}
+  preloadImages={[
+    { href: 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp', type: 'image/webp', fetchpriority: 'high' },
+  ]}
+>
+  <Nav lang="en" />
+
+  <main>
+    <Hero />
+
+    <section class="lt-trust-strip">
+      <div class="container trust-grid">
+        <a href="https://www.google.com/search?q=La+Table+Marrakech+reviews" target="_blank" rel="noopener" class="trust-item">
+          <strong>★ 4.9 / 5</strong>
+          <span>From 200+ villa guests</span>
+        </a>
+        <div class="trust-item">
+          <strong>From €85 / person</strong>
+          <span>All-in. No hidden fees.</span>
+        </div>
+        <div class="trust-item">
+          <strong>Confirmed in 24h</strong>
+          <span>One WhatsApp message</span>
+        </div>
+      </div>
+    </section>
+
+    {/* Booking — React island. data-track-form preserved exactly. */}
+    <section class="booking" id="booking">
+      <div class="container">
+        <div class="booking-form">
+          <span class="eyebrow">RESERVE YOUR EXPERIENCE</span>
+          <h2>Book your table <em>— pick a date, we handle the rest.</em></h2>
+          <p>Choose your preferred date, time, and number of guests. We confirm within 24 hours via WhatsApp.</p>
+          <BookingForm client:load />
+        </div>
+      </div>
+    </section>
+
+    <Faq />
+
+    {/* TODO sections still to migrate from the static homepage:
+        - About / experience storytelling block (with image carousels + variants)
+        - Testimonials slider
+        - Features (3-up reasons-to-book)
+        - How-to step cards
+        - "More links" footer band */}
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .lt-trust-strip { padding: 24px 20px; background: #0f0a05; border-top: 1px solid rgba(184,147,90,0.12); border-bottom: 1px solid rgba(184,147,90,0.12); }
+  .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; text-align: center; max-width: 1100px; margin: 0 auto; }
+  .trust-item strong { display: block; color: #d4a574; font-family: var(--font-display); letter-spacing: 0.05em; font-size: 1rem; }
+  .trust-item span { color: #a89882; font-size: 13px; }
+  .trust-item, .trust-item:link { text-decoration: none; color: inherit; }
+
+  .booking { padding: 96px 0; background: var(--ink); }
+  .booking-form { max-width: 720px; margin: 0 auto; padding: 48px; background: rgba(184,147,90,0.05); border: 1px solid rgba(184,147,90,0.18); border-left: 4px solid var(--ember); }
+  .booking-form h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 56px); letter-spacing: 0.04em; color: var(--sand); margin: 12px 0; }
+  .booking-form h2 em { font-family: var(--font-serif); font-style: italic; color: var(--gold-light); display: block; font-size: 0.5em; text-transform: none; margin-top: 6px; }
+  .booking-form p { color: var(--sand-muted); margin: 0 0 24px; }
+</style>

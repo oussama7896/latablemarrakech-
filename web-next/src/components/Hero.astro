@@ -1,0 +1,54 @@
+---
+const heroImage = Astro.props.heroImage ?? 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp';
+---
+
+<section class="hero" id="hero">
+  <img
+    class="hero-img"
+    src={heroImage}
+    alt="Private chef in Marrakech serving a multi-course Moroccan tagine dinner at a villa terrace"
+    width="736"
+    height="1050"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <span class="v1-eyebrow"><span class="v1-dot" aria-hidden="true"></span>Private Chef Service · Marrakech</span>
+    <h1 class="v1-display">
+      <span>Your villa.</span>
+      <span>Your table.</span>
+      <span>Your chef.</span>
+      <em>— at your riad, tonight.</em>
+    </h1>
+    <p class="v1-pull">
+      A multi-course Moroccan dinner brought to your villa or riad. Souk-fresh that morning,
+      cooked in your kitchen, served on your terrace.
+    </p>
+    <div class="v1-cta-row">
+      <a href="#booking" class="v1-cta-primary">
+        Reserve your table
+        <span class="v1-diamond" aria-hidden="true"></span>
+      </a>
+      <span class="v1-meta">From €85 / person · Confirmed in 24h via WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; background: var(--ink); }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,6,4,0.55) 0%, rgba(8,6,4,0.85) 100%); z-index: 1; }
+  .hero-inner { position: relative; z-index: 2; padding-top: 80px; padding-bottom: 80px; }
+  .v1-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 28px; }
+  .v1-dot { width: 6px; height: 6px; background: var(--ember); transform: rotate(45deg); }
+  .v1-display { font-family: var(--font-display); font-weight: 400; line-height: 0.9; letter-spacing: 0.04em; text-transform: uppercase; color: var(--sand); margin: 0 0 28px; font-size: clamp(48px, 7vw, 96px); }
+  .v1-display span { display: block; }
+  .v1-display em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--gold-light); text-transform: none; letter-spacing: 0.01em; display: block; font-size: 0.5em; margin-top: 12px; }
+  .v1-pull { max-width: 560px; font-size: 17px; line-height: 1.6; color: var(--sand); margin: 0 0 32px; }
+  .v1-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .v1-cta-primary { display: inline-flex; align-items: center; gap: 12px; padding: 18px 32px; background: var(--ember); color: #fff; text-decoration: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; transition: background .3s, transform .2s; }
+  .v1-cta-primary:hover { background: var(--ember-light); transform: translateY(-1px); }
+  .v1-diamond { width: 8px; height: 8px; background: #fff; transform: rotate(45deg); }
+  .v1-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--sand-muted); text-transform: uppercase; }
+</style>
