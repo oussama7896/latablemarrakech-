@@ -1,0 +1,70 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import ArticlePage from '@/components/ArticlePage.astro';
+
+const url = 'https://latablemarrakech.com/blog/how-to-hire-a-private-chef-marrakech/';
+const breadcrumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://latablemarrakech.com/blog/' },
+  { '@type': 'ListItem', position: 3, name: 'How to hire a private chef', item: url },
+]};
+const articleLd = { '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'How to Hire a Private Chef in Marrakech',
+  description: 'Practical advice for hiring a private chef in Marrakech: what to ask, price expectations, menu planning and logistics.',
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-03-08T08:00:00+01:00', dateModified: '2026-03-08T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
+  mainEntityOfPage: url,
+};
+---
+
+<Layout
+  title="How to Hire a Private Chef in Marrakech | La Table Marrakech"
+  description="Practical advice for hiring a private chef in Marrakech: what to ask, price expectations, menu planning and logistics for an exceptional dining experience."
+  canonical={url}
+  htmlLang="en"
+  hreflang={[{ hreflang: 'en', href: url }, { hreflang: 'x-default', href: url }]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+  <main>
+    <ArticlePage
+      title="How to Hire a Private Chef in Marrakech"
+      summary="Hiring a private chef transforms a meal into an occasion — especially in Marrakech, where local markets, spices and hospitality shape the experience. This guide helps you find the right chef, set expectations, and get the most from a bespoke in-home dining service."
+      date="2026-03-08"
+      readTime="5 min read"
+    >
+      <h2>1. Decide the experience you want</h2>
+      <p>Start by choosing the type of service: a relaxed family-style dinner, a formal multi-course tasting, a market-to-table cooking session, or a celebratory feast (wedding, birthday). Your choice affects timing, staff needed and cost.</p>
+
+      <h2>2. Questions to ask the chef</h2>
+      <p>Ask about menu range, dietary accommodations, kitchen requirements, prior weddings/events of similar size, language(s) of the team, and what their cancellation policy is. A real working chef will answer all of these in writing.</p>
+
+      <h2>3. Pricing and what it covers</h2>
+      <p>Prices vary with menu complexity, guest count, and whether the chef provides staffing, table service, and cleanup. Typical elements included are a tasting/consultation, shopping (or market sourcing), food preparation, service, and cleanup. Always confirm whether costs such as groceries, travel and porterage are billed separately or included.</p>
+
+      <h2>4. Menu planning and flexibility</h2>
+      <p>Good chefs will propose a seasonal menu and welcome your preferences. If you want authenticity, ask for traditional Moroccan dishes (tagine, pastilla, zaalouk) prepared with local ingredients. For guests with varied tastes, ask for a small set of choices per course to keep service seamless.</p>
+
+      <h2>5. Logistics and kitchen requirements</h2>
+      <p>Share details about the kitchen: gas or electric stove, oven size, available prep surfaces, and parking for the chef's shopping trip. If the venue is a riad, check access and any noise restrictions. For market-to-table experiences, plan extra time for a market walk and ingredient selection.</p>
+
+      <h2>6. Tasting, timing and communication</h2>
+      <p>Whenever possible, schedule a tasting or at least a detailed menu consultation before the event. Confirm arrival time, service flow (family style vs plated), and how leftovers should be handled. Clear communication reduces last-minute surprises.</p>
+
+      <h2>7. Etiquette and gratuities</h2>
+      <p>Discuss how you'd like staff to interact with guests — formal service or discreet presence. Gratuity norms vary; if service staff are separate from the chef, consider tipping them directly according to the quality of service.</p>
+
+      <h2>8. Safety and food handling</h2>
+      <p>Ask about food safety practices — how ingredients are stored, allergy cross-contamination prevention, and how long dishes can safely rest before serving. Professional chefs will happily explain their processes.</p>
+
+      <h2>Wrap-up</h2>
+      <p>Hiring a private chef in Marrakech is as much about the people as the food. Prioritize clear expectations, seasonal menus, and communication on logistics. When matched well, the result is an effortless, memorable meal that reflects Marrakech's flavours and hospitality.</p>
+      <p><a href="/contact/">Contact &amp; booking</a> · <a href="/private-chef-cost-marrakech/">Pricing breakdown</a></p>
+    </ArticlePage>
+  </main>
+  <Footer />
+</Layout>

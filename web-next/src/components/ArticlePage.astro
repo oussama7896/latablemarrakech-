@@ -1,0 +1,66 @@
+---
+// Reusable article shell for /blog/* posts.
+// Renders the hero (breadcrumb + title + meta), an article body slot,
+// and a CTA band at the bottom. The page composes Layout itself for
+// SEO/JSON-LD control; this is just the visual chrome.
+
+interface Props {
+  title: string;
+  summary: string;
+  date: string;
+  readTime: string;
+  cta?: { text: string; whatsappText?: string };
+}
+
+const { title, summary, date, readTime, cta } = Astro.props;
+const fmtDate = new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+const ctaText = cta?.text ?? 'WhatsApp the chef';
+const wa = cta?.whatsappText ?? "Hi%20%E2%80%94%20I%27d%20like%20a%20chef%20quote";
+---
+
+<header class="bg-ink-light pb-14 pt-24">
+  <div class="container max-w-[860px]">
+    <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-gold-light">Home</a>
+      <span aria-hidden="true" class="text-ember">◆</span>
+      <a href="/blog/" class="hover:text-gold-light">Journal</a>
+      <span aria-hidden="true" class="text-ember">◆</span>
+      <span class="text-gold-light">Article</span>
+    </nav>
+    <h1 class="mt-8 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1] tracking-[0.04em] text-sand">{title}</h1>
+    <p class="mt-5 text-lg leading-relaxed text-sand-muted">{summary}</p>
+    <p class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted">
+      <time datetime={date}>{fmtDate}</time>
+      <span aria-hidden="true" class="size-1 rotate-45 bg-ember"></span>
+      <span>{readTime}</span>
+      <span aria-hidden="true" class="size-1 rotate-45 bg-ember"></span>
+      <span>By La Table Marrakech</span>
+    </p>
+  </div>
+</header>
+
+<section class="bg-ink py-20">
+  <article class="container max-w-[760px] [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-[clamp(1.5rem,3vw,2.25rem)] [&_h2]:tracking-[0.04em] [&_h2]:text-sand [&_h2]:leading-snug [&_h3]:mt-8 [&_h3]:font-serif [&_h3]:italic [&_h3]:text-[20px] [&_h3]:text-gold-light [&_p]:mt-4 [&_p]:leading-[1.85] [&_p]:text-sand [&_a]:text-ember-light [&_a:hover]:text-gold-light [&_a]:underline-offset-4 [&_a:hover]:underline [&_ul]:mt-4 [&_ul]:grid [&_ul]:gap-3 [&_ul_li]:border-l-2 [&_ul_li]:border-ember/40 [&_ul_li]:pl-4 [&_ul_li]:text-sand [&_strong]:text-sand">
+    <slot />
+  </article>
+</section>
+
+<section class="border-t border-gold/15 bg-ink-light py-20">
+  <div class="container max-w-[700px] text-center">
+    <span class="eyebrow inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>Bring it to your villa</span>
+    <h2 class="mt-6 font-display text-[clamp(2rem,4vw,3rem)] leading-[1] tracking-[0.04em] text-sand">
+      Get a chef
+      <em class="mt-2 block font-serif italic font-normal text-[0.6em] text-gold-light">at your table.</em>
+    </h2>
+    <p class="mt-5 text-sand-muted">From €85 per person, all-in. Confirmed in 24 hours via WhatsApp.</p>
+    <a
+      data-event="whatsapp_click" data-location="blog"
+      href={`https://wa.me/212721354757?text=${wa}`}
+      target="_blank" rel="noopener noreferrer"
+      class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+    >
+      {ctaText}
+      <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+    </a>
+  </div>
+</section>

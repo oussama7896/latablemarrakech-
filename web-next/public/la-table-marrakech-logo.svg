@@ -1,0 +1,136 @@
+<svg viewBox="0 0 1060 600" fill="none" xmlns="http://www.w3.org/2000/svg" width="1060" height="600">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ROW 1: THREE MAIN LOGO VARIANTS             -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- 01 PRIMARY · Dark background -->
+  <rect x="0" y="0" width="340" height="290" fill="#080604"/>
+  <rect x="0.5" y="0.5" width="339" height="289" fill="none" stroke="#B8935A" stroke-width="0.4" opacity="0.2"/>
+  <text x="170" y="18" font-family="'DM Mono', Courier, monospace" font-size="7.5" fill="#5C5040" text-anchor="middle" letter-spacing="3">01 · PRIMARY · DARK BACKGROUND</text>
+  <!-- Top lines -->
+  <line x1="38" y1="58" x2="142" y2="58" stroke="#B8935A" stroke-width="0.8" opacity="0.55"/>
+  <line x1="198" y1="58" x2="302" y2="58" stroke="#B8935A" stroke-width="0.8" opacity="0.55"/>
+  <!-- Diamond ornament -->
+  <polygon points="170,46 179,56 170,66 161,56" fill="none" stroke="#C1622F" stroke-width="1.3"/>
+  <polygon points="170,50 176,56 170,62 164,56" fill="#C1622F"/>
+  <!-- LA TABLE -->
+  <text x="170" y="138" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="74" fill="#F0E6D0" text-anchor="middle" letter-spacing="5" font-weight="900">LA TABLE</text>
+  <!-- Mid ornament -->
+  <line x1="28" y1="153" x2="136" y2="153" stroke="#B8935A" stroke-width="0.5" opacity="0.38"/>
+  <line x1="204" y1="153" x2="312" y2="153" stroke="#B8935A" stroke-width="0.5" opacity="0.38"/>
+  <circle cx="170" cy="153" r="4" fill="#C1622F" opacity="0.88"/>
+  <circle cx="153" cy="153" r="2" fill="#B8935A" opacity="0.5"/>
+  <circle cx="187" cy="153" r="2" fill="#B8935A" opacity="0.5"/>
+  <!-- Marrakech -->
+  <text x="170" y="193" font-family="'Libre Baskerville', 'Times New Roman', Georgia, serif" font-size="26" font-style="italic" fill="#D4AA70" text-anchor="middle" letter-spacing="5">Marrakech</text>
+  <!-- Subtitle -->
+  <text x="170" y="220" font-family="'DM Mono', Courier, monospace" font-size="8" fill="#5C5040" text-anchor="middle" letter-spacing="5.5">PRIVATE CHEF SERVICE</text>
+  <!-- Bottom lines -->
+  <line x1="38" y1="234" x2="142" y2="234" stroke="#B8935A" stroke-width="0.7" opacity="0.28"/>
+  <line x1="198" y1="234" x2="302" y2="234" stroke="#B8935A" stroke-width="0.7" opacity="0.28"/>
+  <polygon points="170,226 176,234 170,242 164,234" fill="none" stroke="#B8935A" stroke-width="0.6" opacity="0.3"/>
+  <!-- Bottom label -->
+  <text x="170" y="278" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="#5C5040" text-anchor="middle" letter-spacing="2">Use on: website · social media · digital ads</text>
+
+  <!-- 02 REVERSED · Light background -->
+  <rect x="360" y="0" width="340" height="290" fill="#F0E6D0"/>
+  <rect x="360.5" y="0.5" width="339" height="289" fill="none" stroke="#8B6A3A" stroke-width="0.4" opacity="0.25"/>
+  <text x="530" y="18" font-family="'DM Mono', Courier, monospace" font-size="7.5" fill="#9A8060" text-anchor="middle" letter-spacing="3">02 · REVERSED · LIGHT BACKGROUND</text>
+  <line x1="398" y1="58" x2="502" y2="58" stroke="#8B6A3A" stroke-width="0.8" opacity="0.45"/>
+  <line x1="558" y1="58" x2="662" y2="58" stroke="#8B6A3A" stroke-width="0.8" opacity="0.45"/>
+  <polygon points="530,46 539,56 530,66 521,56" fill="none" stroke="#C1622F" stroke-width="1.3"/>
+  <polygon points="530,50 536,56 530,62 524,56" fill="#C1622F"/>
+  <text x="530" y="138" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="74" fill="#080604" text-anchor="middle" letter-spacing="5" font-weight="900">LA TABLE</text>
+  <line x1="388" y1="153" x2="496" y2="153" stroke="#8B6A3A" stroke-width="0.5" opacity="0.35"/>
+  <line x1="564" y1="153" x2="672" y2="153" stroke="#8B6A3A" stroke-width="0.5" opacity="0.35"/>
+  <circle cx="530" cy="153" r="4" fill="#C1622F" opacity="0.88"/>
+  <circle cx="513" cy="153" r="2" fill="#8B6A3A" opacity="0.5"/>
+  <circle cx="547" cy="153" r="2" fill="#8B6A3A" opacity="0.5"/>
+  <text x="530" y="193" font-family="'Libre Baskerville', 'Times New Roman', Georgia, serif" font-size="26" font-style="italic" fill="#8B6A3A" text-anchor="middle" letter-spacing="5">Marrakech</text>
+  <text x="530" y="220" font-family="'DM Mono', Courier, monospace" font-size="8" fill="#9A8060" text-anchor="middle" letter-spacing="5.5">PRIVATE CHEF SERVICE</text>
+  <line x1="398" y1="234" x2="502" y2="234" stroke="#8B6A3A" stroke-width="0.7" opacity="0.25"/>
+  <line x1="558" y1="234" x2="662" y2="234" stroke="#8B6A3A" stroke-width="0.7" opacity="0.25"/>
+  <polygon points="530,226 536,234 530,242 524,234" fill="none" stroke="#8B6A3A" stroke-width="0.6" opacity="0.28"/>
+  <text x="530" y="278" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="#9A8060" text-anchor="middle" letter-spacing="2">Use on: print · business cards · white backgrounds</text>
+
+  <!-- 03 ON EMBER · Brand color -->
+  <rect x="720" y="0" width="340" height="290" fill="#C1622F"/>
+  <rect x="720.5" y="0.5" width="339" height="289" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.4"/>
+  <text x="890" y="18" font-family="'DM Mono', Courier, monospace" font-size="7.5" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="3">03 · ON EMBER · ANNOUNCEMENTS</text>
+  <line x1="758" y1="58" x2="862" y2="58" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+  <line x1="918" y1="58" x2="1022" y2="58" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+  <polygon points="890,46 899,56 890,66 881,56" fill="none" stroke="white" stroke-width="1.3"/>
+  <polygon points="890,50 896,56 890,62 884,56" fill="white"/>
+  <text x="890" y="138" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="74" fill="white" text-anchor="middle" letter-spacing="5" font-weight="900">LA TABLE</text>
+  <line x1="748" y1="153" x2="856" y2="153" stroke="rgba(255,255,255,0.38)" stroke-width="0.5"/>
+  <line x1="924" y1="153" x2="1032" y2="153" stroke="rgba(255,255,255,0.38)" stroke-width="0.5"/>
+  <circle cx="890" cy="153" r="4" fill="white" opacity="0.9"/>
+  <circle cx="873" cy="153" r="2" fill="white" opacity="0.42"/>
+  <circle cx="907" cy="153" r="2" fill="white" opacity="0.42"/>
+  <text x="890" y="193" font-family="'Libre Baskerville', 'Times New Roman', Georgia, serif" font-size="26" font-style="italic" fill="rgba(255,255,255,0.92)" text-anchor="middle" letter-spacing="5">Marrakech</text>
+  <text x="890" y="220" font-family="'DM Mono', Courier, monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="5.5">PRIVATE CHEF SERVICE</text>
+  <line x1="758" y1="234" x2="862" y2="234" stroke="rgba(255,255,255,0.28)" stroke-width="0.7"/>
+  <line x1="918" y1="234" x2="1022" y2="234" stroke="rgba(255,255,255,0.28)" stroke-width="0.7"/>
+  <polygon points="890,226 896,234 890,242 884,234" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="0.6"/>
+  <text x="890" y="278" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="2">Use on: banners · promotional content · events</text>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ROW 2: ICON MARKS + HORIZONTAL LOCKUP       -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- ICON · Dark -->
+  <rect x="0" y="310" width="160" height="160" fill="#080604"/>
+  <rect x="0.5" y="310.5" width="159" height="159" fill="none" stroke="#B8935A" stroke-width="0.4" opacity="0.2"/>
+  <text x="80" y="327" font-family="'DM Mono', Courier, monospace" font-size="7" fill="#5C5040" text-anchor="middle" letter-spacing="2">ICON · DARK</text>
+  <!-- Square border -->
+  <rect x="28" y="338" width="104" height="104" fill="none" stroke="#B8935A" stroke-width="0.8" opacity="0.28"/>
+  <!-- Diamond top -->
+  <polygon points="80,332 88,340 80,348 72,340" fill="none" stroke="#C1622F" stroke-width="1.2"/>
+  <polygon points="80,336 85,340 80,344 75,340" fill="#C1622F"/>
+  <!-- LT -->
+  <text x="80" y="408" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="52" fill="#F0E6D0" text-anchor="middle" letter-spacing="4" font-weight="900">LT</text>
+  <!-- Sub -->
+  <text x="80" y="428" font-family="'Libre Baskerville', Georgia, serif" font-size="10" font-style="italic" fill="#D4AA70" text-anchor="middle" letter-spacing="1.5">Marrakech</text>
+  <text x="80" y="458" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="#5C5040" text-anchor="middle" letter-spacing="1.5">favicon / app icon</text>
+
+  <!-- ICON · Light -->
+  <rect x="180" y="310" width="160" height="160" fill="#F0E6D0"/>
+  <rect x="180.5" y="310.5" width="159" height="159" fill="none" stroke="#8B6A3A" stroke-width="0.4" opacity="0.22"/>
+  <text x="260" y="327" font-family="'DM Mono', Courier, monospace" font-size="7" fill="#9A8060" text-anchor="middle" letter-spacing="2">ICON · LIGHT</text>
+  <rect x="208" y="338" width="104" height="104" fill="none" stroke="#8B6A3A" stroke-width="0.8" opacity="0.25"/>
+  <polygon points="260,332 268,340 260,348 252,340" fill="none" stroke="#C1622F" stroke-width="1.2"/>
+  <polygon points="260,336 265,340 260,344 255,340" fill="#C1622F"/>
+  <text x="260" y="408" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="52" fill="#080604" text-anchor="middle" letter-spacing="4" font-weight="900">LT</text>
+  <text x="260" y="428" font-family="'Libre Baskerville', Georgia, serif" font-size="10" font-style="italic" fill="#8B6A3A" text-anchor="middle" letter-spacing="1.5">Marrakech</text>
+  <text x="260" y="458" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="#9A8060" text-anchor="middle" letter-spacing="1.5">print / light backgrounds</text>
+
+  <!-- ICON · Ember -->
+  <rect x="360" y="310" width="160" height="160" fill="#C1622F"/>
+  <rect x="360.5" y="310.5" width="159" height="159" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.4"/>
+  <text x="440" y="327" font-family="'DM Mono', Courier, monospace" font-size="7" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="2">ICON · EMBER</text>
+  <rect x="388" y="338" width="104" height="104" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+  <polygon points="440,332 448,340 440,348 432,340" fill="none" stroke="white" stroke-width="1.2"/>
+  <polygon points="440,336 445,340 440,344 435,340" fill="white"/>
+  <text x="440" y="408" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="52" fill="white" text-anchor="middle" letter-spacing="4" font-weight="900">LT</text>
+  <text x="440" y="428" font-family="'Libre Baskerville', Georgia, serif" font-size="10" font-style="italic" fill="rgba(255,255,255,0.9)" text-anchor="middle" letter-spacing="1.5">Marrakech</text>
+  <text x="440" y="458" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="rgba(255,255,255,0.5)" text-anchor="middle" letter-spacing="1.5">ember backgrounds</text>
+
+  <!-- HORIZONTAL LOCKUP -->
+  <rect x="540" y="310" width="520" height="160" fill="#100D08"/>
+  <rect x="540.5" y="310.5" width="519" height="159" fill="none" stroke="#B8935A" stroke-width="0.4" opacity="0.15"/>
+  <text x="800" y="327" font-family="'DM Mono', Courier, monospace" font-size="7" fill="#5C5040" text-anchor="middle" letter-spacing="2">HORIZONTAL LOCKUP · NAV BAR · EMAIL HEADER</text>
+  <!-- Diamond left -->
+  <polygon points="565,383 573,391 565,399 557,391" fill="none" stroke="#C1622F" stroke-width="1.2"/>
+  <polygon points="565,387 570,391 565,395 560,391" fill="#C1622F"/>
+  <!-- LA TABLE horizontal -->
+  <text x="588" y="403" font-family="'Bebas Neue', 'Arial Black', Impact, sans-serif" font-size="48" fill="#F0E6D0" text-anchor="start" letter-spacing="4" font-weight="900">LA TABLE</text>
+  <!-- Vertical divider -->
+  <line x1="788" y1="368" x2="788" y2="413" stroke="#B8935A" stroke-width="0.7" opacity="0.4"/>
+  <!-- Right text block -->
+  <text x="802" y="385" font-family="'Libre Baskerville', Georgia, serif" font-size="15" font-style="italic" fill="#D4AA70" text-anchor="start" letter-spacing="2.5">Marrakech</text>
+  <text x="802" y="405" font-family="'DM Mono', Courier, monospace" font-size="7" fill="#5C5040" text-anchor="start" letter-spacing="3.5">PRIVATE CHEF SERVICE</text>
+  <text x="800" y="458" font-family="'DM Mono', Courier, monospace" font-size="6.5" fill="#5C5040" text-anchor="middle" letter-spacing="1.5">Use for: website navigation · email headers · letterheads</text>
+
+</svg>

@@ -1,0 +1,76 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import ArticlePage from '@/components/ArticlePage.astro';
+
+const url = 'https://latablemarrakech.com/blog/marrakech-medina-market-guide/';
+const breadcrumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://latablemarrakech.com/blog/' },
+  { '@type': 'ListItem', position: 3, name: 'Medina market guide', item: url },
+]};
+const articleLd = { '@context': 'https://schema.org', '@type': 'Article',
+  headline: "Marrakech Medina Market Guide — A Chef's Walk Through the Souk",
+  description: "A working chef's guide to the Marrakech medina souk: where to buy spices, fish, lamb, preserved lemons and produce, what to pay, and the unwritten rules of the food souk.",
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-04-10T08:00:00+01:00', dateModified: '2026-04-10T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
+  mainEntityOfPage: url,
+};
+---
+
+<Layout
+  title="Marrakech Medina Market Guide — A Chef's Walk Through the Souk | La Table Marrakech"
+  description="A working chef's guide to the Marrakech medina souk: where to buy spices, fish, lamb, preserved lemons and produce, what to pay, and the unwritten rules of the food souk."
+  canonical={url}
+  htmlLang="en"
+  hreflang={[{ hreflang: 'en', href: url }, { hreflang: 'x-default', href: url }]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+  <main>
+    <ArticlePage
+      title="The Marrakech Medina market guide — a chef's walk through the souk."
+      summary="A working chef's guide to the medina souk. Where to buy spices, fish, lamb, preserved lemons and produce. What to pay. The unwritten rules. Written by the kitchen team at La Table Marrakech, after a decade of dawn shopping trips."
+      date="2026-04-10"
+      readTime="8 min read"
+    >
+      <h2>Get there at 7am, not 11am</h2>
+      <p>The food souk and the tourist souk are not the same souk. The food souk wakes up at dawn — fish in from Essaouira around 6am, lamb hung at 7am, vegetables laid out by 8am. By the time the tourists arrive at 11, the morning's best produce is already in restaurant kitchens. If you're cooking at home, set your alarm.</p>
+
+      <h2>Where to buy what</h2>
+
+      <h3>Spices</h3>
+      <p>The spice tower in the Rahba Kedima square is photogenic but often overpriced for casuals. The working chef stalls are tucked behind it on a narrow alley — same suppliers, half the price, and they will grind cumin to order. Always ask to smell before buying. Whole spices, not ground.</p>
+
+      <h3>Fish</h3>
+      <p>Fish from Essaouira arrives by van overnight. Buy from the stalls closer to Bab Doukkala — turnover is faster, ice is fresher. Ask what came in this morning, not what's on display. Sea bream, sardines and red mullet are dependable; lobster is rare and pricey.</p>
+
+      <h3>Lamb and chicken</h3>
+      <p>The certified halal butchers in the small alleys behind Jemaa el-Fnaa are where the riad chefs go. Order lamb shoulder for tagine, neck for slow couscous, and ask the butcher to portion for you. Chicken is sold whole and freshly killed; expect a 30-minute wait if you want it cleaned.</p>
+
+      <h3>Preserved lemons, olives, harissa</h3>
+      <p>Buy preserved lemons by the jar — the home-made versions from the small grocers near the spice souk are infinitely better than the supermarket. Olives: try at least three before committing. Harissa: ask for the chef's grade, not the tourist tubes.</p>
+
+      <h3>Produce</h3>
+      <p>The fresh produce souk runs along the wall closest to Bab el Khemis. Tomatoes here taste of the sun; herbs are sold by the tied bunch. Mint is for tea, parsley and coriander for tagines. Always ask the price first; quote in dirham.</p>
+
+      <h2>The unwritten rules</h2>
+      <p>Cash only. Bring small notes — 50 and 100 dirham bills, plus coins. Bargaining is expected for spices and pantry items, less so for fresh fish or meat (the price is the price). A polite "shukran" goes further than fluent French. Don't photograph the butchers without asking.</p>
+
+      <h2>What it costs (rough 2026 numbers)</h2>
+      <p>Lamb shoulder: 110–130 MAD/kg. Chicken whole: 80–100 MAD. Fish (sea bream): 90–140 MAD/kg. Tomatoes: 8–12 MAD/kg in season. Spices (whole cumin): 40 MAD per 100g. Preserved lemons: 30 MAD per jar of 6.</p>
+
+      <h2>How a chef builds a menu from a market walk</h2>
+      <p>We don't go to the souk with a shopping list. We go to see what looks good, then build the menu around it. If the sea bream is exceptional that morning, it becomes the main; if the tomatoes are at peak, zaalouk gets two times its usual share. The menu the chef sketches at 7:30am is the menu you eat at 8pm. That's why no two chef nights are the same.</p>
+
+      <h2>If you're a guest, don't go alone the first time</h2>
+      <p>The medina is intentionally disorienting. If it's your first or second trip, walk it once with the chef before trying to shop solo — you'll get more out of it. Many of our villa guests do this as part of the booking; we walk with them, point at things, then come back to cook.</p>
+
+      <p><a href="/blog/seasonal-ingredients-market-guide-marrakech/">Seasonal ingredients guide</a> · <a href="/the-experience/">What a service night looks like</a></p>
+    </ArticlePage>
+  </main>
+  <Footer />
+</Layout>

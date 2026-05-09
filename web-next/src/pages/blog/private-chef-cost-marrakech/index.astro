@@ -1,0 +1,68 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import ArticlePage from '@/components/ArticlePage.astro';
+
+const url = 'https://latablemarrakech.com/blog/private-chef-cost-marrakech/';
+const breadcrumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://latablemarrakech.com/blog/' },
+  { '@type': 'ListItem', position: 3, name: 'Private chef cost — 2026 guide', item: url },
+]};
+const articleLd = { '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'How Much Does a Private Chef Cost in Marrakech? (2026 Guide)',
+  description: 'A practical 2026 guide to the cost of hiring a private chef in Marrakech, what affects pricing, and how to budget for villa dining.',
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-03-22T08:00:00+01:00', dateModified: '2026-03-22T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
+  mainEntityOfPage: url,
+};
+---
+
+<Layout
+  title="How Much Does a Private Chef Cost in Marrakech? (2026 Guide) | La Table Marrakech"
+  description="A practical 2026 guide to the cost of hiring a private chef in Marrakech, what affects pricing, and how to budget for villa dining."
+  canonical={url}
+  htmlLang="en"
+  hreflang={[{ hreflang: 'en', href: url }, { hreflang: 'x-default', href: url }]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+  <main>
+    <ArticlePage
+      title="How Much Does a Private Chef Cost in Marrakech? (2026 Guide)"
+      summary="Hiring a private chef in Marrakech is now one of the most cost-effective ways to host a memorable meal for friends or family. In 2026, prices typically start from €85 per person (minimum 2 guests) and scale depending on menu complexity, ingredient budgets, additional staff and travel logistics."
+      date="2026-03-22"
+      readTime="5 min read"
+    >
+      <h2>What the €85 per person base covers</h2>
+      <p>The standard package usually includes menu planning, market shopping, the chef's time preparing a multi-course meal, serving and full cleanup. That base price assumes relatively local ingredients and a simple, home-style menu. If you want premium seafood, imported cheeses, or a multi-course tasting menu, ingredient costs rise.</p>
+
+      <h2>Major cost drivers</h2>
+      <h3>Ingredient budget</h3>
+      <p>Freshness and seasonality matter. A lamb tagine with local prunes is economical; an imported lobster or aged cheese adds significantly. Agree a per-person or per-dish ingredient budget with your chef to avoid surprises.</p>
+
+      <h3>Guest count and service</h3>
+      <p>Small parties (2–6) are generally covered by one chef. For groups above 10, additional cooks or servers are required which increases cost (staffing, serviceware, logistics).</p>
+
+      <h3>Travel and logistics</h3>
+      <p>If your villa is outside Marrakech (Ourika, Agafay trips) expect a modest travel surcharge and earlier market shopping times. Urban villas in Palmeraie, Hivernage or Gueliz are straightforward to serve.</p>
+
+      <h2>How to budget smartly</h2>
+      <p>Start from the per-person rate, add a small premium for special dietary or premium ingredients, and reserve 10–15% for service tip if staff are involved. Confirm everything in writing before booking.</p>
+
+      <h2>Sample pricing scenarios (2026)</h2>
+      <p>Small intimate dinner (4 guests) with local ingredients: €85–€120 per person. Family-style feast (8 guests): €120–€220 per person depending on courses. Tasting menu or event (20 guests) with servers: €400+ depending on details.</p>
+
+      <h2>Booking and payment</h2>
+      <p>Most private chefs ask for a deposit at booking, final payment on the day. Confirm cancellation policy and any dietary surcharges in writing.</p>
+
+      <h2>Final tips</h2>
+      <p>Communicate preferences and allergies early, ask for sample menus, and request a simple ingredient budget to keep costs predictable. The best value often comes from trusting a local chef to design the menu around today's market finds.</p>
+      <p><a href="/private-chef-cost-marrakech/">Detailed pricing page</a> · <a href="/menus/">Sample menus</a></p>
+    </ArticlePage>
+  </main>
+  <Footer />
+</Layout>

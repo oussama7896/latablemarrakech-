@@ -1,0 +1,27 @@
+# robots.txt for La Table Marrakech
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_next/
+Disallow: /analytics-qa/
+Disallow: /*.json$
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+
+User-agent: GPTBot
+Disallow: /
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://latablemarrakech.com/sitemap.xml

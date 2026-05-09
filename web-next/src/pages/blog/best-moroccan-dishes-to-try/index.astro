@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import ArticlePage from '@/components/ArticlePage.astro';
+
+const url = 'https://latablemarrakech.com/blog/best-moroccan-dishes-to-try/';
+const breadcrumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://latablemarrakech.com/blog/' },
+  { '@type': 'ListItem', position: 3, name: '10 Best Moroccan Dishes', item: url },
+]};
+const articleLd = { '@context': 'https://schema.org', '@type': 'Article',
+  headline: '10 Best Moroccan Dishes Your Private Chef Will Cook',
+  description: 'A guide to the 10 Moroccan dishes you should try with a private chef in Marrakech.',
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-03-15T08:00:00+01:00', dateModified: '2026-03-15T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
+  mainEntityOfPage: url,
+};
+
+const dishes = [
+  { n: 1, name: 'Tagine', body: "The classic slow-cooked stew served in a conical clay pot. Varieties include lamb with prunes, chicken with preserved lemon and olives, and fish tagine. The magic is long, gentle braising and a balance of sweet and savory." },
+  { n: 2, name: 'Couscous Royal', body: 'Often served for celebrations — steamed semolina with a variety of meats and vegetables, served with a fragrant broth. A communal, generous dish.' },
+  { n: 3, name: 'Pastilla (Bastilla)', body: 'A layered pie that combines sweet and savory: flaky warqa pastry, spiced pigeon or chicken, almonds, cinnamon and sugar — painted with powdered sugar on top for contrast.' },
+  { n: 4, name: 'Harira', body: 'A nourishing soup made with tomatoes, lentils, chickpeas, and herbs — commonly served during Ramadan but excellent year-round as a starter.' },
+  { n: 5, name: 'Zaalouk', body: 'A smoky cooked salad of eggplant and tomatoes — served as a starter or mezze, with good bread for dipping.' },
+  { n: 6, name: 'Mechoui', body: 'Whole roast lamb, slow-cooked until fall-apart tender — often the centrepiece of a feast.' },
+  { n: 7, name: 'Briouats', body: 'Small savory pastries filled with spiced meat or cheese — perfect for canapés or as part of a shared starter selection.' },
+  { n: 8, name: 'Tangia', body: 'A Marrakech specialty — meat cooked slowly in an urn-shaped clay pot, traditionally over coals. Rich, deeply flavored and characterful.' },
+  { n: 9, name: 'Moroccan Salads', body: 'Simple salads — cucumber and tomato with lemon and olive oil, carrot salads with cumin, and orange salads with cinnamon — bring brightness to heavier mains.' },
+  { n: 10, name: 'Mint Tea and Desserts', body: 'No Moroccan meal is complete without sweet mint tea. Desserts include honeyed pastries, almond cakes and orange blossom sweets.' },
+];
+---
+
+<Layout
+  title="10 Best Moroccan Dishes Your Private Chef Will Cook | La Table Marrakech"
+  description="A guide to the 10 Moroccan dishes you should try with a private chef in Marrakech — what they are and why they matter."
+  canonical={url}
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: url }, { hreflang: 'x-default', href: url },
+  ]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+  <main>
+    <ArticlePage
+      title="10 Best Moroccan Dishes Your Private Chef Will Cook"
+      summary="Moroccan cuisine is a conversation of spices, textures and techniques. When you hire a private chef in Marrakech, you can expect home-made, market-fresh versions of the country's best-known dishes. Here are ten to look for — and why each one is special."
+      date="2026-03-15"
+      readTime="4 min read"
+    >
+      {dishes.map((d) => (
+        <Fragment>
+          <h2>{d.n}. {d.name}</h2>
+          <p>{d.body}</p>
+        </Fragment>
+      ))}
+      <h2>Tips for ordering with a private chef</h2>
+      <p>Communicate spice preferences, request family-style sharing platters for variety, and ask the chef to design a seasonal menu based on what's best in the market that day.</p>
+      <p><a href="/menus/">See menus</a> · <a href="/#booking">Book a chef</a></p>
+    </ArticlePage>
+  </main>
+  <Footer />
+</Layout>

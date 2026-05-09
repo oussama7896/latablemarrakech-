@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout
+  title="Cours de cuisine Marrakech ou chef privé : que choisir ? | La Table Marrakech"
+  description="Comparatif honnête entre un cours de cuisine à Marrakech (45–90 $ par personne) et un chef privé (dès 85 € par personne). Avantages, inconvénients, et lequel correspond à votre voyage."
+  canonical="https://latablemarrakech.com/fr/cours-de-cuisine-marrakech/"
+  htmlLang="fr"
+  ogLocale="fr_FR"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/cours-de-cuisine-marrakech/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/marrakech-cooking-class-vs-private-chef/' },
+  ]}
+>
+  <Nav lang="fr" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-24">
+      <div class="container max-w-[920px]">
+        <h1 class="font-display text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] tracking-[0.04em] text-sand">
+          Cours de cuisine Marrakech
+          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light">ou chef privé ?</em>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand">
+          Nous faisons les deux. Voici un comparatif honnête pour vous aider à choisir ce qui correspond à votre
+          séjour, sans pression commerciale.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <article class="container max-w-[760px] space-y-6 text-[17px] leading-[1.85] text-sand">
+        <p><strong class="text-sand">Cours de cuisine</strong> si vous voulez une expérience pratique, en journée, et repartir avec des recettes. <strong class="text-sand">Chef privé</strong> si vous voulez un repas-célébration à votre villa sans rien faire.</p>
+        <p>Beaucoup de nos clients prennent les deux : cours le jour 2, dîner avec chef le jour 4. Le cours apprend la technique ; le dîner avec chef montre ce que la maîtrise donne.</p>
+        <p>Tarifs : cours de cuisine 45–90 $ par personne ; chef privé dès 85 € par personne, tout compris. <a href="/fr/chef-prive-prix-marrakech/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">Page tarifs détaillée</a>.</p>
+        <p>Pour la version anglaise complète avec décision tree et tableau comparatif : <a href="/marrakech-cooking-class-vs-private-chef/" class="text-ember-light hover:text-gold-light underline-offset-4 hover:underline">full comparison (EN)</a>.</p>
+      </article>
+    </section>
+
+    <section class="border-t border-gold/15 bg-ink-light py-20">
+      <div class="container max-w-[700px] text-center">
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1] tracking-[0.04em] text-sand">
+          Sautez le cours aujourd'hui.
+          <em class="mt-2 block font-serif italic font-normal text-[0.6em] text-gold-light">Mangez comme un roi ce soir.</em>
+        </h2>
+        <a
+          data-event="whatsapp_click" data-location="class-vs-chef_fr"
+          href="https://wa.me/212721354757?text=Bonjour%20%E2%80%94%20d%C3%AEner%20chef%20priv%C3%A9"
+          target="_blank" rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          WhatsApp le chef
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

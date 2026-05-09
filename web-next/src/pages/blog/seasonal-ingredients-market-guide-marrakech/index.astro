@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+import ArticlePage from '@/components/ArticlePage.astro';
+
+const url = 'https://latablemarrakech.com/blog/seasonal-ingredients-market-guide-marrakech/';
+const breadcrumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+  { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://latablemarrakech.com/blog/' },
+  { '@type': 'ListItem', position: 3, name: 'Seasonal ingredients — market guide', item: url },
+]};
+const articleLd = { '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'Seasonal Ingredients: A Marrakech Market Guide',
+  description: "A practical market guide to seasonal ingredients in Marrakech — what to look for at the souk and how chefs use them to build authentic menus.",
+  image: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  datePublished: '2026-02-28T08:00:00+01:00', dateModified: '2026-02-28T08:00:00+01:00',
+  author: { '@type': 'Organization', name: 'La Table Marrakech', url: 'https://latablemarrakech.com/' },
+  publisher: { '@type': 'Organization', name: 'La Table Marrakech', logo: { '@type': 'ImageObject', url: 'https://latablemarrakech.com/la-table-marrakech-og.png' } },
+  mainEntityOfPage: url,
+};
+---
+
+<Layout
+  title="Seasonal Ingredients: A Marrakech Market Guide | La Table Marrakech"
+  description="A practical market guide to seasonal ingredients in Marrakech — what to look for at the souk and how chefs use them to build authentic menus."
+  canonical={url}
+  htmlLang="en"
+  hreflang={[{ hreflang: 'en', href: url }, { hreflang: 'x-default', href: url }]}
+  jsonLd={[breadcrumbLd, articleLd]}
+>
+  <Nav lang="en" />
+  <main>
+    <ArticlePage
+      title="Seasonal Ingredients: A Marrakech Market Guide"
+      summary="Marrakech's markets are a sensory primer for any meal — the colours, smells and textures tell chefs what to cook that day. Knowing which ingredients peak when helps you appreciate seasonal menus and choose dishes that celebrate freshness."
+      date="2026-02-28"
+      readTime="4 min read"
+    >
+      <h2>Spring: Tender greens and early citrus</h2>
+      <p>In spring you'll find crisp greens, young fennel, and bright citrus. Chefs pair early tomatoes and herbs with fresh goat cheese or use lemons to lift rich tagines.</p>
+
+      <h2>Summer: Tomatoes, peppers, and stone fruit</h2>
+      <p>Summer markets brim with tomatoes, sweet peppers, eggplants and apricots. Grilled vegetables, zaalouk and fresh salads shine. Stone fruits appear in desserts and can be preserved into compotes for winter menus.</p>
+
+      <h2>Autumn: Olives, pomegranates and nuts</h2>
+      <p>Olive season begins, alongside pomegranates and harvested almonds. These ingredients add texture and astringent balance — think olive-brined tagines, pomegranate salads, and almond-based sweets.</p>
+
+      <h2>Winter: Citrus, preserved lemons, root vegetables</h2>
+      <p>Winter brings oranges, tangerines and hearty root vegetables. Preserved lemons — made in households across Morocco — lend bright acidity to slow-cooked stews.</p>
+
+      <h2>Spices, preserved goods and pantry staples</h2>
+      <p>Markets also sell bulk spices, argan oil, dried fruits and preserved olives. Good chefs combine fresh produce with these pantry staples to build complex, long-lived flavour profiles.</p>
+
+      <h2>Shopping tips</h2>
+      <p>Buy whole spices over ground where possible, ask for a small sample to taste before committing to a kilo, and visit the souk early in the day for the best of the morning's produce.</p>
+
+      <h2>How chefs use markets</h2>
+      <p>Many private chefs in Marrakech plan menus after a morning market walk, designing dishes to feature the day's best finds. This approach keeps menus fresh, seasonal and reflective of local terroir.</p>
+      <p><a href="/menus/">Sample menus</a> · <a href="/blog/marrakech-medina-market-guide/">Full medina market guide</a></p>
+    </ArticlePage>
+  </main>
+  <Footer />
+</Layout>
