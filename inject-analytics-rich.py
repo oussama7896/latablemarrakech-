@@ -77,11 +77,17 @@ CANONICAL_BLOCK = """<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scro
       params = params || {};
       params.page_path = window.location.pathname;
       params.page_title = document.title;
+      // GA4 DebugView routing — set in CONSENT MODE block when on /analytics-qa/?debug=1.
+      // No-op everywhere else, so production traffic is untouched.
+      if (window.__gaDebugMode) params.debug_mode = true;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(Object.assign({ event: name }, params));
       if (typeof gtag === 'function') gtag('event', name, params);
       if (DEV && typeof console !== 'undefined' && console.log) {
         console.log('%c[ANALYTICS DEV] ' + name, 'color:#0a8f3c;font-weight:bold', params);
+      }
+      if (window.__gaDebugMode && typeof console !== 'undefined' && console.log) {
+        console.log('%c[GA4 DEBUG] sending event', 'color:#c1622f;font-weight:bold', name, params);
       }
     } catch (e) { /* never block UX on tracking */ }
   }

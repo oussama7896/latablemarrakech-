@@ -46,11 +46,26 @@ SKIP_PATTERNS = (
 )
 
 # Canonical Consent Mode v2 block — denied by default, restored from localStorage.
+# Also computes the GA4 debug-mode flag once (window.__gaDebugMode) so both the
+# config call below and the event-firing helper in PERF:ANALYTICS-RICH can
+# stamp `debug_mode: true` onto traffic from /analytics-qa/?debug=1.
 # Keep in sync with the cookie banner in PERF:ANALYTICS-RICH on each page.
 CONSENT_BLOCK = """  <!-- CONSENT MODE V2 (must load before gtag) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // GA4 DebugView gate — true only on /analytics-qa/?debug=1.
+    // Read once, before anything else, so config + every event can use it.
+    window.__gaDebugMode = (function () {
+      try {
+        return location.pathname.indexOf('/analytics-qa/') !== -1 &&
+               new URLSearchParams(location.search).get('debug') === '1';
+      } catch (e) { return false; }
+    })();
+    if (window.__gaDebugMode && typeof console !== 'undefined' && console.log) {
+      console.log('%c[GA4 DEBUG] debug_mode enabled for analytics QA page',
+        'color:#c1622f;font-weight:bold');
+    }
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
@@ -88,8 +103,13 @@ GTAG_BLOCK = """  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads lo
           s1.onload = function() {
             rIC(function() {
               gtag('js', new Date());
-              gtag('config', 'G-J2QTMMMYLD');
-              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+              // When __gaDebugMode is set, route the auto-fired page_view + every
+              // subsequent event from this property to GA4 DebugView.
+              var ga4Cfg = window.__gaDebugMode ? { debug_mode: true } : {};
+              gtag('config', 'G-J2QTMMMYLD', ga4Cfg);
+              var adsCfg = { 'allow_enhanced_conversions': true };
+              if (window.__gaDebugMode) adsCfg.debug_mode = true;
+              gtag('config', 'AW-18017405402', adsCfg);
             });
           };
         });

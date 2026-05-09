@@ -5,10 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
 
+
   <!-- CONSENT MODE V2 (must load before gtag) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // GA4 DebugView gate — true only on /analytics-qa/?debug=1.
+    // Read once, before anything else, so config + every event can use it.
+    window.__gaDebugMode = (function () {
+      try {
+        return location.pathname.indexOf('/analytics-qa/') !== -1 &&
+               new URLSearchParams(location.search).get('debug') === '1';
+      } catch (e) { return false; }
+    })();
+    if (window.__gaDebugMode && typeof console !== 'undefined' && console.log) {
+      console.log('%c[GA4 DEBUG] debug_mode enabled for analytics QA page',
+        'color:#c1622f;font-weight:bold');
+    }
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
@@ -42,8 +55,13 @@
           s1.onload = function() {
             rIC(function() {
               gtag('js', new Date());
-              gtag('config', 'G-J2QTMMMYLD');
-              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+              // When __gaDebugMode is set, route the auto-fired page_view + every
+              // subsequent event from this property to GA4 DebugView.
+              var ga4Cfg = window.__gaDebugMode ? { debug_mode: true } : {};
+              gtag('config', 'G-J2QTMMMYLD', ga4Cfg);
+              var adsCfg = { 'allow_enhanced_conversions': true };
+              if (window.__gaDebugMode) adsCfg.debug_mode = true;
+              gtag('config', 'AW-18017405402', adsCfg);
             });
           };
         });
@@ -138,11 +156,17 @@
       params = params || {};
       params.page_path = window.location.pathname;
       params.page_title = document.title;
+      // GA4 DebugView routing — set in CONSENT MODE block when on /analytics-qa/?debug=1.
+      // No-op everywhere else, so production traffic is untouched.
+      if (window.__gaDebugMode) params.debug_mode = true;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(Object.assign({ event: name }, params));
       if (typeof gtag === 'function') gtag('event', name, params);
       if (DEV && typeof console !== 'undefined' && console.log) {
         console.log('%c[ANALYTICS DEV] ' + name, 'color:#0a8f3c;font-weight:bold', params);
+      }
+      if (window.__gaDebugMode && typeof console !== 'undefined' && console.log) {
+        console.log('%c[GA4 DEBUG] sending event', 'color:#c1622f;font-weight:bold', name, params);
       }
     } catch (e) { /* never block UX on tracking */ }
   }
