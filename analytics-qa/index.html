@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- CONSENT MODE V2 (must load before gtag) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    }
+  </script>
+
+  <!-- PERF:GTAG-LAZY START — Google Analytics + Google Ads loaded on idle, after user interaction -->
+  <script>
+    (function() {
+      var loaded = false;
+      var rIC = window.requestIdleCallback || function(fn) { return setTimeout(fn, 1); };
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        rIC(function() {
+          var s1 = document.createElement('script');
+          s1.async = true;
+          s1.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18017405402';
+          document.head.appendChild(s1);
+          s1.onload = function() {
+            rIC(function() {
+              gtag('js', new Date());
+              gtag('config', 'G-J2QTMMMYLD');
+              gtag('config', 'AW-18017405402', { 'allow_enhanced_conversions': true });
+            });
+          };
+        });
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { passive: true, once: true });
+      });
+      setTimeout(loadGtag, 5000);
+    })();
+  </script>
+  <!-- PERF:GTAG-LAZY END -->
+  <title>Analytics QA — La Table Marrakech (internal)</title>
+
+  <!-- Internal page. Keep out of search and out of the public sitemap. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+
+  <!-- Head analytics blocks (consent + lazy gtag) are injected by inject-analytics.py.
+       Don't hand-edit them — re-run the codemod if they need to change. -->
+
+  <style>
+    :root {
+      --ink:#1a1612; --paper:#fbf6ec; --gold:#8b6a3a; --ember:#c1622f;
+      --ok:#0a8f3c; --warn:#c19f17; --err:#b3261e;
+      --mono:'SFMono-Regular',Consolas,Menlo,monospace;
+      --serif:'Libre Baskerville',Georgia,serif;
+      --sans:'Karla','Helvetica Neue',Arial,sans-serif;
+    }
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+    .wrap{max-width:880px;margin:0 auto;padding:48px 24px 96px}
+    h1{font-family:var(--serif);font-weight:400;font-size:34px;margin:0 0 4px;letter-spacing:-0.01em}
+    h1 em{color:var(--ember);font-style:italic}
+    .sub{color:var(--gold);font-family:var(--mono);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;margin:0 0 24px}
+    .card{background:#fff;border:1px solid rgba(139,106,58,0.25);border-left:4px solid var(--ember);padding:24px 24px 28px;margin:18px 0;border-radius:2px}
+    .card h2{font-family:var(--serif);font-size:22px;margin:0 0 6px;font-weight:400}
+    .card h2 .num{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:13px;border-radius:50%;margin-right:10px;vertical-align:middle}
+    .card p{margin:6px 0 14px;color:#3a3429}
+    .event-name{font-family:var(--mono);background:#f3ecdb;padding:2px 6px;border-radius:2px;font-size:13px;color:var(--ember)}
+    .btn{display:inline-block;padding:10px 18px;background:var(--ember);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;border-radius:2px;margin-right:8px;margin-top:4px}
+    .btn:hover{background:#a6521e}
+    .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+    .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+    label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin:12px 0 4px}
+    input,select,textarea{width:100%;padding:10px 12px;font-family:var(--sans);font-size:15px;background:#fdfaf2;border:1px solid rgba(139,106,58,0.4);border-radius:2px;color:var(--ink);box-sizing:border-box}
+    textarea{min-height:80px;resize:vertical}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:560px){.grid2{grid-template-columns:1fr}}
+    .console{background:#1a1612;color:#f3ecdb;font-family:var(--mono);font-size:12px;padding:18px;border-radius:2px;margin-top:16px;max-height:340px;overflow:auto;line-height:1.5}
+    .console .row{padding:4px 0;border-bottom:1px dotted #3a3429;white-space:pre-wrap;word-break:break-all}
+    .console .row:last-child{border:0}
+    .console .name{color:#86d28f;font-weight:bold}
+    .console .params{color:#e6c98a}
+    .console .empty{color:#7a6e58;font-style:italic}
+    .pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:10px;background:#f3ecdb;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+    .pill--ok{background:#dcefdc;color:var(--ok)}
+    .pill--warn{background:#fbf2cb;color:var(--warn)}
+    .meta{font-family:var(--mono);font-size:12px;color:var(--gold);margin:18px 0 0}
+    .meta code{background:#f3ecdb;padding:2px 6px;border-radius:2px;color:var(--ember)}
+    .footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(139,106,58,0.3);font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.1em}
+    .check{display:inline-block;width:14px;height:14px;border:1.5px solid var(--gold);border-radius:50%;vertical-align:middle;margin-right:8px}
+    .check.fired{background:var(--ok);border-color:var(--ok)}
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <p class="sub">internal · noindex · do not link</p>
+  <h1>Analytics <em>QA harness</em></h1>
+  <p class="meta">
+    Tracking status:
+    <span id="status-gtag" class="pill">gtag: …</span>
+    <span id="status-consent" class="pill">consent: …</span>
+    <span id="status-dev" class="pill">dev: …</span>
+  </p>
+  <p class="meta">
+    Open browser DevTools → Console. You should see <code>[ANALYTICS DEV] enabled</code> on page load and one
+    <code>[ANALYTICS DEV] &lt;event&gt;</code> line per action below. Each test card lights up green once the corresponding
+    event has been captured by the in-page mirror at the bottom.
+  </p>
+
+  <!-- 1 ─ WhatsApp -->
+  <div class="card" id="card-whatsapp_click">
+    <h2><span class="num">1</span><span class="check"></span>WhatsApp click <span class="event-name">whatsapp_click</span></h2>
+    <p>Click the button below. It uses the same <code>data-event</code> + <code>data-location</code> attributes as the real CTAs, so the global click listener handles it identically.</p>
+    <a class="btn"
+       data-event="whatsapp_click"
+       data-location="analytics-qa"
+       href="https://wa.me/212721354757?text=Analytics%20QA%20test"
+       target="_blank"
+       rel="noopener noreferrer">Test WhatsApp button</a>
+    <a class="btn btn--ghost"
+       data-event="whatsapp_click"
+       data-location="analytics-qa-secondary"
+       href="https://wa.me/212721354757"
+       target="_blank"
+       rel="noopener noreferrer">Test WhatsApp (no text)</a>
+  </div>
+
+  <!-- 2 ─ Email -->
+  <div class="card" id="card-email_click">
+    <h2><span class="num">2</span><span class="check"></span>Email click <span class="event-name">email_click</span></h2>
+    <p>Click below. Your default mail client may try to open — just cancel it. The event still fires.</p>
+    <a class="btn" href="mailto:hello@latablemarrakech.com?subject=Analytics%20QA%20test">Test email link</a>
+  </div>
+
+  <!-- 3 ─ Phone -->
+  <div class="card" id="card-phone_click">
+    <h2><span class="num">3</span><span class="check"></span>Phone click <span class="event-name">phone_click</span></h2>
+    <p>Click below. On desktop nothing happens visually — the event still fires.</p>
+    <a class="btn" href="tel:+212721354757">Test phone link</a>
+  </div>
+
+  <!-- 4 ─ Booking enquiry -->
+  <div class="card" id="card-booking_enquiry_submit">
+    <h2><span class="num">4</span><span class="check"></span>Booking enquiry submit <span class="event-name">booking_enquiry_submit</span></h2>
+    <p>Submit the form. Submission is intercepted (no WhatsApp window opens) so you can repeat the test as many times as needed. Param values come from the inputs.</p>
+    <form id="booking-test"
+          data-track-form="booking-enquiry"
+          data-form-id="booking-test"
+          onsubmit="event.preventDefault(); /* intercepted; tracking listener still fires */">
+      <div class="grid2">
+        <div>
+          <label for="qa-bname">Your name</label>
+          <input type="text" id="qa-bname" name="bname" value="QA Tester">
+        </div>
+        <div>
+          <label for="qa-bemail">Email</label>
+          <input type="email" id="qa-bemail" name="bemail" value="qa@example.com">
+        </div>
+        <div>
+          <label for="qa-bdate">Date</label>
+          <input type="date" id="qa-bdate" name="bdate">
+        </div>
+        <div>
+          <label for="qa-bguests">Group size</label>
+          <select id="qa-bguests" name="bguests">
+            <option>2</option><option>4</option><option selected>6</option>
+            <option>8</option><option>12</option><option>20</option>
+          </select>
+        </div>
+        <div>
+          <label for="qa-occasion">Occasion</label>
+          <select id="qa-occasion" name="occasion">
+            <option value="">— choose —</option>
+            <option value="birthday">Birthday</option>
+            <option value="anniversary" selected>Anniversary</option>
+            <option value="business">Business</option>
+            <option value="wedding">Wedding</option>
+            <option value="family">Family dinner</option>
+          </select>
+        </div>
+        <div>
+          <label for="qa-bnotes">Notes (optional)</label>
+          <textarea id="qa-bnotes" name="bnotes"></textarea>
+        </div>
+      </div>
+      <div style="margin-top:18px">
+        <button type="submit" class="btn">Test submit</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 5 ─ FAQ open -->
+  <div class="card" id="card-faq_open">
+    <h2><span class="num">5</span><span class="check"></span>FAQ open <span class="event-name">faq_open</span></h2>
+    <p>Open the disclosure. Only opening (not closing) fires the event.</p>
+    <details>
+      <summary style="cursor:pointer;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold)">Test FAQ — does this fire faq_open?</summary>
+      <p style="margin:10px 0 0;font-size:14px">If you see <code>faq_open</code> in the mirror below with this question text, yes.</p>
+    </details>
+  </div>
+
+  <!-- 6 ─ Scroll depth -->
+  <div class="card" id="card-scroll_depth">
+    <h2><span class="num">6</span><span class="check"></span>Scroll depth <span class="event-name">scroll_depth</span></h2>
+    <p>This page is on the scroll-depth allowlist (along with <code>/</code> and the 4 high-intent landing pages). Scroll the page slowly to trigger 25 / 50 / 75 / 90 % thresholds. They fire once each per page-load; refresh to re-arm.</p>
+    <p class="meta">Page is intentionally tall enough to scroll — see the spacer block at the bottom.</p>
+  </div>
+
+  <!-- Mirror -->
+  <div class="card" style="border-left-color:var(--ink)">
+    <h2 style="display:flex;align-items:center;gap:8px"><span class="num" style="background:var(--ember)">★</span>In-page event mirror</h2>
+    <p>Every <code>dataLayer</code> push appears here in real time. Reload to clear.</p>
+    <div id="mirror" class="console"><div class="row empty">no events yet — click a card above</div></div>
+  </div>
+
+  <p class="footer">/analytics-qa/ · noindex · not in sitemap · disallowed in robots.txt · uses canonical PERF:ANALYTICS-RICH listener</p>
+
+  <!-- Tall spacer so scroll depth has room to fire -->
+  <div aria-hidden="true" style="height:200vh;background:repeating-linear-gradient(180deg,transparent 0 60px,rgba(139,106,58,0.05) 60px 120px)"></div>
+  <p class="footer" style="border:0;padding-top:0">— end of page —</p>
+</div>
+
+<!-- The QA mirror is purely visual — it does NOT fire any events itself.
+     All real tracking is done by the canonical PERF:ANALYTICS-RICH block
+     (injected at end-of-body by inject-analytics-rich.py). -->
+<script>
+(function () {
+  function el(sel) { return document.querySelector(sel); }
+
+  // Status pills (filled in once gtag has had a chance to load).
+  function refreshStatus() {
+    var g = el('#status-gtag'), c = el('#status-consent'), d = el('#status-dev');
+    var hasGtag = typeof window.gtag === 'function';
+    g.textContent = hasGtag ? 'gtag: loaded' : 'gtag: not yet';
+    g.className = 'pill ' + (hasGtag ? 'pill--ok' : 'pill--warn');
+    var consent;
+    try { consent = localStorage.getItem('cookie_consent'); } catch (e) { consent = null; }
+    c.textContent = 'consent: ' + (consent || 'default');
+    c.className = 'pill ' + (consent === 'accepted' ? 'pill--ok' : 'pill--warn');
+    var isDev = (function () {
+      try {
+        var h = location.hostname;
+        if (h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0') return true;
+        if (location.protocol === 'file:') return true;
+        if (/\.vercel\.app$/.test(h)) return true;
+        if (/[?&]debug=1\b/.test(location.search)) return true;
+        if (window.localStorage && localStorage.getItem('analytics_debug') === '1') return true;
+      } catch (e) {}
+      return false;
+    })();
+    d.textContent = 'dev: ' + (isDev ? 'on' : 'off');
+    d.className = 'pill ' + (isDev ? 'pill--ok' : 'pill--warn');
+  }
+  refreshStatus();
+  setInterval(refreshStatus, 1500);
+
+  // Mirror dataLayer pushes — wrap .push so we capture EVERY event the
+  // canonical listener fires, with no duplication of tracking logic.
+  window.dataLayer = window.dataLayer || [];
+  var mirror = el('#mirror');
+  var mirrorEmpty = mirror.querySelector('.empty');
+  var seen = {};
+  function render(evt) {
+    if (!evt || !evt.event) return;
+    if (mirrorEmpty) { mirrorEmpty.remove(); mirrorEmpty = null; }
+    var row = document.createElement('div');
+    row.className = 'row';
+    var name = document.createElement('span');
+    name.className = 'name';
+    name.textContent = evt.event;
+    var params = Object.assign({}, evt);
+    delete params.event;
+    var p = document.createElement('span');
+    p.className = 'params';
+    p.textContent = ' ' + JSON.stringify(params);
+    var ts = document.createElement('span');
+    ts.style.color = '#7a6e58';
+    ts.textContent = '[' + new Date().toLocaleTimeString() + '] ';
+    row.appendChild(ts);
+    row.appendChild(name);
+    row.appendChild(p);
+    mirror.appendChild(row);
+    mirror.scrollTop = mirror.scrollHeight;
+    if (!seen[evt.event]) {
+      seen[evt.event] = true;
+      var card = el('#card-' + evt.event);
+      if (card) {
+        var c = card.querySelector('.check');
+        if (c) c.classList.add('fired');
+      }
+    }
+  }
+  // Replay anything already in the queue.
+  try { window.dataLayer.forEach(render); } catch (e) {}
+  var origPush = window.dataLayer.push.bind(window.dataLayer);
+  window.dataLayer.push = function () {
+    for (var i = 0; i < arguments.length; i++) {
+      try { render(arguments[i]); } catch (e) {}
+    }
+    return origPush.apply(null, arguments);
+  };
+
+  // Default the date input to today so the form always sends has_date=true.
+  var d = el('#qa-bdate');
+  if (d && !d.value) d.value = new Date().toISOString().slice(0, 10);
+})();
+</script>
+
+<!-- PERF:ANALYTICS-RICH block (event listeners) is injected here by
+     inject-analytics-rich.py — do not hand-edit. -->
+<!-- PERF:ANALYTICS-RICH START — enriched WhatsApp + scroll + FAQ + form tracking -->
+<script>
+(function () {
+  'use strict';
+  function device() {
+    return window.matchMedia('(max-width: 768px)').matches ? 'mobile' : 'desktop';
+  }
+  function normalizeLabel(el) {
+    var t = (el.getAttribute('aria-label') || el.textContent || '').trim();
+    t = t.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '');
+    t = t.replace(/\s+/g, ' ').replace(/[^\w\s\-À-ſ&'.,—]/g, '').trim();
+    return (t || 'unlabeled').substring(0, 80);
+  }
+  function ctaPosition(link) {
+    if (link.closest('.wa-float, .lt-stickywa, .sticky-mobile-bar, [class*="floating"]')) return 'sticky';
+    if (link.closest('header, nav, .nav, [class*="nav-"]')) return 'navbar';
+    if (link.closest('.hero, #hero, .hero-cta-row')) return 'hero';
+    if (link.closest('footer, .site-footer')) return 'footer';
+    if (link.closest('.tier-card, .tier-grid, .price-table')) return 'pricing-tier';
+    if (link.closest('.inline-cta, .cta, #contact')) return 'cta-block';
+    return 'inline';
+  }
+  // Dev-detection: auto-on for localhost / 127.0.0.1 / file: / vercel preview
+  // domains, opt-in for prod via ?debug=1 or localStorage.analytics_debug = '1'.
+  // NEVER true on the live latablemarrakech.com domain unless a human opts in.
+  function isDev() {
+    try {
+      var h = location.hostname;
+      if (h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0') return true;
+      if (location.protocol === 'file:') return true;
+      if (/\.vercel\.app$/.test(h)) return true;
+      if (/[?&]debug=1\b/.test(location.search)) return true;
+      if (window.localStorage && localStorage.getItem('analytics_debug') === '1') return true;
+    } catch (e) { /* sandboxed iframes can throw on localStorage */ }
+    return false;
+  }
+  var DEV = isDev();
+  if (DEV && typeof console !== 'undefined' && console.info) {
+    console.info('%c[ANALYTICS DEV] enabled', 'color:#C1622F;font-weight:bold',
+      '— set localStorage.analytics_debug="0" to silence');
+  }
+  function fire(name, params) {
+    try {
+      params = params || {};
+      params.page_path = window.location.pathname;
+      params.page_title = document.title;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params));
+      if (typeof gtag === 'function') gtag('event', name, params);
+      if (DEV && typeof console !== 'undefined' && console.log) {
+        console.log('%c[ANALYTICS DEV] ' + name, 'color:#0a8f3c;font-weight:bold', params);
+      }
+    } catch (e) { /* never block UX on tracking */ }
+  }
+
+  // ---- WhatsApp clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-event="whatsapp_click"], a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+    if (!link) return;
+    fire('whatsapp_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      device: device(),
+      link_url: link.href,
+      button_location: link.getAttribute('data-location') || ctaPosition(link)
+    });
+  }, { passive: true });
+
+  // ---- mailto: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="mailto:"]');
+    if (!link) return;
+    fire('email_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- tel: clicks ----
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    fire('phone_click', {
+      cta_label: normalizeLabel(link),
+      cta_position: ctaPosition(link),
+      link_url: link.href
+    });
+  }, { passive: true });
+
+  // ---- Booking / enquiry form submits ----
+  // Any <form data-track-form="booking-enquiry"> fires booking_enquiry_submit.
+  // We fire after the form's own onsubmit (which usually opens WhatsApp).
+  // Use a WeakSet to guard against double-fire if a form is re-submitted in <300ms.
+  var formFired = new WeakSet();
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('form[data-track-form="booking-enquiry"]');
+    if (!form || formFired.has(form)) return;
+    formFired.add(form);
+    setTimeout(function () { formFired.delete(form); }, 1000);
+    var guests = form.querySelector('[name="bguests"]');
+    var date = form.querySelector('[name="bdate"]');
+    var email = form.querySelector('[name="bemail"]');
+    var notes = form.querySelector('[name="bnotes"]');
+    var occasion = form.querySelector('[name="occasion"]');
+    fire('booking_enquiry_submit', {
+      form_id: form.getAttribute('data-form-id') || form.id || 'unknown',
+      form_name: form.getAttribute('data-form-id') || form.id || 'unknown',
+      group_size: guests ? String(guests.value || '').trim() : undefined,
+      occasion: occasion ? String(occasion.value || '').trim() || undefined : undefined,
+      has_date: date ? !!date.value : false,
+      has_email: email ? !!email.value : false,
+      has_notes: notes ? !!notes.value : false
+    });
+  }, true); // capture phase so we fire even if a child handler stops propagation
+
+  // ---- Scroll depth (high-intent pages only) ----
+  var SCROLL_PAGES = ['/', '/private-chef-cost-marrakech/', '/marrakech-villa-with-private-chef/',
+    '/marrakech-cooking-class-vs-private-chef/', '/the-experience/', '/analytics-qa/'];
+  var path = window.location.pathname;
+  var pathNorm = path.endsWith('/') ? path : path + '/';
+  if (SCROLL_PAGES.indexOf(path) > -1 || SCROLL_PAGES.indexOf(pathNorm) > -1) {
+    var thresholds = [25, 50, 75, 90];
+    var fired = {};
+    var ticking = false;
+    function checkScroll() {
+      var doc = document.documentElement;
+      var max = Math.max(doc.scrollHeight, document.body.scrollHeight) - window.innerHeight;
+      if (max <= 0) return;
+      var pct = (window.scrollY / max) * 100;
+      thresholds.forEach(function (t) {
+        if (pct >= t && !fired[t]) {
+          fired[t] = true;
+          fire('scroll_depth', { depth_percentage: t });
+        }
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { checkScroll(); ticking = false; });
+    }, { passive: true });
+  }
+
+  // ---- FAQ open ----
+  document.querySelectorAll('details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      var sum = d.querySelector('summary');
+      fire('faq_open', { question_text: normalizeLabel(sum || d).substring(0, 120) });
+    });
+  });
+  var faqClicked = new WeakSet();
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.faq-question, [class*="faq-q"], [data-faq-trigger]');
+    if (!trigger || faqClicked.has(trigger)) return;
+    faqClicked.add(trigger);
+    setTimeout(function () { faqClicked.delete(trigger); }, 300);
+    fire('faq_open', { question_text: normalizeLabel(trigger).substring(0, 120) });
+  }, { passive: true });
+})();
+</script>
+<!-- PERF:ANALYTICS-RICH END -->
+
+</body>
+</html>
