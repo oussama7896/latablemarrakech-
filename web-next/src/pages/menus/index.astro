@@ -1,0 +1,97 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import Footer from '@/components/Footer.astro';
+
+const menuLd = {
+  '@context': 'https://schema.org', '@type': 'Menu',
+  name: 'La Table Marrakech Menus',
+  hasMenuSection: [
+    { '@type': 'MenuSection', name: 'Moroccan Traditional', hasMenuItem: [{ '@type': 'MenuItem', name: 'Lamb Tagine with Prunes', description: 'Slow-cooked lamb with prunes and almonds' }] },
+    { '@type': 'MenuSection', name: 'Mediterranean', hasMenuItem: [{ '@type': 'MenuItem', name: 'Grilled Sea Bream', description: 'Sea bream with preserved lemon' }] },
+  ],
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://latablemarrakech.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Menus', item: 'https://latablemarrakech.com/menus/' },
+  ],
+};
+
+const sections = [
+  { title: 'Moroccan Traditional', body: 'Starter: zaalouk (smoky eggplant salad), orange blossom salad. Main: Lamb tagine with prunes and almonds, served with saffron couscous. Dessert: orange blossom pastries and mint tea.' },
+  { title: 'Mediterranean', body: 'Starter: mezze of hummus, labneh and marinated vegetables. Main: grilled sea bream with preserved lemon and herbs. Dessert: lemon olive oil cake.' },
+  { title: 'Custom Menus', body: "We design bespoke menus for events — tasting menus, dietary restrictions, or celebration menus. Tell us the occasion and budget and we'll propose a menu." },
+];
+---
+
+<Layout
+  title="Our Private Chef Menus in Marrakech | La Table Marrakech"
+  description="Moroccan traditional, Mediterranean and custom private chef menus for villa dining in Marrakech. Sample dishes and booking links."
+  canonical="https://latablemarrakech.com/menus/"
+  htmlLang="en"
+  hreflang={[
+    { hreflang: 'en', href: 'https://latablemarrakech.com/menus/' },
+    { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/menus/' },
+    { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/menus/' },
+    { hreflang: 'x-default', href: 'https://latablemarrakech.com/menus/' },
+  ]}
+  jsonLd={[breadcrumbLd, menuLd]}
+>
+  <Nav lang="en" />
+
+  <main>
+    <header class="bg-ink-light pb-14 pt-20 sm:pt-24">
+      <div class="container">
+        <nav class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sand-muted" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-gold-light">Home</a>
+          <span aria-hidden="true" class="text-ember">◆</span>
+          <span class="text-gold-light">Menus</span>
+        </nav>
+        <span class="eyebrow mt-8 inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>Sample menus</span>
+        <h1 class="mt-6 font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] tracking-[0.04em] text-sand">
+          Our private chef
+          <em class="mt-2 block font-serif italic font-normal text-[0.55em] text-gold-light">menus in Marrakech.</em>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand">
+          Choose from our curated menus, or ask for a custom menu designed for your group and dietary needs.
+          From €85 per person.
+        </p>
+      </div>
+    </header>
+
+    <section class="bg-ink py-20">
+      <div class="container max-w-[800px]">
+        <div class="grid gap-6">
+          {sections.map((s) => (
+            <article class="border border-gold/20 border-l-[4px] border-l-ember bg-ink-light p-7">
+              <h2 class="font-display text-[1.75rem] tracking-[0.04em] text-sand">{s.title}</h2>
+              <p class="mt-3 leading-[1.75] text-sand-muted">{s.body}</p>
+              <p class="mt-4">
+                <a href="/#booking" class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember-light hover:text-gold-light underline-offset-4 hover:underline">
+                  Book this menu →
+                </a>
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            data-event="whatsapp_click" data-location="menus"
+            href="https://wa.me/212721354757"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            Ask for a custom menu
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
