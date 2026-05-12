@@ -1,135 +1,100 @@
 ---
-// Storytelling block — text on the left, scrollable plate carousel on the right.
-// Carousel height matches text column height (items-stretch + h-full).
-// Customer can swipe / drag / use the ← → arrow buttons.
-
-// Only the high-resolution source files (>= 700px wide). The 560×300 thumbs
-// are excluded — they look soft when scaled up to a full carousel cell.
-const dishes = [
-  { src: '/seafood-pastilla-shrimp.webp',         alt: 'Seafood pastilla with shrimp and warqa pastry' },        // 1920×1391
-  { src: '/seven-vegetable-couscous.webp',        alt: 'Seven vegetable couscous with saffron broth' },          // 1480×1063
-  { src: '/lamb-tagine-prunes-almonds.webp',      alt: 'Lamb tagine with prunes and almonds, slow-cooked' },     // 1453×1082
-  { src: '/blue-tagine-moroccan-spices.webp',     alt: 'Blue tagine pot with Moroccan spices' },                  // 700×1049
-  { src: '/private-chef-marrakech-tagine.webp',   alt: 'Private chef serving a multi-course Moroccan tagine dinner' }, // 736×1050
-  { src: '/chicken-tagine-marrakech.webp',        alt: 'Chicken tagine with preserved lemons and olives' },      // 736×920
-];
+// About — editorial split. The dish gallery role has moved to VisualStory,
+// so this section can finally do what About is meant to do: tell a story.
+//
+// Left column: oversized display headline + deeper body + signature line.
+// Right column: a single large portrait of the chef in the kitchen with a
+// smaller dish-detail inset overlapping its bottom-left — the way a
+// hospitality magazine spread treats a chef profile.
 ---
 
 <section id="about" class="bg-ink-light py-24 sm:py-28">
-  <div data-reveal class="container mx-auto grid max-w-[1100px] items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
-    {/* Text column */}
-    <div class="flex flex-col justify-center">
+  <div data-reveal class="container mx-auto grid max-w-[1180px] items-center gap-12 lg:grid-cols-12 lg:gap-16">
+    {/* Text column — 6 of 12 */}
+    <div class="lg:col-span-6">
       <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
         01 · The truth
       </span>
-      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5rem)] leading-[0.9] tracking-[0.02em] text-sand">
+
+      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.92] tracking-[0.02em] text-sand">
         Cooked for you.
-        <em class="mt-2 block font-serif text-[0.5em] font-normal italic tracking-[0.01em] text-gold-light">— only you.</em>
+        <em class="mt-3 block font-serif italic font-normal text-[0.42em] tracking-[0.01em] text-gold-light">
+          — and no one else.
+        </em>
       </h2>
-      <p class="mt-6 max-w-[480px] text-[16px] leading-[1.7] text-sand">
-        The medina has a thousand restaurants. None of them know your name, your allergies, or that
-        it's your anniversary. A private chef changes everything — the menu is yours, the pace is
-        yours, the terrace is yours.
+
+      <p class="mt-7 max-w-[520px] text-[16.5px] leading-[1.75] text-sand">
+        The medina has a thousand restaurants. None of them know your name, your allergies,
+        your daughter who only eats plain rice, or that it’s your anniversary.
       </p>
-      <p class="mt-4 max-w-[480px] text-sm leading-[1.7] text-sand-muted">
-        No waiting. No strangers. Just you, the people you love, and a meal you'll talk about for
-        years.
+      <p class="mt-5 max-w-[520px] text-[15.5px] leading-[1.8] text-sand-muted">
+        A private chef changes the maths. The menu is written for your table. Courses arrive
+        when you’re ready, not when the kitchen is. The terrace is yours, the pace is yours,
+        and the only people in the room are people you chose to be there.
       </p>
+
+      {/* Signature line — the editorial closer */}
+      <div class="mt-10 flex items-center gap-4 border-t border-gold/15 pt-7">
+        <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        <span class="font-serif italic text-[15px] text-gold-light">
+          Hand-written menus · Souk-fresh · Discreet service
+        </span>
+      </div>
+
+      <a
+        href="#booking"
+        class="group mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
+      >
+        Book your dinner
+        <span
+          aria-hidden="true"
+          class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
+        ></span>
+      </a>
     </div>
 
-    {/* Carousel column — height matches text via items-stretch + h-full.
-        Native horizontal scroll-snap; arrow buttons scroll programmatically. */}
-    <div class="relative h-full min-h-[420px] lg:min-h-0">
-      {/* Left arrow */}
-      <button
-        type="button"
-        data-carousel-arrow="prev"
-        aria-label="Previous dish"
-        class="absolute left-3 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-ink/80 text-sand backdrop-blur transition hover:bg-ember hover:text-white"
-      >
-        <span aria-hidden="true" class="text-xl leading-none">‹</span>
-      </button>
+    {/* Editorial image column — chef portrait + inset dish */}
+    <div class="relative lg:col-span-6">
+      <figure class="relative overflow-hidden border border-gold/20 bg-ink">
+        <div class="aspect-[4/5]">
+          <img
+            src="/chef-cooking-marrakech-kitchen.webp"
+            alt="The chef working at the stove, finishing a tagine with preserved lemon"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="absolute inset-0 bg-ember/12 mix-blend-multiply" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true"></div>
 
-      {/* Right arrow */}
-      <button
-        type="button"
-        data-carousel-arrow="next"
-        aria-label="Next dish"
-        class="absolute right-3 top-1/2 z-10 flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-ink/80 text-sand backdrop-blur transition hover:bg-ember hover:text-white"
-      >
-        <span aria-hidden="true" class="text-xl leading-none">›</span>
-      </button>
+        {/* Caption strip along the bottom */}
+        <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-4 font-mono text-[10px] uppercase tracking-[0.28em] text-sand">
+          <span>At the stove · 18:42</span>
+          <span class="text-gold-light">Marrakech</span>
+        </figcaption>
+      </figure>
 
-      {/* Scroll track */}
-      <ul
-        data-carousel-track
-        class="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth rounded-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {dishes.map((d) => (
-          /* Every cell is full-width of the column AND identical aspect ratio
-             (4:5 portrait) — guarantees same visual size for every dish. */
-          <li class="snap-center shrink-0 w-full overflow-hidden rounded-md ring-1 ring-gold/20">
-            <div class="relative aspect-[4/5] w-full">
-              <img
-                src={d.src}
-                alt={d.alt}
-                loading="lazy"
-                decoding="async"
-                fetchpriority="high"
-                class="absolute inset-0 block h-full w-full object-cover"
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
+      {/* Overlapping inset — a dish detail, sits at the bottom-left corner */}
+      <figure class="absolute -bottom-8 -left-6 hidden w-[44%] overflow-hidden border border-gold/25 bg-ink shadow-[0_22px_50px_-20px_rgba(0,0,0,0.65)] sm:block">
+        <div class="aspect-[5/4]">
+          <img
+            src="/lamb-tagine-prunes-almonds.webp"
+            alt="Lamb tagine with prunes and toasted almonds, plated"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
+      </figure>
 
-      {/* Dot indicators — active state driven by scroll position via JS below */}
-      <div data-carousel-dots class="pointer-events-none absolute inset-x-0 bottom-3 flex justify-center gap-1.5">
-        {dishes.map((_, i) => (
-          <span aria-hidden="true" data-dot-index={i} class={['size-1.5 rotate-45 transition-colors', i === 0 ? 'bg-ember' : 'bg-sand/40'].join(' ')}></span>
-        ))}
-      </div>
+      {/* Vertical decorative rule along the right edge — luxury hospitality detail */}
+      <span
+        aria-hidden="true"
+        class="absolute -right-3 top-8 bottom-8 hidden w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent lg:block"
+      ></span>
     </div>
   </div>
 </section>
-
-<script>
-  // Vanilla JS — no React island needed for this carousel.
-  document.querySelectorAll('section#about').forEach((section) => {
-    const track = section.querySelector('[data-carousel-track]') as HTMLElement | null;
-    if (!track) return;
-    const prev = section.querySelector('[data-carousel-arrow="prev"]') as HTMLButtonElement | null;
-    const next = section.querySelector('[data-carousel-arrow="next"]') as HTMLButtonElement | null;
-    const scrollByOne = (dir: 1 | -1) => {
-      const w = track.clientWidth;
-      track.scrollBy({ left: dir * w, behavior: 'smooth' });
-    };
-    prev?.addEventListener('click', () => scrollByOne(-1));
-    next?.addEventListener('click', () => scrollByOne(1));
-    // Keyboard support when the track is focused
-    track.tabIndex = 0;
-    track.addEventListener('keydown', (e) => {
-      const ke = e as KeyboardEvent;
-      if (ke.key === 'ArrowRight') { ke.preventDefault(); scrollByOne(1); }
-      if (ke.key === 'ArrowLeft')  { ke.preventDefault(); scrollByOne(-1); }
-    });
-    // Active-dot tracking — runs on scroll to match the visible cell.
-    const dots = section.querySelectorAll('[data-dot-index]') as NodeListOf<HTMLElement>;
-    let raf = 0;
-    track.addEventListener('scroll', () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const w = track.clientWidth;
-        if (w === 0) return;
-        const active = Math.round(track.scrollLeft / w);
-        dots.forEach((d, i) => {
-          const on = i === active;
-          d.classList.toggle('bg-ember', on);
-          d.classList.toggle('bg-sand/40', !on);
-        });
-      });
-    }, { passive: true });
-  });
-</script>

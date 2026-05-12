@@ -1,54 +1,131 @@
 ---
-// Three steps — content matches the HowTo JSON-LD shipped from index.astro
-// so the on-page text and the structured data say the same thing.
+// How it works — cinematic alternating timeline.
+// Three steps, each in a 2-column row that flips image side. A vertical
+// hairline runs between rows. Step numeral is an oversized display serif
+// stamp that sits in the gutter where the hairline meets each row.
+//
+// Copy is kept aligned with the HowTo JSON-LD shipped from index.astro so
+// the structured data and the on-page narrative agree.
+
 const steps = [
   {
     n: '01',
-    title: 'Choose your experience',
-    body: "Pick your date, number of guests, and any dietary needs. Choose from curated Moroccan menus — tagine, couscous, pastilla, or a full royal feast. Book via WhatsApp or the form. Confirmed in 24 hours.",
+    eyebrow: 'Step one · The message',
+    title: 'Choose your experience.',
+    body: 'Pick your date, number of guests, and any dietary needs. Choose from curated Moroccan menus — tagine, couscous, pastilla, or a full royal feast. Send it via WhatsApp or the form. Confirmation within 24 hours.',
+    image: '/private-chef-marrakech-tagine.webp',
+    imageAlt: 'A private chef plating a tagine in a Marrakech kitchen',
+    detail: 'Reply within an hour · 7 days a week',
   },
   {
     n: '02',
-    title: 'Your chef arrives',
+    eyebrow: 'Step two · The morning',
+    title: 'Your chef arrives.',
     body: 'Your personal chef shops the medina souk that morning for the freshest ingredients, then arrives at your villa with everything needed — spices, produce, cookware, tableware.',
+    image: '/blue-tagine-moroccan-spices.webp',
+    imageAlt: 'A blue ceramic tagine and Moroccan spices on a souk stall, photographed at first light',
+    detail: 'Souk: 06:30 — 09:00 · Mise en place: 17:00',
   },
   {
     n: '03',
-    title: 'Sit down and enjoy',
-    body: 'A multi-course Moroccan feast served course by course on your terrace. Appetizers, mains, dessert, and traditional mint tea. Full kitchen, dish, and table cleanup included.',
+    eyebrow: 'Step three · The evening',
+    title: 'Sit down and enjoy.',
+    body: 'A multi-course Moroccan feast served course by course on your terrace. Appetizers, mains, dessert, traditional mint tea. After the meal, full kitchen, dish, and table cleanup is included.',
+    image: '/moroccan-feast-villa-terrace.webp',
+    imageAlt: 'A long villa terrace dinner table set for a Moroccan feast at dusk',
+    detail: '4 to 6 courses · 2.5 to 3 hours · We leave the villa cleaner',
   },
 ];
 ---
 
-<section id="how" class="bg-ink py-24 sm:py-28">
+<section id="how" class="bg-ink py-24 sm:py-32">
   <div data-reveal class="container">
-    <div class="text-center">
-      <span class="eyebrow inline-flex items-center gap-3">
-        <span class="inline-block size-1.5 rotate-45 bg-ember"></span>
-        04 · How it works
+    {/* Header */}
+    <div class="mx-auto max-w-[820px] text-center">
+      <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+        <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+        08 · How it works
       </span>
       <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
-        From WhatsApp to <em class="font-serif italic font-normal text-gold-light">first course</em>, in three steps
+        From WhatsApp to
+        <em class="font-serif italic font-normal text-gold-light">first course</em>,
+        in three steps.
       </h2>
     </div>
 
-    <ol class="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
-      {steps.map((s) => (
-        <li class="relative flex flex-col gap-4 border-l-2 border-ember/60 bg-ink-light p-7 pl-9">
-          <span class="absolute -left-[1px] top-7 -translate-x-1/2 bg-ink-light px-2 font-display text-3xl tracking-[0.05em] text-ember">{s.n}</span>
-          <h3 class="font-serif text-[22px] leading-snug text-sand">{s.title}</h3>
-          <p class="text-sm leading-relaxed text-sand-muted">{s.body}</p>
-        </li>
-      ))}
+    {/* Timeline — vertical hairline running through the middle, alternating rows */}
+    <ol class="relative mx-auto mt-20 max-w-[1100px]">
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/30 to-transparent md:left-1/2 md:-translate-x-1/2"
+      ></span>
+
+      {steps.map((s, i) => {
+        const flipped = i % 2 === 1;
+        return (
+          <li class="relative grid grid-cols-1 items-center gap-8 pl-12 md:grid-cols-12 md:gap-12 md:pl-0 mb-20 last:mb-0">
+            {/* Number stamp — sits on the hairline */}
+            <span
+              aria-hidden="true"
+              class="absolute left-0 top-0 z-10 -translate-x-1/2 bg-ink px-2 font-display text-[clamp(2.25rem,4vw,3.25rem)] leading-none tracking-[0.05em] text-ember md:left-1/2"
+            >
+              {s.n}
+            </span>
+
+            {/* Image */}
+            <figure
+              class={[
+                'relative overflow-hidden border border-gold/15 bg-ink-light',
+                'md:col-span-5',
+                flipped ? 'md:col-start-8' : 'md:col-start-1',
+              ].join(' ')}
+            >
+              <div class="aspect-[5/4]">
+                <img
+                  src={s.image}
+                  alt={s.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover transition duration-[1200ms] ease-out hover:scale-[1.03]"
+                />
+              </div>
+              <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true"></div>
+            </figure>
+
+            {/* Text */}
+            <div
+              class={[
+                'md:col-span-6',
+                flipped ? 'md:col-start-1 md:row-start-1 md:pr-8 md:text-right' : 'md:col-start-7 md:pl-8',
+              ].join(' ')}
+            >
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-gold-light">
+                {s.eyebrow}
+              </span>
+              <h3 class="mt-3 font-display text-[clamp(1.6rem,2.6vw,2.4rem)] leading-[1.05] tracking-[0.02em] text-sand">
+                {s.title}
+              </h3>
+              <p class={['mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-sand-muted', flipped ? 'md:ml-auto' : ''].join(' ')}>
+                {s.body}
+              </p>
+              <p class={['mt-5 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light', flipped ? 'md:ml-auto' : ''].join(' ')}>
+                {s.detail}
+              </p>
+            </div>
+          </li>
+        );
+      })}
     </ol>
 
-    <div class="mt-12 text-center">
+    {/* Closing CTA — same primary pill */}
+    <div class="mt-6 text-center">
       <a
         href="#booking"
-        class="inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:bg-ember-light hover:-translate-y-px"
+        class="group inline-flex items-center gap-3 rounded-full bg-ember px-9 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
       >
-        Reserve your table
-        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        Book your dinner
+        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white transition group-hover:translate-x-0.5"></span>
       </a>
     </div>
   </div>

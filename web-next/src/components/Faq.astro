@@ -1,40 +1,133 @@
 ---
+// FAQ — editorial two-column. Sticky title rail on the left, accordion on
+// the right. Uses <details>/<summary> so the analytics listener in
+// Layout.astro still fires faq_open on toggle. First item open by default
+// (a reader sees an answer immediately, not a list of closed questions).
 import faqs from '@/data/home-faqs.json';
+
+type Faq = { q: string; a: string };
+const list = faqs as Faq[];
 ---
 
-<section class="faqs" id="faqs">
+<section class="lt-faq bg-ink-light py-24 sm:py-28" id="faqs">
   <div data-reveal class="container">
-    <div class="section-header">
-      <span class="eyebrow">05 · QUESTIONS</span>
-      <h2>FAQ</h2>
-    </div>
-    <div class="faq-list">
-      {faqs.map((f: { q: string; a: string }) => (
-        /* <details>/<summary> is what the analytics listener uses for faq_open. */
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>{f.q}</span>
-            <span class="icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>{f.a}</p>
-          </div>
-        </details>
-      ))}
+    <div class="grid grid-cols-12 gap-x-8 gap-y-12 lg:gap-x-16">
+
+      {/* Left rail */}
+      <aside class="col-span-12 lg:col-span-4">
+        <div class="lg:sticky lg:top-28">
+          <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+            <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+            09 · Questions
+          </span>
+          <h2 class="mt-6 font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-[0.03em] text-sand">
+            Before you write,
+            <em class="mt-1 block font-serif italic font-normal text-gold-light">a few answers.</em>
+          </h2>
+          <p class="mt-6 max-w-[42ch] text-[15px] leading-[1.75] text-sand-muted">
+            The ones we hear most often. If yours isn’t here, the fastest reply will
+            always be on WhatsApp — usually within an hour.
+          </p>
+
+          <a
+            href="https://wa.me/212721354757"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="whatsapp_click"
+            data-location="faq-side"
+            class="group mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
+          >
+            Still curious? Ask on WhatsApp
+            <span
+              aria-hidden="true"
+              class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
+            ></span>
+          </a>
+        </div>
+      </aside>
+
+      {/* Accordion column */}
+      <div class="col-span-12 lg:col-span-8">
+        <ul class="border-t border-gold/15">
+          {list.map((f, i) => (
+            <li>
+              <details class="lt-faq-item" {...(i === 0 ? { open: true } : {})}>
+                <summary class="lt-faq-summary faq-question">
+                  <span class="lt-faq-q">{f.q}</span>
+                  <span aria-hidden="true" class="lt-faq-icon"></span>
+                </summary>
+                <div class="lt-faq-answer">
+                  <p>{f.a}</p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .faqs { padding: 80px 0; background: var(--ink-light); }
-  .section-header { text-align: center; margin-bottom: 48px; }
-  .section-header h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); letter-spacing: 0.04em; color: var(--sand); margin: 12px 0 0; }
-  .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 0; }
-  .faq-item { border-bottom: 1px solid rgba(184,147,90,0.18); padding: 0; }
-  .faq-question { list-style: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--font-serif); font-size: 18px; color: var(--sand); width: 100%; background: transparent; border: 0; text-align: left; }
-  .faq-question::-webkit-details-marker { display: none; }
-  .faq-question .icon { font-family: var(--font-display); font-size: 24px; color: var(--ember); transition: transform .3s; }
-  details[open] .faq-question .icon { transform: rotate(45deg); }
-  .faq-answer { padding: 0 0 22px; color: var(--sand-muted); line-height: 1.65; max-width: 64ch; }
-  .faq-answer p { margin: 0; }
+  .lt-faq-item {
+    border-bottom: 1px solid rgba(184,147,90,0.15);
+    padding: 0;
+  }
+  .lt-faq-summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 26px 0;
+    font-family: var(--font-serif);
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.45;
+    color: var(--sand);
+    transition: color .3s ease;
+  }
+  .lt-faq-summary::-webkit-details-marker { display: none; }
+  .lt-faq-summary:hover { color: var(--gold-light); }
+  .lt-faq-q { flex: 1; }
+
+  /* Rotated diamond chevron — open state flips to a horizontal minus */
+  .lt-faq-icon {
+    position: relative;
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .lt-faq-icon::before,
+  .lt-faq-icon::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--ember);
+    transition: opacity .3s ease, transform .35s ease;
+  }
+  .lt-faq-icon::before { clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); }
+  .lt-faq-icon::after  { clip-path: polygon(50% 30%,70% 50%,50% 70%,30% 50%); background: var(--ink-light); }
+  details[open] .lt-faq-icon { transform: rotate(45deg); }
+  details[open] .lt-faq-summary { color: var(--gold-light); }
+
+  /* Smooth open transition — uses content-aware grid trick on the wrapper */
+  .lt-faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    padding-right: 24px;
+    transition: max-height .55s cubic-bezier(.2,.7,.2,1), opacity .35s ease;
+  }
+  details[open] .lt-faq-answer {
+    max-height: 800px;
+    opacity: 1;
+    padding-bottom: 26px;
+  }
+  .lt-faq-answer p {
+    margin: 0;
+    max-width: 64ch;
+    color: var(--sand-muted);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lt-faq-icon, .lt-faq-answer { transition: none; }
+  }
 </style>

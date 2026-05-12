@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---------- Fixed-nav offset ----------
+   Nav is now position:fixed (transparent over hero, solid on scroll).
+   Push all body content down by the nav height so interior pages don't
+   scroll under it. The homepage hero pulls itself back up with the
+   .lt-hero class so the video can cover the full viewport. */
+:root { --lt-nav-h: 76px; }
+body { padding-top: var(--lt-nav-h); }
+.lt-hero { margin-top: calc(var(--lt-nav-h) * -1); }
+
 /* ---------- Tailwind v4 design tokens ----------
    Brand utilities are exposed as bg-ember, text-sand, font-display, etc.
    Shadcn semantic tokens (background/foreground/primary/...) are mapped onto

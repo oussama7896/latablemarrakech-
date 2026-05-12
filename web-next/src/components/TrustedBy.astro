@@ -1,21 +1,93 @@
 ---
-// "As featured in" press strip — text-based, no logo files needed.
-// Hyperagent treats press as small caps in a single hairline-bordered row.
-// We use brand serif italic to keep the editorial feel.
-const press = ['Forbes', 'VOGUE', 'Le Monde', 'Tripadvisor', 'Condé Nast Traveler'];
+// Press strip — slow infinite marquee.
+// CSS-only loop using a duplicated list and a single transform animation.
+// Respects prefers-reduced-motion (stops the marquee, centers the list).
+const press = ['Forbes', 'VOGUE', 'Le Monde', 'Tripadvisor', 'Condé Nast Traveler', 'BBC Travel', 'Wallpaper*'];
 ---
 
-<section aria-label="Featured in" class="bg-ink-light py-14 sm:py-16">
-  <div data-reveal class="container mx-auto max-w-[1100px]">
+<section aria-label="Featured in" class="lt-press relative overflow-hidden bg-ink-light py-12 sm:py-14">
+  {/* Top + bottom hairlines */}
+  <span aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
+  <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
+
+  <div class="container">
     <p class="text-center font-mono text-[10px] uppercase tracking-[0.32em] text-sand-muted">
       As featured in
     </p>
-    <ul class="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-14">
-      {press.map((name) => (
-        <li class="font-serif text-[clamp(1.125rem,2vw,1.5rem)] italic leading-none text-sand transition hover:text-gold-light">
-          {name}
-        </li>
-      ))}
-    </ul>
+
+    <div class="lt-marquee mt-7" role="marquee" aria-label="Press mentions">
+      {/* Track 1 */}
+      <ul class="lt-marquee-track" aria-hidden="false">
+        {press.map((name) => (
+          <li>
+            <span class="lt-press-name">{name}</span>
+            <span aria-hidden="true" class="lt-press-sep"></span>
+          </li>
+        ))}
+      </ul>
+      {/* Track 2 — visually identical, hidden from AT */}
+      <ul class="lt-marquee-track" aria-hidden="true">
+        {press.map((name) => (
+          <li>
+            <span class="lt-press-name">{name}</span>
+            <span class="lt-press-sep"></span>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
+
+<style>
+  .lt-marquee {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .lt-marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    animation: lt-press-scroll 42s linear infinite;
+    min-width: 100%;
+  }
+  .lt-marquee-track > li {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .lt-press-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.9vw, 1.55rem);
+    line-height: 1;
+    color: var(--sand);
+    transition: color .4s ease;
+  }
+  .lt-press-name:hover { color: var(--gold-light); }
+  .lt-press-sep {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--ember);
+    transform: rotate(45deg);
+    opacity: 0.7;
+  }
+
+  @keyframes lt-press-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lt-marquee { mask-image: none; -webkit-mask-image: none; justify-content: center; }
+    .lt-marquee-track { animation: none; min-width: 0; flex-wrap: wrap; justify-content: center; gap: 1.25rem 2.5rem; }
+    .lt-marquee-track + .lt-marquee-track { display: none; }
+  }
+</style>

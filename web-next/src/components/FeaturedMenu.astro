@@ -1,0 +1,157 @@
+---
+// Featured menu — a typeset sample tasting menu, the way a restaurant
+// would mount it on the wall. Five courses, written in the chef's voice.
+// Not the *only* menu — every dinner is custom — but a concrete example
+// so the guest can imagine the evening before they book.
+
+const courses = [
+  {
+    n: 'I',
+    name: 'Briouates of preserved lemon and prawns',
+    body: 'Warqa pastry wrapped tight, cumin and coriander, fried until the corners crack. Served with a saffron aioli.',
+    note: 'Mezze',
+  },
+  {
+    n: 'II',
+    name: 'Zaalouk · taktouka · houmous of charred almond',
+    body: 'Three salads from this morning’s souk. Served on Berber clay, eaten with hand-torn khobz.',
+    note: 'Vegetarian by default',
+  },
+  {
+    n: 'III',
+    name: 'Pastilla of pigeon, almond and orange-blossom dust',
+    body: 'A two-day brick of caramelised onion, slow-poached pigeon, cinnamon, dusted with icing sugar at the table.',
+    note: 'House signature',
+  },
+  {
+    n: 'IV',
+    name: 'Tagine of lamb, prunes and toasted argan almonds',
+    body: 'Shoulder cooked low for four hours over coals until the meat falls from the bone. Reduction of ras-el-hanout and Atlas honey.',
+    note: 'Main · 90 minutes',
+  },
+  {
+    n: 'V',
+    name: 'Orange-blossom soufflé · mint tea poured from height',
+    body: 'A soufflé built around Marrakech blood oranges. Finished with a drop of orange-flower water. Mint tea poured from the silver pot.',
+    note: 'Dessert · tea',
+  },
+];
+---
+
+<section id="menu" class="bg-ink-light py-24 sm:py-32">
+  <div data-reveal class="container">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-12">
+      {/* Left rail — editorial framing */}
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-28">
+          <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+            <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+            04 · A sample tasting
+          </span>
+          <h2 class="mt-6 font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-[0.03em] text-sand">
+            What an evening
+            <em class="mt-1 block font-serif italic font-normal text-gold-light">
+              tastes like.
+            </em>
+          </h2>
+          <p class="mt-6 max-w-[40ch] text-[15px] leading-[1.75] text-sand-muted">
+            Not the only menu — every dinner is composed for your table.
+            Read this as one example. We’ll write yours after the first message.
+          </p>
+
+          <div class="mt-10 grid grid-cols-2 gap-4 border-t border-gold/15 pt-8">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Courses</span>
+              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">Five</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Service</span>
+              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">2.5 — 3 h</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Wine</span>
+              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">Paired on request</p>
+            </div>
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Diet</span>
+              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">All accommodated</p>
+            </div>
+          </div>
+
+          <a
+            href="/menus/"
+            class="group mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
+          >
+            See full menu library
+            <span
+              aria-hidden="true"
+              class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
+            ></span>
+          </a>
+        </div>
+      </div>
+
+      {/* Menu card — typeset like a restaurant carte */}
+      <article class="relative lg:col-span-8">
+        <div class="relative overflow-hidden border border-gold/20 bg-ink px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
+          {/* Soft radial glow behind the menu, ember warmth */}
+          <span aria-hidden="true" class="pointer-events-none absolute -top-24 left-1/2 h-[260px] w-[460px] -translate-x-1/2 rounded-full bg-ember/8 blur-3xl"></span>
+
+          {/* Menu header */}
+          <header class="flex items-center justify-between border-b border-gold/15 pb-6">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-gold-light">
+                La Table · Carte du soir
+              </p>
+              <p class="mt-2 font-serif italic text-[15px] text-sand">
+                For two — or for forty.
+              </p>
+            </div>
+            <p class="hidden text-right font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted sm:block">
+              Marrakech · 20:00
+            </p>
+          </header>
+
+          {/* Course list */}
+          <ol class="mt-8 divide-y divide-gold/12">
+            {courses.map((c) => (
+              <li class="group grid grid-cols-[auto_1fr_auto] items-baseline gap-5 py-7 first:pt-8 sm:gap-7">
+                <span class="font-display text-[clamp(1.5rem,2.2vw,2rem)] leading-none tracking-[0.04em] text-ember">
+                  {c.n}
+                </span>
+                <div>
+                  <h3 class="font-serif italic text-[clamp(1.05rem,1.45vw,1.35rem)] leading-[1.35] text-sand">
+                    {c.name}
+                  </h3>
+                  <p class="mt-2 max-w-[58ch] text-[13.5px] leading-[1.65] text-sand-muted">
+                    {c.body}
+                  </p>
+                </div>
+                <span class="hidden whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:inline-block">
+                  {c.note}
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          {/* Footer — the chef's signature */}
+          <footer class="mt-10 flex flex-col items-start gap-3 border-t border-gold/15 pt-7 sm:flex-row sm:items-end sm:justify-between">
+            <p class="max-w-[44ch] font-serif italic text-[14.5px] leading-[1.65] text-gold-light">
+              “Anything here can change. Tell us what you love, and what you don’t —
+              the rest is our job.”
+            </p>
+            <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">
+              — The chef
+            </span>
+          </footer>
+        </div>
+
+        {/* Decorative corner marks */}
+        <span aria-hidden="true" class="pointer-events-none absolute -top-1 -left-1 hidden size-3 border-t border-l border-ember sm:block"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -top-1 -right-1 hidden size-3 border-t border-r border-ember sm:block"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -bottom-1 -left-1 hidden size-3 border-b border-l border-ember sm:block"></span>
+        <span aria-hidden="true" class="pointer-events-none absolute -bottom-1 -right-1 hidden size-3 border-b border-r border-ember sm:block"></span>
+      </article>
+    </div>
+  </div>
+</section>

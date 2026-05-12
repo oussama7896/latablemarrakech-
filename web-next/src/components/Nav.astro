@@ -1,13 +1,16 @@
 ---
+// Nav — scroll-aware backdrop (transparent over the hero, solid once you
+// scroll past it) + working mobile drawer. Same routes and aria patterns,
+// same lang switcher, no breakage on /fr/ /ar/ pages.
 const lang = (Astro.props.lang ?? 'en') as 'en' | 'fr' | 'ar';
 const labels = {
-  en: { exp: 'THE EXPERIENCE', how: 'HOW IT WORKS', faq: 'FAQ', book: 'BOOK NOW' },
-  fr: { exp: "L'EXPÉRIENCE", how: 'COMMENT ÇA MARCHE', faq: 'FAQ', book: 'RÉSERVER' },
-  ar: { exp: 'التجربة', how: 'كيف نعمل', faq: 'الأسئلة', book: 'احجز الآن' },
+  en: { exp: 'THE EXPERIENCE', how: 'HOW IT WORKS', faq: 'FAQ', book: 'BOOK NOW', menu: 'MENU', close: 'CLOSE' },
+  fr: { exp: "L'EXPÉRIENCE", how: 'COMMENT ÇA MARCHE', faq: 'FAQ', book: 'RÉSERVER', menu: 'MENU', close: 'FERMER' },
+  ar: { exp: 'التجربة', how: 'كيف نعمل', faq: 'الأسئلة', book: 'احجز الآن', menu: 'القائمة', close: 'إغلاق' },
 }[lang];
 ---
 
-<header class="nav">
+<header class="nav" data-state="top">
   <div class="container nav_block">
     <a href="#hero" class="nav-logo">
       <div class="diamond-outline" aria-hidden="true"></div>
@@ -15,6 +18,7 @@ const labels = {
       <span class="nav-logo-divider" aria-hidden="true"></span>
       <span class="nav-logo-sub">Marrakech</span>
     </a>
+
     <nav class="nav-links" aria-label="Primary">
       <a href="#about">{labels.exp}</a>
       <a href="#how">{labels.how}</a>
@@ -40,26 +44,185 @@ const labels = {
         <a href="/ar/" class={lang === 'ar' ? 'lang-btn active' : 'lang-btn'}>عربي</a>
       </div>
     </nav>
+
+    {/* Mobile trigger — hidden on desktop via .nav-links breakpoint */}
+    <button
+      type="button"
+      class="nav-burger"
+      aria-controls="mobile-drawer"
+      aria-expanded="false"
+      data-nav-toggle
+    >
+      <span class="sr-only">{labels.menu}</span>
+      <span aria-hidden="true" class="nav-burger-lines">
+        <span></span><span></span>
+      </span>
+    </button>
+  </div>
+
+  {/* Mobile drawer */}
+  <div id="mobile-drawer" class="nav-drawer" data-nav-drawer hidden>
+    <nav aria-label="Mobile" class="nav-drawer-inner">
+      <a href="#about" data-nav-close>{labels.exp}</a>
+      <a href="#how" data-nav-close>{labels.how}</a>
+      <a href="#faqs" data-nav-close>{labels.faq}</a>
+      <a
+        href="https://wa.me/212721354757"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-drawer-whatsapp"
+        data-event="whatsapp_click"
+        data-location="mobile-drawer"
+        data-nav-close
+      >WhatsApp · +212 721 354 757</a>
+      <a href="#booking" class="nav-drawer-cta" data-nav-close>{labels.book}</a>
+      <div class="nav-drawer-lang">
+        <a href="/" class={lang === 'en' ? 'active' : ''}>EN</a>
+        <a href="/fr/" class={lang === 'fr' ? 'active' : ''}>FR</a>
+        <a href="/ar/" class={lang === 'ar' ? 'active' : ''}>عربي</a>
+      </div>
+    </nav>
   </div>
 </header>
 
+<script>
+  // Scroll-state + mobile drawer. Tiny, no framework, runs once on load.
+  const header = document.querySelector<HTMLElement>('header.nav');
+  if (header) {
+    const onScroll = () => {
+      header.dataset.state = window.scrollY > 24 ? 'scrolled' : 'top';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const trigger = header.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+    const drawer = header.querySelector<HTMLElement>('[data-nav-drawer]');
+    if (trigger && drawer) {
+      const setOpen = (open: boolean) => {
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) {
+          drawer.removeAttribute('hidden');
+          document.documentElement.classList.add('nav-locked');
+        } else {
+          drawer.setAttribute('hidden', '');
+          document.documentElement.classList.remove('nav-locked');
+        }
+      };
+      trigger.addEventListener('click', () => {
+        setOpen(trigger.getAttribute('aria-expanded') !== 'true');
+      });
+      drawer.querySelectorAll<HTMLAnchorElement>('[data-nav-close]').forEach((a) =>
+        a.addEventListener('click', () => setOpen(false)),
+      );
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    }
+  }
+</script>
+
 <style>
-  .nav { background: rgba(8,6,4,0.95); border-bottom: 1px solid rgba(184,147,90,0.1); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
-  .nav_block { display: flex; gap: 1rem; justify-content: space-between; align-items: center; height: 80px; }
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: background-color .4s ease, border-color .4s ease, backdrop-filter .4s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+  .nav[data-state="scrolled"] {
+    background: rgba(8,6,4,0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: rgba(184,147,90,0.12);
+  }
+  .nav_block { display: flex; gap: 1rem; justify-content: space-between; align-items: center; height: 76px; }
   .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
   .diamond-outline { width: 11px; height: 11px; border: 1.5px solid var(--ember); transform: rotate(45deg); position: relative; display: inline-block; }
   .diamond-outline::after { content: ''; position: absolute; inset: 2px; background: var(--ember); }
-  .nav-logo-text { font-family: var(--font-display); font-size: 24px; letter-spacing: 3px; color: var(--sand); line-height: 1; }
-  .nav-logo-divider { width: 1px; height: 24px; background: var(--gold); opacity: 0.3; }
+  .nav-logo-text { font-family: var(--font-display); font-size: 22px; letter-spacing: 3px; color: var(--sand); line-height: 1; }
+  .nav-logo-divider { width: 1px; height: 22px; background: var(--gold); opacity: 0.3; }
   .nav-logo-sub { font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--gold-light); letter-spacing: 1px; }
-  .nav-links { display: flex; align-items: center; gap: 32px; }
-  .nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--sand-muted); text-decoration: none; transition: color .3s; }
-  .nav-links a:hover { color: var(--sand); }
+
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links > a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--sand-muted); text-decoration: none; transition: color .3s; }
+  .nav-links > a:hover { color: var(--sand); }
   .nav-whatsapp { display: inline-flex !important; align-items: center; gap: 6px; color: #25D366 !important; }
-  .nav-cta { background: var(--ember); color: #fff !important; padding: 10px 24px; transition: background .3s; }
-  .nav-cta:hover { background: var(--ember-light); }
-  .lang-switcher { display: flex; align-items: center; gap: 4px; margin-left: 8px; }
-  .lang-btn { padding: 5px 10px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; border: 1px solid rgba(184,147,90,0.2); color: var(--sand-muted); text-decoration: none; }
+  .nav-cta { background: var(--ember); color: #fff !important; padding: 10px 22px; border-radius: 999px; transition: background .3s, transform .2s; }
+  .nav-cta:hover { background: var(--ember-light); transform: translateY(-1px); }
+
+  .lang-switcher { display: flex; align-items: center; gap: 4px; margin-left: 6px; }
+  .lang-btn { padding: 5px 10px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; border: 1px solid rgba(184,147,90,0.2); color: var(--sand-muted); text-decoration: none; border-radius: 4px; }
   .lang-btn.active { background: var(--ember); color: #fff; border-color: var(--ember); }
-  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* Mobile burger */
+  .nav-burger {
+    display: none;
+    background: transparent; border: 1px solid rgba(184,147,90,0.25);
+    padding: 10px 12px; border-radius: 6px; cursor: pointer; color: var(--sand);
+    transition: border-color .3s, background-color .3s;
+  }
+  .nav-burger:hover { border-color: var(--ember); background: rgba(184,79,46,0.08); }
+  .nav-burger-lines { display: flex; flex-direction: column; gap: 4px; }
+  .nav-burger-lines > span { display: block; width: 18px; height: 1.5px; background: currentColor; transition: transform .3s, opacity .3s; }
+  [aria-expanded="true"] .nav-burger-lines > span:first-child { transform: translateY(2.5px) rotate(45deg); }
+  [aria-expanded="true"] .nav-burger-lines > span:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  /* Drawer */
+  .nav-drawer {
+    position: fixed; inset: 76px 0 0 0; background: rgba(8,6,4,0.96);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(184,147,90,0.12);
+    animation: nav-drawer-in .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav-drawer[hidden] { display: none; }
+  .nav-drawer-inner {
+    display: flex; flex-direction: column; gap: 18px;
+    padding: 28px 24px; max-width: 480px; margin: 0 auto;
+  }
+  .nav-drawer-inner > a {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 2.6px;
+    text-transform: uppercase; color: var(--sand-muted); text-decoration: none;
+    padding: 14px 0; border-bottom: 1px solid rgba(184,147,90,0.1);
+    transition: color .25s;
+  }
+  .nav-drawer-inner > a:hover { color: var(--sand); }
+  .nav-drawer-whatsapp { color: #25D366 !important; }
+  .nav-drawer-cta {
+    background: var(--ember); color: #fff !important; text-align: center;
+    border-radius: 999px; border-bottom: 0 !important; padding: 16px 24px !important;
+    margin-top: 6px;
+  }
+  .nav-drawer-lang { display: flex; gap: 6px; margin-top: 12px; }
+  .nav-drawer-lang > a {
+    flex: 1; text-align: center; padding: 10px 0;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+    border: 1px solid rgba(184,147,90,0.2); color: var(--sand-muted);
+    text-decoration: none; border-radius: 4px;
+  }
+  .nav-drawer-lang > a.active { background: var(--ember); color: #fff; border-color: var(--ember); }
+
+  @keyframes nav-drawer-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Lock body scroll when drawer open */
+  :global(html.nav-locked), :global(html.nav-locked body) { overflow: hidden; }
+
+  /* Fixed nav offset for in-page anchors so #booking et al. don't slide
+     under the header. Hero excluded — it owns the whole viewport. */
+  :global([id="booking"]),
+  :global([id="about"]),
+  :global([id="experiences"]),
+  :global([id="story"]),
+  :global([id="why-us"]),
+  :global([id="testimonials"]),
+  :global([id="how"]),
+  :global([id="faqs"]) { scroll-margin-top: 90px; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-burger { display: inline-flex; align-items: center; justify-content: center; }
+  }
 </style>
