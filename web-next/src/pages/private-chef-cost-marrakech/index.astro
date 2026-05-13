@@ -35,20 +35,20 @@ const faqLd = {
   mainEntity: [
     { q: 'How much does a private chef cost in Marrakech?', a: 'From €85 per person at La Table Marrakech. The price covers menu planning, fresh souk ingredients, multi-course cooking, table service, mint-tea ceremony and full kitchen cleanup. There are no hidden fees, no minimum spend per booking other than 2 guests, and no service charges. A couple pays €170, a family of four €340, a group of eight €680.' },
     { q: "What's included in the price?", a: "Everything: menu planning over WhatsApp, the chef's morning visit to the medina souk, all ingredients and cookware, the cooking itself, plating and table service, the mint-tea ceremony, and complete kitchen cleanup before they leave. The €85 per person rate is all-inclusive." },
-    { q: "What's NOT included?", a: "Wine and drinks, premium add-ons like live cooking stations, chef tip (10% is standard but not required), and any cuts of luxury produce that exceed the standard food budget — fresh truffle, lobster, A5 wagyu — which we'll quote separately if you ask." },
-    { q: 'How does this compare to eating at a Marrakech restaurant?', a: "€85 per person sits in the same range as Marrakech's top restaurants — La Mamounia, Le Jardin, Nomad, Dar Rhizlane — which are €60–€120 per person for a multi-course meal before drinks." },
+    { q: "What's NOT included?", a: "Drinks, premium add-ons like live cooking stations, chef tip (10% is standard but not required), and any cuts of luxury produce that exceed the standard food budget — fresh truffle, lobster, A5 wagyu — which we'll quote separately if you ask." },
+    { q: 'How does this compare to eating at a Marrakech restaurant?', a: "€85 per person sits in the same range as Marrakech's top restaurants — La Mamounia, Le Jardin, Nomad, Dar Rhizlane — which are €60–€120 per person for a multi-course meal." },
     { q: 'How much is a private chef for a wedding or large group?', a: 'Wedding event packages start at €1,200 for 20 guests (a custom event tier separate from the per-person rate); corporate dinners start at €650 for 10 with full service.' },
   ].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 
 const tiers = [
   { name: 'Intimate Dinner', price: '€85', unit: 'per person', meta: '2–4 guests · one evening', features: ['Multi-course menu (5 courses)', 'Souk shopping that morning', 'Cooking, service, full cleanup', 'Mint tea ceremony to finish'], cta: { label: 'Book intimate', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20an%20intimate%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D.' } },
-  { name: 'Villa Gathering', price: '€85', unit: 'per person', meta: '5–12 guests · villa or riad', features: ['Multi-course menu, customised', 'Souk shopping that morning', 'Cooking, plating, table service', 'Wine pairing on request', 'Full kitchen cleanup'], popular: true, cta: { label: 'Book villa', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20villa%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D.' } },
+  { name: 'Villa Gathering', price: '€85', unit: 'per person', meta: '5–12 guests · villa or riad', features: ['Multi-course menu, customised', 'Souk shopping that morning', 'Cooking, plating, table service', 'Hand-written menu cards', 'Full kitchen cleanup'], popular: true, cta: { label: 'Book villa', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20villa%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Villa%3A%20%5B%5D.' } },
   { name: 'Celebration & Event', price: '€60+', unit: 'per person', meta: '13–30+ · weddings, retreats', features: ['Custom menu design with the chef', 'Full brigade — chef + service staff', 'Souk shopping + premium produce', 'Setup, service, complete cleanup', 'Live cooking station (add-on)'], cta: { label: 'Plan celebration', wa: 'Hi%20%E2%80%94%20I%27d%20like%20to%20plan%20a%20celebration%20dinner.%20Date%3A%20%5B%5D%2C%20Guests%3A%20%5B%5D%2C%20Type%20of%20event%3A%20%5B%5D.' } },
 ];
 
 const included = ['Menu planning', 'The souk run', 'All ingredients', 'All cookware', 'Cooking', 'Service', 'Cleanup'];
-const notIncluded = ['Wine and spirits', 'Premium produce', 'Live cooking stations at events', 'Chef tip', 'Transport (Atlas / Agafay)'];
+const notIncluded = ['Drinks', 'Premium produce', 'Live cooking stations at events', 'Chef tip', 'Transport (Atlas / Agafay)'];
 ---
 
 <Layout
@@ -134,7 +134,7 @@ const notIncluded = ['Wine and spirits', 'Premium produce', 'Live cooking statio
           ))}
         </div>
         <p class="mx-auto mt-6 max-w-[820px] text-center font-mono text-[11px] tracking-[0.04em] text-sand-muted">
-          Wine and any premium add-ons quoted separately. Minimum 2 guests — no charge for empty seats.
+          Drinks and any premium add-ons quoted separately. Minimum 2 guests — no charge for empty seats.
         </p>
       </div>
     </section>
@@ -190,9 +190,8 @@ const notIncluded = ['Wine and spirits', 'Premium produce', 'Live cooking statio
         </h2>
         <p class="mx-auto mt-6 max-w-[640px] text-center text-[17px] leading-[1.7] text-sand">
           Marrakech's top restaurants — Mamounia, Le Jardin, Nomad, Dar Rhizlane — sit at €60–120 per person
-          for a multi-course meal before drinks. €85 sits in the middle of that band. The difference: the room
-          is yours, the menu was sketched around your group at the souk, and the wine is whatever bottle you
-          brought.
+          for a multi-course meal. €85 sits in the middle of that band. The difference: the room is yours,
+          the menu was sketched around your group at the souk, and the table is whatever you make of it.
         </p>
         <p class="mt-6 text-center text-sand-muted">
           A cooking class typically runs $45–90 per person.
