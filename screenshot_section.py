@@ -52,7 +52,7 @@ def capture(url: str, label: str, section_id: Optional[str]) -> None:
         [
             CHROME,
             f"--remote-debugging-port={port}",
-            "--headless=new",
+            "--headless",
             "--disable-gpu",
             "--no-first-run",
             "--no-default-browser-check",
@@ -118,13 +118,13 @@ def capture(url: str, label: str, section_id: Optional[str]) -> None:
         time.sleep(0.8)
 
     send(ws, "Page.captureScreenshot", {"format": "png"}, id=6)
-    result = wait(ws, target_id=6, timeout=15)
+    result = wait(ws, target_id=6, timeout=60)
 
     ws.close()
     proc.kill()
 
     if not result or "data" not in result:
-        sys.exit("Error: screenshot capture failed")
+        sys.exit(f"Error: screenshot capture failed; raw_result={result!r}")
 
     suffix = f"-{label}" if label else ""
     path = os.path.join(OUT_DIR, f"screenshot-{next_num()}{suffix}.png")
