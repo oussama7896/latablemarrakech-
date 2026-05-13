@@ -2,7 +2,7 @@
 // Why Us — editorial two-column. Sticky-ish title on the left desktop column,
 // six benefit rows on the right. Benefits use lucide icons at low weight so
 // they read as marks, not infographics.
-import { Sparkles, KeyRound, Leaf, Compass, Wine, ChefHat } from 'lucide-react';
+import { Sparkles, KeyRound, Leaf, Compass, Feather, ChefHat } from 'lucide-react';
 
 const reasons = [
   {
@@ -24,7 +24,7 @@ const reasons = [
     body: 'Tight medina kitchens, fifteen-burner palmeraie galleys, rooftop service with no plumbing — we’ve cooked in all of them. We bring what your kitchen lacks.',
   },
   {
-    Icon: Wine,
+    Icon: Feather,
     eyebrow: 'Menus, not templates',
     title: 'Your menu is written for your evening.',
     body: 'A tasting flight for two, a feast for forty. Dietary needs, allergies, religious requirements, kids who only eat plain rice — all designed in before the chef shops.',
@@ -32,7 +32,7 @@ const reasons = [
   {
     Icon: ChefHat,
     eyebrow: 'Full hospitality, not just cooking',
-    title: 'Service, plating, wine pairing, cleanup.',
+    title: 'Service, plating, dessert, cleanup.',
     body: 'The chef plates each course at the table. A second hand handles drinks and the kitchen reset. You leave the terrace; we leave the villa cleaner than we found it.',
   },
   {
@@ -52,7 +52,7 @@ const reasons = [
         <div class="lg:sticky lg:top-28">
           <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
             <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-            07 · Why us
+            04 · Why us
           </span>
           <h2 class="mt-6 font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-[0.03em] text-sand">
             Six reasons
@@ -91,7 +91,7 @@ const reasons = [
                 <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-gold">
                   {eyebrow}
                 </span>
-                <h3 class="mt-2 font-serif text-[20px] leading-snug text-sand sm:text-[22px]">
+                <h3 class="mt-2 font-display text-[clamp(1.25rem,1.8vw,1.55rem)] leading-snug tracking-[0.03em] text-sand">
                   {title}
                 </h3>
                 <p class="mt-3 max-w-[58ch] text-[14.5px] leading-[1.7] text-sand-muted">

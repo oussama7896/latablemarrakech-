@@ -5,10 +5,7 @@ import Hero from '@/components/Hero.astro';
 import TrustedBy from '@/components/TrustedBy.astro';
 import About from '@/components/About.astro';
 import Testimonials from '@/components/Testimonials.astro';
-import Features from '@/components/Features.astro';
-import SignatureExperiences from '@/components/SignatureExperiences.astro';
 import FeaturedMenu from '@/components/FeaturedMenu.astro';
-import VisualStory from '@/components/VisualStory.astro';
 import WhyUs from '@/components/WhyUs.astro';
 import HowTo from '@/components/HowTo.astro';
 import BookingSection from '@/components/BookingSection.astro';
@@ -97,7 +94,7 @@ const howToLd = {
   ]}
   jsonLd={[localBusinessLd, faqLd, breadcrumbLd, howToLd]}
   preloadImages={[
-    { href: 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp', type: 'image/webp', fetchpriority: 'high' },
+    { href: '/moroccan-feast-villa-terrace.webp', type: 'image/webp', fetchpriority: 'high' },
   ]}
 >
   <Nav lang="en" />
@@ -108,11 +105,8 @@ const howToLd = {
     <BookingSection />
 
     <About />
-    <Features />
-    <SignatureExperiences />
     <FeaturedMenu />
     <Testimonials />
-    <VisualStory />
     <WhyUs />
     <HowTo />
     <Faq />

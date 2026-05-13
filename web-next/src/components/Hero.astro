@@ -34,7 +34,7 @@ const videoSrc = '/hero-video.mp4';
     </video>
 
     {/* Color treatment — multiply ember warmth into the imagery */}
-    <div class="absolute inset-0 bg-ember/15 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-ember/10 mix-blend-multiply"></div>
     {/* Readability gradients — soft top vignette for nav + heavy floor for copy */}
     <div class="absolute inset-x-0 top-0 h-[35%] bg-gradient-to-b from-ink/85 via-ink/30 to-transparent"></div>
     <div class="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-ink via-ink/65 to-transparent"></div>
@@ -67,30 +67,12 @@ const videoSrc = '/hero-video.mp4';
         class="group inline-flex items-center gap-3 rounded-full bg-ember px-9 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
       >
         Book your dinner
-        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white transition group-hover:translate-x-0.5"></span>
+        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-sand transition group-hover:translate-x-0.5"></span>
       </a>
       <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand/70">
         ★ 4.9 from 200+ villa guests · Reply within 1 hour
       </span>
     </div>
-  </div>
-
-  {/* Bottom band — three quiet trust facts, low contrast over the gradient */}
-  <div class="lt-hero-fade relative border-t border-gold/15 bg-ink/55 backdrop-blur-[2px]" style="--lt-delay: 540ms">
-    <dl class="container grid grid-cols-3 items-center gap-4 py-6 sm:gap-8 sm:py-7">
-      <div class="flex flex-col items-center gap-1.5 text-center">
-        <dd class="font-display text-[clamp(1.1rem,2vw,1.6rem)] tracking-[0.04em] text-sand">★ 4.9 / 5</dd>
-        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand/70">200+ villa guests</dt>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 border-x border-gold/15 px-4 text-center">
-        <dd class="font-display text-[clamp(1.1rem,2vw,1.6rem)] tracking-[0.04em] text-sand">€85 / pp</dd>
-        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand/70">All-in. No hidden fees.</dt>
-      </div>
-      <div class="flex flex-col items-center gap-1.5 text-center">
-        <dd class="font-display text-[clamp(1.1rem,2vw,1.6rem)] tracking-[0.04em] text-sand">~ 1 hour</dd>
-        <dt class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand/70">WhatsApp · confirmed in 24h</dt>
-      </div>
-    </dl>
   </div>
 
   {/* Scroll affordance — only visible on desktop, low-key */}

@@ -24,4 +24,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://latablemarrakech.com/sitemap.xml
+Sitemap: https://latablemarrakech.com/sitemap-index.xml

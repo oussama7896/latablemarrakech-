@@ -4,8 +4,13 @@
 // hairline runs between rows. Step numeral is an oversized display serif
 // stamp that sits in the gutter where the hairline meets each row.
 //
+// Step 01 swaps its photo for a native horizontal infographic
+// (BookingFlowInfographic) so the booking flow gets a visual summary that
+// fits the same 5:4 box as steps 02 and 03.
+//
 // Copy is kept aligned with the HowTo JSON-LD shipped from index.astro so
 // the structured data and the on-page narrative agree.
+import BookingFlowInfographic from '@/components/BookingFlowInfographic.astro';
 
 const steps = [
   {
@@ -13,9 +18,11 @@ const steps = [
     eyebrow: 'Step one · The message',
     title: 'Choose your experience.',
     body: 'Pick your date, number of guests, and any dietary needs. Choose from curated Moroccan menus — tagine, couscous, pastilla, or a full royal feast. Send it via WhatsApp or the form. Confirmation within 24 hours.',
-    image: '/private-chef-marrakech-tagine.webp',
-    imageAlt: 'A private chef plating a tagine in a Marrakech kitchen',
+    // step 01 swaps its photo for an inline native infographic; no image asset
+    image: '',
+    imageAlt: '',
     detail: 'Reply within an hour · 7 days a week',
+    poster: true,
   },
   {
     n: '02',
@@ -44,7 +51,7 @@ const steps = [
     <div class="mx-auto max-w-[820px] text-center">
       <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-        08 · How it works
+        05 · How it works
       </span>
       <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
         From WhatsApp to
@@ -72,7 +79,7 @@ const steps = [
               {s.n}
             </span>
 
-            {/* Image */}
+            {/* Image — posters get a portrait box and skip the colour overlay */}
             <figure
               class={[
                 'relative overflow-hidden border border-gold/15 bg-ink-light',
@@ -80,17 +87,23 @@ const steps = [
                 flipped ? 'md:col-start-8' : 'md:col-start-1',
               ].join(' ')}
             >
-              <div class="aspect-[5/4]">
-                <img
-                  src={s.image}
-                  alt={s.imageAlt}
-                  loading="lazy"
-                  decoding="async"
-                  class="h-full w-full object-cover transition duration-[1200ms] ease-out hover:scale-[1.03]"
-                />
-              </div>
-              <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true"></div>
+              {s.poster ? (
+                <BookingFlowInfographic />
+              ) : (
+                <>
+                  <div class="aspect-[5/4]">
+                    <img
+                      src={s.image}
+                      alt={s.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover transition duration-[1200ms] ease-out hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true"></div>
+                </>
+              )}
             </figure>
 
             {/* Text */}

@@ -1,0 +1,95 @@
+---
+// BookingFlowInfographic — horizontal, native-code reinterpretation of the
+// "Your Moroccan Experience, Your Way" poster. Drops into HowTo step 01's
+// image slot (5:4 landscape box) so step 01 matches steps 02 and 03 in size.
+//
+// Pure HTML + Tailwind + inline SVG. No external deps. Brand tokens only.
+
+const steps = [
+  { n: 1, label: 'Date' },
+  { n: 2, label: 'Guests' },
+  { n: 3, label: 'Diet' },
+  { n: 4, label: 'Menu' },
+  { n: 5, label: 'Send' },
+];
+
+const menus = ['Tagine', 'Couscous', 'Pastilla', 'Royal feast'];
+---
+
+<div class="lt-bfi relative aspect-[5/4] overflow-hidden bg-ink-light p-5 sm:p-6 lg:p-7">
+  {/* Soft ember warmth — like the radial used in BookingSection */}
+  <span
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-12 left-1/2 h-[170px] w-[340px] -translate-x-1/2 rounded-full bg-ember/12 blur-3xl"
+  ></span>
+
+  {/* Inline SVG noise texture for the warm-paper feel — matches Hero grain */}
+  <span
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+    style="background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>&quot;); background-size:160px 160px;"
+  ></span>
+
+  {/* Decorative ember corners — matches FeaturedMenu's carte styling */}
+  <span aria-hidden="true" class="pointer-events-none absolute top-1 left-1 size-2 border-t border-l border-ember"></span>
+  <span aria-hidden="true" class="pointer-events-none absolute top-1 right-1 size-2 border-t border-r border-ember"></span>
+  <span aria-hidden="true" class="pointer-events-none absolute bottom-1 left-1 size-2 border-b border-l border-ember"></span>
+  <span aria-hidden="true" class="pointer-events-none absolute bottom-1 right-1 size-2 border-b border-r border-ember"></span>
+
+  <div class="relative flex h-full flex-col">
+    {/* Header — ornamental eyebrow + tight headline */}
+    <header class="text-center">
+      <span class="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] text-gold-light">
+        <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-ember"></span>
+        Your Moroccan experience
+        <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-ember"></span>
+      </span>
+      <h3 class="mt-1.5 font-display text-[clamp(1rem,2.4vw,1.5rem)] leading-[1.05] tracking-[0.03em] text-sand">
+        Five steps to
+        <em class="font-serif italic font-normal text-gold-light">your table</em>.
+      </h3>
+    </header>
+
+    {/* Five-step row with connecting hairline */}
+    <ol class="relative my-auto grid grid-cols-5 gap-1 pt-2">
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute left-[10%] right-[10%] top-[18px] h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+      ></span>
+      {steps.map((s) => (
+        <li class="relative flex flex-col items-center gap-1.5">
+          <span class="inline-flex size-9 items-center justify-center rounded-full border border-ember/70 bg-ink-light font-display text-[14px] leading-none tracking-[0.04em] text-ember">
+            {s.n}
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-[0.18em] text-sand">{s.label}</span>
+        </li>
+      ))}
+    </ol>
+
+    {/* Menu chips — italic serif with ember diamond separators */}
+    <div class="border-t border-gold/15 pt-3">
+      <p class="text-center font-mono text-[9px] uppercase tracking-[0.28em] text-gold-light">
+        Choose your menu
+      </p>
+      <ul class="mt-1.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-serif italic text-[clamp(0.78rem,1.3vw,0.95rem)] text-sand">
+        {menus.map((m, i) => (
+          <li class="flex items-center gap-3">
+            <span>{m}</span>
+            {i < menus.length - 1 && (
+              <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-ember/70"></span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Bottom micro-band — concrete promise */}
+    <div class="mt-2 flex items-center justify-between border-t border-gold/12 pt-2 font-mono text-[9px] uppercase tracking-[0.22em] text-sand-muted">
+      <span class="inline-flex items-center gap-1.5">
+        <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-ember"></span>
+        Reply within 1h
+      </span>
+      <span>Confirmation · 24h</span>
+    </div>
+  </div>
+</div>

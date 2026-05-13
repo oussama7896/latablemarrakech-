@@ -90,7 +90,7 @@ body { padding-top: var(--lt-nav-h); }
   /* Brand palette */
   --ink: #080604;
   --ink-light: #100D08;
-  --ember: #C1622F;
+  --ember: #B45A28;
   --ember-light: #D97040;
   --gold: #B8935A;
   --gold-light: #D4AA70;
@@ -118,7 +118,7 @@ body { padding-top: var(--lt-nav-h); }
   --card-foreground: #F0E6D0;
   --popover: #0A0704;
   --popover-foreground: #F0E6D0;
-  --primary: #C1622F;
+  --primary: #B45A28;
   --primary-foreground: #FFFFFF;
   --secondary: #100D08;
   --secondary-foreground: #F0E6D0;
@@ -128,8 +128,8 @@ body { padding-top: var(--lt-nav-h); }
   --destructive: oklch(0.577 0.245 27.325);
   --border: rgba(184, 147, 90, 0.18);
   --input: rgba(184, 147, 90, 0.25);
-  --ring: #C1622F;
-  --chart-1: #C1622F;
+  --ring: #B45A28;
+  --chart-1: #B45A28;
   --chart-2: #B8935A;
   --chart-3: #D4AA70;
   --chart-4: #5C5040;
@@ -137,12 +137,12 @@ body { padding-top: var(--lt-nav-h); }
   --radius: 0.125rem; /* sharp edges suit the brand */
   --sidebar: #100D08;
   --sidebar-foreground: #F0E6D0;
-  --sidebar-primary: #C1622F;
+  --sidebar-primary: #B45A28;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #B8935A;
   --sidebar-accent-foreground: #080604;
   --sidebar-border: rgba(184, 147, 90, 0.18);
-  --sidebar-ring: #C1622F;
+  --sidebar-ring: #B45A28;
 }
 
 /* No light/dark toggle on this site — brand is always dark.
@@ -179,7 +179,7 @@ body { padding-top: var(--lt-nav-h); }
   font-size: 11px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-light);
   font-weight: 400;
 }
 

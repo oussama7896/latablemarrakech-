@@ -7,33 +7,88 @@
 const courses = [
   {
     n: 'I',
-    name: 'Briouates of preserved lemon and prawns',
-    body: 'Warqa pastry wrapped tight, cumin and coriander, fried until the corners crack. Served with a saffron aioli.',
-    note: 'Mezze',
+    name: 'Harira · the Marrakchi opener',
+    body: 'Slow-simmered tomato, lentil and lamb broth, sharpened with coriander and a squeeze of lemon. The way Marrakech starts every great meal.',
+    note: 'Starter',
+    image: '/harira-moroccan-soup.jpg',
+    imageAlt: 'A bowl of harira — Moroccan tomato and lentil soup with lamb, served with lemon and dates',
   },
   {
     n: 'II',
-    name: 'Zaalouk · taktouka · houmous of charred almond',
-    body: 'Three salads from this morning’s souk. Served on Berber clay, eaten with hand-torn khobz.',
-    note: 'Vegetarian by default',
+    name: 'Kefta mkaouara · meatballs and eggs',
+    body: 'Hand-rolled lamb kefta poached in spiced tomato with cumin and ras-el-hanout. Eggs cracked into the sauce at the last minute, brought to the table still bubbling.',
+    note: 'Mezze · clay',
+    image: '/kefta-mkaouara-eggs.jpg',
+    imageAlt: 'Kefta mkaouara — Moroccan meatballs and eggs poached in spiced tomato sauce',
   },
   {
     n: 'III',
-    name: 'Pastilla of pigeon, almond and orange-blossom dust',
-    body: 'A two-day brick of caramelised onion, slow-poached pigeon, cinnamon, dusted with icing sugar at the table.',
-    note: 'House signature',
+    name: 'Pastilla · almond, cinnamon, icing sugar',
+    body: 'A two-day brick of warqa pastry layered with almond and orange-flower, baked to a deep gold, dusted with cinnamon and icing sugar at the table.',
+    note: 'Signature',
+    image: '/pastilla-almond-silver-tray.jpg',
+    imageAlt: 'Sweet pastilla on a silver service tray, dusted with icing sugar and toasted almonds',
   },
   {
     n: 'IV',
-    name: 'Tagine of lamb, prunes and toasted argan almonds',
-    body: 'Shoulder cooked low for four hours over coals until the meat falls from the bone. Reduction of ras-el-hanout and Atlas honey.',
-    note: 'Main · 90 minutes',
+    name: 'Tagine of lamb, prunes and toasted almonds',
+    body: 'Shoulder cooked low for four hours over coals until the meat falls from the bone. Soft prunes, pine-nut crunch, a reduction of ras-el-hanout and Atlas honey.',
+    note: 'Main · 90 min',
+    image: '/lamb-tagine-prunes-pine-nuts.jpg',
+    imageAlt: 'A clay tagine of lamb shoulder with soft prunes and toasted pine nuts',
   },
   {
     n: 'V',
-    name: 'Orange-blossom soufflé · mint tea poured from height',
-    body: 'A soufflé built around Marrakech blood oranges. Finished with a drop of orange-flower water. Mint tea poured from the silver pot.',
+    name: 'Seffa medfouna · mint tea poured from height',
+    body: 'Steamed vermicelli, toasted almonds, cinnamon, a small mountain of icing sugar. The traditional Marrakchi close — followed by mint tea from the silver pot.',
     note: 'Dessert · tea',
+    image: '/seffa-vermicelli-almond-dessert.jpg',
+    imageAlt: 'Seffa medfouna — sweet vermicelli with toasted almonds, cinnamon and powdered sugar',
+  },
+];
+
+// More plates — hidden behind a disclosure button. Same shape as `courses`
+// so the markup can reuse a single render loop.
+const moreCourses = [
+  {
+    n: 'VI',
+    name: 'Couscous royale · seven vegetables',
+    body: 'Friday speciality. Slow-steamed semolina, lamb-and-vegetable broth, seven seasonal vegetables, saffron, raisins — served from an etched copper plate at the centre of the table.',
+    note: 'Friday classic',
+    image: '/couscous-seven-vegetables.jpg',
+    imageAlt: 'Couscous royale with seven vegetables on an etched copper plate',
+  },
+  {
+    n: 'VII',
+    name: 'Rfissa · chicken on shredded msemen and lentils',
+    body: 'Pulled chicken slow-cooked with fenugreek and ras-el-hanout, served over shredded msemen flatbread with lentils. A Marrakchi Sunday on a single plate.',
+    note: 'Sunday classic',
+    image: '/rfissa-chicken-msemen.jpg',
+    imageAlt: 'Rfissa — chicken on shredded msemen with lentils, served on a clay platter',
+  },
+  {
+    n: 'VIII',
+    name: 'El Oualidia oysters · shallot mignonette',
+    body: 'Brought up from the Atlantic that morning. Cracked at the table over crushed ice, finished with a sharp shallot vinegar and a turn of black pepper.',
+    note: 'From the Atlantic',
+    image: '/El-Oualidia-Oysters-with-Red-Wine-Vinegar-560x300.png.webp',
+    imageAlt: 'El Oualidia oysters on crushed ice with shallot mignonette',
+  },
+  {
+    n: 'IX',
+    name: 'Seafood pastilla · prawn, white fish, chermoula',
+    body: 'Warqa pastry parcels of prawn and white fish bound with chermoula, finished with a squeeze of preserved-lemon. The lighter pastilla.',
+    note: 'Pescatarian',
+    image: '/White-Fish-Spinach-Pastilla-560x300.png.webp',
+    imageAlt: 'Seafood pastilla with white fish and chermoula in warqa pastry',
+  },
+  {
+    n: 'X',
+    name: 'Chicken tagine · preserved lemon and olives',
+    body: 'The classic. Free-range chicken braised with confit preserved lemons, green olives, ginger and saffron, finished with fresh coriander.',
+    note: 'House classic',
+    image: '/chicken-tagine-marrakech.webp',
+    imageAlt: 'Chicken tagine with preserved lemon and green olives in a clay tagine',
   },
 ];
 ---
@@ -46,7 +101,7 @@ const courses = [
         <div class="lg:sticky lg:top-28">
           <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
             <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-            04 · A sample tasting
+            02 · A sample tasting
           </span>
           <h2 class="mt-6 font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-[0.03em] text-sand">
             What an evening
@@ -69,8 +124,8 @@ const courses = [
               <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">2.5 — 3 h</p>
             </div>
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Wine</span>
-              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">Paired on request</p>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Cleanup</span>
+              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">Included</p>
             </div>
             <div>
               <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Diet</span>
@@ -112,27 +167,116 @@ const courses = [
             </p>
           </header>
 
-          {/* Course list */}
+          {/* Course list — image left, text right. Same square ratio for every dish. */}
           <ol class="mt-8 divide-y divide-gold/12">
             {courses.map((c) => (
-              <li class="group grid grid-cols-[auto_1fr_auto] items-baseline gap-5 py-7 first:pt-8 sm:gap-7">
-                <span class="font-display text-[clamp(1.5rem,2.2vw,2rem)] leading-none tracking-[0.04em] text-ember">
-                  {c.n}
-                </span>
-                <div>
-                  <h3 class="font-serif italic text-[clamp(1.05rem,1.45vw,1.35rem)] leading-[1.35] text-sand">
-                    {c.name}
-                  </h3>
-                  <p class="mt-2 max-w-[58ch] text-[13.5px] leading-[1.65] text-sand-muted">
+              <li class="group grid grid-cols-[88px_1fr] items-start gap-5 py-7 first:pt-8 sm:grid-cols-[128px_1fr_auto] sm:gap-7">
+                {/* Dish photo — uniform square plate */}
+                <figure class="relative overflow-hidden border border-gold/15 bg-ink-light">
+                  <div class="aspect-square">
+                    <img
+                      src={c.image}
+                      alt={c.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                    />
+                  </div>
+                  <div class="absolute inset-0 bg-ember/10 mix-blend-multiply" aria-hidden="true"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" aria-hidden="true"></div>
+                </figure>
+
+                {/* Course text */}
+                <div class="min-w-0">
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-display text-[clamp(1.25rem,2vw,1.65rem)] leading-none tracking-[0.04em] text-ember">
+                      {c.n}
+                    </span>
+                    <h3 class="font-serif italic text-[clamp(1.05rem,1.45vw,1.35rem)] leading-[1.35] text-sand">
+                      {c.name}
+                    </h3>
+                  </div>
+                  <p class="mt-3 max-w-[56ch] text-[13.5px] leading-[1.65] text-sand-muted">
                     {c.body}
                   </p>
+                  {/* Mobile-only note pill — desktop has its own column */}
+                  <span class="mt-3 inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:hidden">
+                    {c.note}
+                  </span>
                 </div>
-                <span class="hidden whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:inline-block">
+
+                {/* Desktop note column */}
+                <span class="hidden self-start whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:inline-block">
                   {c.note}
                 </span>
               </li>
             ))}
           </ol>
+
+          {/* Additional plates — hidden by default, revealed on click */}
+          <ol
+            id="more-plates"
+            data-more-plates
+            hidden
+            class="lt-more-plates divide-y divide-gold/12 border-t border-gold/12"
+          >
+            {moreCourses.map((c) => (
+              <li class="group grid grid-cols-[88px_1fr] items-start gap-5 py-7 sm:grid-cols-[128px_1fr_auto] sm:gap-7">
+                <figure class="relative overflow-hidden border border-gold/15 bg-ink-light">
+                  <div class="aspect-square">
+                    <img
+                      src={c.image}
+                      alt={c.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                    />
+                  </div>
+                  <div class="absolute inset-0 bg-ember/10 mix-blend-multiply" aria-hidden="true"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" aria-hidden="true"></div>
+                </figure>
+
+                <div class="min-w-0">
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-display text-[clamp(1.25rem,2vw,1.65rem)] leading-none tracking-[0.04em] text-ember">
+                      {c.n}
+                    </span>
+                    <h3 class="font-serif italic text-[clamp(1.05rem,1.45vw,1.35rem)] leading-[1.35] text-sand">
+                      {c.name}
+                    </h3>
+                  </div>
+                  <p class="mt-3 max-w-[56ch] text-[13.5px] leading-[1.65] text-sand-muted">
+                    {c.body}
+                  </p>
+                  <span class="mt-3 inline-block font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:hidden">
+                    {c.note}
+                  </span>
+                </div>
+
+                <span class="hidden self-start whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light sm:inline-block">
+                  {c.note}
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          {/* Disclosure button — toggles the moreCourses list */}
+          <div class="mt-8 flex justify-center">
+            <button
+              type="button"
+              data-more-toggle
+              aria-controls="more-plates"
+              aria-expanded="false"
+              class="lt-more-btn group inline-flex items-center gap-3 rounded-full border border-gold/30 bg-ink-light/40 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.24em] text-gold-light transition hover:border-ember hover:bg-ember/10 hover:text-sand"
+            >
+              <span data-more-label-show>Show 5 more plates</span>
+              <span hidden data-more-label-hide>Show fewer plates</span>
+              <span
+                aria-hidden="true"
+                class="lt-more-arrow inline-block size-1.5 rotate-45 border-b border-r border-current transition-transform"
+              ></span>
+            </button>
+          </div>
 
           {/* Footer — the chef's signature */}
           <footer class="mt-10 flex flex-col items-start gap-3 border-t border-gold/15 pt-7 sm:flex-row sm:items-end sm:justify-between">
@@ -155,3 +299,77 @@ const courses = [
     </div>
   </div>
 </section>
+
+<style>
+  /* Reveal animation for the extra plates list. Each row fades+rises with
+     a staggered delay. Transform + opacity only — no layout reflow on items.
+     The collapsed state is enforced by the [hidden] attribute. */
+  .lt-more-plates[hidden] { display: none; }
+  .lt-more-plates > li {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: lt-plate-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .lt-more-plates > li:nth-child(1) { animation-delay: 30ms; }
+  .lt-more-plates > li:nth-child(2) { animation-delay: 90ms; }
+  .lt-more-plates > li:nth-child(3) { animation-delay: 150ms; }
+  .lt-more-plates > li:nth-child(4) { animation-delay: 210ms; }
+  .lt-more-plates > li:nth-child(5) { animation-delay: 270ms; }
+  @keyframes lt-plate-rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lt-more-btn[aria-expanded="true"] .lt-more-arrow { transform: rotate(225deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lt-more-plates > li { animation: none; opacity: 1; transform: none; }
+    .lt-more-arrow { transition: none; }
+  }
+</style>
+
+<script>
+  // Toggle the extra plates list. Vanilla, no framework. Defers to a function
+  // so multiple FeaturedMenu mounts on the same page (none today, but cheap
+  // future-proofing) all wire up correctly.
+  function initFeaturedMenuMore(): void {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-more-toggle]');
+    buttons.forEach((btn) => {
+      const targetId = btn.getAttribute('aria-controls');
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const showLabel = btn.querySelector<HTMLElement>('[data-more-label-show]');
+      const hideLabel = btn.querySelector<HTMLElement>('[data-more-label-hide]');
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const next = !expanded;
+        btn.setAttribute('aria-expanded', String(next));
+        if (next) {
+          target.removeAttribute('hidden');
+          // Restart the stagger animation so each click feels fresh.
+          target.querySelectorAll<HTMLElement>('li').forEach((li) => {
+            li.style.animation = 'none';
+            // Force reflow so the next animation reset is recognised.
+            void li.offsetWidth;
+            li.style.animation = '';
+          });
+        } else {
+          target.setAttribute('hidden', '');
+          // Scroll up to keep the button in view after collapse.
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (showLabel && hideLabel) {
+          showLabel.hidden = next;
+          hideLabel.hidden = !next;
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFeaturedMenuMore, { once: true });
+  } else {
+    initFeaturedMenuMore();
+  }
+</script>

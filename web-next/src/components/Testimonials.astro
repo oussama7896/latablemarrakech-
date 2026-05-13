@@ -1,11 +1,11 @@
 ---
-// Testimonials — editorial composition.
-// Featured quote takes the full top row over a soft tagine plate, two
-// supporting quotes flank a sober aggregate rating below.
+// Testimonials — three equal-weight quote cards on a single row.
+// No imagery — the typography and a small ember rating diamond do the work.
+// A quiet aggregate-rating bar sits under the row.
 import quotes from '@/data/home-testimonials.json';
 
 type Quote = { quote: string; author: string; context: string };
-const [feature, second, third]: Quote[] = quotes as Quote[];
+const cards: Quote[] = (quotes as Quote[]).slice(0, 3);
 ---
 
 <section id="testimonials" class="bg-ink py-24 sm:py-28">
@@ -14,7 +14,7 @@ const [feature, second, third]: Quote[] = quotes as Quote[];
     <div class="mx-auto max-w-[760px] text-center">
       <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-        05 · The guests
+        03 · The guests
       </span>
       <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
         4.9 / 5 from
@@ -25,42 +25,15 @@ const [feature, second, third]: Quote[] = quotes as Quote[];
       </p>
     </div>
 
-    {/* Featured quote — image left, oversized pull-quote right */}
-    <figure class="mt-16 grid grid-cols-12 items-stretch gap-0 overflow-hidden border border-gold/15 bg-ink-light">
-      <div class="relative col-span-12 min-h-[280px] md:col-span-5 md:min-h-[420px]">
-        <img
-          src="/private-chef-marrakech-tagine.webp"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
-        />
-        <div class="absolute inset-0 bg-ember/20 mix-blend-multiply" aria-hidden="true"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" aria-hidden="true"></div>
-        {/* Discrete rating chip over the image */}
-        <span class="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-ink/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light backdrop-blur-sm">
-          ★★★★★ <span class="text-sand/80">verified guest</span>
-        </span>
-      </div>
-
-      <div class="col-span-12 flex flex-col justify-center gap-6 p-8 md:col-span-7 md:p-12 lg:p-14">
-        <span aria-hidden="true" class="font-display text-[80px] leading-[0.6] text-ember/85 md:text-[110px]">&ldquo;</span>
-        <blockquote class="font-serif text-[clamp(1.25rem,1.9vw,1.65rem)] italic leading-[1.55] text-sand">
-          {feature.quote}
-        </blockquote>
-        <figcaption class="mt-2 border-t border-gold/15 pt-5 font-mono text-[11px] uppercase tracking-[0.22em]">
-          <span class="block text-sand">— {feature.author}</span>
-          <span class="mt-1 block text-sand-muted">{feature.context}</span>
-        </figcaption>
-      </div>
-    </figure>
-
-    {/* Two supporting quotes + rating sidecar */}
-    <div class="mt-6 grid grid-cols-12 gap-6 sm:mt-8">
-      {[second, third].map((q) => (
-        <figure class="group col-span-12 flex flex-col gap-5 border border-gold/15 bg-ink-light p-7 transition hover:border-ember/50 md:col-span-5 md:p-8 lg:col-span-5">
+    {/* Three equal review cards on one row */}
+    <div class="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+      {cards.map((q) => (
+        <figure class="group flex flex-col gap-5 border border-gold/15 bg-ink-light p-7 transition hover:border-ember/50 sm:p-8">
+          <span class="inline-flex w-fit items-center gap-2 rounded-full border border-gold/25 bg-ink/40 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light">
+            ★★★★★ <span class="text-sand/80">verified</span>
+          </span>
           <span aria-hidden="true" class="font-display text-[56px] leading-[0.5] text-ember/80">&ldquo;</span>
-          <blockquote class="font-serif text-[17px] italic leading-[1.6] text-sand">
+          <blockquote class="font-serif text-[16.5px] italic leading-[1.6] text-sand">
             {q.quote}
           </blockquote>
           <figcaption class="mt-auto border-t border-gold/15 pt-4 font-mono text-[11px] uppercase tracking-[0.22em]">
@@ -69,30 +42,30 @@ const [feature, second, third]: Quote[] = quotes as Quote[];
           </figcaption>
         </figure>
       ))}
-
-      {/* Rating sidecar — quiet, columnar, hovers in third slot on desktop */}
-      <aside class="col-span-12 flex flex-col items-center justify-center gap-3 border border-gold/15 bg-ink p-7 text-center md:col-span-12 lg:col-span-2 lg:p-6">
-        <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-gold-light">Aggregate</span>
-        <span class="font-display text-[clamp(2.25rem,3vw,2.75rem)] leading-none text-sand">4.9</span>
-        <span class="text-[15px] tracking-wider text-ember">★★★★★</span>
-        <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">
-          200+ villa<br/>guests reviewed
-        </span>
-        <a
-          href="https://www.google.com/search?q=La+Table+Marrakech+reviews"
-          target="_blank"
-          rel="noopener"
-          class="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light hover:text-sand"
-        >
-          Read all
-          <span aria-hidden="true" class="inline-block h-px w-6 bg-gold/60"></span>
-        </a>
-      </aside>
     </div>
 
-    {/* Press-style sign-off */}
-    <p class="mt-12 text-center font-serif italic text-[15px] text-gold-light">
-      Featured in <span class="text-sand">Forbes</span> · <span class="text-sand">Vogue</span> · <span class="text-sand">Condé Nast Traveler</span>
-    </p>
+    {/* Quiet aggregate bar — full-width, low contrast */}
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 border-t border-gold/15 pt-8 sm:flex-row">
+      <div class="flex items-center gap-5">
+        <span class="font-display text-[clamp(1.65rem,2.2vw,2.1rem)] leading-none text-sand">4.9</span>
+        <span class="text-[15px] tracking-wider text-ember">★★★★★</span>
+        <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">
+          200+ villa guests reviewed
+        </span>
+      </div>
+      <a
+        href="https://www.google.com/search?q=La+Table+Marrakech+reviews"
+        target="_blank"
+        rel="noopener"
+        class="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-gold-light transition hover:text-sand"
+      >
+        Read all reviews
+        <span
+          aria-hidden="true"
+          class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
+        ></span>
+      </a>
+    </div>
+
   </div>
 </section>

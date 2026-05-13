@@ -4,9 +4,9 @@
 // same lang switcher, no breakage on /fr/ /ar/ pages.
 const lang = (Astro.props.lang ?? 'en') as 'en' | 'fr' | 'ar';
 const labels = {
-  en: { exp: 'THE EXPERIENCE', how: 'HOW IT WORKS', faq: 'FAQ', book: 'BOOK NOW', menu: 'MENU', close: 'CLOSE' },
-  fr: { exp: "L'EXPÉRIENCE", how: 'COMMENT ÇA MARCHE', faq: 'FAQ', book: 'RÉSERVER', menu: 'MENU', close: 'FERMER' },
-  ar: { exp: 'التجربة', how: 'كيف نعمل', faq: 'الأسئلة', book: 'احجز الآن', menu: 'القائمة', close: 'إغلاق' },
+  en: { exp: 'THE EXPERIENCE', how: 'HOW IT WORKS', faq: 'FAQ', book: 'BOOK DINNER', menu: 'MENU', close: 'CLOSE' },
+  fr: { exp: "L'EXPÉRIENCE", how: 'COMMENT ÇA MARCHE', faq: 'FAQ', book: 'RÉSERVER UN DÎNER', menu: 'MENU', close: 'FERMER' },
+  ar: { exp: 'التجربة', how: 'كيف نعمل', faq: 'الأسئلة', book: 'احجز عشاء', menu: 'القائمة', close: 'إغلاق' },
 }[lang];
 ---
 
@@ -214,8 +214,7 @@ const labels = {
      under the header. Hero excluded — it owns the whole viewport. */
   :global([id="booking"]),
   :global([id="about"]),
-  :global([id="experiences"]),
-  :global([id="story"]),
+  :global([id="menu"]),
   :global([id="why-us"]),
   :global([id="testimonials"]),
   :global([id="how"]),
