@@ -76,6 +76,15 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="lt-foot-col">
+        <h4>For planners</h4>
+        <ul>
+          <li><a href="/services/wedding-dinner-marrakech/">Wedding dinners · 20–80 guests</a></li>
+          <li><a href="/services/corporate-dining-marrakech/">Corporate &amp; offsite dining</a></li>
+          <li><a data-event="email_click" data-location="footer-b2b" href="mailto:hello@latablemarrakech.com?subject=Trade%20enquiry%20%E2%80%94%20planner%20%2F%20DMC">Trade enquiries</a></li>
+        </ul>
+      </div>
+
+      <div class="lt-foot-col">
         <h4>Reach us</h4>
         <ul>
           <li><a data-event="whatsapp_click" data-location="footer" href="https://wa.me/212721354757" rel="noopener" target="_blank">WhatsApp · +212 721 354 757</a></li>
@@ -173,15 +182,18 @@ const year = new Date().getFullYear();
   .lt-foot-grid { padding: 72px 0 56px; }
   .lt-foot-grid-inner {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 56px;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+    gap: 48px;
   }
-  @media (max-width: 900px) {
-    .lt-foot-grid-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 1100px) {
+    .lt-foot-grid-inner { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
     .lt-foot-brand { grid-column: 1 / -1; }
   }
-  @media (max-width: 540px) {
-    .lt-foot-grid-inner { grid-template-columns: 1fr; gap: 36px; }
+  @media (max-width: 700px) {
+    .lt-foot-grid-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 480px) {
+    .lt-foot-grid-inner { grid-template-columns: 1fr; gap: 32px; }
   }
 
   .lt-foot-brandmark {

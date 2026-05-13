@@ -90,6 +90,15 @@ import { BookingForm } from '@/components/BookingForm';
           </header>
           <BookingForm client:load />
 
+          {/* JS-disabled fallback — lives in SSR HTML so it survives full
+              hydration failure (would not if it sat inside the React island). */}
+          <noscript>
+            <p class="mt-4 border-t border-gold/15 pt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-gold-light">
+              If the form does not load, message us directly on WhatsApp:{' '}
+              <a class="underline" href="https://wa.me/212721354757">wa.me/212721354757</a>
+            </p>
+          </noscript>
+
           <p class="mt-auto pt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted">
             We never share your details. One reply, from one human.
           </p>

@@ -417,14 +417,6 @@ export function BookingForm() {
         </p>
       </div>
 
-      <noscript>
-        <p className="border-t border-gold/15 pt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-gold-light">
-          {t.noscriptLine}{' '}
-          <a className="underline" href={`https://wa.me/${WHATSAPP}`}>
-            wa.me/{WHATSAPP}
-          </a>
-        </p>
-      </noscript>
     </form>
   );
 }
@@ -521,7 +513,7 @@ function FieldSelect({ id, name, label, options, value, onChange }: FieldSelectP
         </select>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-1/2 inline-block size-1.5 -translate-y-1/2 rotate-45 border-b border-r border-gold-light"
+          className="pointer-events-none absolute end-0 top-1/2 inline-block size-1.5 -translate-y-1/2 rotate-45 border-b border-r border-gold-light"
         ></span>
       </div>
     </FieldShell>

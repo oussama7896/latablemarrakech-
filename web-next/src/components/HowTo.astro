@@ -64,17 +64,17 @@ const steps = [
     <ol class="relative mx-auto mt-20 max-w-[1100px]">
       <span
         aria-hidden="true"
-        class="pointer-events-none absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/30 to-transparent md:left-1/2 md:-translate-x-1/2"
+        class="pointer-events-none absolute start-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/30 to-transparent md:start-1/2 md:-translate-x-1/2"
       ></span>
 
       {steps.map((s, i) => {
         const flipped = i % 2 === 1;
         return (
-          <li class="relative grid grid-cols-1 items-center gap-8 pl-12 md:grid-cols-12 md:gap-12 md:pl-0 mb-20 last:mb-0">
+          <li class="relative grid grid-cols-1 items-center gap-8 ps-12 md:grid-cols-12 md:gap-12 md:ps-0 mb-20 last:mb-0">
             {/* Number stamp — sits on the hairline */}
             <span
               aria-hidden="true"
-              class="absolute left-0 top-0 z-10 -translate-x-1/2 bg-ink px-2 font-display text-[clamp(2.25rem,4vw,3.25rem)] leading-none tracking-[0.05em] text-ember md:left-1/2"
+              class="absolute start-0 top-0 z-10 -translate-x-1/2 bg-ink px-2 font-display text-[clamp(2.25rem,4vw,3.25rem)] leading-none tracking-[0.05em] text-ember md:start-1/2"
             >
               {s.n}
             </span>
@@ -110,7 +110,7 @@ const steps = [
             <div
               class={[
                 'md:col-span-6',
-                flipped ? 'md:col-start-1 md:row-start-1 md:pr-8 md:text-right' : 'md:col-start-7 md:pl-8',
+                flipped ? 'md:col-start-1 md:row-start-1 md:pe-8 md:text-end' : 'md:col-start-7 md:ps-8',
               ].join(' ')}
             >
               <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-gold-light">
@@ -119,10 +119,10 @@ const steps = [
               <h3 class="mt-3 font-display text-[clamp(1.6rem,2.6vw,2.4rem)] leading-[1.05] tracking-[0.02em] text-sand">
                 {s.title}
               </h3>
-              <p class={['mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-sand-muted', flipped ? 'md:ml-auto' : ''].join(' ')}>
+              <p class={['mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-sand-muted', flipped ? 'md:ms-auto' : ''].join(' ')}>
                 {s.body}
               </p>
-              <p class={['mt-5 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light', flipped ? 'md:ml-auto' : ''].join(' ')}>
+              <p class={['mt-5 font-mono text-[10px] uppercase tracking-[0.22em] text-gold-light', flipped ? 'md:ms-auto' : ''].join(' ')}>
                 {s.detail}
               </p>
             </div>

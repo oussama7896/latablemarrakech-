@@ -1,6 +1,7 @@
 ---
 import { type SeoProps, BRAND } from '@/lib/seo';
 import CookieBanner from '@/components/CookieBanner.astro';
+import MobileStickyCta from '@/components/MobileStickyCta.astro';
 import '@/styles/global.css';
 
 type Props = SeoProps;
@@ -165,6 +166,7 @@ const {
   <body>
     <a href="#booking" class="skip-to-content">Skip to booking</a>
     <slot />
+    <MobileStickyCta />
 
     {/* Scroll reveal — adds .is-in to any [data-reveal] / [data-reveal-stagger]
         when it enters the viewport. One-shot via `disconnect` after first hit. */}
