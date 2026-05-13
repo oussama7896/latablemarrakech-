@@ -8,7 +8,8 @@ const feature = {
   eyebrow: 'The journal · Field notes',
   title: "A chef's walk through the Marrakech souk",
   body: 'Where to buy spices, fish, lamb, preserved lemons and produce — what to pay, and the unwritten rules of the food souk.',
-  image: '/blue-tagine-moroccan-spices.webp',
+  image: '/medina-souk-at-sunset-poster.png',
+  imageAlt: 'Sunset over the Koutoubia mosque and Jemaa el-Fna — La Table chef shopping the medina souk at first light',
   meta: '8 min read · April 2026',
 };
 
@@ -66,13 +67,28 @@ const supporting = [
     {/* Editorial split — featured article + supporting list */}
     <div class="grid grid-cols-12 gap-10 lg:gap-12">
 
-      {/* Featured — text-only, no image */}
+      {/* Featured — poster image left, editorial copy right */}
       <a
         href={feature.href}
-        class="group relative col-span-12 isolate flex flex-col overflow-hidden border border-gold/15 bg-ink-light transition hover:border-ember/60 lg:col-span-7"
+        class="group relative col-span-12 isolate grid grid-cols-1 overflow-hidden border border-gold/15 bg-ink-light transition hover:border-ember/60 sm:grid-cols-12 lg:col-span-7"
       >
+        {/* Image plate — natural portrait aspect on mobile, fills column height on desktop */}
+        <figure class="relative sm:col-span-5">
+          <div class="aspect-[3/4] sm:absolute sm:inset-0 sm:aspect-auto">
+            <img
+              src={feature.image}
+              alt={feature.imageAlt}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.02]"
+            />
+          </div>
+          <div class="absolute inset-0 bg-ember/10 mix-blend-multiply" aria-hidden="true"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" aria-hidden="true"></div>
+        </figure>
+
         {/* Copy */}
-        <div class="flex flex-1 flex-col gap-4 p-7 sm:p-10 lg:p-12">
+        <div class="flex flex-1 flex-col gap-4 p-7 sm:col-span-7 sm:p-10 lg:p-12">
           <span class="inline-flex w-fit items-center gap-2 rounded-full border border-gold/25 bg-ink/40 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-gold-light">
             <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
             {feature.eyebrow}
