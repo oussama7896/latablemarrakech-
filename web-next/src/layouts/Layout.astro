@@ -2,9 +2,10 @@
 import { type SeoProps, BRAND } from '@/lib/seo';
 import CookieBanner from '@/components/CookieBanner.astro';
 import MobileStickyCta from '@/components/MobileStickyCta.astro';
+import FrameSlate from '@/components/FrameSlate.astro';
 import '@/styles/global.css';
 
-type Props = SeoProps;
+type Props = SeoProps & { slateLang?: 'en' | 'fr' | 'ar' };
 
 const {
   title,
@@ -21,7 +22,9 @@ const {
   hreflang = [],
   jsonLd = [],
   preloadImages = [],
+  slateLang,
 } = Astro.props;
+const slateLocale = slateLang ?? (htmlLang as 'en' | 'fr' | 'ar');
 ---
 
 <!DOCTYPE html>
@@ -165,7 +168,33 @@ const {
   </head>
   <body>
     <a href="#booking" class="skip-to-content">Skip to booking</a>
+
+    {/* Duotone SVG filter sprite — referenced by .lt-duotone in global.css.
+        Sits invisible at the top of the body so any image / video can apply
+        it via filter: url(#lt-duotone-warm). Shadows → ink, midtones →
+        ember, highlights → sand. Cuts the slightly-uniform photo treatment
+        across the page; reads as a warm film print rather than a tinted
+        photograph. */}
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <filter id="lt-duotone-warm" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix" values="
+            0.2126 0.7152 0.0722 0 0
+            0.2126 0.7152 0.0722 0 0
+            0.2126 0.7152 0.0722 0 0
+            0      0      0      1 0
+          " />
+          <feComponentTransfer>
+            <feFuncR tableValues="0.031 0.706 0.941" type="table" />
+            <feFuncG tableValues="0.024 0.353 0.902" type="table" />
+            <feFuncB tableValues="0.016 0.157 0.816" type="table" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+
     <slot />
+    <FrameSlate lang={slateLocale} />
     <MobileStickyCta />
 
     {/* Scroll reveal — adds .is-in to any [data-reveal] / [data-reveal-stagger]
@@ -185,6 +214,56 @@ const {
           });
         }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
         els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+
+    {/* Parallax — translates any [data-parallax="factor"] element by
+        factor × (viewportCenter - elementCenter). Single rAF-throttled
+        scroll listener, single IntersectionObserver to only animate
+        elements currently in view. Disabled for reduced-motion users. */}
+    <script is:inline>
+      (function () {
+        if (typeof window === 'undefined') return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+        if (!nodes.length) return;
+        var visible = new Set();
+        if (typeof IntersectionObserver !== 'undefined') {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) visible.add(e.target);
+              else visible.delete(e.target);
+            });
+          }, { rootMargin: '20% 0px 20% 0px' });
+          nodes.forEach(function (n) { io.observe(n); });
+        } else {
+          nodes.forEach(function (n) { visible.add(n); });
+        }
+        var ticking = false;
+        function update() {
+          ticking = false;
+          var vh = window.innerHeight;
+          var vc = vh / 2;
+          visible.forEach(function (el) {
+            var f = parseFloat(el.getAttribute('data-parallax') || '0') || 0;
+            if (!f) return;
+            var rect = el.getBoundingClientRect();
+            var center = rect.top + rect.height / 2;
+            var dy = (vc - center) * f;
+            // Clamp so a very long page doesn't shoot the element off-frame
+            if (dy > 80) dy = 80;
+            if (dy < -80) dy = -80;
+            el.style.setProperty('--lt-py', dy.toFixed(1) + 'px');
+          });
+        }
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+        update();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
       })();
     </script>
     <CookieBanner />

@@ -220,7 +220,11 @@ The only places shadow appears:
 
 **The Hairline Rule.** Borders are 1px in faint brass (`border-gold/15` or `rgba(184,147,90,0.15)`) by default; stronger rules go to `border-gold/30`; faintest dividers go to `border-gold/12`. Never use a 2px+ solid border; never use a default-gray border.
 
-**The Layered-Radial Rule.** Hero, BookingSection, FeaturedMenu, and the BookingFlowInfographic each carry one soft ember radial glow (`bg-ember/8–15`, `blur-3xl`) anchored above center to evoke "lit interior" warmth. Always behind content, always blurred, never decorative-only — it must do the work of conveying warmth in the absence of shadow.
+**The Layered-Radial Rule.** Hero, BookingSection, FeaturedMenu, the Hero Quote testimonial card, and the BookingFlowInfographic each carry one soft ember radial glow (`bg-ember/8–15`, `blur-3xl`) anchored above center to evoke "lit interior" warmth. Always behind content, always blurred, never decorative-only — it must do the work of conveying warmth in the absence of shadow.
+
+**The Duotone Rule.** Signature photographic images (Hero video, BookingSection plate, About filmstrip frames, HowTo step images, Intermission) carry the `lt-duotone-soft` filter — an SVG `feColorMatrix` + `feComponentTransfer` chain that maps shadows → ink, midtones → ember, highlights → sand. The filter definition lives once at the top of `<body>` (Layout.astro). It composes with the existing `bg-ember/10–20 mix-blend-multiply` overlay; the combination reads as a warm film print, not a tinted photograph. Photo cards that already have their own colour grading (logos, brand photography) opt out by omitting the class.
+
+**The Parallax Rule.** Any signature image inside an `overflow-hidden` wrapper may opt into scroll-driven parallax via `data-parallax="0.08–0.18"`. Factors above 0.2 read as jittery and are clamped by the script. The Layout-level rAF-throttled handler updates a `--lt-py` CSS variable on each tracked element; the global `[data-parallax]` rule translates by that variable. Elements outside the viewport are skipped, and the entire system is disabled under `prefers-reduced-motion`. Use sparingly: hero video, BookingSection plate, About filmstrip top frame, Intermission image, and HowTo step images — and nowhere else. Parallax everywhere is parallax nowhere.
 
 ## 5. Components
 
@@ -280,6 +284,38 @@ Three-step booking flow rendered as a vertical timeline with a centered hairline
 ### Signature: The Press Marquee (TrustedBy)
 
 Slow infinite-marquee horizontal scroll of italic-serif press names with rotated-diamond separators. Two duplicated tracks animate `transform: translateX(0) → -100%` linearly over 42s. Edge-faded via `mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent)`. Top and bottom hairlines (`bg-gradient-to-r from-transparent via-gold/30 to-transparent`). `prefers-reduced-motion` disables the animation entirely — the list becomes a centered flex-wrap row.
+
+### Signature: The Frame Slate
+
+A persistent cinematic film-slate that connects the page's six numbered scenes into one cinematic sequence — the system's connective tissue at scale. On desktop (≥1024px) it sits as a fixed vertical strip on the inline-end edge of the viewport: a tracked-mono "Now showing" label, the current scene number in Bebas ember, the scene's eyebrow rotated vertically in `gold-light`, and a 120px hairline progress bar mapping page-scroll percentage. On mobile it collapses to a thin 2px ember-gold ribbon directly below the nav.
+
+Sections opt in by setting `data-frame="NN|Label"` on their root `<section>`. The slate's script picks the frame whose center is closest to the viewport center via a single rAF-throttled scroll listener, updates the rail labels with an opacity tween, and scales the progress bar by `scrollY / maxScroll`. RTL-aware: the strip auto-flips to the inline-start edge in `dir="rtl"`. `aria-hidden="true"` because the section it's describing already has a heading; the slate is decorative scaffolding for sighted readers.
+
+The slate currently registers six scenes — `01 The chef`, `02 The carte`, `03 The guests`, `04 The reasons`, `05 The flow`, `06 The questions`. Hero, TrustedBy, BookingSection, Intermission, and Footer are intentionally unnumbered — they are atmospheric or transitional frames in the sequence, not numbered scenes. New sections added between scenes must either pick a slot (and renumber subsequent scenes contiguously) or stay unnumbered.
+
+### Signature: The Intermission
+
+A single full-bleed atmospheric frame between two dense sections (currently BookingSection → About). The component takes one image bleeding edge-to-edge, one Libre Baskerville italic line of poetry overlaid in `gold-light` at `clamp(1.5rem, 3.4vw, 2.6rem)`, a top hairline strip with a tracked-mono meta line ("Marrakech · Terrace · 19:42"), and nothing else. No CTA, no list, no card. Carries the hero's CSS-noise grain at opacity 0.07 to share the lit-interior shell, the duotone filter on the image, and parallax at factor 0.12 on the image. Heights are tunable via the `height` prop — `short` (`58svh`) is the default, `tall` (`80svh`) for full-bleed brand moments.
+
+This is the system's "breathe" pattern. Use one Intermission per page maximum. Two is monotony; zero is a missed beat between long sections.
+
+### Signature: The Title-Card Hero
+
+The hero is composed like a film title card. Desktop layout is asymmetric: left column carries the eyebrow, a Bebas display title broken poster-style across three short lines (e.g. `A PRIVATE / MOROCCAN / FEAST.`), an italic-serif descender at `0.22em` of the title size, and the primary CTA pill paired with a WhatsApp hairline-text CTA. Right column carries a vertical credit slate — a `dl` of four rows with `gold-light` tracked-mono `dt` labels and `sand` serif-italic `dd` values, each row separated by a 1px brass hairline. A bottom hairline strip beneath the grid carries the trust line ("★ 4.9 · 200+ villa guests · Reply within 1 hour · Confirmed in 24h") and a `Scroll` affordance.
+
+Below `lg` the columns stack center-aligned, the slate collapses gracefully to a `max-width:420px` `ml-auto` block, and the bottom strip wraps. The video and poster sit at `h-[115%]` so the parallax (factor 0.18) never reveals an edge.
+
+### Signature: The Filmstrip Portrait
+
+Replaces the legacy single-portrait + tagine-inset About image. Three vertical frames (souk → stove → table), each `aspect-[5/4]` with the duotone filter, a small Bebas ember frame number (`01 / 02 / 03`) stamped top-start, and a bottom caption strip showing the moment + a time stamp (`At the souk · 06:42`). The frames are hairline-separated and bracketed by two faint CSS-only perforation strips down the outer edges, evoking a literal piece of film stock without becoming clipart. The text column carries a Libre Baskerville italic pull-quote at `clamp(1.4rem, 2.2vw, 2rem)` in `gold-light`, separated from the body by a 1px brass `border-s` rule. The chef stays anonymous on purpose — the voice line and the kitchen detail carry the credibility.
+
+### Signature: The Hero Quote Testimonial
+
+One massive featured quote at film-poster scale carries the entire emotional load of the Testimonials scene; two quieter supporting cards run below. The hero quote sits inside an `bg-ink-light` editorial card with the same four ember corner marks as the FeaturedMenu carte, a soft ember radial glow above it, a giant Bebas opening curly-quote at `clamp(4rem, 8vw, 7rem)` in `ember/70`, and a Libre Baskerville italic blockquote at `clamp(1.6rem, 3vw, 2.6rem)` in `gold-light`. The figcaption pairs the author + context in tracked-mono with a single "tasted the [dish]" rounded-pill chip that links directly into the FeaturedMenu carte — turning social proof into a menu cross-sell.
+
+### Signature: The Roman-Numeral Grid
+
+Replaces the lucide-icon list pattern for "reasons" sections. Six (or three / four / nine) items laid out in a 2-column grid on `sm+` (1-column on mobile), each row marked with an oversized ember Bebas Roman numeral (`I / II / III …`) at `clamp(2.5rem, 4vw, 3.5rem)`. The numeral hovers a few pixels up on hover. Headlines are short declarative phrases; bodies are restrained at `max-width: 42ch`. Drops the slightly-generic icon set; goes pure-typographic and more cinematic. Use this pattern any time the system wants a numbered grid that doesn't read as a feature table.
 
 ### Signature: The Nav Offset Pattern
 

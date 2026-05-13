@@ -12,7 +12,18 @@
 // the structured data and the on-page narrative agree.
 import BookingFlowInfographic from '@/components/BookingFlowInfographic.astro';
 
-const steps = [
+type Step = { n: string; eyebrow: string; title: string; body: string; image?: string; imageAlt?: string; detail: string; poster?: boolean };
+
+interface Props {
+  eyebrow?: string;
+  titleHead?: string;
+  titleEm?: string;
+  titleTail?: string;
+  ctaLabel?: string;
+  steps?: Step[];
+}
+
+const defaultSteps: Step[] = [
   {
     n: '01',
     eyebrow: 'Step one · The message',
@@ -43,20 +54,28 @@ const steps = [
     detail: '4 to 6 courses · 2.5 to 3 hours · We leave the villa cleaner',
   },
 ];
+
+const {
+  eyebrow = '05 · The flow',
+  titleHead = 'From WhatsApp to',
+  titleEm = 'first course',
+  titleTail = ', in three steps.',
+  ctaLabel = 'Book your dinner',
+  steps = defaultSteps,
+} = Astro.props as Props;
 ---
 
-<section id="how" class="bg-ink py-16 sm:py-24">
+<section id="how" class="bg-ink py-16 sm:py-24" data-frame="05|The flow">
   <div data-reveal class="container">
     {/* Header */}
     <div class="mx-auto max-w-[820px] text-center">
       <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-        05 · How it works
+        {eyebrow}
       </span>
       <h2 class="mt-6 font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1] tracking-[0.04em] text-sand">
-        From WhatsApp to
-        <em class="font-serif italic font-normal text-gold-light">first course</em>,
-        in three steps.
+        {titleHead}
+        <em class="font-serif italic font-normal text-gold-light">{titleEm}</em>{titleTail}
       </h2>
     </div>
 
@@ -91,13 +110,14 @@ const steps = [
                 <BookingFlowInfographic />
               ) : (
                 <>
-                  <div class="aspect-[5/4]">
+                  <div class="aspect-[5/4] overflow-hidden">
                     <img
                       src={s.image}
                       alt={s.imageAlt}
                       loading="lazy"
                       decoding="async"
-                      class="h-full w-full object-cover transition duration-[1200ms] ease-out hover:scale-[1.03]"
+                      data-parallax="0.08"
+                      class="lt-duotone-soft h-[112%] w-full object-cover transition duration-[1400ms] ease-out hover:scale-[1.03]"
                     />
                   </div>
                   <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
@@ -137,7 +157,7 @@ const steps = [
         href="#booking"
         class="group inline-flex items-center gap-3 rounded-full bg-ember px-9 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
       >
-        Book your dinner
+        {ctaLabel}
         <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white transition group-hover:translate-x-0.5"></span>
       </a>
     </div>

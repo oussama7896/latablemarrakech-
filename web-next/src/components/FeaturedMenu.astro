@@ -3,14 +3,39 @@
 // would mount it on the wall. Five courses, written in the chef's voice.
 // Not the *only* menu — every dinner is custom — but a concrete example
 // so the guest can imagine the evening before they book.
+//
+// All surface copy (rail headings, meta stats, footer quote) is prop-
+// driven. The course / additional-course arrays default to the EN tasting
+// but can be overridden so FR / AR pages render the same component with
+// localized dish names + bodies.
 
-const courses = [
+type Course = { n: string; name: string; body: string; note: string; image: string; imageAlt: string };
+
+interface Props {
+  eyebrow?: string;
+  titleHead?: string;
+  titleEm?: string;
+  intro?: string;
+  meta?: { coursesLabel: string; coursesValue: string; serviceLabel: string; serviceValue: string; cleanupLabel: string; cleanupValue: string; dietLabel: string; dietValue: string };
+  fullMenuCta?: string;
+  carteEyebrow?: string;
+  carteSub?: string;
+  cartePlace?: string;
+  showMore?: string;
+  showLess?: string;
+  chefQuote?: string;
+  chefAttribution?: string;
+  courses?: Course[];
+  moreCourses?: Course[];
+}
+
+const defaultCourses: Course[] = [
   {
     n: 'I',
     name: 'Harira · the Marrakchi opener',
     body: 'Slow-simmered tomato, lentil and lamb broth, sharpened with coriander and a squeeze of lemon. The way Marrakech starts every great meal.',
     note: 'Starter',
-    image: '/harira-moroccan-soup.jpg',
+    image: '/lt-harira-bowl.jpg',
     imageAlt: 'A bowl of harira — Moroccan tomato and lentil soup with lamb, served with lemon and dates',
   },
   {
@@ -18,15 +43,15 @@ const courses = [
     name: 'Kefta mkaouara · meatballs and eggs',
     body: 'Hand-rolled lamb kefta poached in spiced tomato with cumin and ras-el-hanout. Eggs cracked into the sauce at the last minute, brought to the table still bubbling.',
     note: 'Mezze · clay',
-    image: '/kefta-mkaouara-eggs.jpg',
-    imageAlt: 'Kefta mkaouara — Moroccan meatballs and eggs poached in spiced tomato sauce',
+    image: '/lt-kefta-eggs-clay.jpg',
+    imageAlt: 'Kefta mkaouara — Moroccan meatballs and eggs poached in spiced tomato sauce in a clay dish',
   },
   {
     n: 'III',
     name: 'Pastilla · almond, cinnamon, icing sugar',
     body: 'A two-day brick of warqa pastry layered with almond and orange-flower, baked to a deep gold, dusted with cinnamon and icing sugar at the table.',
     note: 'Signature',
-    image: '/pastilla-almond-silver-tray.jpg',
+    image: '/lt-pastilla-silver-tray.jpg',
     imageAlt: 'Sweet pastilla on a silver service tray, dusted with icing sugar and toasted almonds',
   },
   {
@@ -34,7 +59,7 @@ const courses = [
     name: 'Tagine of lamb, prunes and toasted almonds',
     body: 'Shoulder cooked low for four hours over coals until the meat falls from the bone. Soft prunes, pine-nut crunch, a reduction of ras-el-hanout and Atlas honey.',
     note: 'Main · 90 min',
-    image: '/lamb-tagine-prunes-pine-nuts.jpg',
+    image: '/lt-lamb-tagine-prunes.jpg',
     imageAlt: 'A clay tagine of lamb shoulder with soft prunes and toasted pine nuts',
   },
   {
@@ -42,21 +67,21 @@ const courses = [
     name: 'Seffa medfouna · mint tea poured from height',
     body: 'Steamed vermicelli, toasted almonds, cinnamon, a small mountain of icing sugar. The traditional Marrakchi close — followed by mint tea from the silver pot.',
     note: 'Dessert · tea',
-    image: '/seffa-vermicelli-almond-dessert.jpg',
+    image: '/lt-seffa-vermicelli.jpg',
     imageAlt: 'Seffa medfouna — sweet vermicelli with toasted almonds, cinnamon and powdered sugar',
   },
 ];
 
 // More plates — hidden behind a disclosure button. Same shape as `courses`
 // so the markup can reuse a single render loop.
-const moreCourses = [
+const defaultMoreCourses: Course[] = [
   {
     n: 'VI',
     name: 'Couscous royale · seven vegetables',
-    body: 'Friday speciality. Slow-steamed semolina, lamb-and-vegetable broth, seven seasonal vegetables, saffron, raisins — served from an etched copper plate at the centre of the table.',
+    body: 'Friday speciality. Slow-steamed semolina, lamb-and-vegetable broth, seven seasonal vegetables, saffron, raisins — served from a carved Berber plate at the centre of the table.',
     note: 'Friday classic',
-    image: '/couscous-seven-vegetables.jpg',
-    imageAlt: 'Couscous royale with seven vegetables on an etched copper plate',
+    image: '/lt-couscous-carved-plate.jpg',
+    imageAlt: 'Couscous royale with seven vegetables on a carved Berber serving plate',
   },
   {
     n: 'VII',
@@ -91,9 +116,32 @@ const moreCourses = [
     imageAlt: 'Chicken tagine with preserved lemon and green olives in a clay tagine',
   },
 ];
+
+const {
+  eyebrow = '02 · The carte',
+  titleHead = 'What an evening',
+  titleEm = 'tastes like.',
+  intro = 'Not the only menu — every dinner is composed for your table. Read this as one example. We&rsquo;ll write yours after the first message.',
+  meta = {
+    coursesLabel: 'Courses',  coursesValue: 'Five',
+    serviceLabel: 'Service',  serviceValue: '2.5 — 3 h',
+    cleanupLabel: 'Cleanup',  cleanupValue: 'Included',
+    dietLabel: 'Diet',        dietValue: 'All accommodated',
+  },
+  fullMenuCta = 'See full menu library',
+  carteEyebrow = 'La Table · Carte du soir',
+  carteSub = 'For two — or for forty.',
+  cartePlace = 'Marrakech · 20:00',
+  showMore = 'Show 5 more plates',
+  showLess = 'Show fewer plates',
+  chefQuote = 'Anything here can change. Tell us what you love, and what you don&rsquo;t — the rest is our job.',
+  chefAttribution = '— The chef',
+  courses = defaultCourses,
+  moreCourses = defaultMoreCourses,
+} = Astro.props as Props;
 ---
 
-<section id="menu" class="bg-ink-light py-16 sm:py-24">
+<section id="menu" class="bg-ink-light py-16 sm:py-24" data-frame="02|The carte">
   <div data-reveal class="container">
     <div class="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-12">
       {/* Left rail — editorial framing */}
@@ -101,35 +149,32 @@ const moreCourses = [
         <div class="lg:sticky lg:top-28">
           <span class="eyebrow inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
             <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-            02 · A sample tasting
+            {eyebrow}
           </span>
           <h2 class="mt-6 font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-[0.03em] text-sand">
-            What an evening
+            {titleHead}
             <em class="mt-1 block font-serif italic font-normal text-gold-light">
-              tastes like.
+              {titleEm}
             </em>
           </h2>
-          <p class="mt-6 max-w-[40ch] text-[15px] leading-[1.75] text-sand-muted">
-            Not the only menu — every dinner is composed for your table.
-            Read this as one example. We’ll write yours after the first message.
-          </p>
+          <p class="mt-6 max-w-[40ch] text-[15px] leading-[1.75] text-sand-muted" set:html={intro} />
 
           <div class="mt-10 grid grid-cols-2 gap-4 border-t border-gold/15 pt-8">
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Courses</span>
-              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">Five</p>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">{meta.coursesLabel}</span>
+              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">{meta.coursesValue}</p>
             </div>
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Service</span>
-              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">2.5 — 3 h</p>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">{meta.serviceLabel}</span>
+              <p class="mt-1.5 font-display text-[clamp(1.6rem,2.4vw,2.1rem)] leading-none text-sand">{meta.serviceValue}</p>
             </div>
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Cleanup</span>
-              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">Included</p>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">{meta.cleanupLabel}</span>
+              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">{meta.cleanupValue}</p>
             </div>
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">Diet</span>
-              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">All accommodated</p>
+              <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">{meta.dietLabel}</span>
+              <p class="mt-1.5 font-serif italic text-[15px] leading-[1.4] text-gold-light">{meta.dietValue}</p>
             </div>
           </div>
 
@@ -137,7 +182,7 @@ const moreCourses = [
             href="/menus/"
             class="group mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
           >
-            See full menu library
+            {fullMenuCta}
             <span
               aria-hidden="true"
               class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
@@ -156,14 +201,14 @@ const moreCourses = [
           <header class="flex items-center justify-between border-b border-gold/15 pb-6">
             <div>
               <p class="font-mono text-[10px] uppercase tracking-[0.32em] text-gold-light">
-                La Table · Carte du soir
+                {carteEyebrow}
               </p>
               <p class="mt-2 font-serif italic text-[15px] text-sand">
-                For two — or for forty.
+                {carteSub}
               </p>
             </div>
             <p class="hidden text-right font-mono text-[10px] uppercase tracking-[0.22em] text-sand-muted sm:block">
-              Marrakech · 20:00
+              {cartePlace}
             </p>
           </header>
 
@@ -269,8 +314,8 @@ const moreCourses = [
               aria-expanded="false"
               class="lt-more-btn group inline-flex items-center gap-3 rounded-full border border-gold/30 bg-ink-light/40 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.24em] text-gold-light transition hover:border-ember hover:bg-ember/10 hover:text-sand"
             >
-              <span data-more-label-show>Show 5 more plates</span>
-              <span hidden data-more-label-hide>Show fewer plates</span>
+              <span data-more-label-show>{showMore}</span>
+              <span hidden data-more-label-hide>{showLess}</span>
               <span
                 aria-hidden="true"
                 class="lt-more-arrow inline-block size-1.5 rotate-45 border-b border-r border-current transition-transform"
@@ -281,11 +326,10 @@ const moreCourses = [
           {/* Footer — the chef's signature */}
           <footer class="mt-10 flex flex-col items-start gap-3 border-t border-gold/15 pt-7 sm:flex-row sm:items-end sm:justify-between">
             <p class="max-w-[44ch] font-serif italic text-[14.5px] leading-[1.65] text-gold-light">
-              “Anything here can change. Tell us what you love, and what you don’t —
-              the rest is our job.”
+              &ldquo;<span set:html={chefQuote} />&rdquo;
             </p>
             <span class="font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">
-              — The chef
+              {chefAttribution}
             </span>
           </footer>
         </div>

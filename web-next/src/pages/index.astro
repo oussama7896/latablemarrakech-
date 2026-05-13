@@ -9,6 +9,7 @@ import FeaturedMenu from '@/components/FeaturedMenu.astro';
 import WhyUs from '@/components/WhyUs.astro';
 import HowTo from '@/components/HowTo.astro';
 import BookingSection from '@/components/BookingSection.astro';
+import Intermission from '@/components/Intermission.astro';
 import Faq from '@/components/Faq.astro';
 import Footer from '@/components/Footer.astro';
 import homeFaqs from '@/data/home-faqs.json';
@@ -103,12 +104,62 @@ const howToLd = {
     <TrustedBy />
     <BookingSection />
 
+    <Intermission
+      image="/lt-rfissa-lanterns-mosaic.jpg"
+      alt="A steaming clay tagine of rfissa on a carved Berber side-table, framed by brass lanterns and a mosaic-tiled riad wall"
+      line="Brass lanterns. Steam off the tagine. The room goes quiet."
+      meta="Marrakech · Interior · 20:07"
+    />
+
     <About />
     <FeaturedMenu />
     <Testimonials />
     <WhyUs />
     <HowTo />
     <Faq />
+
+    {/* Closing card — the film's title slide at the end, before the
+        credits roll into the Footer. Full-bleed bg-ink, the brand title
+        artwork sitting centered with grain over it, a single tracked-mono
+        sign-off line, and one ember CTA. Carries the same grain class as
+        the Hero so it reads as a true bookend. */}
+    <section
+      class="relative isolate overflow-hidden border-t border-gold/15 bg-ink py-24 sm:py-28"
+      aria-label="La Table Marrakech"
+    >
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ember/12 blur-3xl"
+      ></span>
+      <span aria-hidden="true" class="lt-hero-grain absolute inset-0 opacity-[0.08] mix-blend-overlay"></span>
+
+      <div data-reveal class="container relative flex flex-col items-center gap-9 text-center">
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          The closing card
+        </span>
+
+        <img
+          src="/lt-brand-titlecard.png"
+          alt="La Table — Marrakech. Private chef service. Breakfast · Half board · Full board · Private event."
+          loading="lazy"
+          decoding="async"
+          class="lt-duotone-soft mx-auto w-full max-w-[1080px]"
+        />
+
+        <p class="max-w-[42ch] font-serif italic text-[17px] leading-[1.55] text-gold-light">
+          One table. One chef. One evening you will not forget.
+        </p>
+
+        <a
+          href="#booking"
+          class="group inline-flex items-center gap-3 rounded-full bg-ember px-10 py-[18px] font-mono text-[12px] uppercase tracking-[0.24em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
+        >
+          Book your dinner
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-sand transition group-hover:translate-x-0.5"></span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <Footer />

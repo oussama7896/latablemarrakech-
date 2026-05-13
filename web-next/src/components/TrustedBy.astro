@@ -1,39 +1,98 @@
 ---
-// Press strip — slow infinite marquee.
-// CSS-only loop using a duplicated list and a single transform animation.
-// Respects prefers-reduced-motion (stops the marquee, centers the list).
-const press = ['Forbes', 'VOGUE', 'Le Monde', 'Condé Nast Traveler', 'BBC Travel', 'Wallpaper*', 'Monocle'];
+// TrustedBy — a two-tier trust band. Top tier is the existing slow press
+// marquee (italic serif names with rotated-diamond separators, edge-faded,
+// reduced-motion stops it and centers the list). Bottom tier is the new
+// verified-credentials strip: four flat capsules with hard-evidence facts
+// — Google rating, villa count, reply window, free-cancel policy. The
+// press strip carries mood; the verified strip earns the credibility.
+
+interface VerifyRow {
+  /** Mono uppercase eyebrow */
+  label: string;
+  /** Serif italic value */
+  value: string;
+}
+
+interface Props {
+  caption?: string;
+  press?: string[];
+  verifiedLabel?: string;
+  verified?: VerifyRow[];
+}
+
+const {
+  caption = 'As featured in',
+  press = ['Forbes', 'VOGUE', 'Le Monde', 'Condé Nast Traveler', 'BBC Travel', 'Wallpaper*', 'Monocle'],
+  verifiedLabel = 'Verified',
+  verified = [
+    { label: 'Google',  value: '4.9 ★ · 200+ guests' },
+    { label: 'Villas',  value: '400+ Marrakech evenings' },
+    { label: 'Reply',   value: 'Within 1 hour, 7 days' },
+    { label: 'Cancel',  value: 'Free up to 72 hours' },
+  ],
+} = Astro.props as Props;
 ---
 
-<section aria-label="Featured in" class="lt-press relative overflow-hidden bg-ink-light py-12 sm:py-14">
-  {/* Top + bottom hairlines */}
-  <span aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
-  <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
+<section aria-label="Trust" class="lt-press relative overflow-hidden bg-ink-light">
+  {/* --- Press marquee --- */}
+  <div class="relative py-10 sm:py-12">
+    {/* Top + bottom hairlines */}
+    <span aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
+    <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></span>
 
-  <div class="container">
-    <p class="text-center font-mono text-[10px] uppercase tracking-[0.32em] text-sand-muted">
-      As featured in
-    </p>
+    <div class="container">
+      <p class="text-center font-mono text-[10px] uppercase tracking-[0.32em] text-sand-muted">
+        {caption}
+      </p>
 
-    <div class="lt-marquee mt-7" role="marquee" aria-label="Press mentions">
-      {/* Track 1 */}
-      <ul class="lt-marquee-track" aria-hidden="false">
-        {press.map((name) => (
-          <li>
-            <span class="lt-press-name">{name}</span>
-            <span aria-hidden="true" class="lt-press-sep"></span>
-          </li>
-        ))}
-      </ul>
-      {/* Track 2 — visually identical, hidden from AT */}
-      <ul class="lt-marquee-track" aria-hidden="true">
-        {press.map((name) => (
-          <li>
-            <span class="lt-press-name">{name}</span>
-            <span class="lt-press-sep"></span>
-          </li>
-        ))}
-      </ul>
+      <div class="lt-marquee mt-7" role="marquee" aria-label="Press mentions">
+        {/* Track 1 */}
+        <ul class="lt-marquee-track" aria-hidden="false">
+          {press.map((name) => (
+            <li>
+              <span class="lt-press-name">{name}</span>
+              <span aria-hidden="true" class="lt-press-sep"></span>
+            </li>
+          ))}
+        </ul>
+        {/* Track 2 — visually identical, hidden from AT */}
+        <ul class="lt-marquee-track" aria-hidden="true">
+          {press.map((name) => (
+            <li>
+              <span class="lt-press-name">{name}</span>
+              <span class="lt-press-sep"></span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {/* --- Verified strip --- */}
+  <div class="relative border-t border-gold/12 py-7">
+    <div class="container">
+      <div class="flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+        <span class="inline-flex shrink-0 items-center gap-3 font-mono text-[10px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          {verifiedLabel}
+        </span>
+
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-5 sm:flex sm:flex-1 sm:items-center sm:justify-between">
+          {verified.map((row, i) => (
+            <li class="flex items-center gap-3">
+              {i > 0 && <span aria-hidden="true" class="hidden h-6 w-px bg-gold/15 sm:inline-block"></span>}
+              <div class="min-w-0">
+                <span class="block font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">
+                  {row.label}
+                </span>
+                <span class="mt-1 block font-serif italic text-[14.5px] leading-[1.25] text-sand">
+                  {row.value}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>

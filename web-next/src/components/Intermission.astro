@@ -1,0 +1,63 @@
+---
+// Intermission — a single full-bleed atmospheric frame. No CTA, no list, no
+// card. One image bleeding to the viewport edges, one tracked-mono line of
+// poetry overlaid, and the page breathes for a beat. Sits between two dense
+// sections (typically BookingSection → About). Carries the hero's grain so
+// it reads as part of the cinematic shell. Parallax on the image at a
+// modest 0.12 factor; respects prefers-reduced-motion.
+//
+// Image and copy are props with sensible defaults that match PRODUCT.md's
+// "Sensory · Cinematic · Generous" register. The default copy is in EN; FR
+// and AR pass localized strings via props.
+const {
+  image = '/moroccan-feast-villa-terrace.webp',
+  alt = '',
+  line = 'Sundown. Pomegranate. Mint. The pots are on.',
+  meta = 'Marrakech · Interior · 19:42',
+  height = 'short',
+} = Astro.props as {
+  image?: string;
+  alt?: string;
+  line?: string;
+  meta?: string;
+  height?: 'short' | 'tall';
+};
+const minH = height === 'tall' ? 'min-h-[80svh]' : 'min-h-[58svh]';
+---
+
+<section class={`lt-intermission relative isolate overflow-hidden bg-ink text-sand ${minH}`}>
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <img
+      src={image}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      data-parallax="0.12"
+      class="lt-intermission-img absolute inset-0 h-[120%] w-full object-cover"
+    />
+    {/* Warm color treatment + reading vignette */}
+    <div class="absolute inset-0 bg-ember/15 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/40 to-ink/85"></div>
+    {/* Inherits the hero's CSS grain via the .lt-hero-grain class */}
+    <div class="lt-hero-grain absolute inset-0 opacity-[0.07] mix-blend-overlay"></div>
+  </div>
+
+  <div data-reveal class="container relative flex flex-1 flex-col items-start justify-center gap-8 py-24 sm:py-32">
+    {/* Top hairline + meta slate */}
+    <div class="flex items-center gap-4 self-stretch">
+      <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+      <span class="font-mono text-[10px] uppercase tracking-[0.32em] text-gold-light">
+        {meta}
+      </span>
+      <span aria-hidden="true" class="ms-2 inline-block h-px flex-1 bg-gradient-to-r from-gold/45 via-gold/15 to-transparent"></span>
+    </div>
+
+    {/* The line — Libre Baskerville italic, gold-light, oversized */}
+    <p class="font-serif italic font-normal text-[clamp(1.5rem,3.4vw,2.6rem)] leading-[1.25] text-gold-light max-w-[26ch]">
+      {line}
+    </p>
+
+    {/* Bottom slate — minimal, no CTA */}
+    <span aria-hidden="true" class="mt-auto inline-block h-px w-24 bg-gold/40"></span>
+  </div>
+</section>

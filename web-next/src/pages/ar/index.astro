@@ -1,76 +1,211 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Nav from '@/components/Nav.astro';
+import Hero from '@/components/Hero.astro';
+import TrustedBy from '@/components/TrustedBy.astro';
+import About from '@/components/About.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import FeaturedMenu from '@/components/FeaturedMenu.astro';
+import WhyUs from '@/components/WhyUs.astro';
+import HowTo from '@/components/HowTo.astro';
+import BookingSection from '@/components/BookingSection.astro';
+import Intermission from '@/components/Intermission.astro';
+import Faq from '@/components/Faq.astro';
 import Footer from '@/components/Footer.astro';
+import { ar as t } from '@/data/home-i18n';
+
+const localBusinessLd = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'FoodService'],
+  name: 'La Table Marrakech',
+  description: t.layout.description,
+  url: 'https://latablemarrakech.com/ar/',
+  inLanguage: 'ar',
+  telephone: '+212721354757',
+  email: 'hello@latablemarrakech.com',
+  priceRange: '€€',
+  currenciesAccepted: 'EUR, MAD, USD',
+  paymentAccepted: 'Apple Pay, Stripe, PayPal, Visa, Mastercard',
+  address: { '@type': 'PostalAddress', addressLocality: 'Marrakech', addressCountry: 'MA' },
+  geo: { '@type': 'GeoCoordinates', latitude: 31.6295, longitude: -7.9811 },
+  areaServed: { '@type': 'City', name: 'Marrakech' },
+  logo: 'https://latablemarrakech.com/la-table-marrakech-og.png',
+  image: 'https://latablemarrakech.com/private-chef-marrakech-tagine.webp',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '200', bestRating: '5' },
+  offers: {
+    '@type': 'Offer', priceCurrency: 'EUR', price: '85', priceValidUntil: '2026-12-31',
+    availability: 'https://schema.org/InStock',
+    description: 'شيف خاص من 85€ للشخص — مكونات طازجة من السوق، أطباق متعددة، خدمة على الطاولة وتنظيف كامل مشمول. الحد الأدنى ضيفان.',
+  },
+  sameAs: ['https://wa.me/212721354757'],
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'ar',
+  mainEntity: t.faq.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Layout
-  title="شيف خاص في مراكش — عشاء فاخر بفيلتك من 85€ للشخص ★ 4.9/5 | La Table Marrakech"
-  description="شيف خاص في مراكش يطبخ وليمة مغربية متعددة الأطباق بفيلتك — طاجين، بسطيلا، كسكس ملكي بمكونات طازجة من السوق. ابتداءً من 85€ للشخص (بحد أدنى ضيفان)، تقييم 4.9★ من +200 ضيف. تأكيد الحجز عبر واتساب خلال 24 ساعة. حلال بالكامل."
+  title={t.layout.title}
+  description={t.layout.description}
   canonical="https://latablemarrakech.com/ar/"
   htmlLang="ar"
   htmlDir="rtl"
   ogLocale="ar_MA"
   ogLocaleAlternates={["en_US", "fr_FR"]}
+  slateLang="ar"
   hreflang={[
     { hreflang: 'en', href: 'https://latablemarrakech.com/' },
     { hreflang: 'fr', href: 'https://latablemarrakech.com/fr/' },
     { hreflang: 'ar', href: 'https://latablemarrakech.com/ar/' },
     { hreflang: 'x-default', href: 'https://latablemarrakech.com/' },
   ]}
+  jsonLd={[localBusinessLd, faqLd]}
+  preloadImages={[
+    { href: '/moroccan-feast-villa-terrace.webp', type: 'image/webp', fetchpriority: 'high' },
+  ]}
 >
   <Nav lang="ar" />
 
   <main>
-    <header class="bg-ink-light pb-16 pt-24">
-      <div class="container max-w-[920px]">
-        <span class="eyebrow inline-flex items-center gap-3"><span class="inline-block size-1.5 rotate-45 bg-ember"></span>شيف خاص · مراكش · من 85€</span>
-        <h1 class="mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.1] tracking-[0.04em] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
-          فيلتك. طاولتك.
-          <em class="mt-3 block font-serif italic font-normal text-[0.55em] text-gold-light" style="font-family:'Noto Sans Arabic',serif">شيفك.</em>
-        </h1>
-        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
-          عشاء مغربي متعدد الأطباق يُحضَّر في فيلتك أو رياضك. مكونات طازجة من السوق صباحاً، طبخ في مطبخك،
-          تقديم على شرفتك. من 85€ للشخص، شامل كل شيء. تأكيد عبر واتساب خلال 24 ساعة. حلال بالكامل.
-        </p>
-        <div class="mt-9">
-          <a
-            data-event="whatsapp_click" data-location="home_ar"
-            href="https://wa.me/212721354757?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%E2%80%94%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%B4%D9%8A%D9%81%20%D8%AE%D8%A7%D8%B5"
-            target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-3 bg-ember px-9 py-5 font-mono text-[13px] uppercase tracking-[0.28em] text-white transition hover:-translate-y-px hover:bg-ember-light"
-          >
-            احجز الآن
-            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <Hero
+      eyebrow={t.hero.eyebrow}
+      titleLines={t.hero.titleLines}
+      tagline={t.hero.tagline}
+      slate={t.hero.slate}
+      bottomTrust={t.hero.bottomTrust}
+      cta={t.hero.cta}
+      ghostCta={t.hero.ghostCta}
+      scrollLabel={t.hero.scrollLabel}
+    />
 
-    <section class="bg-ink py-20">
-      <div class="container max-w-[760px] space-y-6 text-[17px] leading-[1.85] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
-        <p>المدينة فيها ألف مطعم. لا أحد يعرف اسمك، حساسياتك، أو أنها ذكرى زواجك. الشيف الخاص يغير كل شيء — القائمة لك، الإيقاع لك، الشرفة لك.</p>
-        <p>الشيف يمر بالسوق عند الفجر، يصل إلى منزلك في منتصف فترة بعد الظهر، يشعل الفحم بالباب الخلفي، ويقدم عشاءً متأنيًا حتى منتصف الليل. لا تلمس صحنًا. ويُترك المطبخ نظيفًا تمامًا.</p>
-      </div>
-    </section>
+    <TrustedBy
+      caption={t.trusted.caption}
+      verifiedLabel={t.trusted.verifiedLabel}
+      verified={t.trusted.verified}
+    />
 
-    <section class="border-t border-gold/15 bg-ink-light py-20">
-      <div class="container max-w-[700px] text-center">
-        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] tracking-[0.04em] text-sand" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
-          ليس مطعمًا.
-          <em class="mt-2 block font-serif italic font-normal text-[0.6em] text-gold-light" style="font-family:'Noto Sans Arabic',serif">طاولتك.</em>
-        </h2>
-        <p class="mt-5 text-sand-muted" style="font-family:'Noto Sans Arabic','Karla',sans-serif">
-          أرسل التاريخ، عدد الضيوف، العنوان. الرد في أقل من ساعة.
+    <BookingSection
+      eyebrow={t.booking.eyebrow}
+      headHead={t.booking.headHead}
+      headEm={t.booking.headEm}
+      body={t.booking.body}
+      trust={t.booking.trust}
+      whatsapp={t.booking.whatsapp}
+      formTitle={t.booking.formTitle}
+      formMeta={t.booking.formMeta}
+      noscriptLine={t.booking.noscriptLine}
+      footerLine={t.booking.footerLine}
+    />
+
+    <Intermission
+      image="/lt-rfissa-lanterns-mosaic.jpg"
+      alt="طاجين رفيسة يتصاعد منه البخار على طاولة أمازيغية محفورة، يحيط به فوانيس نحاسية وجدار من الزليج"
+      line={t.intermission.line}
+      meta={t.intermission.meta}
+    />
+
+    <About
+      eyebrow={t.about.eyebrow}
+      titleHead={t.about.titleHead}
+      titleEm={t.about.titleEm}
+      paragraphs={t.about.paragraphs}
+      pullQuote={t.about.pullQuote}
+      pullQuoteAttribution={t.about.pullQuoteAttribution}
+      signatureLine={t.about.signatureLine}
+      ctaLabel={t.about.ctaLabel}
+      frames={[
+        { src: '/blue-tagine-moroccan-spices.webp', alt: '', caption: t.about.frames[0].caption, time: t.about.frames[0].time },
+        { src: '/chef-cooking-marrakech-kitchen.webp', alt: '', caption: t.about.frames[1].caption, time: t.about.frames[1].time },
+        { src: '/moroccan-feast-villa-terrace.webp', alt: '', caption: t.about.frames[2].caption, time: t.about.frames[2].time },
+      ]}
+    />
+
+    <FeaturedMenu
+      eyebrow={t.menu.eyebrow}
+      titleHead={t.menu.titleHead}
+      titleEm={t.menu.titleEm}
+      intro={t.menu.intro}
+      meta={t.menu.meta}
+      fullMenuCta={t.menu.fullMenuCta}
+      carteEyebrow={t.menu.carteEyebrow}
+      carteSub={t.menu.carteSub}
+      cartePlace={t.menu.cartePlace}
+      showMore={t.menu.showMore}
+      showLess={t.menu.showLess}
+      chefQuote={t.menu.chefQuote}
+      chefAttribution={t.menu.chefAttribution}
+      courses={t.menu.courses}
+      moreCourses={t.menu.moreCourses}
+    />
+
+    <Testimonials
+      eyebrow={t.testimonials.eyebrow}
+      rating={t.testimonials.rating}
+      ratingLabel={t.testimonials.ratingLabel}
+      headlineHead={t.testimonials.headlineHead}
+      headlineEm={t.testimonials.headlineEm}
+      sub={t.testimonials.sub}
+      readAll={t.testimonials.readAll}
+      heroDish={t.testimonials.heroDish}
+      quotes={t.testimonials.quotes}
+    />
+
+    <WhyUs
+      eyebrow={t.whyus.eyebrow}
+      titleHead={t.whyus.titleHead}
+      titleEm={t.whyus.titleEm}
+      intro={t.whyus.intro}
+      ctaLabel={t.whyus.ctaLabel}
+      reasons={t.whyus.reasons}
+    />
+
+    <HowTo
+      eyebrow={t.howto.eyebrow}
+      titleHead={t.howto.titleHead}
+      titleEm={t.howto.titleEm}
+      titleTail={t.howto.titleTail}
+      ctaLabel={t.howto.ctaLabel}
+      steps={t.howto.steps}
+    />
+
+    <Faq
+      eyebrow={t.faq.eyebrow}
+      titleHead={t.faq.titleHead}
+      titleEm={t.faq.titleEm}
+      intro={t.faq.intro}
+      whatsappCta={t.faq.whatsappCta}
+      faqs={t.faq.faqs}
+    />
+
+    <section
+      class="relative isolate overflow-hidden border-t border-gold/15 bg-ink py-24 sm:py-28"
+      aria-label="La Table Marrakech"
+    >
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ember/12 blur-3xl"
+      ></span>
+      <span aria-hidden="true" class="lt-hero-grain absolute inset-0 opacity-[0.08] mix-blend-overlay"></span>
+      <div data-reveal class="container relative flex flex-col items-center gap-9 text-center">
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          الكارت الختامي
+        </span>
+        <img src="/lt-brand-titlecard.png" alt="La Table — Marrakech. شيف خاص. فطور · نصف إقامة · إقامة كاملة · مناسبة خاصة." loading="lazy" decoding="async" class="lt-duotone-soft mx-auto w-full max-w-[1080px]" />
+        <p class="max-w-[42ch] font-serif italic text-[17px] leading-[1.55] text-gold-light">
+          طاولة واحدة. شيف واحد. أمسية لن تُنسى.
         </p>
-        <a
-          data-event="whatsapp_click" data-location="home_ar"
-          href="https://wa.me/212721354757"
-          target="_blank" rel="noopener noreferrer"
-          class="mt-8 inline-flex items-center gap-3 bg-ember px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white transition hover:-translate-y-px hover:bg-ember-light"
-        >
-          راسل الشيف عبر واتساب
-          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-white"></span>
+        <a href="#booking" class="group inline-flex items-center gap-3 rounded-full bg-ember px-10 py-[18px] font-mono text-[12px] uppercase tracking-[0.24em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light">
+          احجز عشاءك
+          <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-sand transition group-hover:translate-x-0.5"></span>
         </a>
       </div>
     </section>

@@ -173,6 +173,27 @@ body { padding-top: var(--lt-nav-h); }
   }
 }
 
+/* ---------- Arabic typography ----------
+   When the document is RTL we pair every type role with Noto Sans Arabic
+   so Bebas / Karla / Libre Baskerville (which have no Arabic glyphs) fall
+   back gracefully without auto-substitution. The mono role keeps its
+   monospaced fallback for slate / eyebrow rows; Arabic numerals render
+   correctly inside DM Mono. */
+[dir="rtl"] {
+  --font-display-stack: 'Noto Sans Arabic', 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  --font-serif-stack: 'Noto Sans Arabic', 'Libre Baskerville', Georgia, serif;
+  --font-body-stack: 'Noto Sans Arabic', 'Karla', 'Helvetica Neue', sans-serif;
+  --font-mono-stack: 'DM Mono', 'Noto Sans Arabic', ui-monospace, monospace;
+  --font-display: var(--font-display-stack);
+  --font-serif: var(--font-serif-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-body: var(--font-body-stack);
+}
+/* Display Arabic is heavier than Bebas at the same point size — pull it
+   in a notch and tighten line-height so the title-card still reads as a
+   title-card and not a paragraph. */
+[dir="rtl"] .font-display { font-weight: 700; letter-spacing: 0; line-height: 1.05; }
+
 /* ---------- Brand component primitives ---------- */
 .eyebrow {
   font-family: var(--font-mono);
@@ -225,6 +246,46 @@ body { padding-top: var(--lt-nav-h); }
 [data-reveal-stagger].is-in > *:nth-child(4) { animation-delay: 240ms; }
 [data-reveal-stagger].is-in > *:nth-child(5) { animation-delay: 320ms; }
 [data-reveal-stagger].is-in > *:nth-child(6) { animation-delay: 400ms; }
+[data-reveal-stagger].is-in > *:nth-child(7) { animation-delay: 480ms; }
+[data-reveal-stagger].is-in > *:nth-child(8) { animation-delay: 560ms; }
+[data-reveal-stagger].is-in > *:nth-child(9) { animation-delay: 640ms; }
+[data-reveal-stagger].is-in > *:nth-child(10) { animation-delay: 720ms; }
+
+/* ---------- Scroll parallax ----------
+   Any element with [data-parallax="N"] is translated by N × (scrollY -
+   element-top) on rAF. The wrapper that owns the element should overflow
+   hidden and the element should be slightly larger than its frame
+   (typically 120% height) so the parallax never reveals an edge.
+   The translation is set as a CSS var --lt-py so transforms can compose
+   with existing scale / object-position rules. */
+[data-parallax] {
+  transform: translate3d(0, var(--lt-py, 0px), 0);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax] { transform: none !important; }
+}
+
+/* ---------- Duotone photo filter (disabled) ----------
+   The duotone treatment is intentionally a no-op so photographs render in
+   their natural colours. The classes are kept on the markup so the effect
+   can be reinstated by restoring the `filter: url(#lt-duotone-warm)` rule
+   if a future direction wants the warm film-print look back. */
+.lt-duotone,
+.lt-duotone-soft { filter: none; }
+
+/* The ember `mix-blend-multiply` overlays that previously tinted every
+   photograph warm-copper are also neutralised so imagery shows in its
+   true colour. The gradient vignettes from-ink/to-transparent stay — they
+   are needed for type readability over images. */
+.mix-blend-multiply.bg-ember\/8,
+.mix-blend-multiply.bg-ember\/10,
+.mix-blend-multiply.bg-ember\/12,
+.mix-blend-multiply.bg-ember\/15,
+.mix-blend-multiply.bg-ember\/20 {
+  mix-blend-mode: normal;
+  background-color: transparent !important;
+}
 
 /* Hero loads on first paint, no scroll trigger needed */
 .lt-hero-enter > * {

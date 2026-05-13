@@ -1,44 +1,100 @@
 ---
-// About — editorial split. Tells the brand's "why us" story through copy,
-// a single chef portrait, and an overlapping tagine inset.
-//
-// Left column: oversized display headline + deeper body + signature line.
-// Right column: a single large portrait of the chef in the kitchen with a
-// smaller dish-detail inset overlapping its bottom-left — the way a
-// hospitality magazine spread treats a chef profile.
+// About — "The chef." Editorial split with the right column rebuilt as a
+// vertical 3-frame filmstrip (souk → stove → table), each frame hairline-
+// separated and timestamped like a film slate. The left column keeps the
+// oversized Bebas headline and adds a Libre Baskerville italic pull-quote
+// the chef would say to a returning guest. Anonymous on purpose — the
+// signature line reads as voice, not as a named bio.
+interface Props {
+  eyebrow?: string;
+  titleHead?: string;
+  titleEm?: string;
+  /** Paragraph copy — pass HTML, no <p> wrapping needed. */
+  paragraphs?: [string, string];
+  pullQuote?: string;
+  pullQuoteAttribution?: string;
+  signatureLine?: string;
+  ctaLabel?: string;
+  /** Three filmstrip frames, top → bottom. */
+  frames?: { src: string; alt: string; caption: string; time: string }[];
+}
+
+const {
+  eyebrow = '01 · The chef',
+  titleHead = 'Cooked for you.',
+  titleEm = '— and no one else.',
+  paragraphs = [
+    'The medina has a thousand restaurants. None of them know your name, your allergies, your daughter who only eats plain rice, or that it&rsquo;s your anniversary.',
+    'A private chef changes the maths. The menu is written for your table. Courses arrive when you&rsquo;re ready, not when the kitchen is. The terrace is yours, the pace is yours, and the only people in the room are people you chose to be there.',
+  ],
+  pullQuote = 'Tell us what you love, and what you don&rsquo;t. The rest is our job.',
+  pullQuoteAttribution = '— the chef, in the kitchen, every time',
+  signatureLine = 'Hand-written menus · Souk-fresh · Discreet service',
+  ctaLabel = 'Book your dinner',
+  frames = [
+    {
+      src: '/blue-tagine-moroccan-spices.webp',
+      alt: 'Souk stall at first light — spices, blue ceramic tagine, ingredients laid out',
+      caption: 'At the souk',
+      time: '06:42',
+    },
+    {
+      src: '/chef-cooking-marrakech-kitchen.webp',
+      alt: 'The chef working at the stove, finishing a tagine with preserved lemon',
+      caption: 'At the stove',
+      time: '17:18',
+    },
+    {
+      src: '/moroccan-feast-villa-terrace.webp',
+      alt: 'A long villa terrace dinner table set for a Moroccan feast at dusk',
+      caption: 'At your table',
+      time: '20:30',
+    },
+  ],
+} = Astro.props as Props;
 ---
 
-<section id="about" class="bg-ink-light py-16 sm:py-20">
-  <div data-reveal class="container mx-auto grid max-w-[1180px] items-center gap-12 lg:grid-cols-12 lg:gap-16">
-    {/* Text column — 6 of 12 */}
-    <div class="lg:col-span-6">
+<section
+  id="about"
+  class="bg-ink-light py-20 sm:py-24"
+  data-frame="01|The chef"
+>
+  <div data-reveal class="container mx-auto grid max-w-[1200px] items-start gap-12 lg:grid-cols-12 lg:gap-16">
+
+    {/* ---------- Text column ---------- */}
+    <div class="lg:col-span-7">
       <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-        01 · The truth
+        {eyebrow}
       </span>
 
-      <h2 class="mt-7 font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.92] tracking-[0.02em] text-sand">
-        Cooked for you.
-        <em class="mt-3 block font-serif italic font-normal text-[0.42em] tracking-[0.01em] text-gold-light">
-          — and no one else.
+      <h2 class="mt-7 font-display text-[clamp(2.75rem,6.5vw,6rem)] font-normal leading-[0.9] tracking-[0.018em] text-sand">
+        {titleHead}
+        <em class="mt-3 block font-serif italic font-normal text-[0.4em] tracking-[0.005em] text-gold-light leading-[1.3]">
+          {titleEm}
         </em>
       </h2>
 
-      <p class="mt-7 max-w-[520px] text-[16.5px] leading-[1.75] text-sand">
-        The medina has a thousand restaurants. None of them know your name, your allergies,
-        your daughter who only eats plain rice, or that it’s your anniversary.
-      </p>
-      <p class="mt-5 max-w-[520px] text-[15.5px] leading-[1.8] text-sand-muted">
-        A private chef changes the maths. The menu is written for your table. Courses arrive
-        when you’re ready, not when the kitchen is. The terrace is yours, the pace is yours,
-        and the only people in the room are people you chose to be there.
-      </p>
+      <div class="mt-8 max-w-[560px] space-y-5">
+        <p class="text-[17px] leading-[1.75] text-sand" set:html={paragraphs[0]} />
+        <p class="text-[15.5px] leading-[1.8] text-sand-muted" set:html={paragraphs[1]} />
+      </div>
 
-      {/* Signature line — the editorial closer */}
-      <div class="mt-10 flex items-center gap-4 border-t border-gold/15 pt-7">
+      {/* Oversized pull-quote — Libre Baskerville italic in brass */}
+      <figure class="mt-12 max-w-[640px] border-s border-gold/30 ps-6 sm:ps-8">
+        <blockquote class="font-serif italic font-normal text-[clamp(1.4rem,2.2vw,2rem)] leading-[1.3] text-gold-light">
+          &ldquo;<span set:html={pullQuote} />&rdquo;
+        </blockquote>
+        <figcaption class="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-sand-muted">
+          {pullQuoteAttribution}
+        </figcaption>
+      </figure>
+
+      {/* Signature line */}
+      <div class="mt-12 flex items-center gap-4 border-t border-gold/15 pt-7">
         <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
         <span class="font-serif italic text-[15px] text-gold-light">
-          Hand-written menus · Souk-fresh · Discreet service
+          {signatureLine}
         </span>
       </div>
 
@@ -46,7 +102,7 @@
         href="#booking"
         class="group mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
       >
-        Book your dinner
+        {ctaLabel}
         <span
           aria-hidden="true"
           class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"
@@ -54,47 +110,66 @@
       </a>
     </div>
 
-    {/* Editorial image column — chef portrait + inset dish */}
-    <div class="relative lg:col-span-6">
-      <figure class="relative overflow-hidden border border-gold/20 bg-ink">
-        <div class="aspect-[4/5]">
-          <img
-            src="/chef-cooking-marrakech-kitchen.webp"
-            alt="The chef working at the stove, finishing a tagine with preserved lemon"
-            loading="lazy"
-            decoding="async"
-            class="h-full w-full object-cover"
-          />
-        </div>
-        <div class="absolute inset-0 bg-ember/12 mix-blend-multiply" aria-hidden="true"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true"></div>
+    {/* ---------- Filmstrip column ---------- */}
+    <div class="relative lg:col-span-5">
+      <ol class="relative grid gap-[2px] border border-gold/20 bg-ink">
+        {/* Vertical decorative perforations — film-strip edge */}
+        <span aria-hidden="true" class="lt-filmstrip-perfs pointer-events-none absolute inset-y-0 -start-1 hidden w-[10px] lg:block"></span>
+        <span aria-hidden="true" class="lt-filmstrip-perfs pointer-events-none absolute inset-y-0 -end-1 hidden w-[10px] lg:block"></span>
 
-        {/* Caption strip along the bottom */}
-        <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-4 font-mono text-[10px] uppercase tracking-[0.28em] text-sand">
-          <span>At the stove · 18:42</span>
-          <span class="text-gold-light">Marrakech</span>
-        </figcaption>
-      </figure>
+        {frames.map((f, i) => (
+          <li class="relative overflow-hidden bg-ink">
+            <figure class="relative">
+              <div class="aspect-[5/4]">
+                <img
+                  src={f.src}
+                  alt={f.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="lt-duotone-soft h-full w-full object-cover transition duration-[1400ms] ease-out hover:scale-[1.04]"
+                />
+              </div>
+              <div class="absolute inset-0 bg-ember/12 mix-blend-multiply" aria-hidden="true"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" aria-hidden="true"></div>
 
-      {/* Overlapping inset — a dish detail, sits at the bottom-left corner */}
-      <figure class="absolute -bottom-8 -left-6 hidden w-[44%] overflow-hidden border border-gold/25 bg-ink shadow-[0_22px_50px_-20px_rgba(0,0,0,0.65)] sm:block">
-        <div class="aspect-[5/4]">
-          <img
-            src="/lamb-tagine-prunes-almonds.webp"
-            alt="Lamb tagine with prunes and toasted almonds, plated"
-            loading="lazy"
-            decoding="async"
-            class="h-full w-full object-cover"
-          />
-        </div>
-        <div class="absolute inset-0 bg-ember/15 mix-blend-multiply" aria-hidden="true"></div>
-      </figure>
+              {/* Frame number stamp — top-start */}
+              <span class="absolute top-3 start-3 font-display text-[clamp(1.1rem,1.6vw,1.4rem)] leading-none tracking-[0.08em] text-ember">
+                {String(i + 1).padStart(2, '0')}
+              </span>
 
-      {/* Vertical decorative rule along the right edge — luxury hospitality detail */}
+              {/* Caption strip — bottom edge */}
+              <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 py-3 font-mono text-[10px] uppercase tracking-[0.28em] text-sand">
+                <span>{f.caption}</span>
+                <span class="text-gold-light">{f.time}</span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ol>
+
+      {/* Side accent rule */}
       <span
         aria-hidden="true"
-        class="absolute -right-3 top-8 bottom-8 hidden w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent lg:block"
+        class="absolute -end-3 top-8 bottom-8 hidden w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent lg:block"
       ></span>
     </div>
   </div>
 </section>
+
+<style>
+  /* Film-strip perforations — repeating rectangles down each side. Pure
+     CSS, no extra request. Kept subtle so it reads as a hospitality detail
+     rather than a literal film-strip illustration. */
+  .lt-filmstrip-perfs {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 6px,
+      rgba(184, 147, 90, 0.22) 6px,
+      rgba(184, 147, 90, 0.22) 14px,
+      transparent 14px,
+      transparent 20px
+    );
+    background-size: 100% 20px;
+  }
+</style>

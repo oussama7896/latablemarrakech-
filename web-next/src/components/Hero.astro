@@ -1,124 +1,218 @@
 ---
-// Hero — cinematic immersive treatment.
-// • Fullscreen viewport with looped silent video background
-// • Mobile gets the poster image only (no autoplay over cellular)
-// • Same typography contract as before (font-display + serif italic accent)
-// • Trust facts dropped into a subtler footer band so the hero breathes
-// • All motion is transform / opacity only — respects prefers-reduced-motion
+// Hero — "Title card" treatment. Asymmetric two-column on desktop:
+//   • Left: massive Bebas display title broken poster-style across three
+//     lines, italic-serif descender, primary CTA pill, secondary WhatsApp
+//     hairline link.
+//   • Right: a vertical film-credit slate in DM Mono, four rows separated
+//     by faint brass hairlines — Location, Courses, Price, Reply.
+//   • Bottom: a full-width hairline strip with the trust line and the
+//     "Scroll" affordance.
+// On mobile (<lg) the layout stacks center-aligned, the slate collapses to
+// a 2×2 chip grid, and the bottom strip moves above the affordance.
+//
+// Hero video sits behind the entire viewport with parallax (factor 0.18),
+// the duotone filter (ink shadows → ember midtones → sand highlights), the
+// SVG-noise grain overlay, and two readability vignettes. Mobile keeps a
+// poster image only — no autoplay over cellular.
 
-const posterImg = '/moroccan-feast-villa-terrace.webp';
-const videoSrc = '/hero-video.mp4';
+interface Props {
+  /** Localized strings; defaults are EN. */
+  eyebrow?: string;
+  titleLines?: [string, string, string];
+  /** Short italic-serif descender under the title. */
+  tagline?: string;
+  /** Four-row credit slate on the right. [label, value] pairs. */
+  slate?: { label: string; value: string }[];
+  /** Bottom hairline strip — three short capsules. */
+  bottomTrust?: [string, string, string];
+  /** Primary CTA text. */
+  cta?: string;
+  /** WhatsApp ghost CTA text. */
+  ghostCta?: string;
+  /** Posterized still image (always rendered; mobile fallback). */
+  posterImg?: string;
+  /** Looped silent video (desktop only). */
+  videoSrc?: string;
+  /** "Scroll" affordance label. */
+  scrollLabel?: string;
+  /** Optional dir override; defaults pulled from the document. */
+  dir?: 'ltr' | 'rtl';
+}
+
+const {
+  eyebrow = 'Private chef · Marrakech',
+  titleLines = ['A PRIVATE', 'MOROCCAN', 'FEAST.'],
+  tagline = '— cooked at your villa tonight.',
+  slate = [
+    { label: 'Location', value: 'Marrakech · 7 nights / week' },
+    { label: 'Courses',  value: 'Five · 3 hours' },
+    { label: 'Price',    value: 'From €85 / person' },
+    { label: 'Reply',    value: 'Within 1 hour' },
+  ],
+  bottomTrust = [
+    '★ 4.9 · 200+ villa guests',
+    'Reply within 1 hour',
+    'Confirmed in 24h',
+  ],
+  cta = 'Book your dinner',
+  ghostCta = 'Or message us on WhatsApp',
+  posterImg = '/moroccan-feast-villa-terrace.webp',
+  videoSrc = '/hero-video.mp4',
+  scrollLabel = 'Scroll',
+} = Astro.props;
 ---
 
-<section id="hero" class="lt-hero relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink text-sand">
-  {/* Video plate — desktop / tablet only. Mobile keeps the poster for perf. */}
+<section
+  id="hero"
+  class="lt-hero relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink text-sand"
+>
+  {/* --- Background plate --- */}
   <div class="absolute inset-0 -z-10" aria-hidden="true">
-    {/* Poster always renders — it's the first paint and the mobile fallback */}
+    {/* Poster always renders first */}
     <img
       src={posterImg}
       alt=""
-      class="absolute inset-0 h-full w-full object-cover"
+      class="lt-duotone-soft absolute inset-0 h-[115%] w-full object-cover"
       fetchpriority="high"
       decoding="async"
+      data-parallax="0.18"
     />
     <video
-      class="lt-hero-video absolute inset-0 hidden h-full w-full object-cover md:block"
+      class="lt-hero-video lt-duotone-soft absolute inset-0 hidden h-[115%] w-full object-cover md:block"
       autoplay
       muted
       loop
       playsinline
       preload="metadata"
       poster={posterImg}
+      data-parallax="0.18"
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
 
-    {/* Color treatment — multiply ember warmth into the imagery */}
-    <div class="absolute inset-0 bg-ember/10 mix-blend-multiply"></div>
-    {/* Readability gradients — soft top vignette for nav + heavy floor for copy */}
-    <div class="absolute inset-x-0 top-0 h-[35%] bg-gradient-to-b from-ink/85 via-ink/30 to-transparent"></div>
-    <div class="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-ink via-ink/65 to-transparent"></div>
-    {/* Subtle grain for texture — pure CSS noise, no extra request */}
-    <div class="lt-hero-grain absolute inset-0 opacity-[0.08] mix-blend-overlay"></div>
+    {/* Warm color treatment — ember multiplied into the imagery */}
+    <div class="absolute inset-0 bg-ember/12 mix-blend-multiply"></div>
+    {/* Readability vignettes — soft top for nav, heavy floor for type */}
+    <div class="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-ink/85 via-ink/30 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-ink via-ink/65 via-50% to-transparent"></div>
+    {/* Side fade on the credit-slate edge so the type stays readable */}
+    <div class="absolute inset-y-0 end-0 hidden w-[35%] bg-gradient-to-l from-ink/55 to-transparent lg:block"></div>
+    {/* SVG-noise grain — pure data URI, no extra request */}
+    <div class="lt-hero-grain absolute inset-0 opacity-[0.085] mix-blend-overlay"></div>
   </div>
 
-  {/* Centered content — same hierarchy as before, larger breathing room */}
-  <div class="container relative flex flex-1 flex-col items-center justify-center gap-9 pt-32 pb-24 text-center sm:pt-40 sm:pb-32">
-    <span class="lt-hero-fade inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light" style="--lt-delay: 0ms">
-      <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
-      Private chef · Marrakech
-    </span>
+  {/* --- Title-card grid --- */}
+  <div class="container relative flex flex-1 flex-col gap-12 pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-28">
+    <div class="grid grid-cols-12 items-end gap-x-8 gap-y-12">
 
-    <h1 class="lt-hero-fade max-w-[960px] font-display text-[clamp(3rem,9vw,7.25rem)] font-normal leading-[0.92] tracking-[0.02em] text-sand" style="--lt-delay: 120ms">
-      A private Moroccan feast.
-      <em class="mt-4 block font-serif italic font-normal text-[0.42em] tracking-[0.01em] text-gold-light">
-        — cooked at your villa tonight.
-      </em>
-    </h1>
+      {/* Left — display title + CTAs */}
+      <div class="lt-hero-enter col-span-12 lg:col-span-8 xl:col-span-7">
+        <span class="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-gold-light">
+          <span aria-hidden="true" class="inline-block size-1.5 rotate-45 bg-ember"></span>
+          {eyebrow}
+        </span>
 
-    <p class="lt-hero-fade max-w-[600px] text-[17px] leading-[1.7] text-sand/90" style="--lt-delay: 240ms">
-      Souk-fresh, multi-course, served on your terrace. From €85 per person —
-      confirmed in 24 hours.
-    </p>
+        <h1 class="mt-8 font-display font-normal text-[clamp(3.25rem,10vw,8.5rem)] leading-[0.88] tracking-[0.018em] text-sand">
+          <span class="block">{titleLines[0]}</span>
+          <span class="block">{titleLines[1]}</span>
+          <span class="block">{titleLines[2]}</span>
+          <em class="mt-5 block font-serif italic font-normal text-[0.22em] tracking-[0.005em] text-gold-light leading-[1.4]">
+            {tagline}
+          </em>
+        </h1>
 
-    <div class="lt-hero-fade flex flex-col items-center gap-4 pt-2" style="--lt-delay: 360ms">
-      <a
-        href="#booking"
-        class="group inline-flex items-center gap-3 rounded-full bg-ember px-9 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
+        <div class="mt-12 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+          <a
+            href="#booking"
+            class="group inline-flex items-center gap-3 rounded-full bg-ember px-10 py-[18px] font-mono text-[12px] uppercase tracking-[0.24em] text-white shadow-[0_18px_40px_-12px_rgba(184,79,46,0.55)] transition hover:-translate-y-px hover:bg-ember-light"
+          >
+            {cta}
+            <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-sand transition group-hover:translate-x-0.5"></span>
+          </a>
+
+          <a
+            data-event="whatsapp_click"
+            data-location="hero-ghost"
+            href="https://wa.me/212721354757?text=Hi%20%E2%80%94%20I%27d%20like%20to%20book%20a%20private%20chef"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-gold-light transition hover:text-sand"
+          >
+            {ghostCta}
+            <span aria-hidden="true" class="inline-block h-px w-10 bg-gold/60 transition group-hover:w-16 group-hover:bg-ember"></span>
+          </a>
+        </div>
+      </div>
+
+      {/* Right — credit slate */}
+      <aside class="lt-hero-enter col-span-12 lg:col-span-4 xl:col-span-5">
+        <div class="relative ml-auto max-w-[420px] lg:ml-auto lg:me-0">
+          <span class="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.32em] text-sand-muted">
+            <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-gold"></span>
+            Tonight&apos;s slate
+          </span>
+
+          <dl class="mt-5 border-t border-gold/25">
+            {slate.map((row) => (
+              <div class="grid grid-cols-[auto_1fr] items-baseline gap-x-6 border-b border-gold/15 py-3.5">
+                <dt class="font-mono text-[10px] uppercase tracking-[0.28em] text-gold-light">
+                  {row.label}
+                </dt>
+                <dd class="text-end font-serif italic text-[14.5px] leading-[1.3] text-sand">
+                  {row.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </aside>
+    </div>
+
+    {/* --- Bottom hairline strip --- */}
+    <div class="lt-hero-enter mt-auto flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-gold/15 pt-7">
+      <ul class="flex flex-wrap items-center gap-x-7 gap-y-2">
+        {bottomTrust.map((t, i) => (
+          <li class="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.26em] text-sand-muted">
+            {i > 0 && <span aria-hidden="true" class="inline-block size-1 rotate-45 bg-ember"></span>}
+            <span class={i === 0 ? 'text-sand' : ''}>{t}</span>
+          </li>
+        ))}
+      </ul>
+
+      <span
+        aria-hidden="true"
+        class="lt-hero-scroll pointer-events-none hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-sand/55 md:inline-flex"
       >
-        Book your dinner
-        <span aria-hidden="true" class="inline-block size-2 rotate-45 bg-sand transition group-hover:translate-x-0.5"></span>
-      </a>
-      <span class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand/70">
-        ★ 4.9 from 200+ villa guests · Reply within 1 hour
+        {scrollLabel}
+        <span class="block h-8 w-px bg-gradient-to-b from-gold/60 to-transparent"></span>
       </span>
     </div>
   </div>
-
-  {/* Scroll affordance — only visible on desktop, low-key */}
-  <span
-    aria-hidden="true"
-    class="lt-hero-scroll pointer-events-none absolute bottom-[120px] left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-sand/55 md:flex"
-  >
-    Scroll
-    <span class="block h-8 w-px bg-gradient-to-b from-gold/60 to-transparent"></span>
-  </span>
 </section>
 
 <style>
-  /* Cinematic entrance — staggered fade-up. Transform/opacity only. */
-  .lt-hero-fade {
-    opacity: 0;
-    transform: translateY(14px);
-    animation: lt-hero-rise 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-    animation-delay: var(--lt-delay, 0ms);
-  }
+  /* Cinematic entrance — handled by .lt-hero-enter (global.css) which
+     staggers the direct children with backwards animation-fill-mode. */
 
-  @keyframes lt-hero-rise {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Scroll cue — slow bobbing */
   .lt-hero-scroll {
     animation: lt-hero-bob 2.4s ease-in-out infinite;
-    animation-delay: 1.4s;
+    animation-delay: 1.6s;
     opacity: 0;
     animation-fill-mode: backwards;
   }
   @keyframes lt-hero-bob {
-    0%, 100% { opacity: 0.55; transform: translate(-50%, 0); }
-    50%      { opacity: 0.85; transform: translate(-50%, 6px); }
+    0%, 100% { opacity: 0.55; transform: translateY(0); }
+    50%      { opacity: 0.85; transform: translateY(4px); }
   }
 
-  /* CSS-only film grain — inline data URI noise pattern, no extra request */
+  /* CSS-only film grain — inline SVG-noise data URI, no extra request */
   .lt-hero-grain {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     background-size: 180px 180px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lt-hero-fade,
-    .lt-hero-scroll { animation: none; opacity: 1; transform: none; }
+    .lt-hero-scroll { animation: none; opacity: 1; }
     .lt-hero-video { display: none !important; }
   }
 </style>
